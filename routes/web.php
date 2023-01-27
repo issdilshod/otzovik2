@@ -1,18 +1,23 @@
 <?php
 
+use App\Http\Controllers\Account\AuthController;
+use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::get('admin/login', [AuthController::class, 'login']);
 
-Route::get('/', function () {
-    return view('pages/welcome');
+// protected routes
+Route::middleware(['auth.session'])->group(function (){
+
+    // dashboard
+    Route::get('admin/dashboard', [DashboardController::class, 'index']);
+
+    // users
+    Route::get('admin/users', [UserController::class, 'index']);
+    Route::post('admin/user', [UserController::class, 'store']);
+    Route::get('admin/user/{id}', [UserController::class, 'get']);
+    Route::put('admin/user/{id}', [UserController::class, 'update']);
+    Route::delete('admin/user/{id}', [UserController::class, 'destroy']);
+
 });
