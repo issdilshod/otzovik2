@@ -2,7 +2,9 @@
 
 namespace App\Services\Account;
 
-class UserService{
+use App\Services\Service;
+
+class UserService extends Service{
 
     public function findAll($id = '', $name = '')
     {
