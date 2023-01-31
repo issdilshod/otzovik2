@@ -1,4 +1,6 @@
 {
+    "global_search_title": "Поиск",
+
     "login_title": "Вход",
     "login_welcome_title": "Войдите чтобы начать работу",
     "login_username": "Логин",
@@ -24,6 +26,17 @@
     "dashboard_articles": "Блог",
     "dashboard_staff": "Сотрудники",
     "dashboard_go": "Перейти",
+
+    "universities_title": "ВУЗ-ы",
+    "universities_list_title": "Список ВУЗ-ов",
+    "university_add_title": "Добавить ВУЗ-а",
+    "university_edit_title": "Редактировать",
+    "university_card_title": "Карточка ВУЗ-а",
+    "university_name": "Название ВУЗ-а",
+    "university_slug": "Слуг ВУЗ-а",
+    "university_description": "Описание ВУЗ-а",
+    "university_logo": "Логотип",
+    "unoversity_save_button": "Сохранить",
 
     "footer_right_reserved": "Все права защищены"
 }

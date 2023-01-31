@@ -12,7 +12,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item active"><a href="{{ url('/admin/dashboard') }}"><?=__('dashboard_title')?></a></li>
+              <li class="breadcrumb-item active"><?=__('dashboard_title')?></li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->

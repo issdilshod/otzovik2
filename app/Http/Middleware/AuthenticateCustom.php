@@ -45,6 +45,8 @@ class AuthenticateCustom
             }
         }
 
+        $request->merge(['current_user_id' => $request->session()->get('user_id')]);
+
         return $next($request);
     }
 }

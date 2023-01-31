@@ -3,7 +3,7 @@
 use App\Http\Controllers\Admin\Account\AuthController;
 use App\Http\Controllers\Admin\Account\UserController;
 use App\Http\Controllers\Admin\Dashboard\DashboardController;
-use App\Http\Controllers\Admin\Error\ErrorController;
+use App\Http\Controllers\Admin\University\UniversityController;
 use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +27,13 @@ Route::middleware(['auth.custom'])->group(function (){
 
     // dashboard
     Route::get('admin/dashboard', [DashboardController::class, 'index']);
+
+    // universities
+    Route::get('admin/universities', [UniversityController::class, 'index']);
+    Route::post('admin/university', [UniversityController::class, 'store']);
+    Route::get('admin/university/{id?}', [UniversityController::class, 'get']);
+    Route::put('admin/university/{id}', [UniversityController::class, 'update']);
+    Route::delete('admin/university/{id}', [UniversityController::class, 'destroy']);
 
     // users
     Route::get('admin/users', [UserController::class, 'index']);

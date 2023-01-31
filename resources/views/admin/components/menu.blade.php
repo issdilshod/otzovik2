@@ -54,7 +54,7 @@
                 <a href="{{ url('/admin/articles') }}" class="nav-link">
                 <i class="nav-icon fas fa-book"></i>
                 <p>
-                    {{__('menu_articales_title')}}
+                    {{__('menu_articles_title')}}
                 </p>
                 </a>
             </li>
