@@ -41,7 +41,7 @@ class AuthController extends Controller
         }
 
         $data = $validated;
-        $data['msg'] = 'Неправильный логин или пароль';
+        $data['msg'] = __('login_invalid');
 
         // error
         return view('admin.pages.login', $data);

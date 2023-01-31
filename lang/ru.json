@@ -1,0 +1,28 @@
+{
+    "login_title": "Вход",
+    "login_welcome_title": "Войдите чтобы начать работу",
+    "login_username": "Логин",
+    "login_password": "Пароль",
+    "login_remember": "Запомнить",
+    "login_login_button": "Вход",
+    "login_fill_fields": "Заполните поле",
+    "login_invalid": "Неправильный логин или пароль",
+
+    "header_search_title": "Поиск...",
+    "header_notification": "Уведомлении",
+    "header_all_notification": "Все уведомлении",
+
+    "menu_dashboard_title": "Панель управление",
+    "menu_universities_title": "ВУЗ-ы",
+    "menu_reviews_title": "Отзывы",
+    "menu_blog_title": "Блог",
+
+    "dashboard_title": "Панель управление",
+    "dashboard_universities": "ВУЗ-ы",
+    "dashboard_reviews": "Отзывы",
+    "dashboard_blogs": "Блог",
+    "dashboard_staff": "Сотрудники",
+    "dashboard_go": "Перейти",
+
+    "footer_right_reserved": "Все права защищены"
+}

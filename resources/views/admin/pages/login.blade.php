@@ -5,10 +5,10 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <span href="#" class="h1"><b>Admin</b>LTE</span>
+      <span href="#" class="h1"><b>{{env('APP_NAME')}}</b>Admin</span>
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Войдите чтобы начать работу</p>
+      <p class="login-box-msg">{{__('login_welcome_title')}}</p>
 
       <form action="{{ url('/admin/login') }}" method="POST">
         @csrf
@@ -21,23 +21,23 @@
             <input 
                 type="text"
                 class="form-control @if ($errors->has('username')) is-invalid @endif" 
-                placeholder="Логин"
+                placeholder="{{__('login_username')}}"
                 name="username"
                 value="@isset($username) {{ $username }} @endisset"
             />
             @if ($errors->has('username'))
-                <span class="error invalid-feedback">Заполните поле</span>
+                <span class="error invalid-feedback">{{__('login_fill_fields')}}</span>
             @endif
         </div>
         <div class="input-group mb-3">
             <input 
                 type="password" 
                 class="form-control @if ($errors->has('password')) is-invalid @endif" 
-                placeholder="Пароль"
+                placeholder="{{__('login_password')}}"
                 name="password"
             />
             @if ($errors->has('password'))
-                <span class="error invalid-feedback">Заполните поле</span>
+                <span class="error invalid-feedback">{{__('login_fill_fields')}}</span>
             @endif
         </div>
         <div class="row">
@@ -45,13 +45,13 @@
             <div class="icheck-primary">
                 <input type="checkbox" id="remember" name="remember">
                 <label for="remember">
-                    Запомнить
+                    {{__('login_remember')}}
                 </label>
             </div>
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Вход</button>
+            <button type="submit" class="btn btn-primary btn-block">{{__('login_login_button')}}</button>
           </div>
           <!-- /.col -->
         </div>
