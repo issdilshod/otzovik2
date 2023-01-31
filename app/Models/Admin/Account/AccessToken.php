@@ -11,13 +11,12 @@ class AccessToken extends Model
     use HasFactory, HasUuids;
 
     protected $fillable = [
-        'first_name',
-        'last_name',
-        'username',
+        'user_id',
+        'token',
+        'expire_at',
         'password',
-        'email',
-        'phone',
-        'role',
+        'ip',
+        'device',
         'status'
     ];
 

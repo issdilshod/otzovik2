@@ -3,6 +3,7 @@
 namespace App\Http\Services\Admin\Account;
 
 use App\Http\Services\Service;
+use App\Models\Admin\Account\AccessToken;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Cookie;
@@ -31,21 +32,39 @@ class AuthService extends Service{
                 $tmpToken = Str::random(Config::get('session.token_length'));
                 $expireAt = Carbon::now()->addDays(Config::get('session.token_life'));
 
-                DB::table('access_tokens')
-                    ->insert([
-                        'user_id' => $user->id,
-                        'token' => $tmpToken,
-                        'expire_at' => $expireAt
-                    ]);
+                AccessToken::create([
+                    'user_id' => $user->id,
+                    'token' => $tmpToken,
+                    'expire_at' => $expireAt
+                ]);
 
                 // set cookie
-                Cookie::queue('token', env('APP_URL'), $expireAt->diffInMinutes(Carbon::now()));
+                Cookie::queue('token', $tmpToken, $expireAt->diffInMinutes(Carbon::now()));
             }
 
             return $user;
         }
 
         return false;
+    }
+
+    public function logout()
+    {
+        // remove session
+        if (Session::has('user_id')){
+            Session::forget('user_id');
+        }
+
+        // remove cookie if exists
+        if (Cookie::has('token')){
+            $tmpToken = Cookie::get('token');
+
+            AccessToken::where('token', $tmpToken)
+                ->update(['status' => Config::get('status.delete')]);
+            Cookie::forget('token');
+        }
+
+        return true;
     }
 
 }

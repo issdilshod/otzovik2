@@ -54,7 +54,16 @@
                 <a href="{{ url('/admin/articles') }}" class="nav-link">
                 <i class="nav-icon fas fa-book"></i>
                 <p>
-                    {{__('menu_blog_title')}}
+                    {{__('menu_articales_title')}}
+                </p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="{{ url('/admin/users') }}" class="nav-link">
+                <i class="nav-icon fas fa-users"></i>
+                <p>
+                    {{__('menu_staff_title')}}
                 </p>
                 </a>
             </li>

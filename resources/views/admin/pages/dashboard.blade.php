@@ -36,7 +36,7 @@
               <div class="icon">
                 <i class="fa fa-building"></i>
               </div>
-              <a href="#" class="small-box-footer">{{__('dashboard_go')}} <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ url('/admin/universities') }}" class="small-box-footer">{{__('dashboard_go')}} <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -51,7 +51,7 @@
               <div class="icon">
                 <i class="fa fa-star"></i>
               </div>
-              <a href="#" class="small-box-footer">{{__('dashboard_go')}} <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ url('/admin/reviews') }}" class="small-box-footer">{{__('dashboard_go')}} <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -61,12 +61,12 @@
               <div class="inner">
                 <h3>0</h3>
 
-                <p>{{__('dashboard_blogs')}}</p>
+                <p>{{__('dashboard_articles')}}</p>
               </div>
               <div class="icon">
                 <i class="fa fa-book"></i>
               </div>
-              <a href="#" class="small-box-footer">{{__('dashboard_go')}} <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ url('/admin/articles') }}" class="small-box-footer">{{__('dashboard_go')}} <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -81,7 +81,7 @@
               <div class="icon">
                 <i class="fa fa-users"></i>
               </div>
-              <a href="#" class="small-box-footer">{{__('dashboard_go')}} <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ url('/admin/users') }}" class="small-box-footer">{{__('dashboard_go')}} <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

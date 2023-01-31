@@ -18,6 +18,7 @@ Route::get('/', [MainController::class, 'index']);
 Route::get('admin/', [AuthController::class, 'index']);
 Route::get('admin/login', [AuthController::class, 'index']);
 Route::post('admin/login', [AuthController::class, 'login']);
+Route::get('admin/logout', [AuthController::class, 'logout']);
 
 // error
 Route::get('admin/401', [ErrorController::class, 'e401']);

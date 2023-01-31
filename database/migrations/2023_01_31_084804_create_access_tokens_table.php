@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('access_tokens', function (Blueprint $table) {
-            $table->id();
+            $table->string('id')->primary();
             $table->string('user_id')->nullable();
             $table->string('token')->nullable();
             $table->dateTime('expire_at')->nullable();
@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('device')->nullable();
             $table->tinyInteger('status')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

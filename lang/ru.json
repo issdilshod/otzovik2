@@ -15,12 +15,13 @@
     "menu_dashboard_title": "Панель управление",
     "menu_universities_title": "ВУЗ-ы",
     "menu_reviews_title": "Отзывы",
-    "menu_blog_title": "Блог",
+    "menu_articles_title": "Блог",
+    "menu_staff_title": "Сотрудники",
 
     "dashboard_title": "Панель управление",
     "dashboard_universities": "ВУЗ-ы",
     "dashboard_reviews": "Отзывы",
-    "dashboard_blogs": "Блог",
+    "dashboard_articles": "Блог",
     "dashboard_staff": "Сотрудники",
     "dashboard_go": "Перейти",
 

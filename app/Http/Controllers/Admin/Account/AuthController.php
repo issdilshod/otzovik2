@@ -47,4 +47,11 @@ class AuthController extends Controller
         return view('admin.pages.login', $data);
     }
 
+    public function logout(Request $request)
+    {
+        $this->authService->logout();
+
+        return redirect('admin/')->with('msg', 'success');
+    }
+
 }
