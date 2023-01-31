@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\Account;
 
-use App\Services\Account\UserService;
+use App\Http\Controllers\Controller;
+use App\Services\Admin\Account\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
@@ -23,7 +24,7 @@ class UserController extends Controller
         $data['users'] = $this->userService->findAll();
         $data['roles'] = Config::get('roles');
 
-        return view('admin.pages.users', $data);
+        return view('admin.pages.user.users', $data);
     }
 
     public function store(Request $request)
@@ -42,7 +43,7 @@ class UserController extends Controller
 
         $this->userService->create($validated);
 
-        return redirect('admin.users', 302, ['status' => 'ok', 'msg' => 'success']);
+        return redirect('admin/users', 302, ['status' => 'ok', 'msg' => 'success']);
     }
 
     public function get(Request $request, $id)
@@ -51,7 +52,7 @@ class UserController extends Controller
 
         $data['user'] = $this->userService->find($id);
 
-        return view('admin.pages.users', $data);
+        return view('admin.pages.user.user', $data);
     }
 
     public function update(Request $request, $id)

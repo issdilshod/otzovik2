@@ -16,7 +16,7 @@
           Подобрать ВУЗ
         </a>
       </div>
-      <div class="hero-img"><img src="images/hero01.svg" alt=""></div>
+      <div class="hero-img"><img src="assets/images/hero01.svg" alt=""></div>
     </div>
     <!-- / hero -->
     <div class="title-wrap">
@@ -39,11 +39,11 @@
           <div class="review-user-name">Евгений Баженов</div>
           <div class="date">30 декабря 2022</div>
           <div class="rating">
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star-half.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star-half.svg" alt=""></span>
             <span>4.5</span>
           </div>
           <p>Поступил в 21 году на специальность "лингвистика", меня порадовало то, что в данном вузе такое направление присутствовало, т.к. сложно найти это направление в других университетах ...</p>
@@ -56,11 +56,11 @@
           <div class="review-user-name">Станислав Васильев</div>
           <div class="date">28 декабря 2022</div>
           <div class="rating">
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star-empty.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star-empty.svg" alt=""></span>
             <span>4.0</span>
           </div>
           <p>Прежде, чем начну говорить о плюсах и минусах, я хотел бы прояснить некоторые моменты, которые судя по количеству негативных отзывов становятся откровением для абитуриентов ...</p>
@@ -73,11 +73,11 @@
           <div class="review-user-name">Евгений Баженов</div>
           <div class="date">26 декабря 2022</div>
           <div class="rating">
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
             <span>5.0</span>
           </div>
           <p>В этом году я закончила отделение востоковедения Гуманитарного института (ГИ). Направление - китайский язык. Поступала сюда с горящими глазами. Как и все, наверное. Было в учебе хорошее ...</p>
@@ -90,11 +90,11 @@
           <div class="review-user-name">Станислав Васильев</div>
           <div class="date">28 декабря 2022</div>
           <div class="rating">
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star-empty.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star-empty.svg" alt=""></span>
             <span>4.0</span>
           </div>
           <p>Прежде, чем начну говорить о плюсах и минусах, я хотел бы прояснить некоторые моменты, которые судя по количеству негативных отзывов становятся откровением для абитуриентов ...</p>
@@ -107,11 +107,11 @@
           <div class="review-user-name">Евгений Баженов</div>
           <div class="date">26 декабря 2022</div>
           <div class="rating">
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
             <span>5.0</span>
           </div>
           <p>В этом году я закончила отделение востоковедения Гуманитарного института (ГИ). Направление - китайский язык. Поступала сюда с горящими глазами. Как и все, наверное. Было в учебе хорошее ...</p>
@@ -190,7 +190,7 @@
           </ul>
         </div>
         <div class="col-lg-3">
-          <div class="attrackt-img"><img src="images/attrackt-img.svg" alt=""></div>
+          <div class="attrackt-img"><img src="assets/images/attrackt-img.svg" alt=""></div>
         </div>
       </div>
     </div>
@@ -222,7 +222,7 @@
           <div class="top-table-body">
             <div class="top-table-row">
               <div class="cell cell01">01</div>
-              <div class="cell cell04"><img src="images/logo01.png" alt=""></div>
+              <div class="cell cell04"><img src="assets/images/logo01.png" alt=""></div>
               <div class="cell cell02"><p>Национальный исследовательский университет «Высшая школа экономики»</p></div>
               <div class="cell cell03" data-title="Мировой рейтинг">
                 <div class="rate-info">
@@ -257,7 +257,7 @@
             </div>
             <div class="top-table-row">
               <div class="cell cell01">02</div>
-              <div class="cell cell04"><img src="images/logo01.png" alt=""></div>
+              <div class="cell cell04"><img src="assets/images/logo01.png" alt=""></div>
               <div class="cell cell02"><p>Московский государственный университет имени М.В.Ломоносова</p></div>
               <div class="cell cell03" data-title="Мировой рейтинг">
                 <div class="rate-info">
@@ -292,7 +292,7 @@
             </div>
             <div class="top-table-row">
               <div class="cell cell01">03</div>
-              <div class="cell cell04"><img src="images/logo01.png" alt=""></div>
+              <div class="cell cell04"><img src="assets/images/logo01.png" alt=""></div>
               <div class="cell cell02"><p>Национальный исследовательский университет «Высшая школа экономики»</p></div>
               <div class="cell cell03" data-title="Мировой рейтинг">
                 <div class="rate-info">
@@ -327,7 +327,7 @@
             </div>
             <div class="top-table-row">
               <div class="cell cell01">04</div>
-              <div class="cell cell04"><img src="images/logo01.png" alt=""></div>
+              <div class="cell cell04"><img src="assets/images/logo01.png" alt=""></div>
               <div class="cell cell02"><p>Московский государственный университет имени М.В.Ломоносова</p></div>
               <div class="cell cell03" data-title="Мировой рейтинг">
                 <div class="rate-info">
@@ -362,7 +362,7 @@
             </div>
             <div class="top-table-row">
               <div class="cell cell01">05</div>
-              <div class="cell cell04"><img src="images/logo01.png" alt=""></div>
+              <div class="cell cell04"><img src="assets/images/logo01.png" alt=""></div>
               <div class="cell cell02"><p>Национальный исследовательский университет «Высшая школа экономики»</p></div>
               <div class="cell cell03" data-title="Мировой рейтинг">
                 <div class="rate-info">
@@ -397,7 +397,7 @@
             </div>
             <div class="top-table-row">
               <div class="cell cell01">06</div>
-              <div class="cell cell04"><img src="images/logo01.png" alt=""></div>
+              <div class="cell cell04"><img src="assets/images/logo01.png" alt=""></div>
               <div class="cell cell02"><p>Московский государственный университет имени М.В.Ломоносова</p></div>
               <div class="cell cell03" data-title="Мировой рейтинг">
                 <div class="rate-info">
@@ -432,7 +432,7 @@
             </div>
             <div class="top-table-row">
               <div class="cell cell01">07</div>
-              <div class="cell cell04"><img src="images/logo01.png" alt=""></div>
+              <div class="cell cell04"><img src="assets/images/logo01.png" alt=""></div>
               <div class="cell cell02"><p>Национальный исследовательский университет «Высшая школа экономики»</p></div>
               <div class="cell cell03" data-title="Мировой рейтинг">
                 <div class="rate-info">
@@ -467,7 +467,7 @@
             </div>
             <div class="top-table-row">
               <div class="cell cell01">08</div>
-              <div class="cell cell04"><img src="images/logo01.png" alt=""></div>
+              <div class="cell cell04"><img src="assets/images/logo01.png" alt=""></div>
               <div class="cell cell02"><p>Московский государственный университет имени М.В.Ломоносова</p></div>
               <div class="cell cell03" data-title="Мировой рейтинг">
                 <div class="rate-info">
@@ -502,7 +502,7 @@
             </div>
             <div class="top-table-row">
               <div class="cell cell01">09</div>
-              <div class="cell cell04"><img src="images/logo01.png" alt=""></div>
+              <div class="cell cell04"><img src="assets/images/logo01.png" alt=""></div>
               <div class="cell cell02"><p>Национальный исследовательский университет «Высшая школа экономики»</p></div>
               <div class="cell cell03" data-title="Мировой рейтинг">
                 <div class="rate-info">
@@ -537,7 +537,7 @@
             </div>
             <div class="top-table-row">
               <div class="cell cell01">10</div>
-              <div class="cell cell04"><img src="images/logo01.png" alt=""></div>
+              <div class="cell cell04"><img src="assets/images/logo01.png" alt=""></div>
               <div class="cell cell02"><p>Московский государственный университет имени М.В.Ломоносова</p></div>
               <div class="cell cell03" data-title="Мировой рейтинг">
                 <div class="rate-info">
@@ -643,7 +643,7 @@
       <div class="news-card">
         <a href="#">
           <div class="news-card-img">
-            <img src="images/pic01.jpg" alt="">
+            <img src="assets/images/pic01.jpg" alt="">
             <div class="date-label">
               <div class="ico">
                 <svg class="icon">
@@ -662,7 +662,7 @@
       <div class="news-card">
         <a href="#">
           <div class="news-card-img">
-            <img src="images/pic02.jpg" alt="">
+            <img src="assets/images/pic02.jpg" alt="">
             <div class="date-label">
               <div class="ico">
                 <svg class="icon">
@@ -681,7 +681,7 @@
       <div class="news-card">
         <a href="#">
           <div class="news-card-img">
-            <img src="images/pic03.jpg" alt="">
+            <img src="assets/images/pic03.jpg" alt="">
             <div class="date-label">
               <div class="ico">
                 <svg class="icon">
@@ -732,11 +732,11 @@
           <div class="review-user-name">Евгений Баженов</div>
           <div class="date">30 декабря 2022</div>
           <div class="rating">
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star-half.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star-half.svg" alt=""></span>
             <span>4.5</span>
           </div>
           <p>Поступил в 21 году на специальность "лингвистика", меня порадовало то, что в данном вузе такое направление присутствовало, т.к. сложно найти это направление в других университетах ...</p>
@@ -749,11 +749,11 @@
           <div class="review-user-name">Станислав Васильев</div>
           <div class="date">28 декабря 2022</div>
           <div class="rating">
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star-empty.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star-empty.svg" alt=""></span>
             <span>4.0</span>
           </div>
           <p>Прежде, чем начну говорить о плюсах и минусах, я хотел бы прояснить некоторые моменты, которые судя по количеству негативных отзывов становятся откровением для абитуриентов ...</p>
@@ -766,11 +766,11 @@
           <div class="review-user-name">Евгений Баженов</div>
           <div class="date">26 декабря 2022</div>
           <div class="rating">
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
             <span>5.0</span>
           </div>
           <p>В этом году я закончила отделение востоковедения Гуманитарного института (ГИ). Направление - китайский язык. Поступала сюда с горящими глазами. Как и все, наверное. Было в учебе хорошее ...</p>
@@ -783,11 +783,11 @@
           <div class="review-user-name">Станислав Васильев</div>
           <div class="date">28 декабря 2022</div>
           <div class="rating">
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star-empty.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star-empty.svg" alt=""></span>
             <span>4.0</span>
           </div>
           <p>Прежде, чем начну говорить о плюсах и минусах, я хотел бы прояснить некоторые моменты, которые судя по количеству негативных отзывов становятся откровением для абитуриентов ...</p>
@@ -800,11 +800,11 @@
           <div class="review-user-name">Евгений Баженов</div>
           <div class="date">26 декабря 2022</div>
           <div class="rating">
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star.svg" alt=""></span>
-            <span><img src="images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
+            <span><img src="assets/images/star.svg" alt=""></span>
             <span>5.0</span>
           </div>
           <p>В этом году я закончила отделение востоковедения Гуманитарного института (ГИ). Направление - китайский язык. Поступала сюда с горящими глазами. Как и все, наверное. Было в учебе хорошее ...</p>

@@ -1,12 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Account;
+namespace App\Http\Controllers\Admin\Account;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
+    
+    public function index(Request $request)
+    {
+        $data = [];
+
+        return view('admin.pages.login', $data);
+    }
 
     public function login(Request $request)
     {

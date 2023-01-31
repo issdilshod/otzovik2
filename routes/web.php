@@ -1,22 +1,26 @@
 <?php
 
-use App\Http\Controllers\Account\AuthController;
-use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Admin\Account\AuthController;
+use App\Http\Controllers\Admin\Account\UserController;
+use App\Http\Controllers\Admin\Dashboard\DashboardController;
 use App\Http\Controllers\MainController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-// main routes
+/**
+ * MAIN ROUTES
+ */
 Route::get('/', [MainController::class, 'index']);
 
-// admin routes
-Route::get('admin/login', [AuthController::class, 'login']);
+/**
+ * ADMIN ROUTES
+ */
+Route::get('admin/', [AuthController::class, 'index']);
+Route::post('admin/', [AuthController::class, 'login']);
+Route::post('admin/login', [AuthController::class, 'login']);
 
-// protected routes
 Route::middleware(['auth.session'])->group(function (){
 
     // dashboard
-    Route::get('admin/', [DashboardController::class, 'index']);
     Route::get('admin/dashboard', [DashboardController::class, 'index']);
 
     // users
