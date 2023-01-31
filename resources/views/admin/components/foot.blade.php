@@ -13,8 +13,8 @@
 <!-- Sparkline -->
 <script src="{{ asset('assets/admin/plugins/sparklines/sparkline.js') }}"></script>
 <!-- JQVMap -->
-<script src="{{ asset('assets/admin/plugins/jqvmap/jquery.vmap.min.js') }}"></script>
-<script src="{{ asset('assets/admin/plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script>
+<!--script src="{{ asset('assets/admin/plugins/jqvmap/jquery.vmap.min.js') }}"></script-->
+<!--script src="{{ asset('assets/admin/plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script-->
 <!-- jQuery Knob Chart -->
 <script src="{{ asset('assets/admin/plugins/jquery-knob/jquery.knob.min.js') }}"></script>
 <!-- daterangepicker -->
@@ -31,6 +31,6 @@
 <!-- AdminLTE for demo purposes -->
 <!--script src="{{ asset('assets/admin/dist/js/demo.js') }}"></script-->
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{ asset('assets/admin/dist/js/pages/dashboard.js') }}"></script>
+<!--script src="{{ asset('assets/admin/dist/js/pages/dashboard.js') }}"></script-->
 </body>
 </html>
