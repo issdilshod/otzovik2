@@ -3,10 +3,18 @@
 namespace App\Http\Controllers\Admin\Account;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\Admin\Account\AuthService;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
+
+    private $authService;
+
+    public function __construct()
+    {
+        $this->authService = new AuthService();
+    }
     
     public function index(Request $request)
     {
@@ -20,10 +28,22 @@ class AuthController extends Controller
         $data = [];
 
         $validated = $request->validate([
-            'username' => '',
-            'password' => ''
+            'username' => 'required',
+            'password' => 'required',
+            'remember' => ''
         ]);
 
+        $response = $this->authService->login($validated);
+
+        // log in
+        if ($response){
+            return redirect('admin/dashboard')->with('msg', 'success');
+        }
+
+        $data = $validated;
+        $data['msg'] = 'Неправильный логин или пароль';
+
+        // error
         return view('admin.pages.login', $data);
     }
 

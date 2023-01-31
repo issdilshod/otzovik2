@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\Account\AuthController;
 use App\Http\Controllers\Admin\Account\UserController;
 use App\Http\Controllers\Admin\Dashboard\DashboardController;
+use App\Http\Controllers\Admin\Error\ErrorController;
 use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,10 +16,13 @@ Route::get('/', [MainController::class, 'index']);
  * ADMIN ROUTES
  */
 Route::get('admin/', [AuthController::class, 'index']);
-Route::post('admin/', [AuthController::class, 'login']);
+Route::get('admin/login', [AuthController::class, 'index']);
 Route::post('admin/login', [AuthController::class, 'login']);
 
-Route::middleware(['auth.session'])->group(function (){
+// error
+Route::get('admin/401', [ErrorController::class, 'e401']);
+
+Route::middleware(['auth.custom'])->group(function (){
 
     // dashboard
     Route::get('admin/dashboard', [DashboardController::class, 'index']);

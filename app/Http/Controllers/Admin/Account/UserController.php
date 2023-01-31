@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Account;
 
 use App\Http\Controllers\Controller;
-use App\Services\Admin\Account\UserService;
+use App\Http\Services\Admin\Account\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
@@ -43,7 +43,7 @@ class UserController extends Controller
 
         $this->userService->create($validated);
 
-        return redirect('admin/users', 302, ['status' => 'ok', 'msg' => 'success']);
+        return redirect('admin/users')->with('msg', 'success');
     }
 
     public function get(Request $request, $id)
@@ -71,7 +71,7 @@ class UserController extends Controller
 
         $this->userService->update($validated, $id);
 
-        return redirect('admin/users', 302, ['status' => 'ok', 'msg' => 'success']);
+        return redirect('admin/users')->with('msg', 'success');
     }
 
     public function destroy(Request $request, $id)
@@ -80,7 +80,7 @@ class UserController extends Controller
 
         $this->userService->delete($id);
 
-        return redirect('admin/users', 302, ['status' => 'ok', 'msg' => 'success']);
+        return redirect('admin/users')->with('msg', 'success');
     }
 
 }

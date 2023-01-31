@@ -10,22 +10,35 @@
     <div class="card-body">
       <p class="login-box-msg">Войдите чтобы начать работу</p>
 
-      <form action="admin/login" method="post">
+      <form action="{{ url('/admin/login') }}" method="POST">
+        @csrf
+        @isset($msg)
+            <div class="form-group mb-3">
+                <div class="alert alert-danger">{{ $msg }}</div>
+            </div>
+        @endisset
         <div class="input-group mb-3">
             <input 
-                type="text" 
-                class="form-control" 
+                type="text"
+                class="form-control @if ($errors->has('username')) is-invalid @endif" 
                 placeholder="Логин"
                 name="username"
+                value="@isset($username) {{ $username }} @endisset"
             />
+            @if ($errors->has('username'))
+                <span class="error invalid-feedback">Заполните поле</span>
+            @endif
         </div>
         <div class="input-group mb-3">
             <input 
                 type="password" 
-                class="form-control" 
+                class="form-control @if ($errors->has('password')) is-invalid @endif" 
                 placeholder="Пароль"
                 name="password"
             />
+            @if ($errors->has('password'))
+                <span class="error invalid-feedback">Заполните поле</span>
+            @endif
         </div>
         <div class="row">
           <div class="col-8">

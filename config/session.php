@@ -4,6 +4,9 @@ use Illuminate\Support\Str;
 
 return [
 
+    'token_length' => 32,
+    'token_life' => 7,
+
     /*
     |--------------------------------------------------------------------------
     | Default Session Driver

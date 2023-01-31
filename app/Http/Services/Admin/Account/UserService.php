@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services\Admin\Account;
+namespace App\Http\Services\Admin\Account;
 
 use App\Http\Resources\Admin\Account\UserListResource;
 use App\Http\Resources\Admin\Account\UserResource;
-use App\Services\Service;
+use App\Http\Services\Service;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 
