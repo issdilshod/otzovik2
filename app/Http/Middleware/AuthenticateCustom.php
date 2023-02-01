@@ -35,8 +35,7 @@ class AuthenticateCustom
                             ->orderBy('uat.updated_at', 'DESC')
                             ->first();
                 if ($userId==null){
-                    Cookie::forget('token');
-                    return redirect('admin/')->with('msg', 'not authenticated');
+                    return redirect('admin/')->with('msg', 'not authenticated')->withCookie(Cookie::forget('token'));
                 }
                 $request->merge(['current_user_id' => $userId]);
                 $request->session()->put('user_id', $userId);

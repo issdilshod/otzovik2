@@ -20,12 +20,18 @@ class AuthController extends Controller
     {
         $data = [];
 
+        if ($this->authService->auth()){
+            return redirect('/admin/dashboard')->with('status', 'error');
+        }
+
         return view('admin.pages.login', $data);
     }
 
     public function login(Request $request)
     {
         $data = [];
+
+        $this->authService->auth();
 
         $validated = $request->validate([
             'username' => 'required',
@@ -49,9 +55,9 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-        $this->authService->logout();
+        $cookie = $this->authService->logout();
 
-        return redirect('admin/')->with('msg', 'success');
+        return redirect('admin/')->with('msg', 'success')->withCookie($cookie);
     }
 
 }

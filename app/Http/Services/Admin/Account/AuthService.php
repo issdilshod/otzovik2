@@ -50,6 +50,8 @@ class AuthService extends Service{
 
     public function logout()
     {
+        $cookie = '';
+
         // remove session
         if (Session::has('user_id')){
             Session::forget('user_id');
@@ -61,10 +63,18 @@ class AuthService extends Service{
 
             AccessToken::where('token', $tmpToken)
                 ->update(['status' => Config::get('status.delete')]);
-            Cookie::forget('token');
+            $cookie = Cookie::forget('token');
         }
 
-        return true;
+        return $cookie;
+    }
+
+    public function auth()
+    {
+        if (Session::has('user_id') || Cookie::has('token')){
+            return true;
+        }
+        return false;
     }
 
 }
