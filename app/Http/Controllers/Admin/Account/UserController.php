@@ -21,7 +21,7 @@ class UserController extends Controller
     {
         // permission
 
-        $data['users'] = $this->userService->findAll();
+        $data['list'] = $this->userService->findAll();
         $data['roles'] = Config::get('roles');
 
         return view('admin.pages.user.users', $data);
@@ -38,19 +38,32 @@ class UserController extends Controller
             'password' => 'required',
             'email' => '',
             'phone' => '',
-            'role' => '',
+            'role' => 'required',
+
+            'current_user_id' => '',
         ]);
+
+        // check
+        if ($this->userService->exist($validated)){
+            $data['roles'] = Config::get('roles');
+            $data['user'] = (object)$validated;
+            return view('admin.pages.user.user', $data)->with('code', '409');
+        }
 
         $this->userService->create($validated);
 
         return redirect('admin/users')->with('msg', 'success');
     }
 
-    public function get(Request $request, $id)
+    public function get(Request $request, $id = '')
     {
         // permission
+        $data = [];
 
-        $data['user'] = $this->userService->find($id);
+        if ($id!=''){
+            $data['user'] = $this->userService->find($id);
+        }
+        $data['roles'] = Config::get('roles');
 
         return view('admin.pages.user.user', $data);
     }
@@ -63,11 +76,16 @@ class UserController extends Controller
             'first_name' => 'required',
             'last_name' => '',
             'username' => 'required',
-            'password' => 'required',
+            'password' => '',
             'email' => '',
             'phone' => '',
-            'role' => '',
+            'role' => ''
         ]);
+
+        // check
+        if ($this->userService->exist($validated, $id)){
+            return redirect('admin/user/'.$id)->with('code', '409');
+        }
 
         $this->userService->update($validated, $id);
 

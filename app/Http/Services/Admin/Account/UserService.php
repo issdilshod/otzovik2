@@ -7,7 +7,7 @@ use App\Http\Resources\Admin\Account\UserResource;
 use App\Http\Services\Service;
 use App\Models\Admin\Account\User;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserService extends Service{
 
@@ -39,12 +39,23 @@ class UserService extends Service{
 
     public function create($user)
     {
+        $user['user_id'] = $user['current_user_id'];
+        // password hash
+        $user['password'] = Hash::make($user['password']);
+
         $user = User::create($user);
         return new UserResource($user);
     }
 
     public function update($user, $id)
     {
+        // check & password hash
+        if ($user['password']!=''){
+            $user['password'] = Hash::make($user['password']);
+        }else{
+            unset($user['password']);
+        }
+
         $user = User::where('id', $id)
                     ->where('status', '!=', Config::get('status.delete'))
                     ->update($user);
@@ -55,6 +66,20 @@ class UserService extends Service{
     {
         User::where('id', $id)
             ->update(['status' => Config::get('status.delete')]);
+        return true;
+    }
+
+    public function exist($user, $id = '')
+    {
+        $user = User::where('username', $user['username'])
+                    ->where('status', '!=', Config::get('status.delete'))
+                    ->when($id!='', function($q) use($id){
+                        $q->where('id', '!=', $id);
+                    })
+                    ->first();
+        if ($user==null){
+            return false;
+        }
         return true;
     }
 

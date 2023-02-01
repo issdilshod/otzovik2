@@ -74,7 +74,7 @@
                             <!-- /.card-body -->
 
                             <div class="card-footer text-right">
-                                <button type="submit" class="btn btn-primary">{{__('unoversity_save_button')}}</button>
+                                <button type="submit" class="btn btn-primary">{{__('global_save_button')}}</button>
                             </div>
                         </form>
                     </div>
