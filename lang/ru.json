@@ -1,5 +1,8 @@
 {
     "global_search_title": "Поиск",
+    "global_id": "№",
+    "global_created_at": "Дата добавление",
+    "global_actions": "Действии",
 
     "login_title": "Вход",
     "login_welcome_title": "Войдите чтобы начать работу",
@@ -37,6 +40,12 @@
     "university_description": "Описание ВУЗ-а",
     "university_logo": "Логотип",
     "unoversity_save_button": "Сохранить",
+
+
+    "pagination_prev": "Предыдущий",
+    "pagination_next": "Далее",
+    "pagination_shown": "Показывается",
+    "pagination_from": "из",
 
     "footer_right_reserved": "Все права защищены"
 }

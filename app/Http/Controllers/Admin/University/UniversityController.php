@@ -32,8 +32,11 @@ class UniversityController extends Controller
         $validated = $request->validate([
             'name' => 'required',
             'description' => 'required',
+            'slug' => '',
             'current_user_id' => ''
         ]);
+
+        // check
 
         $university = $this->universityService->create($validated);
 
