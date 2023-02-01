@@ -64,9 +64,11 @@ class UniversityController extends Controller
 
     public function update(Request $request, $id)
     {
+        // permission
         $validated = $request->validate([
             'name' => 'required',
             'description' => 'required',
+            'slug' => '',
             'current_user_id' => ''
         ]);
 

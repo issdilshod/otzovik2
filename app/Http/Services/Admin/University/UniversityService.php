@@ -18,7 +18,7 @@ class UniversityService extends Service{
                             ->when($name!='', function ($q) use($name){
                                 $q->where('name', 'like', $name . '%');
                             })
-                            ->paginate(4); //Config::get('pagination.per_page')
+                            ->paginate(Config::get('pagination.per_page'));
         return UniversityListResource::collection($universities);
     }
 
@@ -48,7 +48,7 @@ class UniversityService extends Service{
     public function update($university, $id)
     {
         // make
-        $university['user_id'] = $university['current_user_id'];
+        $university['user_id'] = $university['current_user_id']; unset($university['current_user_id']);
         if ($university['slug']==''){ // if empty
             $university['slug'] = StringService::slug($university['name']);
         }

@@ -10,7 +10,7 @@
           <div class="col-sm-6">
             <h1 class="m-0">
                 @if(isset($university))
-                    {{__('university_edit_title')}} {{$university->name}}
+                    {{__('university_edit_title')}} <b>{{$university->name}}</b>
                 @else
                     {{__('university_add_title')}}
                 @endif   
@@ -46,20 +46,24 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{url('admin/university')}}" method="post">
+                        <form action="{{url('admin/university')}}@isset($university->id){{ '/'.$university->id }}@endisset" method="post">
                             @csrf
+                            @isset($university->id)
+                            <input type="hidden" name="id" value="{{$university->id}}" />
+                            <input type="hidden" name="_method" value="put" />
+                            @endisset
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="name1">{{__('university_name')}}</label>
-                                    <input name="name" class="form-control" id="name1">
+                                    <input name="name" class="form-control" id="name1" value="@isset($university->name){{ $university->name }}@endisset">
                                 </div>
                                 <div class="form-group">
                                     <label for="slug1">{{__('university_slug')}}</label>
-                                    <input name="slug" class="form-control" id="slug1">
+                                    <input name="slug" class="form-control" id="slug1" value="@isset($university->slug){{ $university->slug }}@endisset">
                                 </div>
                                 <div class="form-group">
                                     <label for="description1">{{__('university_description')}}</label>
-                                    <textarea name="description" class="form-control" id="description1"></textarea>
+                                    <textarea name="description" class="form-control" id="description1">@isset($university->description){{ $university->description }}@endisset</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="logo1">{{__('university_logo')}}</label>

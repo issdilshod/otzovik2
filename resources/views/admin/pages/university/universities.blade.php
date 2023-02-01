@@ -68,12 +68,20 @@
                                     <td>{{$value->name}}</td>
                                     <td>{{$value->created_at}}</td>
                                     <td class="text-right">
-                                        <a href="#" class="btn btn-sm btn-primary">
-                                        <i class="fa fa-pen" aria-hidden="true"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-sm btn-danger">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
+                                        <div class="d-flex">
+                                            <div class="ml-auto">
+                                                <a href="{{url('admin/university/'.$value->id)}}" class="btn btn-sm btn-primary">
+                                                    <i class="fa fa-pen" aria-hidden="true"></i>
+                                                </a>
+                                            </div>
+                                            <form class="ml-1" action="{{url('admin/university/'.$value->id)}}" method="post">
+                                                @csrf
+                                                <input type="hidden" name="_method" value="delete" />
+                                                <button type="submit" class="btn btn-sm btn-danger">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </form>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach
