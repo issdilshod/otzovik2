@@ -1,6 +1,6 @@
 <div class="container">
     <div class="header-top">
-      <a href="#" class="logo"><img src="{{ asset('assets/images/logo.svg') }}" alt=""></a>
+      <a href="{{url('/')}}" class="logo"><img src="{{ asset('assets/images/logo.svg') }}" alt=""></a>
       <div class="slogan">Независимый сервис по оценке <br>высших учебных заведений</div>
       <a href="#" data-toggle="modal" data-target="#modal01" class="location">
         <span class="ico">
@@ -50,13 +50,13 @@
     </div>
     <div class="header-bottom">      
       <ul class="main-nav">
-        <li><a href="#">Подобрать ВУЗ</a></li>
-        <li><a href="#">Университеты</a></li>
-        <li><a href="#">Отзывы</a></li>
-        <li><a href="#">Блог</a></li>
-        <li><a href="#">О сервисе</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">Учебным заведениям</a></li>
+        <li><a href="{{ url('/poisk') }}">Подобрать ВУЗ</a></li>
+        <li><a href="{{ url('/universitety') }}">Университеты</a></li>
+        <li><a href="{{ url('/otzyvy/u-1') }}">Отзывы</a></li>
+        <li><a href="{{ url('/posti') }}">Блог</a></li>
+        <li><a href="{{ url('/o-service') }}">О сервисе</a></li>
+        <li><a href="{{ url('/faq') }}">FAQ</a></li>
+        <li><a href="{{ url('/uchebnim-zavedeniyam') }}">Учебным заведениям</a></li>
       </ul>
       <div class="search">
         <form>
