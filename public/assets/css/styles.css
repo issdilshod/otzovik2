@@ -477,7 +477,7 @@ div[class*=col-] {
   color: #333333;
 }
 .hero .agree a {
-  color: #333333;
+  color: #5280E2;
 }
 
 .hero-img img {
@@ -727,13 +727,12 @@ h4 {
   background: #E5ECFB;
   color: #333333;
   margin-bottom: 20px;
-  height: calc(100% - 20px);
   padding: 30px;
   text-align: right;
   border: 1px solid #E5ECFB;
   border-radius: 10px;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 125%;
 }
 .nums.has-indent {
@@ -2536,6 +2535,23 @@ body > .jcf-select-drop.jcf-drop-flipped {
 }
 .review-card-top .date {
   margin-right: 30px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  width: 1%;
+  text-align: right;
+}
+
+.answer {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 200%;
+  color: #333333;
+  margin: 0 20px 25px 50px;
+}
+.answer span, .answer a {
+  font-weight: 700;
+  color: #5280E2;
 }
 
 .user {
@@ -2546,10 +2562,6 @@ body > .jcf-select-drop.jcf-drop-flipped {
       -ms-flex-align: center;
           align-items: center;
   margin-bottom: 30px;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
-  width: 1%;
 }
 .user .review-user-name {
   -webkit-box-flex: 1;
@@ -2714,6 +2726,9 @@ body > .jcf-select-drop.jcf-drop-flipped {
 }
 .article .back {
   margin-bottom: 50px;
+}
+.article p {
+  font-size: 18px;
 }
 
 figure {
@@ -2947,6 +2962,10 @@ hr {
   max-width: 100%;
 }
 
+.hero-faq-img {
+  padding-right: 50px;
+}
+
 @media (max-width: 1329px) {
   .header .logo {
     max-width: 220px;
@@ -3122,8 +3141,21 @@ hr {
   .nums.has-indent .nums-top span {
     display: block;
   }
+  .review-card-top {
+    display: block;
+  }
+  .review-card-top .date {
+    width: 100%;
+    text-align: left;
+  }
+  .answer {
+    margin: 0 0 15px;
+  }
 }
 @media (max-width: 991px) {
+  .hero-faq-img {
+    padding-right: 0px;
+  }
   .slogan {
     display: none;
   }
@@ -3554,6 +3586,27 @@ hr {
   }
   .error-message {
     padding: 0 0 60px;
+  }
+  .breadcrumb-wrapper {
+    overflow: hidden;
+    margin-bottom: 30px;
+  }
+  .breadcrumb {
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    overflow: auto;
+    padding-bottom: 20px;
+    margin-bottom: -20px;
+    padding-left: 0;
+  }
+  .breadcrumb li {
+    white-space: nowrap;
+  }
+  .breadcrumb li a {
+    white-space: nowrap;
+  }
+  .hero-text.has-size p {
+    text-align: left;
   }
 }
 @media (max-width: 767px) {

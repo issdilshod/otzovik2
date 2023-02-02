@@ -15,68 +15,93 @@
             Главная
           </a>
         </li>         
-        <li class="active">Часто задаваемые вопросы</li>
+        <li class="active">Оставить комментарий</li>
       </ol>
     </nav>
     <!-- hero -->
-    <div class="hero">
-      <div class="hero-text has-size">
-        <h1>Часто задаваемые вопросы</h1>
-        <p>Мы собрали для Вас основные вопросы которые часто зажаются нам. Найдите ответы на все интересующие вопросы</p>
-      </div>
-      <div class="hero-img hero-faq-img"><img src="{{ asset('assets/images/illustration06.svg') }}" alt=""></div>
-    </div>
-    <!-- / hero --> 
-    <!-- faq -->
-    <div class="faq">   
-      <div class="accordion" id="acco">
-        <div class="card">
-          <div class="card-header" id="headingOne">
-            <h2 class="mb-0">
-              <button class="collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Какие документы нужны для поступления в вуз?
-              </button>
-            </h2>
-          </div>
-      
-          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#acco">
-            <div class="card-body">
-              <p>После того как прием окончен, комиссия будет подводить итог и решать, кому суждено учиться, а кому нет. Результаты вывесят на доске объявлений факультета, также их можно посмотреть и на основном сайте вуза.</p>
+    <div class="hero university-full">
+      <div class="hero-text">
+        <h1>Московский государственный университет имени М.В.Ломоносова</h1>
+        <div class="university-full-row">
+          <div class="acc-item">
+            <label>Мировой рейтинг:</label>
+            <div class="rate-info">
+              <span class="ico">
+                <svg class="icon">
+                  <use xlink:href="#medal-ico"></use>
+                </svg>
+              </span>
+              305
             </div>
           </div>
-        </div>
-        <div class="card">
-          <div class="card-header" id="headingTwo">
-            <h2 class="mb-0">
-              <button class="collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Когда нужно подавать документы?
-              </button>
-            </h2>
-          </div>
-          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#acco">
-            <div class="card-body">
-              <p>После того как прием окончен, комиссия будет подводить итог и решать, кому суждено учиться, а кому нет. Р</p>
+          <div class="acc-item">
+            <label>Российский рейтинг:</label>
+            <div class="rate-info">
+              <span class="ico">
+                <svg class="icon">
+                  <use xlink:href="#medal01-ico"></use>
+                </svg>
+              </span>
+              5
             </div>
           </div>
-        </div>
-        <div class="card">
-          <div class="card-header" id="headingThree">
-            <h2 class="mb-0">
-              <button class="collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                Как узнать, зачислены ли вы в вуз?
-              </button>
-            </h2>
-          </div>
-          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#acco">
-            <div class="card-body">
-              <p>После того как прием окончен, комиссия будет подводить итог и решать, кому суждено учиться, а кому нет. Результаты вывесят на доске объявлений факультета, также их можно посмотреть и на основном сайте вуза.</p>
-              <p>После того как прием окончен, комиссия будет подводить итог и решать, кому суждено учиться, а кому нет. Р</p>
+          <div class="acc-item">
+            <label>Отзывы компании:</label>
+            <div class="rate-info">
+              <span class="ico">
+                <svg class="icon">
+                  <use xlink:href="#files-colorful"></use>
+                </svg>
+              </span>
+              5 620
             </div>
-          </div>
+          </div>          
         </div>
       </div>
+      <div class="hero-img">
+        <div class="university-full-logo"><img src="{{ asset('assets/images/logo01.png') }}" alt=""></div>
+        <div class="accreditation"><div class="inner">Гос Аккредитация: Есть</div></div>
+      </div>
     </div>
-    <!-- / faq -->
+    <!-- / hero -->    
+    <!-- form-block -->
+    <div class="form-block white-form">
+      <form>
+        <h2>Оставить комментарии</h2>
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="form-group"><input type="text" placeholder="Имя*" class="form-control"></div>
+          </div>
+          <div class="col-lg-4">
+            <div class="form-group"><input type="text" placeholder="Фамилия" class="form-control"></div>
+          </div>
+          <div class="col-lg-4">
+            <div class="form-group"><input type="text" placeholder="Почта*" class="form-control"></div>
+          </div>
+          <div class="col-lg-12">
+            <div class="form-group"><textarea placeholder="Комментарии*" cols="30" rows="10" class="form-control"></textarea></div>
+          </div>
+        </div>
+        <div class="form-block-btm">
+          <button class="btn has-ico">
+            <span class="ico">
+              <svg class="icon">
+                <use xlink:href="#letter-ico"></use>
+              </svg>
+            </span>
+            Оставить комментарии
+          </button>
+          <div class="file-box">
+            <input type="file" data-jcf='{"buttonText": "", "placeholderText": "Загрузить фото: jpg или png"}'>
+          </div>
+        </div>
+        <div class="ch-item">
+          <input type="checkbox" name="f-agr" id="f-agr">
+          <label for="f-agr">Я ознакомился с <a href="#">политикой конфиденциальности</a> и даю согласование на <a href="#">обработку персональных данных</a></label>
+        </div>
+      </form>
+    </div>
+    <!-- / form-block -->
   </div>
   <div class="bg-box">
     <div class="container">

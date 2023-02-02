@@ -31,7 +31,7 @@ $(document).ready(function(){
     },
     navigation: {
       nextEl: ".review-next01",
-      prevEl: ".review-prev02",
+      prevEl: ".review-prev01",
     },
     breakpoints: {      
       768: {

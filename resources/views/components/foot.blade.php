@@ -1,6 +1,6 @@
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/bootstrap.bundle.min.js"></script>  
-        <script src="assets/js/libs.min.js"></script>   
-        <script src="assets/js/scripts.js"></script>    
+        <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>  
+        <script src="{{ asset('assets/js/libs.min.js') }}"></script>   
+        <script src="{{ asset('assets/js/scripts.js') }}"></script>    
     </body>
 </html>

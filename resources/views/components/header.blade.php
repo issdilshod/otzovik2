@@ -1,6 +1,6 @@
 <div class="container">
     <div class="header-top">
-      <a href="#" class="logo"><img src="images/logo.svg" alt=""></a>
+      <a href="#" class="logo"><img src="{{ asset('assets/images/logo.svg') }}" alt=""></a>
       <div class="slogan">Независимый сервис по оценке <br>высших учебных заведений</div>
       <a href="#" data-toggle="modal" data-target="#modal01" class="location">
         <span class="ico">

@@ -31,7 +31,7 @@
     </div>
     <div class="footer-top">
       <div class="f-col">
-        <a href="#" class="logo"><img src="images/white-logo.svg" alt=""></a>
+        <a href="#" class="logo"><img src="{{ asset('assets/images/white-logo.svg') }}" alt=""></a>
         <ul class="sm-socially">
           <li>
             <a href="#">
