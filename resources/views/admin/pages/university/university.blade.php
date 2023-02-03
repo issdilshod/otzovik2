@@ -108,7 +108,7 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <div class="custom-control custom-switch">
-                                                        <input type="checkbox" class="custom-control-input" id="accreditation1"  name="accreditation">
+                                                        <input type="checkbox" class="custom-control-input" id="accreditation1"  name="accreditation" <?php if (isset($university->accreditation) && $university->accreditation){ echo 'checked'; }?> >
                                                         <label class="custom-control-label" for="accreditation1">{{__('university_accreditation')}}</label>
                                                     </div>
                                                 </div>
