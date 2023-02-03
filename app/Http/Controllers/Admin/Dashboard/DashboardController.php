@@ -10,7 +10,7 @@ class DashboardController extends Controller
     
     public function index(Request $request)
     {
-        $data = [];
+        $data['title'] = __('dashboard_title');
 
         return view('admin.pages.dashboard', $data);
     }

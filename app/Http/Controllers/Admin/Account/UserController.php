@@ -20,6 +20,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         // permission
+        $data['title'] = __('staff_title');
 
         $data['list'] = $this->userService->findAll();
         $data['roles'] = Config::get('roles');
@@ -58,11 +59,13 @@ class UserController extends Controller
     public function get(Request $request, $id = '')
     {
         // permission
-        $data = [];
+        $data['title'] = __('staff_add_title');
 
         if ($id!=''){
             $data['user'] = $this->userService->find($id);
+            $data['title'] = __('staff_edit_title') . ' ' . $data['user']->first_name . ' ' . $data['user']->last_name;
         }
+
         $data['roles'] = Config::get('roles');
 
         return view('admin.pages.user.user', $data);
@@ -71,7 +74,6 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         // permission
-
         $validated = $request->validate([
             'first_name' => 'required',
             'last_name' => '',
@@ -95,7 +97,6 @@ class UserController extends Controller
     public function destroy(Request $request, $id)
     {
         // permission
-
         $this->userService->delete($id);
 
         return redirect('admin/users')->with('msg', 'success');

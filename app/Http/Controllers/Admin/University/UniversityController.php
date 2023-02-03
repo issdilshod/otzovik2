@@ -22,7 +22,7 @@ class UniversityController extends Controller
     public function index(Request $request)
     {
         // permission
-        $data = [];
+        $data['title'] = __('universities_title');
 
         $data['list'] = $this->universityService->findAll();
 
@@ -47,10 +47,11 @@ class UniversityController extends Controller
     public function get(Request $request, $id = '')
     {
         // permission
-        $data = [];
+        $data['title'] = __('university_add_title');
 
         if ($id!=''){
             $data['university'] = $this->universityService->find($id);
+            $data['title'] = __('university_edit_title') . ' ' . $data['university']->name;
         }
 
         return view('admin.pages.university.university', $data);
@@ -75,7 +76,6 @@ class UniversityController extends Controller
     public function destroy(Request $request, $id)
     {
         // permission
-
         $this->universityService->delete($id);
 
         return redirect('admin/universities')->with('status', 'ok');
