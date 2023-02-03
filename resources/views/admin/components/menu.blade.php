@@ -52,12 +52,12 @@
                             <p>{{__('menu_directions_title')}}</p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <!--li class="nav-item">
                         <a href="{{ url('/admin/universities/education-types') }}" class="nav-link {{ (request()->is('admin/universities/education-type*')) ? 'active' : '' }}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>{{__('menu_education_type_title')}}</p>
                         </a>
-                    </li>
+                    </li-->
                 </ul>
             </li>
 

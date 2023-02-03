@@ -65,6 +65,13 @@
     "direction_card_title": "Карточка направлений",
     "direction_name": "Название",
 
+    "education_types_title": "Типы обучения",
+    "education_types_list_title": "Список типов обучения",
+    "education_type_add_title": "Добавить тип обучения",
+    "education_type_edit_title": "Редактировать",
+    "education_type_card_title": "Карточка тип обучения",
+    "education_type_name": "Название типа",
+
     "staff_title": "Сотрудники",
     "staff_list_title": "Список сотрудников",
     "staff_name": "ФИО",

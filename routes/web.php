@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\Account\AuthController;
 use App\Http\Controllers\Admin\Account\UserController;
 use App\Http\Controllers\Admin\Dashboard\DashboardController;
 use App\Http\Controllers\Admin\University\DirectionController;
+use App\Http\Controllers\Admin\University\EducationTypeController;
 use App\Http\Controllers\Admin\University\UniversityController;
 use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
@@ -53,11 +54,11 @@ Route::middleware(['auth.custom'])->group(function (){
     Route::delete('admin/universities/direction/{id}', [DirectionController::class, 'destroy']);
 
     // education type
-    Route::get('admin/universities/education-types', [DirectionController::class, 'index']);
-    Route::post('admin/universities/education-type', [DirectionController::class, 'store']);
-    Route::get('admin/universities/education-type/{id?}', [DirectionController::class, 'get']);
-    Route::put('admin/universities/education-type/{id}', [DirectionController::class, 'update']);
-    Route::delete('admin/universities/education-type/{id}', [DirectionController::class, 'destroy']);
+    Route::get('admin/universities/education-types', [EducationTypeController::class, 'index']);
+    Route::post('admin/universities/education-type', [EducationTypeController::class, 'store']);
+    Route::get('admin/universities/education-type/{id?}', [EducationTypeController::class, 'get']);
+    Route::put('admin/universities/education-type/{id}', [EducationTypeController::class, 'update']);
+    Route::delete('admin/universities/education-type/{id}', [EducationTypeController::class, 'destroy']);
 
     // users
     Route::get('admin/users', [UserController::class, 'index']);
