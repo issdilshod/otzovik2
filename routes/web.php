@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\Account\AuthController;
 use App\Http\Controllers\Admin\Account\UserController;
 use App\Http\Controllers\Admin\Dashboard\DashboardController;
+use App\Http\Controllers\Admin\University\DirectionController;
 use App\Http\Controllers\Admin\University\UniversityController;
 use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
@@ -43,6 +44,13 @@ Route::middleware(['auth.custom'])->group(function (){
     Route::get('admin/university/{id?}', [UniversityController::class, 'get']);
     Route::put('admin/university/{id}', [UniversityController::class, 'update']);
     Route::delete('admin/university/{id}', [UniversityController::class, 'destroy']);
+
+    // directions
+    Route::get('admin/directions', [DirectionController::class, 'index']);
+    Route::post('admin/direction', [DirectionController::class, 'store']);
+    Route::get('admin/direction/{id?}', [DirectionController::class, 'get']);
+    Route::put('admin/direction/{id}', [DirectionController::class, 'update']);
+    Route::delete('admin/direction/{id}', [DirectionController::class, 'destroy']);
 
     // users
     Route::get('admin/users', [UserController::class, 'index']);
