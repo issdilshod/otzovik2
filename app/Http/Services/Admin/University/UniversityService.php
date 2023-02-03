@@ -7,6 +7,7 @@ use App\Http\Resources\Admin\University\UniversityResource;
 use App\Http\Services\Admin\Misc\StringService;
 use App\Http\Services\Service;
 use App\Models\Admin\University\University;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
 class UniversityService extends Service{
@@ -35,10 +36,19 @@ class UniversityService extends Service{
 
     public function create($university)
     {
-        // make
+        // user id
         $university['user_id'] = $university['current_user_id'];
-        if ($university['slug']==''){ // if empty
+
+        // slug
+        if ($university['slug']==''){
             $university['slug'] = StringService::slug($university['name']);
+        }
+
+        // accreditation
+        if (isset($university['accreditation'])){
+            $university['accreditation'] = 1;
+        }else{
+            $university['accreditation'] = 0;
         }
 
         $university = University::create($university);
@@ -47,10 +57,25 @@ class UniversityService extends Service{
 
     public function update($university, $id)
     {
-        // make
-        $university['user_id'] = $university['current_user_id']; unset($university['current_user_id']);
-        if ($university['slug']==''){ // if empty
+        // user id
+        $university['user_id'] = $university['current_user_id']; 
+        unset($university['current_user_id']);
+
+        // slug
+        if ($university['slug']==''){
             $university['slug'] = StringService::slug($university['name']);
+        }
+
+        // logo
+        if ($university['logo']==null){
+            unset($university['logo']);
+        }
+
+        // accreditation
+        if (isset($university['accreditation'])){
+            $university['accreditation'] = 1;
+        }else{
+            $university['accreditation'] = 0;
         }
 
         $university = University::where('id', $id)
@@ -64,5 +89,32 @@ class UniversityService extends Service{
         University::where('id', $id)
             ->update(['status' => Config::get('status.delete')]);
         return true;
+    }
+
+    public function validate(Request $request)
+    {
+        $validated = $request->validate([
+            // basic
+            'name' => 'required',
+            'worlds_rate' => 'required',
+            'russian_rate' => 'required',
+            'description' => 'required',
+            'accreditation' => '',
+            // contacts
+            'address' => '',
+            'phones' => '',
+            'email' => '',
+            'website' => '',
+            'facebook_link' => '',
+            'twiter_link' => '',
+            'telegram_link' => '',
+            'viber_link' => '',
+            'vk_link' => '',
+            // settings
+            'slug' => '',
+            'current_user_id' => ''
+        ]);
+
+        return $validated;
     }
 }

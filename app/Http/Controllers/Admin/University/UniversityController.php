@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\University;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\Admin\Misc\FileService;
 use App\Http\Services\Admin\University\UniversityService;
 use Illuminate\Http\Request;
 
@@ -10,10 +11,12 @@ class UniversityController extends Controller
 {
 
     private $universityService;
+    private $fileService;
 
     public function __construct()
     {
         $this->universityService = new UniversityService();
+        $this->fileService = new FileService();
     }
     
     public function index(Request $request)
@@ -29,25 +32,16 @@ class UniversityController extends Controller
     public function store(Request $request)
     {
         // permission
-        $validated = $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'slug' => '',
-            'current_user_id' => ''
-        ]);
+        $validated = $this->universityService->validate($request);
 
-        // check
+        // logo upload
+        $validated['logo'] = $this->fileService->upload($request, $validated['name']);
 
-        $university = $this->universityService->create($validated);
-
-        if ($university)
-        {
-            // logo upload
-
-            return redirect('admin/universities')->with('status', 'ok'); 
+        if ($this->universityService->create($validated)){
+            return redirect('admin/universities')->with('status', '200');
         }
 
-        return redirect('admin/universities')->with('status', 'error');
+        return redirect('admin/universities')->with('status', '500');
     }
 
     public function get(Request $request, $id = '')
@@ -65,23 +59,17 @@ class UniversityController extends Controller
     public function update(Request $request, $id)
     {
         // permission
-        $validated = $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'slug' => '',
-            'current_user_id' => ''
-        ]);
+        $validated = $this->universityService->validate($request);
 
-        $university = $this->universityService->update($validated, $id);
+        // logo upload
+        $validated['logo'] = $this->fileService->upload($request, $validated['name']);
 
-        if ($university)
+        if ($this->universityService->update($validated, $id))
         {
-            // logo upload
-
-            return redirect('admin/universities')->with('status', 'ok'); 
+            return redirect('admin/universities')->with('status', '200'); 
         }
 
-        return redirect('admin/universities')->with('status', 'error');
+        return redirect('admin/universities')->with('status', '500');
     }
 
     public function destroy(Request $request, $id)
