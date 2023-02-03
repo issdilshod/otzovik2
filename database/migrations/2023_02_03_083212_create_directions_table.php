@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('directions', function (Blueprint $table) {
-            $table->string('id');
+            $table->string('id')->primary();
             $table->string('user_id')->nullable();
             $table->string('name')->nullable();
             $table->string('slug')->nullable();

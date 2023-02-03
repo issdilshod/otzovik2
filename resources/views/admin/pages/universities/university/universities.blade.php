@@ -33,7 +33,7 @@
 
                         <div class="d-flex">
                             <div style="width: 150px;">
-                                <form class="input-group input-group-sm d-flex" action="{{url('admin/universities')}}" method="get">
+                                <form class="input-group input-group-sm d-flex" action="{{url('admin/universities/university')}}" method="get">
                                     @csrf
                                     <input type="text" name="search" class="form-control" placeholder="{{__('global_search_title')}}">
                                     <div class="input-group-append">
@@ -44,7 +44,7 @@
                                 </form>
                             </div>
                             <div class="ml-2">
-                                <a class="btn btn-sm btn-primary" href="{{url('admin/university')}}">
+                                <a class="btn btn-sm btn-primary" href="{{url('admin/universities/university')}}">
                                     <i class="fas fa-plus"></i>
                                 </a>
                             </div>
@@ -70,11 +70,11 @@
                                     <td class="text-right">
                                         <div class="d-flex">
                                             <div class="ml-auto">
-                                                <a href="{{url('admin/university/'.$value->id)}}" class="btn btn-sm btn-primary">
+                                                <a href="{{url('admin/universities/university/'.$value->id)}}" class="btn btn-sm btn-primary">
                                                     <i class="fa fa-pen" aria-hidden="true"></i>
                                                 </a>
                                             </div>
-                                            <form class="ml-1" action="{{url('admin/university/'.$value->id)}}" method="post">
+                                            <form class="ml-1" action="{{url('admin/universities/university/'.$value->id)}}" method="post">
                                                 @csrf
                                                 <input type="hidden" name="_method" value="delete" />
                                                 <button type="submit" class="btn btn-sm btn-danger">

@@ -39,18 +39,25 @@ Route::middleware(['auth.custom'])->group(function (){
     Route::get('admin/dashboard', [DashboardController::class, 'index']);
 
     // universities
-    Route::get('admin/universities', [UniversityController::class, 'index']);
-    Route::post('admin/university', [UniversityController::class, 'store']);
-    Route::get('admin/university/{id?}', [UniversityController::class, 'get']);
-    Route::put('admin/university/{id}', [UniversityController::class, 'update']);
-    Route::delete('admin/university/{id}', [UniversityController::class, 'destroy']);
+    Route::get('admin/universities/universities', [UniversityController::class, 'index']);
+    Route::post('admin/universities/university', [UniversityController::class, 'store']);
+    Route::get('admin/universities/university/{id?}', [UniversityController::class, 'get']);
+    Route::put('admin/universities/university/{id}', [UniversityController::class, 'update']);
+    Route::delete('admin/universities/university/{id}', [UniversityController::class, 'destroy']);
 
     // directions
-    Route::get('admin/directions', [DirectionController::class, 'index']);
-    Route::post('admin/direction', [DirectionController::class, 'store']);
-    Route::get('admin/direction/{id?}', [DirectionController::class, 'get']);
-    Route::put('admin/direction/{id}', [DirectionController::class, 'update']);
-    Route::delete('admin/direction/{id}', [DirectionController::class, 'destroy']);
+    Route::get('admin/universities/directions', [DirectionController::class, 'index']);
+    Route::post('admin/universities/direction', [DirectionController::class, 'store']);
+    Route::get('admin/universities/direction/{id?}', [DirectionController::class, 'get']);
+    Route::put('admin/universities/direction/{id}', [DirectionController::class, 'update']);
+    Route::delete('admin/universities/direction/{id}', [DirectionController::class, 'destroy']);
+
+    // education type
+    Route::get('admin/universities/education-types', [DirectionController::class, 'index']);
+    Route::post('admin/universities/education-type', [DirectionController::class, 'store']);
+    Route::get('admin/universities/education-type/{id?}', [DirectionController::class, 'get']);
+    Route::put('admin/universities/education-type/{id}', [DirectionController::class, 'update']);
+    Route::delete('admin/universities/education-type/{id}', [DirectionController::class, 'destroy']);
 
     // users
     Route::get('admin/users', [UserController::class, 'index']);

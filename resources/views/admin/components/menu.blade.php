@@ -25,20 +25,40 @@
                with font-awesome or any other icon font library -->
             <li class="nav-item">
                 <a href="{{ url('/admin/dashboard') }}" class="nav-link {{ (request()->is('admin/dashboard*')) ? 'active' : '' }}">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p>
-                    {{__('menu_dashboard_title')}}
-                </p>
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                        {{__('menu_dashboard_title')}}
+                    </p>
                 </a>
             </li>
 
-            <li class="nav-item">
-                <a href="{{ url('/admin/universities') }}" class="nav-link {{ (request()->is('admin/universit*')) ? 'active' : '' }}">
-                <i class="nav-icon fas fa-building"></i>
-                <p>
-                    {{__('menu_universities_title')}}
-                </p>
+            <li class="nav-item {{ (request()->is('admin/universit*')) ? 'menu-open' : '' }}">
+                <a href="#" class="nav-link {{ (request()->is('admin/universities*')) ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-building"></i>
+                    <p>
+                        {{__('menu_universities_title')}}
+                    </p>
                 </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ url('/admin/universities/universities') }}" class="nav-link {{ (request()->is('admin/universities/universit*')) ? 'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>{{__('menu_universities_title')}}</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/admin/universities/directions') }}" class="nav-link {{ (request()->is('admin/universities/direction*')) ? 'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>{{__('menu_directions_title')}}</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/admin/universities/education-types') }}" class="nav-link {{ (request()->is('admin/universities/education-type*')) ? 'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>{{__('menu_education_type_title')}}</p>
+                        </a>
+                    </li>
+                </ul>
             </li>
 
             <li class="nav-item">

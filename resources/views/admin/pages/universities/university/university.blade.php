@@ -19,7 +19,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="{{ url('/admin/dashboard') }}"><?=__('menu_dashboard_title')?></a></li>
-                <li class="breadcrumb-item"><a href="{{ url('/admin/universities') }}"><?=__('menu_universities_title')?></a></li>
+                <li class="breadcrumb-item"><a href="{{ url('/admin/universities/universities') }}"><?=__('menu_universities_title')?></a></li>
                 <li class="breadcrumb-item active">
                     @if(isset($university))
                         <?=__('university_edit_title')?>
@@ -46,7 +46,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{url('admin/university')}}@isset($university->id){{ '/'.$university->id }}@endisset" method="post" enctype="multipart/form-data">
+                        <form action="{{url('admin/universities/university')}}@isset($university->id){{ '/'.$university->id }}@endisset" method="post" enctype="multipart/form-data">
                             @csrf
                             @isset($university->id)
                             <input type="hidden" name="id" value="{{$university->id}}" />
