@@ -24,7 +24,7 @@
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <li class="nav-item">
-                <a href="{{ url('/admin/dashboard') }}" class="nav-link active">
+                <a href="{{ url('/admin/dashboard') }}" class="nav-link {{ (request()->is('admin/dashboard*')) ? 'active' : '' }}">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                     {{__('menu_dashboard_title')}}
@@ -33,7 +33,7 @@
             </li>
 
             <li class="nav-item">
-                <a href="{{ url('/admin/universities') }}" class="nav-link">
+                <a href="{{ url('/admin/universities') }}" class="nav-link {{ (request()->is('admin/universit*')) ? 'active' : '' }}">
                 <i class="nav-icon fas fa-building"></i>
                 <p>
                     {{__('menu_universities_title')}}
@@ -42,7 +42,7 @@
             </li>
 
             <li class="nav-item">
-                <a href="{{ url('/admin/reviews') }}" class="nav-link">
+                <a href="{{ url('/admin/reviews') }}" class="nav-link {{ (request()->is('admin/review*')) ? 'active' : '' }}">
                 <i class="nav-icon fas fa-star"></i>
                 <p>
                     {{__('menu_reviews_title')}}
@@ -51,7 +51,7 @@
             </li>
 
             <li class="nav-item">
-                <a href="{{ url('/admin/articles') }}" class="nav-link">
+                <a href="{{ url('/admin/articles') }}" class="nav-link {{ (request()->is('admin/article*')) ? 'active' : '' }}">
                 <i class="nav-icon fas fa-book"></i>
                 <p>
                     {{__('menu_articles_title')}}
@@ -60,7 +60,7 @@
             </li>
 
             <li class="nav-item">
-                <a href="{{ url('/admin/users') }}" class="nav-link">
+                <a href="{{ url('/admin/users') }}" class="nav-link {{ (request()->is('admin/user*')) ? 'active' : '' }}">
                 <i class="nav-icon fas fa-users"></i>
                 <p>
                     {{__('menu_staff_title')}}

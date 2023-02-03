@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class FileService extends Service{
 
+    /**
+     * Upload file to storage & returns file name
+     * 
+     * @param   Request $request
+     * @param   string $fileName
+     * @return  string
+     */
     public function upload(Request $request, $fileName)
     {
         if ($request->hasFile('logo')){
