@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('universities', function (Blueprint $table) {
-            $table->dropIfExists('number');
+            $table->dropColumn('number');
             $table->string('id')->primary()->change();
         });
 
