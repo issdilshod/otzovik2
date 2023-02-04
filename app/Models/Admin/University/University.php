@@ -30,6 +30,7 @@ class University extends Model
         'description',
         'logo',
         'slug',
+        'traning_period',
         'status'
     ];
 

@@ -151,6 +151,7 @@ class UniversityService extends Service{
             'vk_link' => '',
             // settings
             'slug' => '',
+            'traning_period' => '',
             'directions' => 'array',
             'current_user_id' => ''
         ]);

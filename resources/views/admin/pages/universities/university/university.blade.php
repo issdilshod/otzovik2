@@ -108,7 +108,14 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-4">
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="traning_period1">{{__('university_traning_period')}}</label>
+                                                    <input name="traning_period" class="form-control" id="traning_period1" value="@isset($university->traning_period){{ $university->traning_period }}@endisset">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-2">
                                                 <div class="form-group">
                                                     <div class="custom-control custom-switch">
                                                         <input type="checkbox" class="custom-control-input" id="accreditation1"  name="accreditation" <?php if (isset($university->accreditation) && $university->accreditation){ echo 'checked'; }?> >
