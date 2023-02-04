@@ -106,6 +106,11 @@
                                                     <label for="logo1">{{__('university_logo')}}</label>
                                                     <input name="logo" type="file" class="form-control" id="logo1">
                                                 </div>
+                                                @isset($university->logo)
+                                                <div class="preview-logo">
+                                                    <img src="{{ asset('storage/'.$university->logo) }}" />
+                                                </div>
+                                                @endisset
                                             </div>
 
                                             <div class="col-md-2">
@@ -210,7 +215,7 @@
                                             </div>
 
                                             <!-- directions from base -->
-                                            <div class="col-md-12">
+                                            <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>{{__('university_direction')}}</label>
                                                     <select class="direction-select" multiple="multiple" data-placeholder="{{__('university_select_direction')}}" style="width: 100%;" name="directions[]"></select>
@@ -218,6 +223,12 @@
                                             </div>
 
                                             <!-- education type from base -->
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>{{__('university_education_type')}}</label>
+                                                    <select class="education-type-select" multiple="multiple" data-placeholder="{{__('university_education_type_select')}}" style="width: 100%;" name="education_types[]"></select>
+                                                </div>
+                                            </div>
                                             
 
                                         </div>
@@ -243,7 +254,7 @@
 <script src="{{ asset('assets/admin/plugins/select2/js/select2.full.min.js') }}"></script>
 <script>
 $(function () {
-    //Initialize Select2 Elements
+    // Directions
     var directions = JSON.parse('<?=json_encode($directions)?>');
 
     // university direction
@@ -252,21 +263,44 @@ $(function () {
     universityDirections = JSON.parse('<?=json_encode($university->directions)?>');
     <?php } ?>
 
-    // init data format
-    var data = [];
+    var tmpData = [];
     for (let key in directions){
 
         // search if selected
         var found = universityDirections.findIndex((i) => i.direction_id==directions[key]['id']);
 
-        data.push({
+        tmpData.push({
             id: directions[key]['id'],
             text: directions[key]['name'],
             selected: (found>-1)?true:false
         });
     }
 
-    $('.direction-select').select2({data: data});
+    $('.direction-select').select2({data: tmpData});
+
+    // Education type
+    var educationTypes = JSON.parse('<?=json_encode($education_types)?>');
+
+    // university education type
+    var universityEducationTypes = [];
+    <?php if (isset($university->id)){ ?>
+    universityEducationTypes = JSON.parse('<?=json_encode($university->education_types)?>');
+    <?php } ?>
+
+    tmpData = [];
+    for (let key in educationTypes){
+
+        // search if selected
+        var found = universityEducationTypes.findIndex((i) => i.education_type_id==educationTypes[key]['id']);
+
+        tmpData.push({
+            id: educationTypes[key]['id'],
+            text: educationTypes[key]['name'],
+            selected: (found>-1)?true:false
+        });
+    }
+
+    $('.education-type-select').select2({data: tmpData});
 });
 </script>
 <!-- ./Select2 -->

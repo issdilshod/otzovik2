@@ -23,6 +23,14 @@ class EducationTypeService extends Service{
         return EducationTypeListResource::collection($educationTypes);
     }
 
+    public function getAll()
+    {
+        $educationTypes = EducationType::orderBy('name', 'asc')
+                            ->where('status', '!=', Config::get('status.delete'))
+                            ->get();
+        return $educationTypes;
+    }
+
     public function find($id)
     {
         $educationType = EducationType::where('status', '!=', Config::get('status.delete'))

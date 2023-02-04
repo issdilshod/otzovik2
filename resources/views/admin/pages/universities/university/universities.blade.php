@@ -56,6 +56,7 @@
                         <thead>
                             <tr>
                                 <th>{{__('global_id')}}</th>
+                                <th>{{__('university_logo')}}</th>
                                 <th>{{__('university_name')}}</th>
                                 <th>{{__('global_created_at')}}</th>
                                 <th>{{__('global_actions')}}</th>
@@ -65,6 +66,7 @@
                             @foreach ($list as $key => $value)
                                 <tr>
                                     <td>{{$key+1}}</td>
+                                    <td><img src="{{ asset('storage/'.$value->logo) }}" width="40px" /></td>
                                     <td>{{$value->name}}</td>
                                     <td>{{$value->created_at}}</td>
                                     <td class="text-right">

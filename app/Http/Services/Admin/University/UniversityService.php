@@ -2,22 +2,30 @@
 
 namespace App\Http\Services\Admin\University;
 
-use App\Http\Resources\Admin\University\UniversityListResource;
-use App\Http\Resources\Admin\University\UniversityResource;
 use App\Http\Services\Admin\Misc\StringService;
 use App\Http\Services\Service;
 use App\Models\Admin\University\University;
 use App\Models\Admin\University\UniversityDirection;
+use App\Models\Admin\University\UniversityEducationType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
 class UniversityService extends Service{
 
     private $universityDirectionService;
+    private $universityEducationTypeService;
 
     public function __construct()
     {
         $this->universityDirectionService = new UniversityDirectionService();
+        $this->universityEducationTypeService = new UniversityEducationTypeService();
+    }
+
+    public function findCount()
+    {
+        $count = University::where('status', '!=', Config::get('status.delete'))
+                    ->count();
+        return $count;
     }
     
     public function findAll($name = '')
@@ -28,7 +36,7 @@ class UniversityService extends Service{
                                 $q->where('name', 'like', $name . '%');
                             })
                             ->paginate(Config::get('pagination.per_page'));
-        return UniversityListResource::collection($universities);
+        return $universities;
     }
 
     public function find($id)
@@ -40,10 +48,16 @@ class UniversityService extends Service{
             return false;
         }
 
+        // directions
         $university['directions'] = UniversityDirection::where('status', '!=', Config::get('status.delete'))
+                                        ->where('university_id', $id)
                                         ->get();
+        // educations type
+        $university['education_types'] = UniversityEducationType::where('status', '!=', Config::get('status.delete'))
+                                            ->where('university_id', $id)
+                                            ->get();
 
-        return new UniversityResource($university);
+        return $university;
     }
 
     public function create($university)
@@ -63,10 +77,16 @@ class UniversityService extends Service{
             $university['accreditation'] = 0;
         }
 
-        // get directions
+        // Get directions
         $tmpDirections = [];
         if (isset($university['directions'])){
             $tmpDirections = $university['directions'];
+        }
+
+        // Get education types
+        $tmpEducationTypes = [];
+        if (isset($university['education_types'])){
+            $tmpEducationTypes = $university['education_types'];
         }
 
         // CREATE
@@ -77,7 +97,12 @@ class UniversityService extends Service{
             $this->universityDirectionService->store($university->id, $value);
         endforeach;
 
-        return new UniversityResource($university);
+        // education types
+        foreach($tmpEducationTypes as $key => $value):
+            $this->universityEducationTypeService->store($university->id, $value);
+        endforeach;
+
+        return $university;
     }
 
     public function update($university, $id)
@@ -103,7 +128,7 @@ class UniversityService extends Service{
             $university['accreditation'] = 0;
         }
 
-        // get directions
+        // Get directions
         $tmpDirections = [];
         if (isset($university['directions'])){
             $tmpDirections = $university['directions'];
@@ -116,11 +141,24 @@ class UniversityService extends Service{
             $this->universityDirectionService->store($id, $value);
         endforeach;
 
+        // Get education types
+        $tmpEducationTypes = [];
+        if (isset($university['education_types'])){
+            $tmpEducationTypes = $university['education_types'];
+            unset($university['education_types']);
+        }
+
+        // education types
+        $this->universityEducationTypeService->delete_by_university($id);
+        foreach($tmpEducationTypes as $key => $value):
+            $this->universityEducationTypeService->store($id, $value);
+        endforeach;
+
         // UPDATE
         $university = University::where('id', $id)
                         ->where('status', '!=', Config::get('status.delete'))
                         ->update($university);
-        return new UniversityResource($university);
+        return $university;
     }
 
     public function delete($id)
@@ -153,6 +191,7 @@ class UniversityService extends Service{
             'slug' => '',
             'traning_period' => '',
             'directions' => 'array',
+            'education_types' => 'array',
             'current_user_id' => ''
         ]);
 
