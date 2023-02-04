@@ -1,6 +1,9 @@
 @extends('admin.layouts.default')
 
 @section('content')
+<!-- Select2 -->
+<link rel="stylesheet" href="{{ asset('assets/admin/plugins/select2/css/select2.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -200,8 +203,15 @@
                                             </div>
 
                                             <!-- directions from base -->
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>{{__('university_direction')}}</label>
+                                                    <select class="direction-select" multiple="multiple" data-placeholder="{{__('university_select_direction')}}" style="width: 100%;" name="directions[]"></select>
+                                                </div>
+                                            </div>
 
                                             <!-- education type from base -->
+                                            
 
                                         </div>
                                     </div>
@@ -222,4 +232,35 @@
         </div>
     </section>
 </div>
+<!-- Select2 -->
+<script src="{{ asset('assets/admin/plugins/select2/js/select2.full.min.js') }}"></script>
+<script>
+$(function () {
+    //Initialize Select2 Elements
+    var directions = JSON.parse('<?=json_encode($directions)?>');
+
+    // university direction
+    var universityDirections = [];
+    <?php if (isset($university->id)){ ?>
+    universityDirections = JSON.parse('<?=json_encode($university->directions)?>');
+    <?php } ?>
+
+    // init data format
+    var data = [];
+    for (let key in directions){
+
+        // search if selected
+        var found = universityDirections.findIndex((i) => i.direction_id==directions[key]['id']);
+
+        data.push({
+            id: directions[key]['id'],
+            text: directions[key]['name'],
+            selected: (found>-1)?true:false
+        });
+    }
+
+    $('.direction-select').select2({data: data});
+});
+</script>
+<!-- ./Select2 -->
 @stop

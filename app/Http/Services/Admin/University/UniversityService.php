@@ -7,10 +7,18 @@ use App\Http\Resources\Admin\University\UniversityResource;
 use App\Http\Services\Admin\Misc\StringService;
 use App\Http\Services\Service;
 use App\Models\Admin\University\University;
+use App\Models\Admin\University\UniversityDirection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
 class UniversityService extends Service{
+
+    private $universityDirectionService;
+
+    public function __construct()
+    {
+        $this->universityDirectionService = new UniversityDirectionService();
+    }
     
     public function findAll($name = '')
     {
@@ -31,6 +39,10 @@ class UniversityService extends Service{
         if ($university==null){
             return false;
         }
+
+        $university['directions'] = UniversityDirection::where('status', '!=', Config::get('status.delete'))
+                                        ->get();
+
         return new UniversityResource($university);
     }
 
@@ -51,7 +63,20 @@ class UniversityService extends Service{
             $university['accreditation'] = 0;
         }
 
+        // get directions
+        $tmpDirections = [];
+        if (isset($university['directions'])){
+            $tmpDirections = $university['directions'];
+        }
+
+        // CREATE
         $university = University::create($university);
+
+        // directions
+        foreach($tmpDirections as $key => $value):
+            $this->universityDirectionService->store($university->id, $value);
+        endforeach;
+
         return new UniversityResource($university);
     }
 
@@ -78,6 +103,20 @@ class UniversityService extends Service{
             $university['accreditation'] = 0;
         }
 
+        // get directions
+        $tmpDirections = [];
+        if (isset($university['directions'])){
+            $tmpDirections = $university['directions'];
+            unset($university['directions']);
+        }
+
+        // directions
+        $this->universityDirectionService->delete_by_university($id);
+        foreach($tmpDirections as $key => $value):
+            $this->universityDirectionService->store($id, $value);
+        endforeach;
+
+        // UPDATE
         $university = University::where('id', $id)
                         ->where('status', '!=', Config::get('status.delete'))
                         ->update($university);
@@ -112,6 +151,7 @@ class UniversityService extends Service{
             'vk_link' => '',
             // settings
             'slug' => '',
+            'directions' => 'array',
             'current_user_id' => ''
         ]);
 

@@ -23,6 +23,14 @@ class DirectionService extends Service{
         return DirectionListResource::collection($directions);
     }
 
+    public function getAll()
+    {
+        $directions = Direction::orderBy('name', 'asc')
+                        ->where('status', '!=', Config::get('status.delete'))
+                        ->get();
+        return DirectionListResource::collection($directions);
+    }
+
     public function find($id)
     {
         $direction = Direction::where('status', '!=', Config::get('status.delete'))

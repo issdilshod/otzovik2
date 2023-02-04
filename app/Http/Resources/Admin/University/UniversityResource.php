@@ -16,12 +16,26 @@ class UniversityResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'number' => $this->number,
             'user_id' => $this->user_id,
             'name' => $this->name,
+            'worlds_rate' => $this->worlds_rate,
+            'russian_rate' => $this->russian_rate,
             'description' => $this->description,
-            'logo' => $this->logo,
+            'accreditation' => $this->accreditation,
+            // contactas
+            'address' => $this->address,
+            'phones' => $this->phones,
+            'email' => $this->email,
+            'website' => $this->website,
+            'facebook_link' => $this->facebook_link,
+            'twiter_link' => $this->twiter_link,
+            'telegram_link' => $this->telegram_link,
+            'viber_link' => $this->viber_link,
+            'vk_link' => $this->vk_link,
+            // settings
             'slug' => $this->slug,
+            'directions' => UniversityDirectionListResource::collection($this->university_directions),
+            'logo' => $this->logo,
             'status' => $this->status
         ];
     }

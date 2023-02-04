@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\University;
 
 use App\Http\Controllers\Controller;
 use App\Http\Services\Admin\Misc\FileService;
+use App\Http\Services\Admin\University\DirectionService;
 use App\Http\Services\Admin\University\UniversityService;
 use Illuminate\Http\Request;
 
@@ -12,11 +13,13 @@ class UniversityController extends Controller
 
     private $universityService;
     private $fileService;
+    private $directionsService;
 
     public function __construct()
     {
         $this->universityService = new UniversityService();
         $this->fileService = new FileService();
+        $this->directionsService = new DirectionService();
     }
     
     public function index(Request $request)
@@ -48,6 +51,8 @@ class UniversityController extends Controller
     {
         // permission
         $data['title'] = __('university_add_title');
+
+        $data['directions'] = $this->directionsService->getAll();
 
         if ($id!=''){
             $data['university'] = $this->universityService->find($id);
