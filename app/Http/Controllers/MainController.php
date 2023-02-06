@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\Admin\University\DirectionService;
+use App\Http\Services\Admin\University\EducationTypeService;
 use App\Http\Services\Admin\University\UniversityService;
 use Illuminate\Http\Request;
 
@@ -9,10 +11,14 @@ class MainController extends Controller
 {
 
     private $universityService;
+    private $directionService;
+    private $educationTypeService;
 
     public function __construct()
     {
         $this->universityService = new UniversityService();
+        $this->directionService = new DirectionService();
+        $this->educationTypeService = new EducationTypeService();
     }
     
     // page main
@@ -31,6 +37,18 @@ class MainController extends Controller
     {
         $data['title'] = __('search_page_title');
 
+        // directions
+        $data['directions'] = $this->directionService->getAll();
+
+        // education types
+        $data['education_types'] = $this->educationTypeService->getAll();
+
+        // search result universities
+        $data['list'] = $this->universityService->findAll();
+
+        // popular universities
+        $data['popular_universities'] = $this->universityService->popular();
+
         return view('pages.serach', $data);
     }
 
@@ -38,6 +56,9 @@ class MainController extends Controller
     public function universities(Request $request)
     {
         $data['title'] = __('universities_page_title');
+
+        // popular universities
+        $data['popular_universities'] = $this->universityService->popular();
 
         return view('pages.universities', $data);
     }

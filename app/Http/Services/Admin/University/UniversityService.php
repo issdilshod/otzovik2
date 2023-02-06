@@ -28,7 +28,7 @@ class UniversityService extends Service{
         return $count;
     }
     
-    public function findAll($name = '')
+    public function findAll($name = '', $address = '', $direction = '', $educationType = '')
     {
         $universities = University::orderBy('name')
                             ->where('status', '!=', Config::get('status.delete'))
@@ -62,6 +62,15 @@ class UniversityService extends Service{
 
     public function top($count = 10)
     {
+        $universities = University::where('status', Config::get('status.active'))
+                            ->limit($count)
+                            ->get();
+        return $universities;
+    }
+
+    public function popular($count = 4)
+    {
+        // TODO: Sort by more reviews
         $universities = University::where('status', Config::get('status.active'))
                             ->limit($count)
                             ->get();
