@@ -52,7 +52,7 @@
       <ul class="main-nav">
         <li><a href="{{ url('/poisk') }}">Подобрать ВУЗ</a></li>
         <li><a href="{{ url('/universitety') }}">Университеты</a></li>
-        <li><a href="{{ url('/otzyvy/u-1') }}">Отзывы</a></li>
+        <li><a href="{{ url('/otzyvy') }}">Отзывы</a></li>
         <li><a href="{{ url('/posti') }}">Блог</a></li>
         <li><a href="{{ url('/o-service') }}">О сервисе</a></li>
         <li><a href="{{ url('/faq') }}">FAQ</a></li>

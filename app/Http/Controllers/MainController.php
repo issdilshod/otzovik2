@@ -10,7 +10,7 @@ class MainController extends Controller
     // page main
     public function index(Request $request)
     {
-        $data = [];
+        $data['title'] = __('main_page_title');
 
         return view('pages.welcome', $data);
     }
@@ -18,7 +18,7 @@ class MainController extends Controller
     // page search
     public function search(Request $request)
     {
-        $data = [];
+        $data['title'] = __('search_page_title');
 
         return view('pages.serach', $data);
     }
@@ -26,7 +26,7 @@ class MainController extends Controller
     // page universities
     public function universities(Request $request)
     {
-        $data = [];
+        $data['title'] = __('universities_page_title');
 
         return view('pages.universities', $data);
     }
@@ -34,15 +34,15 @@ class MainController extends Controller
     // page university
     public function university(Request $request, $universitySlug)
     {
-        $data = [];
+        $data['title'] = __('university_page_title');
 
         return view('pages.university', $data);
     }
 
     // page reviews
-    public function reviews(Request $request, $universitySlug)
+    public function reviews(Request $request)
     {
-        $data = [];
+        $data['title'] = __('reviews_page_title');
 
         return view('pages.reviews', $data);
     }
@@ -50,7 +50,7 @@ class MainController extends Controller
     // page review
     public function review(Request $request, $reviewSlug)
     {
-        $data = [];
+        $data['title'] = __('review_page_title');
 
         return view('pages.review', $data);
     }
@@ -58,7 +58,7 @@ class MainController extends Controller
     // page articates
     public function articles(Request $request)
     {
-        $data = [];
+        $data['title'] = __('articles_page_title');
 
         return view('pages.articles', $data);
     }
@@ -74,7 +74,7 @@ class MainController extends Controller
     // page about
     public function about(Request $request)
     {
-        $data = [];
+        $data['title'] = __('about_page_title');
 
         return view('pages.about', $data);
     }
@@ -82,7 +82,7 @@ class MainController extends Controller
     // page educational
     public function educational(Request $request)
     {
-        $data = [];
+        $data['title'] = __('educational_page_title');
 
         return view('pages.educational', $data);
     }
@@ -90,7 +90,7 @@ class MainController extends Controller
     // page faq
     public function faq(Request $request)
     {
-        $data = [];
+        $data['title'] = __('faq_page_title');
 
         return view('pages.faq', $data);
     }

@@ -16,7 +16,7 @@ Route::get('/', [MainController::class, 'index']);
 Route::get('/poisk', [MainController::class, 'search']);
 Route::get('/universitety', [MainController::class, 'universities']);
 Route::get('/universitet/{university_slug}', [MainController::class, 'university']);
-Route::get('/otzyvy/{university_slug}', [MainController::class, 'reviews']);
+Route::get('/otzyvy', [MainController::class, 'reviews']);
 Route::get('/otzyv/{review_slug}', [MainController::class, 'review']);
 Route::get('/dobavit-otzyv', [MainController::class, 'review_add']);
 Route::get('/posti', [MainController::class, 'articles']);
