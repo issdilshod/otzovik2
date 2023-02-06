@@ -60,6 +60,14 @@ class UniversityService extends Service{
         return $university;
     }
 
+    public function top($count = 10)
+    {
+        $universities = University::where('status', Config::get('status.active'))
+                            ->limit($count)
+                            ->get();
+        return $universities;
+    }
+
     public function create($university)
     {
         // user id

@@ -8,7 +8,7 @@
     </div>
     Последние отзывы <!-- Последние отзывы о ВУЗе -->
     </div>
-    <a href="#" class="btn">Читать все отзывы</a>
+    <a href="{{url('/otzyvy')}}" class="btn">Читать все отзывы</a>
 </div>
 <!-- reviews -->
 <div class="reviews">

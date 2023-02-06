@@ -1,52 +1,58 @@
 <div class="container">
     <div class="header-top">
-      <a href="{{url('/')}}" class="logo"><img src="{{ asset('assets/images/logo.svg') }}" alt=""></a>
-      <div class="slogan">Независимый сервис по оценке <br>высших учебных заведений</div>
-      <a href="#" data-toggle="modal" data-target="#modal01" class="location">
-        <span class="ico">
-          <svg class="icon">
-            <use xlink:href="#location-ico"></use>
-          </svg>
-        </span>
-        Москва
-      </a>
-      <ul class="socially">
-        <li>
-          <a href="#">
-            <span class="ico vk">
-              <svg class="icon">
-                <use xlink:href="#vk-ico"></use>
-              </svg>
+        <<?php echo (request()->is('/'))?'span':'a';?> href="{{url('/')}}" class="logo">
+            <img src="{{ asset('assets/images/logo.svg') }}" alt="">
+        </<?php echo (request()->is('/'))?'span':'a';?>>
+        <div class="slogan">Независимый сервис по оценке <br>высших учебных заведений</div>
+
+        <a href="#" data-toggle="modal" data-target="#modal01" class="location">
+            <span class="ico">
+            <svg class="icon">
+                <use xlink:href="#location-ico"></use>
+            </svg>
             </span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span class="ico telegram">
-              <svg class="icon">
-                <use xlink:href="#telegram-ico"></use>
-              </svg>
+            Москва
+        </a>
+
+        <ul class="socially">
+            <li>
+            <a href="#">
+                <span class="ico vk">
+                <svg class="icon">
+                    <use xlink:href="#vk-ico"></use>
+                </svg>
+                </span>
+            </a>
+            </li>
+            <li>
+            <a href="#">
+                <span class="ico telegram">
+                <svg class="icon">
+                    <use xlink:href="#telegram-ico"></use>
+                </svg>
+                </span>
+            </a>
+            </li>
+            <li>
+            <a href="#">
+                <span class="ico viber">
+                <svg class="icon">
+                    <use xlink:href="#viber-ico"></use>
+                </svg>
+                </span>
+            </a>
+            </li>
+        </ul>
+
+        <a href="{{url('/poisk')}}" class="btn has-ico">
+            <span class="ico">
+            <svg class="icon">
+                <use xlink:href="#files-ico"></use>
+            </svg>
             </span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span class="ico viber">
-              <svg class="icon">
-                <use xlink:href="#viber-ico"></use>
-              </svg>
-            </span>
-          </a>
-        </li>
-      </ul>
-      <a href="#" class="btn has-ico">
-        <span class="ico">
-          <svg class="icon">
-            <use xlink:href="#files-ico"></use>
-          </svg>
-        </span>
-        Оставить отзыв
-      </a>
+            Оставить отзыв
+        </a>
+
     </div>
     <div class="header-bottom">      
       <ul class="main-nav">

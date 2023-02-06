@@ -2,15 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\Admin\University\UniversityService;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
+
+    private $universityService;
+
+    public function __construct()
+    {
+        $this->universityService = new UniversityService();
+    }
     
     // page main
     public function index(Request $request)
     {
         $data['title'] = __('main_page_title');
+
+        // top universities
+        $data['top_universities'] = $this->universityService->top();
 
         return view('pages.welcome', $data);
     }

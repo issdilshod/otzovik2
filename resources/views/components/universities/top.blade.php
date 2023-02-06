@@ -22,359 +22,47 @@
             <div class="cell cell03">Отзывы компании</div>
           </div>
           <div class="top-table-body">
-            <div class="top-table-row">
-              <div class="cell cell01">01</div>
-              <div class="cell cell04"><img src="{{ asset('assets/images/logo01.png') }}" alt=""></div>
-              <div class="cell cell02"><p>Национальный исследовательский университет «Высшая школа экономики»</p></div>
-              <div class="cell cell03" data-title="Мировой рейтинг">
-                <div class="rate-info">
-                  <span class="ico">
-                    <svg class="icon">
-                      <use xlink:href="#medal-ico"></use>
-                    </svg>
-                  </span>
-                  305
+            @foreach ($top_universities as $university) 
+                
+                <div class="top-table-row">
+                    <div class="cell cell01">01</div>
+                    <div class="cell cell04"><img src="{{ asset('storage/'.$university->logo) }}" alt=""></div>
+                    <div class="cell cell02"><p>{{$university->name}}</p></div>
+                    <div class="cell cell03" data-title="Мировой рейтинг">
+                        <div class="rate-info">
+                        <span class="ico">
+                            <svg class="icon">
+                            <use xlink:href="#medal-ico"></use>
+                            </svg>
+                        </span>
+                        {{$university->worlds_rate}}
+                        </div>
+                    </div>
+                    <div class="cell cell03" data-title="Российский рейтинг">
+                        <div class="rate-info">
+                        <span class="ico">
+                            <svg class="icon">
+                            <use xlink:href="#medal01-ico"></use>
+                            </svg>
+                        </span>
+                        {{$university->russian_rate}}
+                        </div>
+                    </div>
+                    <div class="cell cell03" data-title="Отзывы компании">
+                        <div class="rate-info">
+                        <span class="ico">
+                            <svg class="icon">
+                            <use xlink:href="#files-colorful"></use>
+                            </svg>
+                        </span>
+                        0
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="cell cell03" data-title="Российский рейтинг">
-                <div class="rate-info">
-                  <span class="ico">
-                    <svg class="icon">
-                      <use xlink:href="#medal01-ico"></use>
-                    </svg>
-                  </span>
-                  5
-                </div>
-              </div>
-              <div class="cell cell03" data-title="Отзывы компании">
-                <div class="rate-info">
-                  <span class="ico">
-                    <svg class="icon">
-                      <use xlink:href="#files-colorful"></use>
-                    </svg>
-                  </span>
-                  5 620
-                </div>
-              </div>
-            </div>
-            <div class="top-table-row">
-              <div class="cell cell01">02</div>
-              <div class="cell cell04"><img src="{{ asset('assets/images/logo01.png') }}" alt=""></div>
-              <div class="cell cell02"><p>Московский государственный университет имени М.В.Ломоносова</p></div>
-              <div class="cell cell03" data-title="Мировой рейтинг">
-                <div class="rate-info">
-                  <span class="ico">
-                    <svg class="icon">
-                      <use xlink:href="#medal-ico"></use>
-                    </svg>
-                  </span>
-                  78
-                </div>
-              </div>
-              <div class="cell cell03" data-title="Российский рейтинг">
-                <div class="rate-info">
-                  <span class="ico">
-                    <svg class="icon">
-                      <use xlink:href="#medal01-ico"></use>
-                    </svg>
-                  </span>
-                  1
-                </div>
-              </div>
-              <div class="cell cell03" data-title="Отзывы компании">
-                <div class="rate-info">
-                  <span class="ico">
-                    <svg class="icon">
-                      <use xlink:href="#files-colorful"></use>
-                    </svg>
-                  </span>
-                  4 842
-                </div>
-              </div>
-            </div>
-            <div class="top-table-row">
-              <div class="cell cell01">03</div>
-              <div class="cell cell04"><img src="{{ asset('assets/images/logo01.png') }}" alt=""></div>
-              <div class="cell cell02"><p>Национальный исследовательский университет «Высшая школа экономики»</p></div>
-              <div class="cell cell03" data-title="Мировой рейтинг">
-                <div class="rate-info">
-                  <span class="ico">
-                    <svg class="icon">
-                      <use xlink:href="#medal-ico"></use>
-                    </svg>
-                  </span>
-                  305
-                </div>
-              </div>
-              <div class="cell cell03" data-title="Российский рейтинг">
-                <div class="rate-info">
-                  <span class="ico">
-                    <svg class="icon">
-                      <use xlink:href="#medal01-ico"></use>
-                    </svg>
-                  </span>
-                  5
-                </div>
-              </div>
-              <div class="cell cell03" data-title="Отзывы компании">
-                <div class="rate-info">
-                  <span class="ico">
-                    <svg class="icon">
-                      <use xlink:href="#files-colorful"></use>
-                    </svg>
-                  </span>
-                  5 620
-                </div>
-              </div>
-            </div>
-            <div class="top-table-row">
-              <div class="cell cell01">04</div>
-              <div class="cell cell04"><img src="{{ asset('assets/images/logo01.png') }}" alt=""></div>
-              <div class="cell cell02"><p>Московский государственный университет имени М.В.Ломоносова</p></div>
-              <div class="cell cell03" data-title="Мировой рейтинг">
-                <div class="rate-info">
-                  <span class="ico">
-                    <svg class="icon">
-                      <use xlink:href="#medal-ico"></use>
-                    </svg>
-                  </span>
-                  78
-                </div>
-              </div>
-              <div class="cell cell03" data-title="Российский рейтинг">
-                <div class="rate-info">
-                  <span class="ico">
-                    <svg class="icon">
-                      <use xlink:href="#medal01-ico"></use>
-                    </svg>
-                  </span>
-                  1
-                </div>
-              </div>
-              <div class="cell cell03" data-title="Отзывы компании">
-                <div class="rate-info">
-                  <span class="ico">
-                    <svg class="icon">
-                      <use xlink:href="#files-colorful"></use>
-                    </svg>
-                  </span>
-                  4 842
-                </div>
-              </div>
-            </div>
-            <div class="top-table-row">
-              <div class="cell cell01">05</div>
-              <div class="cell cell04"><img src="{{ asset('assets/images/logo01.png') }}" alt=""></div>
-              <div class="cell cell02"><p>Национальный исследовательский университет «Высшая школа экономики»</p></div>
-              <div class="cell cell03" data-title="Мировой рейтинг">
-                <div class="rate-info">
-                  <span class="ico">
-                    <svg class="icon">
-                      <use xlink:href="#medal-ico"></use>
-                    </svg>
-                  </span>
-                  305
-                </div>
-              </div>
-              <div class="cell cell03" data-title="Российский рейтинг">
-                <div class="rate-info">
-                  <span class="ico">
-                    <svg class="icon">
-                      <use xlink:href="#medal01-ico"></use>
-                    </svg>
-                  </span>
-                  5
-                </div>
-              </div>
-              <div class="cell cell03" data-title="Отзывы компании">
-                <div class="rate-info">
-                  <span class="ico">
-                    <svg class="icon">
-                      <use xlink:href="#files-colorful"></use>
-                    </svg>
-                  </span>
-                  5 620
-                </div>
-              </div>
-            </div>
-            <div class="top-table-row">
-              <div class="cell cell01">06</div>
-              <div class="cell cell04"><img src="{{ asset('assets/images/logo01.png') }}" alt=""></div>
-              <div class="cell cell02"><p>Московский государственный университет имени М.В.Ломоносова</p></div>
-              <div class="cell cell03" data-title="Мировой рейтинг">
-                <div class="rate-info">
-                  <span class="ico">
-                    <svg class="icon">
-                      <use xlink:href="#medal-ico"></use>
-                    </svg>
-                  </span>
-                  78
-                </div>
-              </div>
-              <div class="cell cell03" data-title="Российский рейтинг">
-                <div class="rate-info">
-                  <span class="ico">
-                    <svg class="icon">
-                      <use xlink:href="#medal01-ico"></use>
-                    </svg>
-                  </span>
-                  1
-                </div>
-              </div>
-              <div class="cell cell03" data-title="Отзывы компании">
-                <div class="rate-info">
-                  <span class="ico">
-                    <svg class="icon">
-                      <use xlink:href="#files-colorful"></use>
-                    </svg>
-                  </span>
-                  4 842
-                </div>
-              </div>
-            </div>
-            <div class="top-table-row">
-              <div class="cell cell01">07</div>
-              <div class="cell cell04"><img src="{{ asset('assets/images/logo01.png') }}" alt=""></div>
-              <div class="cell cell02"><p>Национальный исследовательский университет «Высшая школа экономики»</p></div>
-              <div class="cell cell03" data-title="Мировой рейтинг">
-                <div class="rate-info">
-                  <span class="ico">
-                    <svg class="icon">
-                      <use xlink:href="#medal-ico"></use>
-                    </svg>
-                  </span>
-                  305
-                </div>
-              </div>
-              <div class="cell cell03" data-title="Российский рейтинг">
-                <div class="rate-info">
-                  <span class="ico">
-                    <svg class="icon">
-                      <use xlink:href="#medal01-ico"></use>
-                    </svg>
-                  </span>
-                  5
-                </div>
-              </div>
-              <div class="cell cell03" data-title="Отзывы компании">
-                <div class="rate-info">
-                  <span class="ico">
-                    <svg class="icon">
-                      <use xlink:href="#files-colorful"></use>
-                    </svg>
-                  </span>
-                  5 620
-                </div>
-              </div>
-            </div>
-            <div class="top-table-row">
-              <div class="cell cell01">08</div>
-              <div class="cell cell04"><img src="{{ asset('assets/images/logo01.png') }}" alt=""></div>
-              <div class="cell cell02"><p>Московский государственный университет имени М.В.Ломоносова</p></div>
-              <div class="cell cell03" data-title="Мировой рейтинг">
-                <div class="rate-info">
-                  <span class="ico">
-                    <svg class="icon">
-                      <use xlink:href="#medal-ico"></use>
-                    </svg>
-                  </span>
-                  78
-                </div>
-              </div>
-              <div class="cell cell03" data-title="Российский рейтинг">
-                <div class="rate-info">
-                  <span class="ico">
-                    <svg class="icon">
-                      <use xlink:href="#medal01-ico"></use>
-                    </svg>
-                  </span>
-                  1
-                </div>
-              </div>
-              <div class="cell cell03" data-title="Отзывы компании">
-                <div class="rate-info">
-                  <span class="ico">
-                    <svg class="icon">
-                      <use xlink:href="#files-colorful"></use>
-                    </svg>
-                  </span>
-                  4 842
-                </div>
-              </div>
-            </div>
-            <div class="top-table-row">
-              <div class="cell cell01">09</div>
-              <div class="cell cell04"><img src="{{ asset('assets/images/logo01.png') }}" alt=""></div>
-              <div class="cell cell02"><p>Национальный исследовательский университет «Высшая школа экономики»</p></div>
-              <div class="cell cell03" data-title="Мировой рейтинг">
-                <div class="rate-info">
-                  <span class="ico">
-                    <svg class="icon">
-                      <use xlink:href="#medal-ico"></use>
-                    </svg>
-                  </span>
-                  305
-                </div>
-              </div>
-              <div class="cell cell03" data-title="Российский рейтинг">
-                <div class="rate-info">
-                  <span class="ico">
-                    <svg class="icon">
-                      <use xlink:href="#medal01-ico"></use>
-                    </svg>
-                  </span>
-                  5
-                </div>
-              </div>
-              <div class="cell cell03" data-title="Отзывы компании">
-                <div class="rate-info">
-                  <span class="ico">
-                    <svg class="icon">
-                      <use xlink:href="#files-colorful"></use>
-                    </svg>
-                  </span>
-                  5 620
-                </div>
-              </div>
-            </div>
-            <div class="top-table-row">
-              <div class="cell cell01">10</div>
-              <div class="cell cell04"><img src="{{ asset('assets/images/logo01.png') }}" alt=""></div>
-              <div class="cell cell02"><p>Московский государственный университет имени М.В.Ломоносова</p></div>
-              <div class="cell cell03" data-title="Мировой рейтинг">
-                <div class="rate-info">
-                  <span class="ico">
-                    <svg class="icon">
-                      <use xlink:href="#medal-ico"></use>
-                    </svg>
-                  </span>
-                  78
-                </div>
-              </div>
-              <div class="cell cell03" data-title="Российский рейтинг">
-                <div class="rate-info">
-                  <span class="ico">
-                    <svg class="icon">
-                      <use xlink:href="#medal01-ico"></use>
-                    </svg>
-                  </span>
-                  1
-                </div>
-              </div>
-              <div class="cell cell03" data-title="Отзывы компании">
-                <div class="rate-info">
-                  <span class="ico">
-                    <svg class="icon">
-                      <use xlink:href="#files-colorful"></use>
-                    </svg>
-                  </span>
-                  4 842
-                </div>
-              </div>
-            </div>
+            @endforeach
           </div>
         </div>
-        <div class="text-center"><a href="#" class="btn">Посмотреть все</a></div>
+        <div class="text-center"><a href="{{url('/top-universitety')}}" class="btn">Посмотреть все</a></div>
       </div>
       <!-- / top-rate -->
     </div>
