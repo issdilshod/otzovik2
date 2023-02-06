@@ -24,7 +24,7 @@
     <!-- hero -->
     <div class="hero university-full">
       <div class="hero-text">
-        <h1>Московский государственный университет имени М.В.Ломоносова</h1>
+        <h1>{{$university->name}}</h1>
         <div class="university-full-row">
           <div class="acc-item">
             <label>Мировой рейтинг:</label>
@@ -34,7 +34,7 @@
                   <use xlink:href="#medal-ico"></use>
                 </svg>
               </span>
-              305
+              {{$university->worlds_rate}}
             </div>
           </div>
           <div class="acc-item">
@@ -45,7 +45,7 @@
                   <use xlink:href="#medal01-ico"></use>
                 </svg>
               </span>
-              5
+              {{$university->russian_rate}}
             </div>
           </div>
           <div class="acc-item">
@@ -56,15 +56,18 @@
                   <use xlink:href="#files-colorful"></use>
                 </svg>
               </span>
-              5 620
+              0
             </div>
           </div>
           <div class="acc-item"><a href="#" class="btn">Оставить отзыв</a></div>
         </div>
       </div>
       <div class="hero-img">
-        <div class="university-full-logo"><img src="{{ asset('assets/images/logo01.png') }}" alt=""></div>
-        <div class="accreditation"><div class="inner">Гос Аккредитация: Есть</div></div>
+        <div class="university-full-logo"><img src="{{ asset('/storage/'.$university->logo) }}" alt=""></div>
+        @if ($university->accreditation)
+        <div class="accreditation"><div class="inner">Гос Аккредитация: Есть</div></div> 
+        @endif
+        
       </div>
     </div>
     <!-- / hero -->  
@@ -72,7 +75,7 @@
     <!-- text -->
     <div class="text">
       <h3>Об университете</h3>
-      <p>Наш сервис помогает сформировать наилучшие отношения между клиентом и компанией!Если вы клиент вы можете оставить свой честный отзыв и получить ответ от официального представительства.гли найти гораздо больше, чем просто ответы на вопросы.Наш сервис помогает сформировать наилучшие отношения между клиентом и компанией!Если вы клиент вы можете оставить свой честный отзыв и получить ответ от официального представительства.гли найти гораздо больше, чем просто ответы на вопросы.Наш сервис помогает сформировать наилучшие отношения между клиентом и компанией!Если вы клиент вы можете оставить свой честный отзыв и получить ответ от официального представительства.гли найти гораздо больше, чем просто ответы на вопросы.</p>
+      <p>{{$university->description}}</p>
       <a href="#" class="btn light-btn">Узнать больше</a>
     </div>   
     <!-- / text -->
@@ -157,7 +160,7 @@
                   </div>
                   <div class="contact-item-text">
                     <span>Адрес:</span>
-                    Санкт-Петербург. Ул. Володи Головатого. Пр. 235/2
+                    {{$university->address}}
                   </div>
                 </div>
                 <div class="contact-item">
@@ -168,7 +171,7 @@
                   </div>
                   <div class="contact-item-text">
                     <span>Телефоны:</span>
-                    + 7 (495) 443-44-44,  + 7 (495) 443-44-44
+                    {{$university->phones}}
                   </div>
                 </div>
                 <div class="contact-item">
@@ -179,7 +182,7 @@
                   </div>
                   <div class="contact-item-text">
                     <span>Почта:</span>
-                    <a href="mailto:info@msu.edu.ru">info@msu.edu.ru</a>
+                    <a href="mailto:{{$university->email}}">{{$university->email}}</a>
                   </div>
                 </div>
                 <div class="contact-item">
@@ -190,24 +193,26 @@
                   </div>
                   <div class="contact-item-text">
                     <span>Сайт:</span>
-                    <a href="#">msu.ru</a>
+                    <a href="{{$university->website}}" target="_blank">{{$university->website}}</a>
                   </div>
                 </div>
               </div>
             </div>
             <div class="col-lg-3">
               <div class="descript-card-item card-reverse">
-                <div>
-                  <div class="title">Гос Акредитация</div>
-                  <div class="accreditation">
-                    <div class="inner">Есть</div>
-                  </div>
-                </div>
+                @if ($university->accreditation)
+                    <div>
+                        <div class="title">Гос Акредитация</div>
+                        <div class="accreditation">
+                            <div class="inner">Есть</div>
+                        </div>
+                    </div>
+                @endif
                 <div>
                   <div class="title">Соц-сети</div>
                   <ul class="content-socially">
                     <li>
-                      <a href="#">
+                      <a href="{{$university->facebook}}" target="_blank">
                         <span class="ico fb">
                           <svg class="icon">
                             <use xlink:href="#fb-ico"></use>
@@ -216,7 +221,7 @@
                       </a>
                     </li>
                     <li>
-                      <a href="#">
+                      <a href="{{$university->twitter}}" target="_blank">
                         <span class="ico twitter">
                           <svg class="icon">
                             <use xlink:href="#twitter-ico"></use>
@@ -225,7 +230,7 @@
                       </a>
                     </li>
                     <li>
-                      <a href="#">
+                      <a href="{{$university->telegram}}" target="_blank">
                         <span class="ico telegram">
                           <svg class="icon">
                             <use xlink:href="#telegram-ico"></use>
@@ -234,7 +239,7 @@
                       </a>
                     </li>                    
                     <li>
-                      <a href="#">
+                      <a href="{{$university->viber}}" target="_blank">
                         <span class="ico viber">
                           <svg class="icon">
                             <use xlink:href="#viber-ico"></use>
@@ -243,7 +248,7 @@
                       </a>
                     </li>
                     <li>
-                      <a href="#">
+                      <a href="{{$university->facebook}}" target="_blank">
                         <span class="ico vk">
                           <svg class="icon">
                             <use xlink:href="#vk-ico"></use>
@@ -261,13 +266,11 @@
           <div class="descript-card-item">
             <h4>Направления подготовки учебного заведения</h4>
             <ul class="tags">
-              <li><a href="#" class="active">Государственные</a></li>
-              <li><a href="#">Медицинские</a></li>
-              <li><a href="#">Военны</a></li>
-              <li><a href="#">Технические</a></li>
-              <li><a href="#">Педагогические</a></li>
+                @foreach ($university->directions as $direction)
+                <li><a href="#" >{{$direction->name}}</a></li> <!-- class="active" -->
+                @endforeach
             </ul>
-            <h4>Структура</h4>
+            <!--h4>Структура</h4>
             <ul class="strukture-list">
               <li>
                 <span>Факультет:</span>
@@ -277,12 +280,12 @@
                 <span>Кафедра:</span>
                 Математическая
               </li>
-            </ul>
+            </ul-->
             <h4>Форма обучения</h4>
             <ul class="tags">
-              <li><a href="#">Очная</a></li>
-              <li><a href="#">Заочная</a></li>
-              <li><a href="#">Очно-заочная</a></li>
+                @foreach ($university->education_types as $education_type)
+                <li><a href="#" >{{$education_type->name}}</a></li>
+                @endforeach
             </ul>
             <h4>Сроки обучения</h4>
             <div class="strukture-date">
@@ -291,7 +294,7 @@
                   <use xlink:href="#calendar-full"></use>
                 </svg>
               </div>
-              от 2 лет
+              от {{$university->traning_period}} лет
             </div>
           </div>
         </div>

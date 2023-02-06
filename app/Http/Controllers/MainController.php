@@ -74,6 +74,11 @@ class MainController extends Controller
     {
         $data['title'] = __('university_page_title');
 
+        $data['university'] = $this->universityService->findBySlug($universitySlug);
+        if (!$data['university']){ // not found
+            return abort(404);
+        }
+
         return view('pages.university', $data);
     }
 
