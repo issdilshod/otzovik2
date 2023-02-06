@@ -57,8 +57,14 @@ class MainController extends Controller
     {
         $data['title'] = __('universities_page_title');
 
+        // directions
+        $data['directions'] = $this->directionService->getAll();
+
         // popular universities
         $data['popular_universities'] = $this->universityService->popular();
+
+        // search result universities
+        $data['list'] = $this->universityService->findAll();
 
         return view('pages.universities', $data);
     }
