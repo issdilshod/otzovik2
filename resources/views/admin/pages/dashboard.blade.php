@@ -44,7 +44,7 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>0</h3>
+                <h3>{{$review_count}}</h3>
 
                 <p>{{__('dashboard_reviews')}}</p>
               </div>

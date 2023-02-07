@@ -59,6 +59,7 @@
                                 <th>{{__('review_user')}}</th>
                                 <th>{{__('review_university')}}</th>
                                 <th>{{__('global_created_at')}}</th>
+                                <th>{{__('global_status')}}</th>
                                 <th>{{__('global_actions')}}</th>
                             </tr>
                         </thead>
@@ -69,6 +70,13 @@
                                     <td>{{$value->user_first_name}} {{$value->user_last_name}}</td>
                                     <td>{{$value->university_name}}</td>
                                     <td>{{$value->created_at}}</td>
+                                    <td>
+                                        @if ($value->status==$status['wait'])
+                                            <span class="badge badge-warning">{{__('global_waiting')}}</span>
+                                        @elseif ($value->status==$status['active'])
+                                            <span class="badge badge-success">{{__('global_active')}}</span>
+                                        @endif
+                                    </td>
                                     <td class="text-right">
                                         <div class="d-flex">
                                             <div class="ml-auto">

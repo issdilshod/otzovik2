@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\Config;
 
 class ReviewService extends Service{
 
+    public function findCount()
+    {
+        $count = Review::where('status', '!=', Config::get('status.delete'))
+                    ->count();
+        return $count;
+    }
+
     public function findAll($name = '')
     {
         $reviews = Review::from('reviews as r')

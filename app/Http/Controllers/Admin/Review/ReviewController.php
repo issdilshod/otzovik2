@@ -29,6 +29,8 @@ class ReviewController extends Controller
 
         $data['list'] = $this->reviewService->findAll();
 
+        $data['status'] = Config::get('status');
+
         return view('admin.pages.review.reviews', $data);
     }
 

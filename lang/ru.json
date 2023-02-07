@@ -7,6 +7,9 @@
     "global_basic": "Основное",
     "global_settings": "Настройки",
     "global_contacts": "Контакты",
+    "global_status": "Статус",
+    "global_active": "Активный",
+    "global_waiting": "Ожидание",
 
     "login_title": "Вход",
     "login_welcome_title": "Войдите чтобы начать работу",
