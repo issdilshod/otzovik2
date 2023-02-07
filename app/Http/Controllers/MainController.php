@@ -87,6 +87,12 @@ class MainController extends Controller
     {
         $data['title'] = __('reviews_page_title');
 
+        // directions
+        $data['directions'] = $this->directionService->getAll();
+
+        // popular universities
+        $data['popular_universities'] = $this->universityService->popular();
+
         return view('pages.reviews', $data);
     }
 
