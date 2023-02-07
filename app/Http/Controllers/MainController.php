@@ -131,6 +131,9 @@ class MainController extends Controller
     {
         $data['title'] = __('about_page_title');
 
+        // popular universities
+        $data['popular_universities'] = $this->universityService->popular();
+
         return view('pages.about', $data);
     }
 
@@ -138,6 +141,9 @@ class MainController extends Controller
     public function educational(Request $request)
     {
         $data['title'] = __('educational_page_title');
+
+        // popular universities
+        $data['popular_universities'] = $this->universityService->popular();
 
         return view('pages.educational', $data);
     }
