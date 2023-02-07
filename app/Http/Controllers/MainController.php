@@ -157,9 +157,16 @@ class MainController extends Controller
     }
 
     // page add review
-    public function review_add(Request $request)
+    public function review_add(Request $request, $universitySlug)
     {
-        $data = [];
+        $data['title'] = __('review_add_page');
+
+        $data['university'] = $this->universityService->findBySlug($universitySlug);
+        if (!$data['university']){ // not found
+            return abort(404);
+        }
+
+        $data['title'] .= ' - ' . $data['university']->name;
 
         return view('pages.review_add', $data);
     }

@@ -18,7 +18,7 @@ Route::get('/universitety', [MainController::class, 'universities']);
 Route::get('/universitet/{university_slug}', [MainController::class, 'university']);
 Route::get('/otzyvy', [MainController::class, 'reviews']);
 Route::get('/otzyv/{review_slug}', [MainController::class, 'review']);
-Route::get('/dobavit-otzyv', [MainController::class, 'review_add']);
+Route::get('/dobavit-otzyv/{university_slug}', [MainController::class, 'review_add']);
 Route::get('/posti', [MainController::class, 'articles']);
 Route::get('/post/{article_slug}', [MainController::class, 'article']);
 Route::get('/o-service', [MainController::class, 'about']);
