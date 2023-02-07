@@ -59,7 +59,7 @@
               0
             </div>
           </div>
-          <div class="acc-item"><a href="#" class="btn">Оставить отзыв</a></div>
+          <div class="acc-item"><a href="{{url('/dobavit-otzyv/'.$university->slug)}}" class="btn">Оставить отзыв</a></div>
         </div>
       </div>
       <div class="hero-img">
