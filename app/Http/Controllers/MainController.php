@@ -149,7 +149,10 @@ class MainController extends Controller
     // page top
     public function top(Request $request)
     {
-        $data = [];
+        $data['title'] = __('top_universities_page_title');
+
+        // top universities
+        $data['top_universities'] = $this->universityService->top();
 
         return view('pages.top', $data);
     }
