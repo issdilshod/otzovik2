@@ -35,9 +35,8 @@ class UserController extends Controller
         $validated = $request->validate([
             'first_name' => 'required',
             'last_name' => '',
-            'username' => 'required',
             'password' => 'required',
-            'email' => '',
+            'email' => 'required',
             'phone' => '',
             'role' => 'required',
 
@@ -77,9 +76,8 @@ class UserController extends Controller
         $validated = $request->validate([
             'first_name' => 'required',
             'last_name' => '',
-            'username' => 'required',
             'password' => '',
-            'email' => '',
+            'email' => 'required',
             'phone' => '',
             'role' => ''
         ]);

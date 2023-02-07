@@ -1,29 +1,21 @@
 <?php
 
-namespace App\Models\Admin\Account;
+namespace App\Models\Api;
 
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class Review extends Model
 {
     use HasFactory, HasUuids;
 
     protected $fillable = [
         'user_id',
-        'first_name',
-        'last_name',
-        'password',
-        'email',
-        'phone',
-        'avatar',
-        'role',
+        'university_id',
+        'text',
+        'star',
         'status'
-    ];
-
-    protected $hidden = [
-        'password'
     ];
 
     protected $attributes = ['status' => 1]; // 1 is active

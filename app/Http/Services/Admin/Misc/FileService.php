@@ -14,10 +14,10 @@ class FileService extends Service{
      * @param   string $fileName
      * @return  string
      */
-    public function upload(Request $request, $fileName)
+    public function upload(Request $request, $fileName, $attr = 'logo')
     {
-        if ($request->hasFile('logo')){
-            $tmpFile = $request->file('logo');
+        if ($request->hasFile($attr)){
+            $tmpFile = $request->file($attr);
 
             $tmpPath = StringService::slug($fileName) . '.' . $tmpFile->getClientOriginalExtension();
             $tmpFile->move('storage', $tmpPath);

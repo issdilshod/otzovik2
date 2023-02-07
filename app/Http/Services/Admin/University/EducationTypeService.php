@@ -2,8 +2,6 @@
 
 namespace App\Http\Services\Admin\University;
 
-use App\Http\Resources\Admin\University\EducationTypeListResource;
-use App\Http\Resources\Admin\University\EducationTypeResource;
 use App\Http\Services\Admin\Misc\StringService;
 use App\Http\Services\Service;
 use App\Models\Admin\University\EducationType;
@@ -20,7 +18,7 @@ class EducationTypeService extends Service{
                                 return $q->where('name', 'like', $name . '%');
                             })
                             ->paginate(Config::get('pagination.per_page'));
-        return EducationTypeListResource::collection($educationTypes);
+        return $educationTypes;
     }
 
     public function getAll()
@@ -36,7 +34,7 @@ class EducationTypeService extends Service{
         $educationType = EducationType::where('status', '!=', Config::get('status.delete'))
                             ->where('id', $id)
                             ->first();
-        return new EducationTypeResource($educationType);
+        return $educationType;
     }
 
     public function create($educationType)
@@ -48,7 +46,7 @@ class EducationTypeService extends Service{
         $educationType['slug'] = StringService::slug($educationType['name']);
 
         $educationType = EducationType::create($educationType);
-        return new EducationTypeResource($educationType);
+        return $educationType;
     }
 
     public function update($educationType, $id)
@@ -63,7 +61,7 @@ class EducationTypeService extends Service{
         $educationType = EducationType::where('id', $id)
                             ->where('status', '!=', Config::get('status.delete'))
                             ->update($educationType);
-        return new EducationTypeResource($educationType);
+        return $educationType;
     }
 
     public function delete($id)

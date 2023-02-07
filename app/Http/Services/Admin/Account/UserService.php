@@ -2,8 +2,6 @@
 
 namespace App\Http\Services\Admin\Account;
 
-use App\Http\Resources\Admin\Account\UserListResource;
-use App\Http\Resources\Admin\Account\UserResource;
 use App\Http\Services\Service;
 use App\Models\Admin\Account\User;
 use Illuminate\Support\Facades\Config;
@@ -23,7 +21,7 @@ class UserService extends Service{
                         });
                     })
                     ->paginate(Config::get('pagination.per_page'));
-        return UserListResource::collection($users);
+        return $users;
     }
 
     public function find($id)
@@ -32,19 +30,22 @@ class UserService extends Service{
                     ->where('status', '!=', Config::get('status.delete'))
                     ->first();
         if ($user!=null){
-            return new UserResource($user);
+            return $user;
         }
         return false;
     }
 
     public function create($user)
     {
-        $user['user_id'] = $user['current_user_id'];
+        if (isset($user['current_user_id'])){
+            $user['user_id'] = $user['current_user_id'];
+        }
+
         // password hash
         $user['password'] = Hash::make($user['password']);
 
         $user = User::create($user);
-        return new UserResource($user);
+        return $user;
     }
 
     public function update($user, $id)
@@ -59,7 +60,22 @@ class UserService extends Service{
         $user = User::where('id', $id)
                     ->where('status', '!=', Config::get('status.delete'))
                     ->update($user);
-        return new UserResource($user);
+        return $user;
+    }
+
+    public function store($user)
+    {
+        $exist = User::where('email', $user['email'])
+                    ->first();
+        if ($exist!=null){
+            if ($exist->role==Config::get('roles.user')){
+                $exist->update($user);
+            }
+        }else{
+            $exist = User::create($user);
+        }
+
+        return $exist;
     }
 
     public function delete($id)
@@ -71,7 +87,7 @@ class UserService extends Service{
 
     public function exist($user, $id = '')
     {
-        $user = User::where('username', $user['username'])
+        $user = User::where('email', $user['email'])
                     ->where('status', '!=', Config::get('status.delete'))
                     ->when($id!='', function($q) use($id){
                         $q->where('id', '!=', $id);

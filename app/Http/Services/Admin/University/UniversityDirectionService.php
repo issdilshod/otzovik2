@@ -2,7 +2,6 @@
 
 namespace App\Http\Services\Admin\University;
 
-use App\Http\Resources\Admin\University\UniversityDirectionListResource;
 use App\Http\Services\Service;
 use App\Models\Admin\University\UniversityDirection;
 use Illuminate\Support\Facades\Config;

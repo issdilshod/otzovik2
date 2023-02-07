@@ -71,9 +71,9 @@
 
     <!-- form-block -->
     <div class="form-block white-form">
-      <form id="review-add-form" action="{{url('review/')}}" method="post">
+      <form id="review-add-form">
         @csrf
-        <input name="id" type="hidden" value="{{$university->id}}" />
+        <input name="university_id" type="hidden" value="{{$university->id}}" />
         <h2>Оставить отзыв</h2>
         <div class="row">
           <div class="col-lg-4">
@@ -122,6 +122,15 @@
         // ajax send review
         $(document).on('submit', '#review-add-form', function(e){
             e.preventDefault();
+
+            // TODO: validate before send post
+
+            var data = serializeObject($(this));
+
+            $.post('<?=url('api/review')?>', data)
+                .done(function(response){
+                    $('#modal03').modal('show');
+                });
         });
     </script>
 </div>
@@ -140,6 +149,8 @@
 @include('components.modals.location')
 
 @include('components.modals.success-subscribe')
+
+@include('components.modals.success-review-post')
 
 @include('components.svgs.welcome')
 

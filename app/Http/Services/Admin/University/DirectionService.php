@@ -2,8 +2,6 @@
 
 namespace App\Http\Services\Admin\University;
 
-use App\Http\Resources\Admin\University\DirectionListResource;
-use App\Http\Resources\Admin\University\DirectionResource;
 use App\Http\Services\Admin\Misc\StringService;
 use App\Http\Services\Service;
 use App\Models\Admin\University\Direction;
@@ -20,7 +18,7 @@ class DirectionService extends Service{
                         })
                         ->where('status', '!=', Config::get('status.delete'))
                         ->paginate(Config::get('pagination.per_page'));
-        return DirectionListResource::collection($directions);
+        return $directions;
     }
 
     public function getAll()
@@ -28,7 +26,7 @@ class DirectionService extends Service{
         $directions = Direction::orderBy('name', 'asc')
                         ->where('status', '!=', Config::get('status.delete'))
                         ->get();
-        return DirectionListResource::collection($directions);
+        return $directions;
     }
 
     public function find($id)
@@ -36,7 +34,7 @@ class DirectionService extends Service{
         $direction = Direction::where('status', '!=', Config::get('status.delete'))
                         ->where('id', $id)
                         ->first();
-        return new DirectionResource($direction);
+        return $direction;
     }
 
     public function create($direction)
@@ -48,7 +46,7 @@ class DirectionService extends Service{
         $direction['slug'] = StringService::slug($direction['name']);
 
         $direction = Direction::create($direction);
-        return new DirectionResource($direction);
+        return $direction;
     }
 
     public function update($direction, $id)
@@ -63,7 +61,7 @@ class DirectionService extends Service{
         $direction = Direction::where('id', $id)
                         ->where('status', '!=', Config::get('status.delete'))
                         ->update($direction);
-        return new DirectionResource($direction);
+        return $direction;
     }
 
     public function delete($id)
