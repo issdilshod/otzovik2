@@ -10,7 +10,7 @@
 
     "login_title": "Вход",
     "login_welcome_title": "Войдите чтобы начать работу",
-    "login_username": "Логин",
+    "login_email": "Логин",
     "login_password": "Пароль",
     "login_remember": "Запомнить",
     "login_login_button": "Вход",
@@ -76,6 +76,15 @@
     "education_type_edit_title": "Редактировать",
     "education_type_card_title": "Карточка тип обучения",
     "education_type_name": "Название типа",
+
+    "reviews_title": "Отзывы",
+    "reviews_list_title": "Список отзывов",
+    "review_add_title": "Добавить отзыв",
+    "review_edit_title": "Редактировать",
+    "review_card_title": "Карточка отзыва",
+    "review_user": "ФИО пользователя",
+    "review_university": "ВУЗ",
+    "review_text": "Текст отзыва",
 
     "staff_title": "Сотрудники",
     "staff_list_title": "Список сотрудников",

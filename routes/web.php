@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\Account\AuthController;
 use App\Http\Controllers\Admin\Account\UserController;
 use App\Http\Controllers\Admin\Dashboard\DashboardController;
+use App\Http\Controllers\Admin\Review\ReviewController;
 use App\Http\Controllers\Admin\University\DirectionController;
 use App\Http\Controllers\Admin\University\EducationTypeController;
 use App\Http\Controllers\Admin\University\UniversityController;
@@ -59,6 +60,13 @@ Route::middleware(['auth.custom'])->group(function (){
     Route::get('admin/universities/education-type/{id?}', [EducationTypeController::class, 'get']);
     Route::put('admin/universities/education-type/{id}', [EducationTypeController::class, 'update']);
     Route::delete('admin/universities/education-type/{id}', [EducationTypeController::class, 'destroy']);
+
+    // reviews
+    Route::get('admin/reviews', [ReviewController::class, 'index']);
+    Route::post('admin/review', [ReviewController::class, 'store']);
+    Route::get('admin/review/{id?}', [ReviewController::class, 'get']);
+    Route::put('admin/review/{id}', [ReviewController::class, 'update']);
+    Route::delete('admin/review/{id}', [ReviewController::class, 'destroy']);
 
     // users
     Route::get('admin/users', [UserController::class, 'index']);

@@ -16,7 +16,7 @@ class AuthService extends Service{
 
     public function login($entity)
     {
-        $user = User::where('username', $entity['username'])
+        $user = User::where('email', $entity['email'])
                     ->where('status', '!=', Config::get('status.delete'))
                     ->first();
 

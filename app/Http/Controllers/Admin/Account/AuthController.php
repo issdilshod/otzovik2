@@ -34,7 +34,7 @@ class AuthController extends Controller
         $this->authService->auth();
 
         $validated = $request->validate([
-            'username' => 'required',
+            'email' => 'required',
             'password' => 'required',
             'remember' => ''
         ]);

@@ -1,20 +1,18 @@
 <?php
 
-namespace App\Models\Api;
+namespace App\Models\Admin\Subscribe;
 
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Review extends Model
+class Subscribe extends Model
 {
-    use HasFactory, HasUuids;
+    use HasFactory;
 
     protected $fillable = [
-        'user_id',
-        'university_id',
-        'text',
-        'star',
+        'ip',
+        'email',
+        'page',
         'status'
     ];
 

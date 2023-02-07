@@ -20,10 +20,10 @@
         <div class="input-group mb-3">
             <input 
                 type="text"
-                class="form-control @if ($errors->has('username')) is-invalid @endif" 
-                placeholder="{{__('login_username')}}"
-                name="username"
-                value="@isset($username) {{ $username }} @endisset"
+                class="form-control @if ($errors->has('email')) is-invalid @endif" 
+                placeholder="{{__('login_email')}}"
+                name="email"
+                value="@isset($email) {{ $email }} @endisset"
             />
             @if ($errors->has('username'))
                 <span class="error invalid-feedback">{{__('login_fill_fields')}}</span>

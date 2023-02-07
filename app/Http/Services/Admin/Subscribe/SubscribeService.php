@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Services\Api;
+namespace App\Http\Services\Admin\Subscribe;
 
 use App\Http\Services\Service;
-use App\Models\Api\Subscribe;
+use App\Models\Admin\Subscribe\Subscribe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
