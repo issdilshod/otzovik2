@@ -101,6 +101,9 @@ class MainController extends Controller
     {
         $data['title'] = __('review_page_title');
 
+        // popular universities
+        $data['popular_universities'] = $this->universityService->popular();
+
         return view('pages.review', $data);
     }
 
@@ -115,7 +118,10 @@ class MainController extends Controller
     // page article
     public function article(Request $request, $articleSlug)
     {
-        $data = [];
+        $data['title'] = __('article_page_title');
+
+        // popular universities
+        $data['popular_universities'] = $this->universityService->popular();
 
         return view('pages.article', $data);
     }
