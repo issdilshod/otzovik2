@@ -22,10 +22,10 @@
             <div class="cell cell03">Отзывы компании</div>
           </div>
           <div class="top-table-body">
-            @foreach ($top_universities as $university) 
+            @foreach ($top_universities as $key => $university) 
                 
                 <div class="top-table-row">
-                    <div class="cell cell01">01</div>
+                    <div class="cell cell01">{{\Illuminate\Support\Str::of(($key+1))->padLeft(2, '0')}}</div>
                     <div class="cell cell04"><img src="{{ asset('storage/'.$university->logo) }}" alt=""></div>
                     <div class="cell cell02"><p>{{$university->name}}</p></div>
                     <div class="cell cell03" data-title="Мировой рейтинг">
@@ -55,7 +55,7 @@
                             <use xlink:href="#files-colorful"></use>
                             </svg>
                         </span>
-                        0
+                        {{$university->reviews_count}}
                         </div>
                     </div>
                 </div>

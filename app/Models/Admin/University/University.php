@@ -2,6 +2,7 @@
 
 namespace App\Models\Admin\University;
 
+use App\Models\Admin\Review\Review;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -36,5 +37,11 @@ class University extends Model
     ];
 
     protected $attributes = ['status' => 1]; // 1 is active
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class, 'university_id', 'id')
+                    ->where('status', Config::get('status.active'));
+    }
 
 }

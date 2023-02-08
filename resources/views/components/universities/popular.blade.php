@@ -25,7 +25,7 @@
                             <use xlink:href="#files-colorful"></use>
                         </svg>
                         </span>
-                        0
+                        {{$university->reviews_count}}
                     </div>
                     </div>
                     <div class="i-label">
