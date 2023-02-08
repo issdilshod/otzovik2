@@ -125,12 +125,32 @@
 
             // TODO: validate before send post
 
-            var data = serializeObject($(this));
+            // serialize to form data
+            var formData = new FormData();
+            if ($('input[name="file"]').prop('files').length>0){
+                formData.append('avatar', $('input[name="file"]').prop('files')[0]);
+            }
 
-            $.post('<?=url('api/review')?>', data)
-                .done(function(response){
+            formData.append('first_name', $('input[name="first_name"]').val());
+            formData.append('last_name', $('input[name="last_name"]').val());
+            formData.append('email', $('input[name="email"]').val());
+            formData.append('text', $('textarea[name="text"]').val());
+            formData.append('university_id', $('input[name="university_id"]').val());
+            formData.append('_token', $('input[name="_token"]').val());
+
+            //var data = serializeObject($(this));
+
+            $.ajax({
+                type: 'post',
+                url: '<?=url('api/review')?>',
+                data: formData,
+                cache: false,
+                processData: false,
+                contentType: false,
+                success: function(res){
                     $('#modal03').modal('show');
-                });
+                }
+            });
         });
     </script>
 </div>
