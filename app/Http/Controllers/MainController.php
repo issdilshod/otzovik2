@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\Admin\Review\ReviewService;
 use App\Http\Services\Admin\University\DirectionService;
 use App\Http\Services\Admin\University\EducationTypeService;
 use App\Http\Services\Admin\University\UniversityService;
@@ -13,12 +14,14 @@ class MainController extends Controller
     private $universityService;
     private $directionService;
     private $educationTypeService;
+    private $reviewService;
 
     public function __construct()
     {
         $this->universityService = new UniversityService();
         $this->directionService = new DirectionService();
         $this->educationTypeService = new EducationTypeService();
+        $this->reviewService = new ReviewService();
     }
     
     // page main
@@ -28,6 +31,9 @@ class MainController extends Controller
 
         // top universities
         $data['top_universities'] = $this->universityService->top();
+
+        // popular reviews
+        $data['popular_reviews'] = $this->reviewService->popular();
 
         return view('pages.welcome', $data);
     }
@@ -49,6 +55,9 @@ class MainController extends Controller
         // popular universities
         $data['popular_universities'] = $this->universityService->popular();
 
+        // popular reviews
+        $data['popular_reviews'] = $this->reviewService->popular();
+
         return view('pages.serach', $data);
     }
 
@@ -62,6 +71,9 @@ class MainController extends Controller
 
         // popular universities
         $data['popular_universities'] = $this->universityService->popular();
+
+        // popular reviews
+        $data['popular_reviews'] = $this->reviewService->popular();
 
         // search result universities
         $data['list'] = $this->universityService->findAll();
@@ -78,6 +90,9 @@ class MainController extends Controller
         if (!$data['university']){ // not found
             return abort(404);
         }
+
+        // popular reviews
+        $data['popular_reviews'] = $this->reviewService->popular();
 
         return view('pages.university', $data);
     }
@@ -104,6 +119,9 @@ class MainController extends Controller
         // popular universities
         $data['popular_universities'] = $this->universityService->popular();
 
+        // popular reviews
+        $data['popular_reviews'] = $this->reviewService->popular();
+
         return view('pages.review', $data);
     }
 
@@ -111,6 +129,9 @@ class MainController extends Controller
     public function articles(Request $request)
     {
         $data['title'] = __('articles_page_title');
+
+        // popular reviews
+        $data['popular_reviews'] = $this->reviewService->popular();
 
         return view('pages.articles', $data);
     }
@@ -123,6 +144,9 @@ class MainController extends Controller
         // popular universities
         $data['popular_universities'] = $this->universityService->popular();
 
+        // popular reviews
+        $data['popular_reviews'] = $this->reviewService->popular();
+
         return view('pages.article', $data);
     }
 
@@ -134,6 +158,9 @@ class MainController extends Controller
         // popular universities
         $data['popular_universities'] = $this->universityService->popular();
 
+        // popular reviews
+        $data['popular_reviews'] = $this->reviewService->popular();
+
         return view('pages.about', $data);
     }
 
@@ -144,6 +171,9 @@ class MainController extends Controller
 
         // popular universities
         $data['popular_universities'] = $this->universityService->popular();
+
+        // popular reviews
+        $data['popular_reviews'] = $this->reviewService->popular();
 
         return view('pages.educational', $data);
     }
@@ -178,6 +208,9 @@ class MainController extends Controller
 
         // top universities
         $data['top_universities'] = $this->universityService->top();
+
+        // popular reviews
+        $data['popular_reviews'] = $this->reviewService->popular();
 
         return view('pages.top', $data);
     }
