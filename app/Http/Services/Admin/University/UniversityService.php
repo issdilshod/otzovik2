@@ -70,7 +70,8 @@ class UniversityService extends Service{
 
     public function findBySlug($slug)
     {
-        $university = University::where('status', Config::get('status.active'))
+        $university = University::withCount('reviews')
+                        ->where('status', Config::get('status.active'))
                         ->where('slug', $slug)
                         ->first();
         if ($university==null){

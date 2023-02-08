@@ -20,7 +20,10 @@ class ReviewService extends Service{
     public function findAll($name = '')
     {
         $reviews = Review::from('reviews as r')
-                        ->select(['r.*', 'us.avatar as user_avatar', 'us.first_name as user_first_name', 'us.last_name as user_last_name', 'un.name as university_name', 'un.logo as university_logo'])
+                        ->select([
+                            'r.*', 
+                            'us.avatar as user_avatar', 'us.first_name as user_first_name', 'us.last_name as user_last_name', 
+                            'un.name as university_name', 'un.logo as university_logo', 'un.slug as university_slug'])
                         ->join('users as us', 'us.id', '=', 'r.user_id')
                         ->join('universities as un', 'un.id', '=', 'r.university_id')
                         ->orderBy('r.created_at', 'desc')
@@ -81,6 +84,23 @@ class ReviewService extends Service{
                         ->limit($count)
                         ->get();
         return $reviews;
+    }
+
+    public function findByUniversityNumber($universitySlug, $reviewNumber)
+    {
+        $review = Review::from('reviews as r')
+                    ->select([
+                        'r.*',
+                        'us.first_name as user_first_name', 'us.last_name as user_last_name', 'us.avatar as user_avatar',
+                        'un.name as university_name', 'un.logo as university_logo', 'un.slug as university_slug'
+                    ])
+                    ->join('universities as un', 'un.id', '=', 'r.university_id')
+                    ->join('users as us', 'us.id', '=', 'r.user_id')
+                    ->where('r.number', $reviewNumber)
+                    ->where('un.slug', $universitySlug)
+                    ->where('r.status', Config::get('status.active'))
+                    ->first();
+        return $review;
     }
 
     public function create($review)

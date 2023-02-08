@@ -100,6 +100,8 @@ class MainController extends Controller
             return abort(404);
         }
 
+        $data['title'] .= ' ' . $data['university']->name;
+
         // popular reviews
         $data['popular_reviews'] = $this->reviewService->popular();
 
@@ -120,11 +122,14 @@ class MainController extends Controller
         // popular universities
         $data['popular_universities'] = $this->universityService->popular();
 
+        // reviews
+        $data['list'] = $this->reviewService->findAll();
+
         return view('pages.reviews', $data);
     }
 
     // page review
-    public function review(Request $request, $reviewSlug)
+    public function review(Request $request, $universitySlug, $reviewNumber)
     {
         $data['title'] = __('review_page_title');
 
@@ -133,6 +138,14 @@ class MainController extends Controller
 
         // popular reviews
         $data['popular_reviews'] = $this->reviewService->popular();
+
+        $data['current_review'] = $this->reviewService->findByUniversityNumber($universitySlug, $reviewNumber);
+
+        if (!$data['current_review']){
+            abort(404);
+        }
+
+        $data['title'] .= ' ' . $data['current_review']->university_name . ' № ' . $data['current_review']->number;
 
         // TODO: other reviews of university
 

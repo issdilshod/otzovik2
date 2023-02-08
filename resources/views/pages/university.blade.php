@@ -56,7 +56,7 @@
                   <use xlink:href="#files-colorful"></use>
                 </svg>
               </span>
-              0
+              {{$university->reviews_count}}
             </div>
           </div>
           <div class="acc-item"><a href="{{url('/dobavit-otzyv/'.$university->slug)}}" class="btn">Оставить отзыв</a></div>
