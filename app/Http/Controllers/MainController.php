@@ -35,6 +35,9 @@ class MainController extends Controller
         // popular reviews
         $data['popular_reviews'] = $this->reviewService->popular();
 
+        // last reviews
+        $data['last_reviews'] = $this->reviewService->last();
+
         return view('pages.welcome', $data);
     }
 
@@ -58,6 +61,9 @@ class MainController extends Controller
         // popular reviews
         $data['popular_reviews'] = $this->reviewService->popular();
 
+        // last reviews
+        $data['last_reviews'] = $this->reviewService->last();
+
         return view('pages.serach', $data);
     }
 
@@ -74,6 +80,9 @@ class MainController extends Controller
 
         // popular reviews
         $data['popular_reviews'] = $this->reviewService->popular();
+
+        // last reviews
+        $data['last_reviews'] = $this->reviewService->last();
 
         // search result universities
         $data['list'] = $this->universityService->findAll();
@@ -93,6 +102,9 @@ class MainController extends Controller
 
         // popular reviews
         $data['popular_reviews'] = $this->reviewService->popular();
+
+        // last reviews
+        $data['last_reviews'] = $this->reviewService->last();
 
         return view('pages.university', $data);
     }
@@ -122,6 +134,8 @@ class MainController extends Controller
         // popular reviews
         $data['popular_reviews'] = $this->reviewService->popular();
 
+        // TODO: other reviews of university
+
         return view('pages.review', $data);
     }
 
@@ -132,6 +146,9 @@ class MainController extends Controller
 
         // popular reviews
         $data['popular_reviews'] = $this->reviewService->popular();
+
+        // last reviews
+        $data['last_reviews'] = $this->reviewService->last();
 
         return view('pages.articles', $data);
     }
@@ -147,6 +164,9 @@ class MainController extends Controller
         // popular reviews
         $data['popular_reviews'] = $this->reviewService->popular();
 
+        // last reviews
+        $data['last_reviews'] = $this->reviewService->last();
+
         return view('pages.article', $data);
     }
 
@@ -160,6 +180,9 @@ class MainController extends Controller
 
         // popular reviews
         $data['popular_reviews'] = $this->reviewService->popular();
+
+        // last reviews
+        $data['last_reviews'] = $this->reviewService->last();
 
         return view('pages.about', $data);
     }
@@ -175,6 +198,9 @@ class MainController extends Controller
         // popular reviews
         $data['popular_reviews'] = $this->reviewService->popular();
 
+        // last reviews
+        $data['last_reviews'] = $this->reviewService->last();
+
         return view('pages.educational', $data);
     }
 
@@ -182,6 +208,9 @@ class MainController extends Controller
     public function faq(Request $request)
     {
         $data['title'] = __('faq_page_title');
+
+        // last reviews
+        $data['last_reviews'] = $this->reviewService->last();
 
         return view('pages.faq', $data);
     }
@@ -198,6 +227,9 @@ class MainController extends Controller
 
         $data['title'] .= ' - ' . $data['university']->name;
 
+        // last reviews
+        $data['last_reviews'] = $this->reviewService->last();
+
         return view('pages.review_add', $data);
     }
 
@@ -211,6 +243,9 @@ class MainController extends Controller
 
         // popular reviews
         $data['popular_reviews'] = $this->reviewService->popular();
+
+        // last reviews
+        $data['last_reviews'] = $this->reviewService->last();
 
         return view('pages.top', $data);
     }

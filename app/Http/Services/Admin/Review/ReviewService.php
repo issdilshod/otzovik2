@@ -66,6 +66,23 @@ class ReviewService extends Service{
         return $reviews;
     }
 
+    public function last($count = 5)
+    {
+        $reviews = Review::from('reviews as r')
+                        ->select([
+                            'r.*',
+                            'us.first_name as user_first_name', 'us.last_name as user_last_name',
+                            'un.name as university_name'
+                        ])
+                        ->join('users as us', 'us.id', '=', 'r.user_id')
+                        ->join('universities as un', 'un.id', '=', 'r.university_id')
+                        ->where('r.status', Config::get('status.active'))
+                        ->orderBy('r.updated_at', 'desc')
+                        ->limit($count)
+                        ->get();
+        return $reviews;
+    }
+
     public function create($review)
     {
         $review = Review::create($review);

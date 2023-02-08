@@ -86,7 +86,7 @@
 
 <div class="bg-box">
     <div class="container">
-        @include('components.reviews.popular')
+        <!-- university review -->
     </div>
 </div>
 

@@ -18,7 +18,7 @@
             <div class="swiper-slide">
                 <div class="review-card">
                 <div class="review-user-name">{{$review->user_first_name}} {{$review->user_last_name}}</div>
-                <div class="date">{{$review->created_at}}</div>
+                <div class="date">{{$review->updated_at}}</div>
                 <div class="rating">
                     <span><img src="{{ asset('assets/images/star.svg') }}" alt=""></span>
                     <span><img src="{{ asset('assets/images/star.svg') }}" alt=""></span>
