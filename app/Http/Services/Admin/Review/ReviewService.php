@@ -51,6 +51,21 @@ class ReviewService extends Service{
         return false;
     }
 
+    public function findAllFront()
+    {
+        $reviews = Review::from('reviews as r')
+                        ->select([
+                            'r.*', 
+                            'us.avatar as user_avatar', 'us.first_name as user_first_name', 'us.last_name as user_last_name', 
+                            'un.name as university_name', 'un.logo as university_logo', 'un.slug as university_slug'])
+                        ->join('users as us', 'us.id', '=', 'r.user_id')
+                        ->join('universities as un', 'un.id', '=', 'r.university_id')
+                        ->orderBy('r.created_at', 'desc')
+                        ->where('r.status', Config::get('status.active'))
+                        ->paginate(Config::get('pagination.per_page'));
+        return $reviews;
+    }
+
     public function popular($count = 5)
     {
         $reviews = Review::from('reviews as r')
@@ -86,7 +101,7 @@ class ReviewService extends Service{
         return $reviews;
     }
 
-    public function findByUniversityNumber($universitySlug, $reviewNumber)
+    public function findByNumber($reviewNumber)
     {
         $review = Review::from('reviews as r')
                     ->select([
@@ -97,10 +112,26 @@ class ReviewService extends Service{
                     ->join('universities as un', 'un.id', '=', 'r.university_id')
                     ->join('users as us', 'us.id', '=', 'r.user_id')
                     ->where('r.number', $reviewNumber)
-                    ->where('un.slug', $universitySlug)
                     ->where('r.status', Config::get('status.active'))
                     ->first();
         return $review;
+    }
+
+    public function findByUniversity($universityId)
+    {
+        $reviews = Review::from('reviews as r')
+                    ->select([
+                        'r.*',
+                        'us.first_name as user_first_name', 'us.last_name as user_last_name', 'us.avatar as user_avatar',
+                        'un.name as university_name', 'un.logo as university_logo', 'un.slug as university_slug'
+                    ])
+                    ->join('universities as un', 'un.id', '=', 'r.university_id')
+                    ->join('users as us', 'us.id', '=', 'r.user_id')
+                    ->where('r.university_id', $universityId)
+                    ->where('r.status', Config::get('status.active'))
+                    ->orderBy('r.updated_at', 'desc')
+                    ->paginate(Config::get('pagination.per_page'));
+        return $reviews;
     }
 
     public function create($review)
@@ -144,16 +175,14 @@ class ReviewService extends Service{
             'current_user_id' => ''
         ]);
 
-        // get&set number
-        $validated['number'] = 1;
-        $review = Review::select('number')
-                    ->where('university_id', $validated['university_id'])
-                    ->orderBy('number', 'desc')
-                    ->first();
+        // get&set number or index of university
+        $university = University::where('id', $validated['university_id'])
+                        ->first();
 
-        if ($review!=null && $review->number!=null){
-            $validated['number'] = $review->number+1;
-        }
+        $reviewCount = Review::where('university_id', $validated['university_id'])
+                    ->count();
+
+        $validated['number'] = $university->index . ((int)$reviewCount + 1);
 
         return $validated;
     }

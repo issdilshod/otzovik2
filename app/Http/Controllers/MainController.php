@@ -53,7 +53,7 @@ class MainController extends Controller
         $data['education_types'] = $this->educationTypeService->getAll();
 
         // search result universities
-        $data['list'] = $this->universityService->findAll();
+        $data['list'] = $this->universityService->findAllFront();
 
         // popular universities
         $data['popular_universities'] = $this->universityService->popular();
@@ -85,7 +85,7 @@ class MainController extends Controller
         $data['last_reviews'] = $this->reviewService->last();
 
         // search result universities
-        $data['list'] = $this->universityService->findAll();
+        $data['list'] = $this->universityService->findAllFront();
 
         return view('pages.universities', $data);
     }
@@ -101,6 +101,9 @@ class MainController extends Controller
         }
 
         $data['title'] .= ' ' . $data['university']->name;
+
+        // university reviews list
+        $data['list'] = $this->reviewService->findByUniversity($data['university']->id);
 
         // popular reviews
         $data['popular_reviews'] = $this->reviewService->popular();
@@ -123,13 +126,13 @@ class MainController extends Controller
         $data['popular_universities'] = $this->universityService->popular();
 
         // reviews
-        $data['list'] = $this->reviewService->findAll();
+        $data['list'] = $this->reviewService->findAllFront();
 
         return view('pages.reviews', $data);
     }
 
     // page review
-    public function review(Request $request, $universitySlug, $reviewNumber)
+    public function review(Request $request, $reviewNumber)
     {
         $data['title'] = __('review_page_title');
 
@@ -139,7 +142,7 @@ class MainController extends Controller
         // popular reviews
         $data['popular_reviews'] = $this->reviewService->popular();
 
-        $data['current_review'] = $this->reviewService->findByUniversityNumber($universitySlug, $reviewNumber);
+        $data['current_review'] = $this->reviewService->findByNumber($reviewNumber);
 
         if (!$data['current_review']){
             abort(404);

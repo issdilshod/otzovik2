@@ -61,6 +61,15 @@ class UniversityService extends Service{
         return $university;
     }
 
+    public function findAllFront()
+    {
+        $universities = University::withCount('reviews')
+                            ->orderBy('name')
+                            ->where('status', Config::get('status.active'))
+                            ->paginate(Config::get('pagination.per_page'));
+        return $universities;
+    }
+
     public function getAll()
     {
         $universities = University::where('status', '!=', Config::get('status.delete'))

@@ -299,93 +299,31 @@
           </div>
         </div>
         <div class="tab-pane fade" id="descript03" role="tabpanel" aria-labelledby="descript-descript03">
-          <div class="review-card">
-            <div class="review-card-top">
-              <div class="user">
-                <div class="user-photo"><img src="{{ asset('assets/images/photo.jpg') }}" alt=""></div>
-                <div class="review-user-name">Евгений Баженов</div>
-              </div>
-              <div class="date">30 декабря 2022</div>
-              <div class="rating">
-                <span><img src="{{ asset('assets/images/star.svg') }}" alt=""></span>
-                <span><img src="{{ asset('assets/images/star.svg') }}" alt=""></span>
-                <span><img src="{{ asset('assets/images/star.svg') }}" alt=""></span>
-                <span><img src="{{ asset('assets/images/star.svg') }}" alt=""></span>
-                <span><img src="{{ asset('assets/images/star-half.svg') }}" alt=""></span>
-                <span>4.5</span>
-              </div>
-            </div>
-            <p>Прежде, чем начну говорить о плюсах и минусах, я хотел бы прояснить некоторые моменты, которые судя по количеству негативных отзывов становятся откровением для абитуриентов. Университет - это не школа, вам не будут тут разжевывать каждую строчку из учебника и не будут принуждать вас делать домашку, чтобы вы лучше усваивали материал. Задача лекций и семинаров, особенно по математическим дисциплинам - дать вам ту базу, с которой вы легко сможете понять все остальные аспекты или пункты темы. Точно так же и с задачами. Максимум, что вам предложат - это страницы из задачника и номера задач, которые вы если хотите можете делать, а можете не делать. Могу сказать лишь, что по статистике все те, кто стараются выполнять все пункты, предлагаемые преподавателями, в итоге оказываются на вершине рейтинга, а те, кто филонят полгода и получают неуд начинают строчить негативные комменты о том, как плохо преподавание в ВШЭ.Также хочу обратить внимание, что пишу я максимум про свой факультет и скорее даже про образовательную программу. Я не знаю, как обстоят дела в других местах</p>
-            <a href="#" class="light-btn btn">Перейти на страницу отзыва</a>
-          </div>
-          <div class="review-card">
-            <div class="review-card-top">
-              <div class="user">
-                <div class="user-photo"><img src="{{ asset('assets/images/photo.jpg') }}" alt=""></div>
-                <div class="review-user-name">Евгений Баженов</div>
-              </div>
-              <div class="date">30 декабря 2022</div>
-              <div class="rating">
-                <span><img src="{{ asset('assets/images/star.svg') }}" alt=""></span>
-                <span><img src="{{ asset('assets/images/star.svg') }}" alt=""></span>
-                <span><img src="{{ asset('assets/images/star.svg') }}" alt=""></span>
-                <span><img src="{{ asset('assets/images/star.svg') }}" alt=""></span>
-                <span><img src="{{ asset('assets/images/star-half.svg') }}" alt=""></span>
-                <span>4.5</span>
-              </div>
-            </div>
-            <p>Прежде, чем начну говорить о плюсах и минусах, я хотел бы прояснить некоторые моменты, которые судя по количеству негативных отзывов становятся откровением для абитуриентов. Университет - это не школа, вам не будут тут разжевывать каждую строчку из учебника и не будут принуждать вас делать домашку, чтобы вы лучше усваивали материал. Задача лекций и семинаров, особенно по математическим дисциплинам - дать вам ту базу, с которой вы легко сможете понять все остальные аспекты или пункты темы. Точно так же и с задачами. Максимум, что вам предложат - это страницы из задачника и номера задач, которые вы если хотите можете делать, а можете не делать. Могу сказать лишь, что по статистике все те, кто стараются выполнять все пункты, предлагаемые преподавателями, в итоге оказываются на вершине рейтинга, а те, кто филонят полгода и получают неуд начинают строчить негативные комменты о том, как плохо преподавание в ВШЭ.Также хочу обратить внимание, что пишу я максимум про свой факультет и скорее даже про образовательную программу. Я не знаю, как обстоят дела в других местах</p>
-            <a href="#" class="light-btn btn">Перейти на страницу отзыва</a>
-          </div>
-          <div class="review-card">
-            <div class="review-card-top">
-              <div class="user">
-                <div class="user-photo"><img src="{{ asset('assets/images/photo.jpg') }}" alt=""></div>
-                <div class="review-user-name">Евгений Баженов</div>
-              </div>
-              <div class="date">30 декабря 2022</div>
-              <div class="rating">
-                <span><img src="{{ asset('assets/images/star.svg') }}" alt=""></span>
-                <span><img src="{{ asset('assets/images/star.svg') }}" alt=""></span>
-                <span><img src="{{ asset('assets/images/star.svg') }}" alt=""></span>
-                <span><img src="{{ asset('assets/images/star.svg') }}" alt=""></span>
-                <span><img src="{{ asset('assets/images/star-half.svg') }}" alt=""></span>
-                <span>4.5</span>
-              </div>
-            </div>
-            <p>Прежде, чем начну говорить о плюсах и минусах, я хотел бы прояснить некоторые моменты, которые судя по количеству негативных отзывов становятся откровением для абитуриентов. Университет - это не школа, вам не будут тут разжевывать каждую строчку из учебника и не будут принуждать вас делать домашку, чтобы вы лучше усваивали материал. Задача лекций и семинаров, особенно по математическим дисциплинам - дать вам ту базу, с которой вы легко сможете понять все остальные аспекты или пункты темы. Точно так же и с задачами. Максимум, что вам предложат - это страницы из задачника и номера задач, которые вы если хотите можете делать, а можете не делать. Могу сказать лишь, что по статистике все те, кто стараются выполнять все пункты, предлагаемые преподавателями, в итоге оказываются на вершине рейтинга, а те, кто филонят полгода и получают неуд начинают строчить негативные комменты о том, как плохо преподавание в ВШЭ.Также хочу обратить внимание, что пишу я максимум про свой факультет и скорее даже про образовательную программу. Я не знаю, как обстоят дела в других местах</p>
-            <a href="#" class="light-btn btn">Перейти на страницу отзыва</a>
-          </div>
-          <div class="review-card">
-            <div class="review-card-top">
-              <div class="user">
-                <div class="user-photo"><img src="{{ asset('assets/images/photo.jpg') }}" alt=""></div>
-                <div class="review-user-name">Евгений Баженов</div>
-              </div>
-              <div class="date">30 декабря 2022</div>
-              <div class="rating">
-                <span><img src="{{ asset('assets/images/star.svg') }}" alt=""></span>
-                <span><img src="{{ asset('assets/images/star.svg') }}" alt=""></span>
-                <span><img src="{{ asset('assets/images/star.svg') }}" alt=""></span>
-                <span><img src="{{ asset('assets/images/star.svg') }}" alt=""></span>
-                <span><img src="{{ asset('assets/images/star-half.svg') }}" alt=""></span>
-                <span>4.5</span>
-              </div>
-            </div>
-            <p>Прежде, чем начну говорить о плюсах и минусах, я хотел бы прояснить некоторые моменты, которые судя по количеству негативных отзывов становятся откровением для абитуриентов. Университет - это не школа, вам не будут тут разжевывать каждую строчку из учебника и не будут принуждать вас делать домашку, чтобы вы лучше усваивали материал. Задача лекций и семинаров, особенно по математическим дисциплинам - дать вам ту базу, с которой вы легко сможете понять все остальные аспекты или пункты темы. Точно так же и с задачами. Максимум, что вам предложат - это страницы из задачника и номера задач, которые вы если хотите можете делать, а можете не делать. Могу сказать лишь, что по статистике все те, кто стараются выполнять все пункты, предлагаемые преподавателями, в итоге оказываются на вершине рейтинга, а те, кто филонят полгода и получают неуд начинают строчить негативные комменты о том, как плохо преподавание в ВШЭ.Также хочу обратить внимание, что пишу я максимум про свой факультет и скорее даже про образовательную программу. Я не знаю, как обстоят дела в других местах</p>
-            <a href="#" class="light-btn btn">Перейти на страницу отзыва</a>
-          </div>
-          <nav>
-            <ul class="pagination">
-              <li class="page-item"><a class="page-link page-prev" href="#">&nbsp;</a></li>
-              <li class="page-item"><a class="page-link active" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item"><a class="page-link" href="#">...</a></li>
-              <li class="page-item"><a class="page-link" href="#">16</a></li>
-              <li class="page-item"><a class="page-link page-next" href="#">&nbsp;</a></li>
-            </ul>
-          </nav>
+          
+            @foreach ($list as $item)
+                <div class="review-card">
+                    <div class="review-card-top">
+                    <div class="user">
+                        <div class="user-photo"><img src="{{url('storage/'.$item->user_avatar)}}" alt=""></div>
+                        <div class="review-user-name">{{$item->user_first_name}} {{$item->user_last_name}}</div>
+                    </div>
+                    <div class="date">{{$item->updated_at}}</div>
+                    <div class="rating">
+                        <span><img src="{{ asset('assets/images/star.svg') }}" alt=""></span>
+                        <span><img src="{{ asset('assets/images/star.svg') }}" alt=""></span>
+                        <span><img src="{{ asset('assets/images/star.svg') }}" alt=""></span>
+                        <span><img src="{{ asset('assets/images/star.svg') }}" alt=""></span>
+                        <span><img src="{{ asset('assets/images/star-half.svg') }}" alt=""></span>
+                        <span>4.5</span>
+                    </div>
+                    </div>
+                    <p>{{$item->text}}</p>
+                    <a href="{{url('otzyv/'.$item->number)}}" class="light-btn btn">Перейти на страницу отзыва</a>
+                </div>
+            @endforeach
+          
+            @include('components.pagination.pagination')
+
         </div>
         <div class="tab-pane fade" id="descript04" role="tabpanel" aria-labelledby="descript-descript04">4</div>
       </div>

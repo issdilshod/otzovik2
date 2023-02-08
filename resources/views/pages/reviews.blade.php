@@ -94,7 +94,7 @@
                 </div>
                 <p>{{$item->text}}</p>
                 <div class="review-card-bottom">
-                <a href="{{url($item->university_slug.'/otzyv/'.$item->number)}}" class="light-btn btn">Перейти на страницу отзыва</a>
+                <a href="{{url('otzyv/'.$item->number)}}" class="light-btn btn">Перейти на страницу отзыва</a>
                 <div class="review-about">
                     <p>Отзыв о:</p>
                     <div class="review-about-logo"><img src="{{ asset('storage/'.$item->university_logo) }}" alt=""></div>
