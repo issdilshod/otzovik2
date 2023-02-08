@@ -4,6 +4,7 @@ namespace App\Http\Services\Admin\Review;
 
 use App\Http\Services\Service;
 use App\Models\Admin\Review\Review;
+use App\Models\Admin\University\University;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
@@ -82,11 +83,22 @@ class ReviewService extends Service{
     public function validate(Request $request)
     {
         $validated = $request->validate([
-            'university_id' => '',
+            'university_id' => 'required',
             'text' => '',
             'star' => '',
             'current_user_id' => ''
         ]);
+
+        // get&set number
+        $validated['number'] = 1;
+        $review = Review::select('number')
+                    ->where('university_id', $validated['university_id'])
+                    ->orderBy('number', 'desc')
+                    ->first();
+
+        if ($review!=null && $review->number!=null){
+            $validated['number'] = $review->number+1;
+        }
 
         return $validated;
     }

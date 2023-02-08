@@ -80,17 +80,24 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-3">
+                                            <div class="col-md-2">
                                                 <div class="form-group">
                                                     <label for="worlds_rate1">{{__('university_worlds_rate')}}</label>
                                                     <input name="worlds_rate" class="form-control" id="worlds_rate1" value="@isset($university->worlds_rate){{ $university->worlds_rate }}@endisset">
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-3">
+                                            <div class="col-md-2">
                                                 <div class="form-group">
                                                     <label for="russian_rate1">{{__('university_russian_rate')}}</label>
                                                     <input name="russian_rate" class="form-control" id="russian_rate1" value="@isset($university->russian_rate){{ $university->russian_rate }}@endisset">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="index1">{{__('university_index')}}</label>
+                                                    <input name="index" class="form-control" id="index1" value="@isset($university->index){{ $university->index }}@endisset">
                                                 </div>
                                             </div>
                                             

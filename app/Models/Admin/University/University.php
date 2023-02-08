@@ -15,6 +15,7 @@ class University extends Model
     protected $fillable = [
         'user_id',
         'name',
+        'index',
         'worlds_rate',
         'russian_rate',
         'accreditation',

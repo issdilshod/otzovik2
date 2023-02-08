@@ -42,7 +42,7 @@ class ReviewController extends Controller
         // permission
         $validated = $this->reviewService->validate($request);
 
-        $validated['user_id'] = $validated['cureent_user_id'];
+        $validated['user_id'] = $validated['current_user_id'];
         unset($validated['current_user_id']);
 
         if ($this->reviewService->create($validated)){

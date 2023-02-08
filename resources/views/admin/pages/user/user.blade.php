@@ -62,16 +62,11 @@
                                     <label for="last_name1">{{__('staff_last_name')}}</label>
                                     <input name="last_name" class="form-control" id="last_name1" value="@isset($user->last_name){{ $user->last_name }}@endisset">
                                 </div>
-                                
-                                <div class="form-group">
-                                    <label for="email1">{{__('staff_email')}}</label>
-                                    <input name="email" class="form-control" id="email1" value="@isset($user->email){{ $user->email }}@endisset">
-                                </div>
 
-                                <div class="form-group">
+                                <!--div class="form-group">
                                     <label for="phone1">{{__('staff_phone')}}</label>
                                     <input name="phone" class="form-control" id="phone1" value="@isset($user->phone){{ $user->phone }}@endisset">
-                                </div>
+                                </div-->
 
                                 <div class="form-group">
                                     <label for="role1">{{__('staff_role')}}</label>
@@ -84,8 +79,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="username1">{{__('staff_username')}}</label>
-                                    <input name="username" class="form-control" id="username1" value="@isset($user->username){{ $user->username }}@endisset">
+                                    <label for="email1">{{__('staff_email')}}</label>
+                                    <input name="email" class="form-control" id="email1" value="@isset($user->email){{ $user->email }}@endisset">
                                 </div>
 
                                 <div class="form-group">

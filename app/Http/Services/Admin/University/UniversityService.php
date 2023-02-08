@@ -225,6 +225,7 @@ class UniversityService extends Service{
         $validated = $request->validate([
             // basic
             'name' => 'required',
+            'index' => '',
             'worlds_rate' => 'required',
             'russian_rate' => 'required',
             'description' => 'required',
