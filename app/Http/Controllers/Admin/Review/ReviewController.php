@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Services\Admin\Account\UserService;
 use App\Http\Services\Admin\Misc\FileService;
 use App\Http\Services\Admin\Review\ReviewService;
+use App\Http\Services\Admin\University\UniversityService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
@@ -15,12 +16,14 @@ class ReviewController extends Controller
     private $reviewService;
     private $userService;
     private $fileService;
+    private $universityService;
 
     public function __construct()
     {
         $this->reviewService = new ReviewService();
         $this->userService = new UserService();
         $this->fileService = new FileService();
+        $this->universityService = new UniversityService();
     }
     
     public function index(Request $request)
@@ -39,8 +42,11 @@ class ReviewController extends Controller
         // permission
         $validated = $this->reviewService->validate($request);
 
+        $validated['user_id'] = $validated['cureent_user_id'];
+        unset($validated['current_user_id']);
+
         if ($this->reviewService->create($validated)){
-            return redirect('admin/reviews')->with('status', '200');
+            return redirect('admin/reviews')->with('status', '201');
         }
 
         return redirect('admin/reviews')->with('status', '500'); 
@@ -52,6 +58,7 @@ class ReviewController extends Controller
         $data['title'] = __('review_add_title');
 
         // universities
+        $data['universities'] = $this->universityService->getAll();
 
         if ($id!=''){
             $data['review'] = $this->reviewService->findById($id);
@@ -63,7 +70,14 @@ class ReviewController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+        // permission
+        $validated = $this->reviewService->validate($request);
+
+        if ($this->reviewService->update($validated, $id)){
+            return redirect('admin/reviews')->with('status', '200');
+        }
+
+        return redirect('admin/reviews')->with('status', '500'); 
     }
 
     public function destroy(Request $request, $id)

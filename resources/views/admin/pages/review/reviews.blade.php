@@ -67,8 +67,8 @@
                             @foreach ($list as $key => $value)
                                 <tr>
                                     <td>{{$key+1}}</td>
-                                    <td>{{$value->user_first_name}} {{$value->user_last_name}}</td>
-                                    <td>{{$value->university_name}}</td>
+                                    <td><img src="{{ asset('storage/'.$value->user_avatar) }}" width="40px" /> {{$value->user_first_name}} {{$value->user_last_name}}</td>
+                                    <td><img src="{{ asset('storage/'.$value->university_logo) }}" width="40px" /> {{$value->university_name}}</td>
                                     <td>{{$value->created_at}}</td>
                                     <td>
                                         @if ($value->status==$status['wait'])

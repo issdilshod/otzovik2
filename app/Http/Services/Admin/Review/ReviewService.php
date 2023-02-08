@@ -19,7 +19,7 @@ class ReviewService extends Service{
     public function findAll($name = '')
     {
         $reviews = Review::from('reviews as r')
-                        ->select(['r.*', 'us.first_name as user_first_name', 'us.last_name as user_last_name', 'un.name as university_name'])
+                        ->select(['r.*', 'us.avatar as user_avatar', 'us.first_name as user_first_name', 'us.last_name as user_last_name', 'un.name as university_name', 'un.logo as university_logo'])
                         ->join('users as us', 'us.id', '=', 'r.user_id')
                         ->join('universities as un', 'un.id', '=', 'r.university_id')
                         ->orderBy('r.created_at', 'desc')
@@ -30,8 +30,16 @@ class ReviewService extends Service{
 
     public function findById($id)
     {
-        $review = Review::where('status', '!=', Config::get('status.delete'))
-                    ->where('id', $id)
+        $review = Review::from('reviews as r')
+                    ->select([
+                        'r.*', 
+                        'us.first_name as user_first_name', 'us.last_name as user_last_name', 'us.avatar as user_avatar',
+                        'un.id as university_id', 'un.name as university_name', 'un.logo as university_logo'
+                    ])
+                    ->join('users as us', 'us.id', '=', 'r.user_id')
+                    ->join('universities as un', 'un.id', '=', 'r.university_id')
+                    ->where('r.status', '!=', Config::get('status.delete'))
+                    ->where('r.id', $id)
                     ->first();
         if ($review!=null){
             return $review;
@@ -50,7 +58,18 @@ class ReviewService extends Service{
 
     public function update($review, $id)
     {
-        //
+        // status publish
+        $review['status'] = Config::get('status.active');
+
+        // user id
+        //$review['user_id'] = $review['current_user_id']; 
+        unset($review['current_user_id']);
+
+        // UPDATE
+        $review = Review::where('id', $id)
+                        ->where('status', '!=', Config::get('status.delete'))
+                        ->update($review);
+        return $review;
     }
 
     public function delete($id)
@@ -66,6 +85,7 @@ class ReviewService extends Service{
             'university_id' => '',
             'text' => '',
             'star' => '',
+            'current_user_id' => ''
         ]);
 
         return $validated;

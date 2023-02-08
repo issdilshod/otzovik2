@@ -60,6 +60,13 @@ class UniversityService extends Service{
         return $university;
     }
 
+    public function getAll()
+    {
+        $universities = University::where('status', '!=', Config::get('status.delete'))
+                            ->get(['id', 'name', 'logo']);
+        return $universities;
+    }
+
     public function findBySlug($slug)
     {
         $university = University::where('status', Config::get('status.active'))
