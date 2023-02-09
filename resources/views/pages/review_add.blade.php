@@ -127,7 +127,22 @@
         $(document).on('submit', '#review-add-form', function(e){
             e.preventDefault();
 
-            // TODO: validate before send post
+            var validated = true;
+
+            if ($('input[name="first_name"]').val()==''){
+                $('input[name="first_name"]').css('border', '1px solid rgb(255 0 0 / 38%)');
+                validated = false;
+            }
+            if ($('input[name="email"]').val()==''){
+                $('input[name="email"]').css('border', '1px solid rgb(255 0 0 / 38%)');
+                validated = false;
+            }
+            if ($('textarea[name="text"]').val()==''){
+                $('textarea[name="text"]').css('border', '1px solid rgb(255 0 0 / 38%)');
+                validated = false;
+            }
+
+            if (!validated){ return false; }
 
             // serialize to form data
             var formData = new FormData();
