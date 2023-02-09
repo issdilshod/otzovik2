@@ -96,6 +96,15 @@ class SystemService extends Service{
         }
     }
 
+    static function get_sex_by_id($id = '')
+    {
+        if ($id==0){
+            return 'women';
+        }else{
+            return 'men';
+        }
+    }
+
     public static function get_os()
     {
         $user_agent = self::user_agent();

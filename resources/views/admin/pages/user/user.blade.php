@@ -46,13 +46,26 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{url('admin/user')}}@isset($user->id){{ '/'.$user->id }}@endisset" method="post">
+                        <form action="{{url('admin/user')}}@isset($user->id){{ '/'.$user->id }}@endisset" method="post" enctype="multipart/form-data">
                             @csrf
                             @isset($user->id)
                             <input type="hidden" name="id" value="{{$user->id}}" />
                             <input type="hidden" name="_method" value="put" />
                             @endisset
                             <div class="card-body">
+
+                                <div class="form-group">
+                                    <label for="avatar1">{{__('staff_avatar')}}</label>
+                                    <input name="avatar" type="file" class="form-control" id="avatar1">
+                                    <div class="mt-2">
+                                        @if (isset($user->avatar))
+                                        <img src="{{ asset('storage/'.$user->avatar) }}" width="200px" />
+                                        @else
+                                        <img src="{{ asset('assets/images/'.\App\Http\Services\Admin\Misc\SystemService::get_sex_by_id($user->sex) . '.jpg') }}" width="200px" />
+                                        @endif
+                                    </div>
+                                </div>
+
                                 <div class="form-group">
                                     <label for="first_name1">{{__('staff_first_name')}}</label>
                                     <input name="first_name" class="form-control" id="first_name1" value="@isset($user->first_name){{ $user->first_name }}@endisset">
@@ -75,6 +88,15 @@
                                         @foreach ($roles as $key => $value)
                                             <option value="{{$value}}" <?php if(isset($user->role) && $user->role==$value){ echo 'selected'; } ?> >{{\App\Http\Services\Admin\Misc\SystemService::get_role_name_by_alias($key)}}</option>
                                         @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="sex1">{{__('staff_sex')}}</label>
+                                    <select class="form-control" name="sex" id="sex1">
+                                        <option value="">-</option>
+                                        <option value="0" <?php if(isset($user->sex) && $user->sex==0) { echo 'selected'; } ?>>{{__('staff_women')}}</option>
+                                        <option value="1" <?php if(isset($user->sex) && $user->sex==1) { echo 'selected'; } ?>>{{__('staff_men')}}</option>
                                     </select>
                                 </div>
 

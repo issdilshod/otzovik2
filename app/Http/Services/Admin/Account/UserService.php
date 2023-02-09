@@ -57,6 +57,11 @@ class UserService extends Service{
             unset($user['password']);
         }
 
+        // check avatar
+        if ($user['avatar']==null){
+            unset($user['avatar']);
+        }
+
         $user = User::where('id', $id)
                     ->where('status', '!=', Config::get('status.delete'))
                     ->update($user);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Account;
 
 use App\Http\Controllers\Controller;
 use App\Http\Services\Admin\Account\UserService;
+use App\Http\Services\Admin\Misc\FileService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
@@ -11,10 +12,12 @@ class UserController extends Controller
 {
 
     private $userService;
+    private $fileService;
 
     public function __construct()
     {
         $this->userService = new UserService();
+        $this->fileService = new FileService();
     }
     
     public function index(Request $request)
@@ -38,10 +41,14 @@ class UserController extends Controller
             'password' => 'required',
             'email' => 'required',
             'phone' => '',
+            'sex' => '',
             'role' => 'required',
 
             'current_user_id' => '',
         ]);
+
+        // upload avatar
+        $validated['avatar'] = $this->fileService->upload($request, $validated['first_name'] . $validated['email'], 'avatar');
 
         // check
         if ($this->userService->exist($validated)){
@@ -79,8 +86,12 @@ class UserController extends Controller
             'password' => '',
             'email' => 'required',
             'phone' => '',
+            'sex' => '',
             'role' => ''
         ]);
+
+        // upload avatar
+        $validated['avatar'] = $this->fileService->upload($request, $validated['first_name'] . $validated['email'], 'avatar');
 
         // check
         if ($this->userService->exist($validated, $id)){
