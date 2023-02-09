@@ -27,8 +27,8 @@
         <p>Наш сервис помогает сформировать наилучшие отношения между клиентом и компанией!</p>       
         <div class="send-inner">
           <div class="sending-group">
-            <input type="email" placeholder="Введите почту" class="form-control">
-            <button class="send-btn" data-toggle="modal" data-target="#modal02">
+            <input id="articles-email" type="email" placeholder="Введите почту" class="form-control">
+            <button id="articles-subscribe" class="send-btn">
               <svg class="icon">
                 <use xlink:href="#letter-ico"></use>
               </svg>

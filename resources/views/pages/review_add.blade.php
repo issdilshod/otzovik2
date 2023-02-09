@@ -98,6 +98,10 @@
             </span>
             Оставить отзыв
           </button>
+          <div class="rateit-wrapper">
+            <div id="rateit" class="rateit"></div>
+            <div id="value" class="value">0.0</div>
+          </div>
           <div class="file-box">
             <input type="file" name="file" data-jcf='{"buttonText": "", "placeholderText": "Загрузить фото: jpg или png"}'>
           </div>
@@ -137,6 +141,7 @@
             formData.append('text', $('textarea[name="text"]').val());
             formData.append('university_id', $('input[name="university_id"]').val());
             formData.append('_token', $('input[name="_token"]').val());
+            formData.append('star', $('#value').html());
 
             //var data = serializeObject($(this));
 

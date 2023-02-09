@@ -16,8 +16,8 @@
           <div class="col-lg-6 d-flex justify-content-end">
             <div class="send-inner">
               <div class="sending-group">
-                <input type="email" placeholder="Введите почту" class="form-control">
-                <button class="send-btn" data-toggle="modal" data-target="#modal02">
+                <input id="footer-email" type="email" placeholder="Введите почту" class="form-control">
+                <button id="footer-subscribe" class="send-btn">
                   <svg class="icon">
                     <use xlink:href="#letter-ico"></use>
                   </svg>
@@ -132,3 +132,43 @@
       <a href="#">Политика конфиденциальности</a>
     </div>
 </div>
+
+<script>
+
+    function subscribe(emailSelector)
+    {
+        var page = '<?=url()->current()?>';
+        var email = $(emailSelector).val();
+
+        if (email.length>3){
+
+            var formData = new FormData();
+            formData.append('page', page);
+            formData.append('email', email);
+
+            $.ajax({
+                type: 'post',
+                url: '<?=url('api/subscribe')?>',
+                data: formData,
+                cache: false,
+                processData: false,
+                contentType: false,
+                success: function(res){
+                    $('#modal02').modal('show');
+                    $(emailSelector).val('');
+                }
+            });
+        }
+    }
+
+    $(document).on('click', '#footer-subscribe', function (e){
+        e.preventDefault();
+        subscribe('#footer-email');
+    })
+
+    $(document).on('click', '#articles-subscribe', function (e){
+        e.preventDefault();
+        subscribe('#articles-email');
+    })
+
+</script>

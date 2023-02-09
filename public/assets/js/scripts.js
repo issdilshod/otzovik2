@@ -64,6 +64,10 @@ $(document).ready(function(){
     },
   });
 
+  $("#rateit").bind('rated', function (event, value) { 
+    $('#value').text(value); 
+  });
+
 
 });
 

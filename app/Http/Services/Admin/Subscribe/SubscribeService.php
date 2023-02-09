@@ -2,6 +2,7 @@
 
 namespace App\Http\Services\Admin\Subscribe;
 
+use App\Http\Services\Admin\Misc\SystemService;
 use App\Http\Services\Service;
 use App\Models\Admin\Subscribe\Subscribe;
 use Illuminate\Http\Request;
@@ -11,8 +12,7 @@ class SubscribeService extends Service{
 
     public function store($subscribe)
     {
-        // TODO: get ip
-        
+        $subscribe['ip'] = SystemService::get_ip();
 
         $exists = Subscribe::where('email', $subscribe['email'])
                     ->first();

@@ -184,6 +184,14 @@ class ReviewService extends Service{
 
         $validated['number'] = $university->index . ((int)$reviewCount + 1);
 
+        // star validation
+        if ((float)$validated['star']>5){
+            $validated['star'] = 5;
+        }
+        if ((float)$validated['star']<0){
+            $validated['star'] = 0.0;
+        }
+
         return $validated;
     }
 
