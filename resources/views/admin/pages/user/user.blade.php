@@ -73,7 +73,7 @@
                                     <select class="form-control" name="role" id="role1">
                                         <option value="">-</option>
                                         @foreach ($roles as $key => $value)
-                                            <option value="{{$value}}" <?php if(isset($user->role) && $user->role==$value){ echo 'selected'; } ?> >{{$key}}</option>
+                                            <option value="{{$value}}" <?php if(isset($user->role) && $user->role==$value){ echo 'selected'; } ?> >{{\App\Http\Services\Admin\Misc\SystemService::get_role_name_by_alias($key)}}</option>
                                         @endforeach
                                     </select>
                                 </div>

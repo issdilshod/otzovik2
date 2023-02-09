@@ -30,13 +30,13 @@
     "menu_education_type_title": "Типы обучения",
     "menu_reviews_title": "Отзывы",
     "menu_articles_title": "Блог",
-    "menu_staff_title": "Сотрудники",
+    "menu_staff_title": "Пользователи",
 
     "dashboard_title": "Панель управление",
     "dashboard_universities": "ВУЗ-ы",
     "dashboard_reviews": "Отзывы",
     "dashboard_articles": "Блог",
-    "dashboard_staff": "Сотрудники",
+    "dashboard_staff": "Пользователи",
     "dashboard_go": "Перейти",
 
     "universities_title": "ВУЗ-ы",
@@ -91,15 +91,15 @@
     "review_star": "Рейтинг",
     "review_text": "Текст отзыва",
 
-    "staff_title": "Сотрудники",
-    "staff_list_title": "Список сотрудников",
+    "staff_title": "Пользователи",
+    "staff_list_title": "Список пользователей",
     "staff_name": "ФИО",
     "staff_email": "Эл. почта",
     "staff_phone": "Номер телефона",
     "staff_role": "Роль",
-    "staff_add_title": "Добавить сотрудника",
+    "staff_add_title": "Добавить пользователя",
     "staff_edit_title": "Редактировать",
-    "staff_card_title": "Карточка сотрудника",
+    "staff_card_title": "Карточка пользователя",
     "staff_first_name": "Имя",
     "staff_last_name": "Фамилия",
     "staff_username": "Логин",
@@ -125,6 +125,11 @@
     "about_page_title": "О сервисе",
     "faq_page_title": "FAQ",
     "educational_page_title": "Учебным заведениям",
+
+    "roles_admin": "Главный админ",
+    "roles_admin_double": "Админ с ограниченымим правами",
+    "roles_content_manager": "Контент менеджер",
+    "roles_user": "Пользователь",
 
     "top_universities_page_title": "Топ университеты"
 }

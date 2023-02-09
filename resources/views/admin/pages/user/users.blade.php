@@ -71,8 +71,8 @@
                                     <td>{{$value->first_name . ' ' . $value->last_name}}</td>
                                     <td>{{$value->email}}</td>
                                     <td>{{$value->phone}}</td>
-                                    <td>{{$value->role}}</td>
-                                    <td>{{$value->created_at}}</td>
+                                    <td>{{\App\Http\Services\Admin\Misc\SystemService::get_role_name_by_id($value->role)}}</td>
+                                    <td>{{\App\Http\Services\Admin\Misc\SystemService::get_dateTime_human($value->created_at, true)}}</td>
                                     <td class="text-right">
                                         <div class="d-flex">
                                             <div class="ml-auto">

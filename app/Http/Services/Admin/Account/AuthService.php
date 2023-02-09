@@ -17,7 +17,8 @@ class AuthService extends Service{
     public function login($entity)
     {
         $user = User::where('email', $entity['email'])
-                    ->where('status', '!=', Config::get('status.delete'))
+                    ->where('status', Config::get('status.active'))
+                    ->where('role', '!=', Config::get('roles.user'))
                     ->first();
 
         if ($user!=null)

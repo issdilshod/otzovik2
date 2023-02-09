@@ -4,6 +4,7 @@ namespace App\Http\Services\Admin\Misc;
 
 use App\Http\Services\Service;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Config;
 
 class SystemService extends Service{
 
@@ -64,7 +65,35 @@ class SystemService extends Service{
         ];
 
         $date = Carbon::parse($date);
-        return $date->day . ' ' . $months[$date->month-1] . ' ' . $date->year . (($timeShow)?' - ' . $date->hour . ':' . $date->minute:'');
+        return $date->day . ' ' . $months[$date->month-1] . ' ' . $date->year . (($timeShow)?' ' . $date->hour . ':' . $date->minute:'');
+    }
+
+    static function get_role_name_by_alias($roleAlias)
+    {
+        $roleNames = [
+            'admin' => __('roles_admin'),
+            'admin_double' => __('roles_admin_double'),
+            'content_manager' => __('roles_content_manager'),
+            'user' => __('roles_user')
+        ];
+
+        if (isset($roleNames[$roleAlias])){
+            return $roleNames[$roleAlias];
+        }
+    }
+
+    static function get_role_name_by_id($roleId)
+    {
+        $roleNames = [
+            Config::get('roles.admin') => __('roles_admin'),
+            Config::get('roles.admin_double') => __('roles_admin_double'),
+            Config::get('roles.content_manager') => __('roles_content_manager'),
+            Config::get('roles.user') => __('roles_user')
+        ];
+
+        if (isset($roleNames[$roleId])){
+            return $roleNames[$roleId];
+        }
     }
 
     public static function get_os()
