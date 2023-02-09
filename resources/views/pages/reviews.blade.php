@@ -82,14 +82,18 @@
                     <div class="user-photo"><img src="{{ asset('storage/'.$item->user_avatar) }}" alt=""></div>
                     <div class="review-user-name">{{$item->user_first_name}} {{$item->user_last_name}}</div>
                 </div>
-                <div class="date">{{$item->updated_at}}</div>
+                <div class="date">{{\App\Http\Services\Admin\Misc\SystemService::get_dateTime_human($item->updated_at)}}</div>
                 <div class="rating">
-                    <span><img src="{{ asset('assets/images/star.svg') }}" alt=""></span>
-                    <span><img src="{{ asset('assets/images/star.svg') }}" alt=""></span>
-                    <span><img src="{{ asset('assets/images/star.svg') }}" alt=""></span>
-                    <span><img src="{{ asset('assets/images/star.svg') }}" alt=""></span>
-                    <span><img src="{{ asset('assets/images/star-half.svg') }}" alt=""></span>
-                    <span>4.5</span>
+                    @for ($i = 0; $i < 5; $i++)
+                        @if (($i+.5)==$item->star)
+                            <span><img src="{{ asset('assets/images/star-half.svg') }}" alt=""></span>
+                        @elseif ($i<$item->star)
+                            <span><img src="{{ asset('assets/images/star.svg') }}" alt=""></span>
+                        @else
+                            <span><img src="{{ asset('assets/images/star-empty.svg') }}" alt=""></span> 
+                        @endif
+                    @endfor
+                    <span>{{$item->star}}</span>
                 </div>
                 </div>
                 <p>{{$item->text}}</p>

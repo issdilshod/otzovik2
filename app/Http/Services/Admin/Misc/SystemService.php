@@ -3,6 +3,7 @@
 namespace App\Http\Services\Admin\Misc;
 
 use App\Http\Services\Service;
+use Carbon\Carbon;
 
 class SystemService extends Service{
 
@@ -39,6 +40,31 @@ class SystemService extends Service{
         $device_full = '';
         $device_full = 'Device: ' .  self::get_device() . ', OS: ' . self::get_os() . ', Browser: ' . self::get_browser();
         return $device_full;
+    }
+
+    /**
+     * Returns date to person
+     * 
+     */
+    static function get_dateTime_human($date, $timeShow = false)
+    {
+        $months = [
+            'Январь',
+            'Февраль',
+            'Март',
+            'Апрель',
+            'Май',
+            'Июнь',
+            'Июль',
+            'Август',
+            'Сенятбрь',
+            'Октябрь',
+            'Ноябрь',
+            'Декабр'
+        ];
+
+        $date = Carbon::parse($date);
+        return $date->day . ' ' . $months[$date->month-1] . ' ' . $date->year . (($timeShow)?' - ' . $date->hour . ':' . $date->minute:'');
     }
 
     public static function get_os()

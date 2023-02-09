@@ -77,8 +77,8 @@ class ReviewService extends Service{
                         ->join('users as us', 'us.id', '=', 'r.user_id')
                         ->join('universities as un', 'un.id', '=', 'r.university_id')
                         ->where('r.status', Config::get('status.active'))
-                        // TODO: review star (3.0 - 5.0)
-                        // TODO: random
+                        ->whereBetween('r.star', [3, 5]) // 3.0 - 5.0
+                        ->inRandomOrder() // random order
                         ->limit($count)
                         ->get();
         return $reviews;
@@ -180,16 +180,19 @@ class ReviewService extends Service{
                         ->first();
 
         $reviewCount = Review::where('university_id', $validated['university_id'])
-                    ->count();
+                        ->get()
+                        ->count();
 
         $validated['number'] = $university->index . ((int)$reviewCount + 1);
 
         // star validation
-        if ((float)$validated['star']>5){
-            $validated['star'] = 5;
-        }
-        if ((float)$validated['star']<0){
-            $validated['star'] = 0.0;
+        if (isset($validated['star'])){
+            if ((float)$validated['star']>5){
+                $validated['star'] = 5;
+            }
+            if ((float)$validated['star']<0){
+                $validated['star'] = 0.0;
+            }
         }
 
         return $validated;

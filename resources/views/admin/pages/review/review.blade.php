@@ -41,7 +41,7 @@
         <div class="container-fluid">
             <div class="row">
             <!-- left column -->
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <div class="card-header">
@@ -68,6 +68,15 @@
                                     <select class="form-control select2 universities-select" name="university_id"></select>
                                 </div>
                                     
+                                <div class="form-group">
+                                    <label for="star1">{{__('review_star')}}</label>
+                                    <select class="form-control" name="star" id="star1">
+                                        @for ($i=0; $i <= 5; $i+=.5)
+                                            <option value="{{$i}}" <?php if (isset($review->star) && $review->star==$i){ echo 'selected'; } ?>>{{$i}}</option>
+                                        @endfor
+                                    </select>
+                                </div>
+
                                 <div class="form-group">
                                     <label for="text1">{{__('review_text')}}</label>
                                     <textarea name="text" class="form-control" id="text1" style="height: 200px">@isset($review->text){{ $review->text }}@endisset</textarea>
