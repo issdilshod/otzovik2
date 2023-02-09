@@ -157,6 +157,11 @@
                 }
             });
         });
+
+        // on modal hide
+        $(document).on('hide.bs.modal', "#modal03", function(){
+            window.location.href = '<?=url('universitet/'.$university->slug)?>';
+        });
     </script>
 </div>
 
