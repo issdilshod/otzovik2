@@ -75,9 +75,38 @@
     <!-- text -->
     <div class="text">
       <h3>Об университете</h3>
-      <p>{{$university->description}}</p>
-      <a href="#" class="btn light-btn">Узнать больше</a>
-    </div>   
+      <p id="university-description">{{$university->description}}</p>
+      @if (strlen($university->description)>500)
+      <a href="#" class="btn light-btn" id="show-more-toggle">Узнать больше</a>
+      @endif
+    </div>  
+    @if (strlen($university->description)>500) 
+    <script>
+        var description = '<?=$university->description?>';
+        var isMore = false;
+
+        $(document).ready(function(){
+            $('#university-description').html(description.substring(0, 500) + '...');
+        });
+
+        $(document).on('click', '#show-more-toggle', function (e){
+            e.preventDefault();
+
+            var more = 'Узнать больше';
+            var less = 'Меньще';
+
+            if (isMore){
+                $('#university-description').html(description.substring(0, 500) + '...');
+                isMore = false;
+                $(this).html(more);
+            }else{
+                $('#university-description').html(description);
+                isMore = true;
+                $(this).html(less);
+            }
+        });
+    </script>
+    @endif
     <!-- / text -->
 
     <!-- descript-card -->
