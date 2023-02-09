@@ -61,7 +61,9 @@
                                         @if (isset($user->avatar))
                                         <img src="{{ asset('storage/'.$user->avatar) }}" width="200px" />
                                         @else
-                                        <img src="{{ asset('assets/images/'.\App\Http\Services\Admin\Misc\SystemService::get_sex_by_id($user->sex) . '.jpg') }}" width="200px" />
+                                            @isset($user)
+                                            <img src="{{ asset('assets/images/'.\App\Http\Services\Admin\Misc\SystemService::get_sex_by_id($user->sex) . '.jpg') }}" width="200px" />
+                                            @endisset
                                         @endif
                                     </div>
                                 </div>
