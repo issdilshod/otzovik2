@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\Hash;
 
 class UserService extends Service{
 
+    public function findCount()
+    {
+        $count = User::where('status', '!=', Config::get('status.delete'))
+                    ->count();
+        return $count;
+    }
+
     public function findAll($name = '')
     {
         $users = User::orderBy('first_name')

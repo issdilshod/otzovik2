@@ -55,12 +55,16 @@
             <div class="review-user-name">{{$current_review->user_first_name}} {{$current_review->user_last_name}}</div>
           </div>
           <div class="rating">
-            <span><img src="{{ asset('assets/images/star.svg') }}" alt=""></span>
-            <span><img src="{{ asset('assets/images/star.svg') }}" alt=""></span>
-            <span><img src="{{ asset('assets/images/star.svg') }}" alt=""></span>
-            <span><img src="{{ asset('assets/images/star.svg') }}" alt=""></span>
-            <span><img src="{{ asset('assets/images/star-half.svg') }}" alt=""></span>
-            <span>4.5</span>
+            @for ($i = 0; $i < 5; $i++)
+                @if (($i+.5)==$current_review->star)
+                    <span><img src="{{ asset('assets/images/star-half.svg') }}" alt=""></span>
+                @elseif ($i<$current_review->star)
+                    <span><img src="{{ asset('assets/images/star.svg') }}" alt=""></span>
+                @else
+                    <span><img src="{{ asset('assets/images/star-empty.svg') }}" alt=""></span> 
+                @endif
+            @endfor
+            <span>{{$current_review->star}}</span>
           </div>
         </div>
         <p>{{$current_review->text}}</p>
