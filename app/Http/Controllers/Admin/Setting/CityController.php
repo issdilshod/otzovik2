@@ -67,7 +67,7 @@ class CityController extends Controller
     {
         // permission
         $this->cityService->delete($id);
-        return redirect('admin/settings/city')->with('status', '200');
+        return redirect('admin/settings/cities')->with('status', '200');
     }
 
     public function api_index(Request $request)

@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\Account\UserController;
 use App\Http\Controllers\Admin\Dashboard\DashboardController;
 use App\Http\Controllers\Admin\Review\ReviewController;
 use App\Http\Controllers\Admin\Setting\CityController;
+use App\Http\Controllers\Admin\Setting\EducationLevelController;
 use App\Http\Controllers\Admin\University\DirectionController;
 use App\Http\Controllers\Admin\University\EducationTypeController;
 use App\Http\Controllers\Admin\University\UniversityController;
@@ -82,5 +83,12 @@ Route::middleware(['auth.custom'])->group(function (){
     Route::get('admin/settings/city/{id?}', [CityController::class, 'show']);
     Route::put('admin/settings/city/{id}', [CityController::class, 'update']);
     Route::delete('admin/settings/city/{id}', [CityController::class, 'destroy']);
+
+    // cities
+    Route::get('admin/settings/education_levels', [EducationLevelController::class, 'index']);
+    Route::post('admin/settings/education_level', [EducationLevelController::class, 'store']);
+    Route::get('admin/settings/education_level/{id?}', [EducationLevelController::class, 'show']);
+    Route::put('admin/settings/education_level/{id}', [EducationLevelController::class, 'update']);
+    Route::delete('admin/settings/education_level/{id}', [EducationLevelController::class, 'destroy']);
 
 });

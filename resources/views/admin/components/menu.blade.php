@@ -102,6 +102,12 @@
                             <p>{{__('menu_cities_title')}}</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/admin/settings/education_levels') }}" class="nav-link {{ (request()->is('admin/settings/education_level*')) ? 'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>{{__('menu_education_level_title')}}</p>
+                        </a>
+                    </li>
                 </ul>
             </li>
           
