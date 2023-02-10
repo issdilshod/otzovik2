@@ -31,6 +31,8 @@
     "menu_reviews_title": "Отзывы",
     "menu_articles_title": "Блог",
     "menu_staff_title": "Пользователи",
+    "menu_settings_title": "Настройки",
+    "menu_cities_title": "Города",
 
     "dashboard_title": "Панель управление",
     "dashboard_universities": "ВУЗ-ы",
@@ -108,6 +110,15 @@
     "staff_last_name": "Фамилия",
     "staff_username": "Логин",
     "staff_password": "Пароль",
+
+    "cities_title": "Города",
+    "cities_list_title": "Список городов",
+    "city_name": "Название",
+    "city_sort": "Сортировка",
+    "city_slug": "Ссылка",
+    "city_add_title": "Добавить город",
+    "city_edit_title": "Редактировать",
+    "city_card_title": "Карточка города",
 
     "pagination_prev": "Предыдущий",
     "pagination_next": "Далее",

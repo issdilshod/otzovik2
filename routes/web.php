@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\Account\AuthController;
 use App\Http\Controllers\Admin\Account\UserController;
 use App\Http\Controllers\Admin\Dashboard\DashboardController;
 use App\Http\Controllers\Admin\Review\ReviewController;
+use App\Http\Controllers\Admin\Setting\CityController;
 use App\Http\Controllers\Admin\University\DirectionController;
 use App\Http\Controllers\Admin\University\EducationTypeController;
 use App\Http\Controllers\Admin\University\UniversityController;
@@ -74,5 +75,12 @@ Route::middleware(['auth.custom'])->group(function (){
     Route::get('admin/user/{id?}', [UserController::class, 'get']);
     Route::put('admin/user/{id}', [UserController::class, 'update']);
     Route::delete('admin/user/{id}', [UserController::class, 'destroy']);
+
+    // cities
+    Route::get('admin/settings/cities', [CityController::class, 'index']);
+    Route::post('admin/settings/city', [CityController::class, 'store']);
+    Route::get('admin/settings/city/{id?}', [CityController::class, 'show']);
+    Route::put('admin/settings/city/{id}', [CityController::class, 'update']);
+    Route::delete('admin/settings/city/{id}', [CityController::class, 'destroy']);
 
 });

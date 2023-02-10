@@ -87,6 +87,23 @@
                 </p>
                 </a>
             </li>
+
+            <li class="nav-item {{ (request()->is('admin/settings*')) ? 'menu-open' : '' }}">
+                <a href="#" class="nav-link {{ (request()->is('admin/settings*')) ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-cog"></i>
+                    <p>
+                        {{__('menu_settings_title')}}
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ url('/admin/settings/cities') }}" class="nav-link {{ (request()->is('admin/settings/cit*')) ? 'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>{{__('menu_cities_title')}}</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
           
         </ul>
       </nav>
