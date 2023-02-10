@@ -240,9 +240,10 @@ class UniversityService extends Service{
             // basic
             'name' => 'required',
             'index' => '',
-            'worlds_rate' => 'required',
-            'russian_rate' => 'required',
-            'description' => 'required',
+            'city_id' => '',
+            'worlds_rate' => '',
+            'russian_rate' => '',
+            'description' => '',
             'accreditation' => '',
             // contacts
             'address' => '',

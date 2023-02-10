@@ -108,16 +108,21 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-8">
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="logo1">{{__('university_logo')}}</label>
                                                     <input name="logo" type="file" class="form-control" id="logo1">
                                                 </div>
                                                 @isset($university->logo)
-                                                <div class="preview-logo">
-                                                    <img src="{{ asset('storage/'.$university->logo) }}" />
-                                                </div>
+                                                <img src="{{ asset('storage/'.$university->logo) }}" width="200px"/>
                                                 @endisset
+                                            </div>
+                                            <div class="col-md-4">
+                                                <!-- cities from base -->
+                                                <div class="form-group">
+                                                    <label>{{__('university_city')}}</label>
+                                                    <select class="city-select" data-placeholder="{{__('university_city_select')}}" style="width: 100%;" name="city_id"></select>
+                                                </div>
                                             </div>
 
                                             <div class="col-md-2">
@@ -308,6 +313,27 @@ $(function () {
     }
 
     $('.education-type-select').select2({data: tmpData});
+
+    // city
+    var cities = JSON.parse('<?=json_encode($cities)?>');
+
+    // university direction
+    var universityCityId = '';
+    <?php if (isset($university->id)){ ?>
+    universityCityId = JSON.parse('<?=json_encode($university->city_id)?>');
+    <?php } ?>
+
+    var tmpData = [];
+    for (let key in cities){
+
+        tmpData.push({
+            id: cities[key]['id'],
+            text: cities[key]['name'],
+            selected: (universityCityId==cities[key]['id'])?true:false
+        });
+    }
+
+    $('.city-select').select2({data: tmpData});
 });
 </script>
 <!-- ./Select2 -->

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\University;
 
 use App\Http\Controllers\Controller;
 use App\Http\Services\Admin\Misc\FileService;
+use App\Http\Services\Admin\Setting\CityService;
 use App\Http\Services\Admin\Setting\DirectionService;
 use App\Http\Services\Admin\Setting\EducationTypeService;
 use App\Http\Services\Admin\University\UniversityService;
@@ -16,6 +17,7 @@ class UniversityController extends Controller
     private $fileService;
     private $directionsService;
     private $educationTypeService;
+    private $citySevice;
 
     public function __construct()
     {
@@ -23,6 +25,7 @@ class UniversityController extends Controller
         $this->fileService = new FileService();
         $this->directionsService = new DirectionService();
         $this->educationTypeService = new EducationTypeService();
+        $this->citySevice = new CityService();
     }
     
     public function index(Request $request)
@@ -62,6 +65,8 @@ class UniversityController extends Controller
             $data['university'] = $this->universityService->find($id);
             $data['title'] = __('university_edit_title') . ' ' . $data['university']->name;
         }
+
+        $data['cities'] = $this->citySevice->getAll();
 
         return view('admin.pages.university.university', $data);
     }

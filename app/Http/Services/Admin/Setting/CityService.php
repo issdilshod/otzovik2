@@ -34,6 +34,15 @@ class CityService extends Service{
         return $city;
     }
 
+    public function getAll()
+    {
+        $cities = City::where('status', Config::get('status.active'))
+                    ->orderByRaw('ISNULL(sort), sort ASC')
+                    ->orderBy('name')
+                    ->get();
+        return $cities;
+    }
+
     /**
      * Add & Update
      * 
