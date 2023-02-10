@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Services\Admin\Misc\FileService;
 use App\Http\Services\Admin\Setting\CityService;
 use App\Http\Services\Admin\Setting\DirectionService;
+use App\Http\Services\Admin\Setting\EducationLevelService;
 use App\Http\Services\Admin\Setting\EducationTypeService;
 use App\Http\Services\Admin\University\UniversityService;
 use Illuminate\Http\Request;
@@ -17,6 +18,7 @@ class UniversityController extends Controller
     private $fileService;
     private $directionsService;
     private $educationTypeService;
+    private $educationLevelService;
     private $citySevice;
 
     public function __construct()
@@ -25,6 +27,7 @@ class UniversityController extends Controller
         $this->fileService = new FileService();
         $this->directionsService = new DirectionService();
         $this->educationTypeService = new EducationTypeService();
+        $this->educationLevelService = new EducationLevelService();
         $this->citySevice = new CityService();
     }
     
@@ -60,6 +63,7 @@ class UniversityController extends Controller
 
         $data['directions'] = $this->directionsService->getAll();
         $data['education_types'] = $this->educationTypeService->getAll();
+        $data['education_levels'] = $this->educationLevelService->getAll();
 
         if ($id!=''){
             $data['university'] = $this->universityService->find($id);

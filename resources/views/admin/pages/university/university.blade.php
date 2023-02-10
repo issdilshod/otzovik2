@@ -241,6 +241,14 @@
                                                     <select class="education-type-select" multiple="multiple" data-placeholder="{{__('university_education_type_select')}}" style="width: 100%;" name="education_types[]"></select>
                                                 </div>
                                             </div>
+
+                                            <!-- education level from base -->
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>{{__('university_education_level')}}</label>
+                                                    <select class="education-level-select" multiple="multiple" data-placeholder="{{__('university_education_level_select')}}" style="width: 100%;" name="education_levels[]"></select>
+                                                </div>
+                                            </div>
                                             
 
                                         </div>
@@ -313,6 +321,30 @@ $(function () {
     }
 
     $('.education-type-select').select2({data: tmpData});
+
+    // Education level
+    var educationLevels = JSON.parse('<?=json_encode($education_levels)?>');
+
+    // university education level
+    var universityEducationLevels = [];
+    <?php if (isset($university->id)){ ?>
+    universityEducationLevels = JSON.parse('<?=json_encode($university->education_levels)?>');
+    <?php } ?>
+
+    tmpData = [];
+    for (let key in educationLevels){
+
+        // search if selected
+        var found = universityEducationLevels.findIndex((i) => i.education_level_id==educationLevels[key]['id']);
+
+        tmpData.push({
+            id: educationLevels[key]['id'],
+            text: educationLevels[key]['name'],
+            selected: (found>-1)?true:false
+        });
+    }
+
+    $('.education-level-select').select2({data: tmpData});
 
     // city
     var cities = JSON.parse('<?=json_encode($cities)?>');
