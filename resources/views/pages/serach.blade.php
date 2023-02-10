@@ -47,9 +47,9 @@
             <div class="form-group size03">
                 <label>Уровень образования</label>
                 <select data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}'>
-                <option value="">Высшее</option>
-                <option value="">Высшее</option>
-                <option value="">Высшее</option>              
+                    @foreach ($education_levels as $education_level)
+                        <option value="{{$education_level->id}}">{{$education_level->name}}</option>
+                    @endforeach                
                 </select>
             </div>
             <div class="form-group size04">

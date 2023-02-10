@@ -34,6 +34,15 @@ class EducationLevelService extends Service{
         return $educationLevel;
     }
 
+    public function getAll()
+    {
+        $educationLevels = EducationLevel::where('status', Config::get('status.active'))
+                            ->orderByRaw('ISNULL(sort), sort ASC')
+                            ->orderBy('name')
+                            ->get();
+        return $educationLevels;
+    }
+
     /**
      * Add & update
      * 

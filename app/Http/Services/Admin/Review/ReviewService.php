@@ -101,13 +101,31 @@ class ReviewService extends Service{
         return $reviews;
     }
 
+    public function other_university($universityId, $count = 5)
+    {
+        $reviews = Review::from('reviews as r')
+                        ->select([
+                            'r.*',
+                            'us.first_name as user_first_name', 'us.last_name as user_last_name',
+                            'un.name as university_name'
+                        ])
+                        ->join('users as us', 'us.id', '=', 'r.user_id')
+                        ->join('universities as un', 'un.id', '=', 'r.university_id')
+                        ->where('r.university_id', $universityId)
+                        ->where('r.status', Config::get('status.active'))
+                        ->orderBy('r.updated_at', 'desc')
+                        ->limit($count)
+                        ->get();
+        return $reviews;
+    }
+
     public function findByNumber($reviewNumber)
     {
         $review = Review::from('reviews as r')
                     ->select([
                         'r.*',
                         'us.first_name as user_first_name', 'us.last_name as user_last_name', 'us.avatar as user_avatar',
-                        'un.name as university_name', 'un.logo as university_logo', 'un.slug as university_slug'
+                        'un.id as university_id', 'un.name as university_name', 'un.logo as university_logo', 'un.slug as university_slug'
                     ])
                     ->join('universities as un', 'un.id', '=', 'r.university_id')
                     ->join('users as us', 'us.id', '=', 'r.user_id')

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Services\Admin\Review\ReviewService;
 use App\Http\Services\Admin\Setting\DirectionService;
+use App\Http\Services\Admin\Setting\EducationLevelService;
 use App\Http\Services\Admin\Setting\EducationTypeService;
 use App\Http\Services\Admin\University\UniversityService;
 use Illuminate\Http\Request;
@@ -15,6 +16,7 @@ class MainController extends Controller
     private $directionService;
     private $educationTypeService;
     private $reviewService;
+    private $educationLevelService;
 
     public function __construct()
     {
@@ -22,6 +24,7 @@ class MainController extends Controller
         $this->directionService = new DirectionService();
         $this->educationTypeService = new EducationTypeService();
         $this->reviewService = new ReviewService();
+        $this->educationLevelService = new EducationLevelService();
     }
     
     // page main
@@ -46,22 +49,15 @@ class MainController extends Controller
     {
         $data['title'] = __('search_page_title');
 
-        // directions
         $data['directions'] = $this->directionService->getAll();
-
-        // education types
         $data['education_types'] = $this->educationTypeService->getAll();
+        $data['education_levels'] = $this->educationLevelService->getAll();
 
         // search result universities
         $data['list'] = $this->universityService->findAllFront();
 
-        // popular universities
         $data['popular_universities'] = $this->universityService->popular();
-
-        // popular reviews
         $data['popular_reviews'] = $this->reviewService->popular();
-
-        // last reviews
         $data['last_reviews'] = $this->reviewService->last();
 
         return view('pages.serach', $data);
@@ -136,12 +132,6 @@ class MainController extends Controller
     {
         $data['title'] = __('review_page_title');
 
-        // popular universities
-        $data['popular_universities'] = $this->universityService->popular();
-
-        // popular reviews
-        $data['popular_reviews'] = $this->reviewService->popular();
-
         $data['current_review'] = $this->reviewService->findByNumber($reviewNumber);
 
         if (!$data['current_review']){
@@ -150,7 +140,10 @@ class MainController extends Controller
 
         $data['title'] .= ' ' . $data['current_review']->university_name . ' № ' . $data['current_review']->number;
 
-        // TODO: other reviews of university
+        $data['popular_universities'] = $this->universityService->popular();
+        $data['popular_reviews'] = $this->reviewService->popular();
+        $data['university_reviews'] = $this->reviewService->other_university($data['current_review']->university_id);
+
 
         return view('pages.review', $data);
     }

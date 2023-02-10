@@ -88,7 +88,7 @@
 
 <div class="bg-box">
     <div class="container">
-        <!-- university review -->
+        @include('components.reviews.university')
     </div>
 </div>
 
