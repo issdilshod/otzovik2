@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin\University;
 
 use App\Http\Controllers\Controller;
 use App\Http\Services\Admin\Misc\FileService;
-use App\Http\Services\Admin\University\DirectionService;
-use App\Http\Services\Admin\University\EducationTypeService;
+use App\Http\Services\Admin\Setting\DirectionService;
+use App\Http\Services\Admin\Setting\EducationTypeService;
 use App\Http\Services\Admin\University\UniversityService;
 use Illuminate\Http\Request;
 
@@ -32,7 +32,7 @@ class UniversityController extends Controller
 
         $data['list'] = $this->universityService->findAll();
 
-        return view('admin.pages.universities.university.universities', $data);
+        return view('admin.pages.university.universities', $data);
     }
 
     public function store(Request $request)
@@ -44,10 +44,10 @@ class UniversityController extends Controller
         $validated['logo'] = $this->fileService->upload($request, $validated['name']);
 
         if ($this->universityService->create($validated)){
-            return redirect('admin/universities/universities')->with('status', '200');
+            return redirect('admin/universities')->with('status', '200');
         }
 
-        return redirect('admin/universities/universities')->with('status', '500');
+        return redirect('admin/universities')->with('status', '500');
     }
 
     public function get(Request $request, $id = '')
@@ -63,7 +63,7 @@ class UniversityController extends Controller
             $data['title'] = __('university_edit_title') . ' ' . $data['university']->name;
         }
 
-        return view('admin.pages.universities.university.university', $data);
+        return view('admin.pages.university.university', $data);
     }
 
     public function update(Request $request, $id)
@@ -76,10 +76,10 @@ class UniversityController extends Controller
 
         if ($this->universityService->update($validated, $id))
         {
-            return redirect('admin/universities/universities')->with('status', '200'); 
+            return redirect('admin/universities')->with('status', '200'); 
         }
 
-        return redirect('admin/universities/universities')->with('status', '500');
+        return redirect('admin/universities')->with('status', '500');
     }
 
     public function destroy(Request $request, $id)
@@ -87,7 +87,7 @@ class UniversityController extends Controller
         // permission
         $this->universityService->delete($id);
 
-        return redirect('admin/universities/universities')->with('status', 'ok');
+        return redirect('admin/universities')->with('status', 'ok');
     }
 
 }

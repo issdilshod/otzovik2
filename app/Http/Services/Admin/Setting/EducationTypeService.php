@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Services\Admin\University;
+namespace App\Http\Services\Admin\Setting;
 
 use App\Http\Services\Admin\Misc\StringService;
 use App\Http\Services\Service;
-use App\Models\Admin\University\EducationType;
+use App\Models\Admin\Setting\EducationType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 

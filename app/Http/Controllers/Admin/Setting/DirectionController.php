@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Admin\University;
+namespace App\Http\Controllers\Admin\Setting;
 
 use App\Http\Controllers\Controller;
-use App\Http\Services\Admin\University\DirectionService;
+use App\Http\Services\Admin\Setting\DirectionService;
 use Illuminate\Http\Request;
 
 class DirectionController extends Controller
@@ -23,7 +23,7 @@ class DirectionController extends Controller
 
         $data['list'] = $this->directionService->findAll();
 
-        return view('admin.pages.universities.direction.directions', $data);
+        return view('admin.pages.setting.direction.directions', $data);
     }
 
     public function store(Request $request)
@@ -32,10 +32,10 @@ class DirectionController extends Controller
         $validated = $this->directionService->validate($request);
 
         if ($this->directionService->create($validated)){
-            return redirect('admin/universities/directions')->with('status', '200');
+            return redirect('admin/settings/directions')->with('status', '200');
         }
 
-        return redirect('admin/universities/directions')->with('status', '500');
+        return redirect('admin/settings/directions')->with('status', '500');
     }
 
     public function get(Request $request, $id = '')
@@ -48,7 +48,7 @@ class DirectionController extends Controller
             $data['title'] = __('direction_edit_title') . ' ' . $data['direction']->name;
         }
 
-        return view('admin.pages.universities.direction.direction', $data);
+        return view('admin.pages.setting.direction.direction', $data);
     }
 
     public function update(Request $request, $id)
@@ -57,10 +57,10 @@ class DirectionController extends Controller
         $validated = $this->directionService->validate($request);
 
         if ($this->directionService->update($validated, $id)){
-            return redirect('admin/universities/directions')->with('status', '200');
+            return redirect('admin/settings/directions')->with('status', '200');
         }
 
-        return redirect('admin/universities/directions')->with('status', '500');
+        return redirect('admin/settings/directions')->with('status', '500');
     }
 
     public function destroy(Request $request, $id)
@@ -68,7 +68,7 @@ class DirectionController extends Controller
         // permission
         $this->directionService->delete($id);
 
-        return redirect('admin/universities/directions')->with('status', 'ok');
+        return redirect('admin/settings/directions')->with('status', 'ok');
     }
 
 }

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Services\Admin\Review\ReviewService;
-use App\Http\Services\Admin\University\DirectionService;
-use App\Http\Services\Admin\University\EducationTypeService;
+use App\Http\Services\Admin\Setting\DirectionService;
+use App\Http\Services\Admin\Setting\EducationTypeService;
 use App\Http\Services\Admin\University\UniversityService;
 use Illuminate\Http\Request;
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Admin\University;
+namespace App\Http\Controllers\Admin\Setting;
 
 use App\Http\Controllers\Controller;
-use App\Http\Services\Admin\University\EducationTypeService;
+use App\Http\Services\Admin\Setting\EducationTypeService;
 use Illuminate\Http\Request;
 
 class EducationTypeController extends Controller
@@ -22,7 +22,7 @@ class EducationTypeController extends Controller
 
         $data['list'] = $this->educationTypeService->findAll();
 
-        return view('admin.pages.universities.education_type.education_types', $data);
+        return view('admin.pages.setting.education_type.education_types', $data);
     }
 
     public function store(Request $request)
@@ -31,10 +31,10 @@ class EducationTypeController extends Controller
         $validated = $this->educationTypeService->validate($request);
 
         if ($this->educationTypeService->create($validated)){
-            return redirect('admin/universities/education_types')->with('status', '200');
+            return redirect('admin/settings/education_types')->with('status', '200');
         }
 
-        return redirect('admin/universities/education_types')->with('status', '500');
+        return redirect('admin/settings/education_types')->with('status', '500');
     }
 
     public function get(Request $request, $id = '')
@@ -47,7 +47,7 @@ class EducationTypeController extends Controller
             $data['title'] = __('education_type_edit_title') . ' ' . $data['education_type']->name;
         }
 
-        return view('admin.pages.universities.education_type.education_type', $data);
+        return view('admin.pages.setting.education_type.education_type', $data);
     }
 
     public function update(Request $request, $id)
@@ -56,10 +56,10 @@ class EducationTypeController extends Controller
         $validated = $this->educationTypeService->validate($request);
 
         if ($this->educationTypeService->update($validated, $id)){
-            return redirect('admin/universities/education_types')->with('status', '200');
+            return redirect('admin/settings/education_types')->with('status', '200');
         }
 
-        return redirect('admin/universities/education_types')->with('status', '500');
+        return redirect('admin/settings/education_types')->with('status', '500');
     }
 
     public function destroy(Request $request, $id)
@@ -67,7 +67,7 @@ class EducationTypeController extends Controller
         //permission
         $this->educationTypeService->delete($id);
 
-        return redirect('admin/universities/education_types')->with('status', 'ok');
+        return redirect('admin/settings/education_types')->with('status', 'ok');
     }
 
 }
