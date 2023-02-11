@@ -1,5 +1,4 @@
-<div class="bg-box">
-    <div class="container">
+<div class="container">
       <!-- top-rate -->
       <div class="top-rate">
         <div class="centered-title">
@@ -27,7 +26,7 @@
                 <div class="top-table-row">
                     <div class="cell cell01">{{\Illuminate\Support\Str::of(($key+1))->padLeft(2, '0')}}</div>
                     <div class="cell cell04"><img src="{{ asset('storage/'.$university->logo) }}" alt=""></div>
-                    <div class="cell cell02"><p>{{$university->name}}</p></div>
+                    <div class="cell cell02"><p><a href="{{url('/universitet/'.$university->slug)}}">{{$university->name}}</a></p></div>
                     <div class="cell cell03" data-title="Мировой рейтинг">
                         <div class="rate-info">
                         <span class="ico">
@@ -65,5 +64,4 @@
         <div class="text-center"><a href="{{url('/top-universitety')}}" class="btn">Посмотреть все</a></div>
       </div>
       <!-- / top-rate -->
-    </div>
 </div>

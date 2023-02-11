@@ -32,9 +32,19 @@
                     @endfor
                     <span>{{$review->star}}</span>
                 </div>
-                <p>{{\Illuminate\Support\Str::limit($review->text, 179, '...')}}</p>
+                <p>
+                    <a href="{{url('/otzyv/'.$review->number)}}">
+                        {{\Illuminate\Support\Str::limit($review->text, 179, '...')}}
+                    </a>
+                </p>
                 <div class="review-subtitle">Отзыв про:</div>
-                <p><strong>{{$review->university_name}}</strong></p>
+                <p>
+                    <strong>
+                        <a href="{{url('/universitet/'.$review->university_slug)}}">
+                            {{$review->university_name}}
+                        </a>
+                    </strong>
+                </p>
                 </div>
             </div>
         @endforeach

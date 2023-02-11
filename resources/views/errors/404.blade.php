@@ -22,7 +22,7 @@
       <div class="error-message-img"><img src="{{ asset('assets/images/error-img.svg')}}" alt=""></div>
       <div class="headline">Упс, страница не найдена!</div>
       <p>Проверьте ещё раз адрес страницы и введите его снова или перейдите на главную страницу и найти там ссылки на нужные данные.</p>
-      <a href="#" class="btn">На главную страницу</a>
+      <a href="{{url('/')}}" class="btn">На главную страницу</a>
     </div>
   </div>  
 </main>

@@ -27,7 +27,7 @@
 }
 
 .trans, .review-card p a, .ch-item label:after, .ch-item label:before, .review-bottm-nav .ico svg, .back .ico svg, .content-socially li a, .descript-tabs li button, .tags li a, .pagination .page-prev:before,
-.pagination .page-next:before, .pagination .page-link, .jcf-list .jcf-option, .jcf-select .jcf-select-opener:before, .input-hint ul li a, .form-btn, .city-list li a, .breadcrumb li a, .nav-ico:before, .nav-ico:after, .backdrop, .sm-socially li a svg, .send-btn, .news-card-title, .info-tabs .nav-item .nav-link, .top-table-row p, .top-table-row img, .top-table-row, .review-card, .main-nav li a, .socially li a svg, .socially li a, .location svg, .location:before, .location, a, .has-ico svg, .btn {
+.pagination .page-next:before, .pagination .page-link, .jcf-list .jcf-option, .jcf-select .jcf-select-opener:before, .input-hint ul li a, .form-btn, .city-list li a, .breadcrumb li a, .nav-ico:before, .nav-ico:after, .backdrop, .sm-socially li a svg, .send-btn, .news-card-title, .info-tabs .nav-item .nav-link, .top-table-row p a, .top-table-row p, .top-table-row img, .top-table-row, .review-card, .main-nav li a, .socially li a svg, .socially li a, .location svg, .location:before, .location, a, .has-ico svg, .btn {
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
@@ -161,7 +161,7 @@ p strong {
   font-weight: 500;
 }
 
-.align, .review-bottm-nav a, .institution-title a, .city-list li a, .footer-btm a, .f-list li a, .color, .logo, svg {
+.align, .review-card p a, .review-bottm-nav a, .institution-title a, .city-list li a, .footer-btm a, .f-list li a, .top-table-row p a, .color, .logo, svg {
   display: inline-block;
   vertical-align: top;
 }
@@ -935,6 +935,13 @@ h4 {
   line-height: 26px;
   font-weight: 700;
   margin-bottom: 0;
+}
+.top-table-row p a {
+  text-decoration: none;
+  color: #333333;
+}
+.top-table-row p a:hover {
+  color: #5280E2;
 }
 
 .rate-info {

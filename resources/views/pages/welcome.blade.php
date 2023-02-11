@@ -91,8 +91,10 @@
     <!-- / attrackt -->  
 
 </div>
-    
-@include('components.universities.top')
+
+<div class="bg-box">
+    @include('components.universities.top')
+</div>
 
 <div class="container">
 

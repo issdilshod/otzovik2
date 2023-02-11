@@ -38,7 +38,7 @@ class ReviewService extends Service{
                     ->select([
                         'r.*', 
                         'us.first_name as user_first_name', 'us.last_name as user_last_name', 'us.avatar as user_avatar',
-                        'un.id as university_id', 'un.name as university_name', 'un.logo as university_logo'
+                        'un.id as university_id', 'un.name as university_name', 'un.logo as university_logo', 'un.slug as university_slug'
                     ])
                     ->join('users as us', 'us.id', '=', 'r.user_id')
                     ->join('universities as un', 'un.id', '=', 'r.university_id')
@@ -57,7 +57,8 @@ class ReviewService extends Service{
                         ->select([
                             'r.*', 
                             'us.avatar as user_avatar', 'us.first_name as user_first_name', 'us.last_name as user_last_name', 
-                            'un.name as university_name', 'un.logo as university_logo', 'un.slug as university_slug'])
+                            'un.name as university_name', 'un.logo as university_logo', 'un.slug as university_slug'
+                        ])
                         ->join('users as us', 'us.id', '=', 'r.user_id')
                         ->join('universities as un', 'un.id', '=', 'r.university_id')
                         ->orderBy('r.created_at', 'desc')
@@ -72,7 +73,7 @@ class ReviewService extends Service{
                         ->select([
                             'r.*',
                             'us.first_name as user_first_name', 'us.last_name as user_last_name',
-                            'un.name as university_name'
+                            'un.name as university_name', 'un.slug as university_slug'
                         ])
                         ->join('users as us', 'us.id', '=', 'r.user_id')
                         ->join('universities as un', 'un.id', '=', 'r.university_id')
@@ -90,7 +91,7 @@ class ReviewService extends Service{
                         ->select([
                             'r.*',
                             'us.first_name as user_first_name', 'us.last_name as user_last_name',
-                            'un.name as university_name'
+                            'un.name as university_name', 'un.slug as university_slug'
                         ])
                         ->join('users as us', 'us.id', '=', 'r.user_id')
                         ->join('universities as un', 'un.id', '=', 'r.university_id')
@@ -107,7 +108,7 @@ class ReviewService extends Service{
                         ->select([
                             'r.*',
                             'us.first_name as user_first_name', 'us.last_name as user_last_name',
-                            'un.name as university_name'
+                            'un.name as university_name', 'un.slug as university_slug'
                         ])
                         ->join('users as us', 'us.id', '=', 'r.user_id')
                         ->join('universities as un', 'un.id', '=', 'r.university_id')
