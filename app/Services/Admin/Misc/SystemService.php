@@ -105,6 +105,12 @@ class SystemService extends Service{
         }
     }
 
+    static function get_date_for_blog($date)
+    {
+        $data = Carbon::parse($date);
+        return $data->day . '.' . $data->month . '.' . $data->year;
+    }
+
     public static function get_os()
     {
         $user_agent = self::user_agent();

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\Admin\Blog\ArticleService;
 use App\Services\Admin\Review\ReviewService;
 use App\Services\Admin\Setting\DirectionService;
 use App\Services\Admin\Setting\EducationLevelService;
@@ -17,6 +18,7 @@ class MainController extends Controller
     private $educationTypeService;
     private $reviewService;
     private $educationLevelService;
+    private $articleService;
 
     public function __construct()
     {
@@ -25,6 +27,7 @@ class MainController extends Controller
         $this->educationTypeService = new EducationTypeService();
         $this->reviewService = new ReviewService();
         $this->educationLevelService = new EducationLevelService();
+        $this->articleService = new ArticleService();
     }
     
     // page main
@@ -153,6 +156,9 @@ class MainController extends Controller
     {
         $data['title'] = __('articles_page_title');
 
+        // articles
+        $data['list'] = $this->articleService->findAllFront();
+
         // popular reviews
         $data['popular_reviews'] = $this->reviewService->popular();
 
@@ -166,6 +172,12 @@ class MainController extends Controller
     public function article(Request $request, $articleSlug)
     {
         $data['title'] = __('article_page_title');
+
+        $data['current_article'] = $this->articleService->findBySlug($articleSlug);
+
+        if (!$data['current_article']){
+            abort(404);
+        }
 
         // popular universities
         $data['popular_universities'] = $this->universityService->popular();

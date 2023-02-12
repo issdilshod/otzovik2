@@ -26,6 +26,32 @@ class ArticleService extends Service{
         return $article;
     }
 
+    public function findAllFront()
+    {
+        $articles = Article::orderBy('updated_at', 'desc')
+                            ->where('status', Config::get('status.active'))
+                            ->paginate(Config::get('pagination.per_page'));
+        return $articles;
+    }
+
+    public function findBySlug($slug)
+    {
+        $article = Article::from('articles as a')
+                        ->select([
+                            'a.*',
+                            'us.id as user_id', 'us.first_name as user_first_name', 'us.last_name as user_last_name'
+                        ])
+                        ->join('users as us', 'us.id', '=', 'a.user_id')
+                        ->where('a.status', Config::get('status.active'))
+                        ->where('a.slug', $slug)
+                        ->first();
+        if ($article==null){
+            return false;
+        }
+
+        return $article;
+    }
+
     public function save($article, $id = '')
     {
         // slug
