@@ -36,7 +36,7 @@
               <div class="icon">
                 <i class="fa fa-building"></i>
               </div>
-              <a href="{{ url('/admin/universities/universities') }}" class="small-box-footer">{{__('dashboard_go')}} <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ url('/admin/universities') }}" class="small-box-footer">{{__('dashboard_go')}} <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

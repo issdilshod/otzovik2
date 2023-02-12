@@ -72,13 +72,13 @@
                                         @if(isset($value->avatar))
                                         <img src="{{ asset('storage/'.$value->avatar) }}" width="50px" />
                                         @else
-                                        <img src="{{ asset('assets/images/'.\App\Http\Services\Admin\Misc\SystemService::get_sex_by_id($value->sex) . '.jpg') }}" width="50px" />
+                                        <img src="{{ asset('assets/images/'.\App\Services\Admin\Misc\SystemService::get_sex_by_id($value->sex) . '.jpg') }}" width="50px" />
                                         @endif
                                         {{$value->first_name . ' ' . $value->last_name}}</td>
                                     <td>{{$value->email}}</td>
                                     <td>{{$value->phone}}</td>
-                                    <td>{{\App\Http\Services\Admin\Misc\SystemService::get_role_name_by_id($value->role)}}</td>
-                                    <td>{{\App\Http\Services\Admin\Misc\SystemService::get_dateTime_human($value->created_at, true)}}</td>
+                                    <td>{{\App\Services\Admin\Misc\SystemService::get_role_name_by_id($value->role)}}</td>
+                                    <td>{{\App\Services\Admin\Misc\SystemService::get_dateTime_human($value->created_at, true)}}</td>
                                     <td class="text-right">
                                         <div class="d-flex">
                                             <div class="ml-auto">

@@ -98,6 +98,16 @@
     "review_star": "Рейтинг",
     "review_text": "Текст отзыва",
 
+    "articles_title": "Посты",
+    "articles_list_title": "Список постов",
+    "article_add_title": "Добавить пост",
+    "article_edit_title": "Редактировать",
+    "article_card_title": "Карточка поста",
+    "article_title": "Заголовок",
+    "article_cover": "Фото",
+    "article_text": "Описание",
+    "article_slug": "Ссылка",
+
     "staff_title": "Пользователи",
     "staff_list_title": "Список пользователей",
     "staff_name": "ФИО",

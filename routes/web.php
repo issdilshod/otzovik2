@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\Account\AuthController;
 use App\Http\Controllers\Admin\Account\UserController;
+use App\Http\Controllers\Admin\Blog\ArticleController;
 use App\Http\Controllers\Admin\Dashboard\DashboardController;
 use App\Http\Controllers\Admin\Review\ReviewController;
 use App\Http\Controllers\Admin\Setting\CityController;
@@ -55,6 +56,13 @@ Route::middleware(['auth.custom'])->group(function (){
     Route::get('admin/review/{id?}', [ReviewController::class, 'get']);
     Route::put('admin/review/{id}', [ReviewController::class, 'update']);
     Route::delete('admin/review/{id}', [ReviewController::class, 'destroy']);
+
+    // articles
+    Route::get('admin/articles', [ArticleController::class, 'index']);
+    Route::post('admin/article', [ArticleController::class, 'store']);
+    Route::get('admin/article/{id?}', [ArticleController::class, 'show']);
+    Route::put('admin/article/{id}', [ArticleController::class, 'update']);
+    Route::delete('admin/article/{id}', [ArticleController::class, 'destroy']);
 
     // users
     Route::get('admin/users', [UserController::class, 'index']);
