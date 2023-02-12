@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Services\Admin\University;
+namespace App\Services\Admin\University;
 
-use App\Http\Services\Admin\Misc\StringService;
-use App\Http\Services\Service;
+use App\Services\Admin\Misc\StringService;
+use App\Services\Service;
 use App\Models\Admin\University\University;
 use App\Models\Admin\University\UniversityDirection;
 use App\Models\Admin\University\UniversityEducationLevel;

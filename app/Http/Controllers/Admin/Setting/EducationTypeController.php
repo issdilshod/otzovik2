@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Setting;
 
 use App\Http\Controllers\Controller;
-use App\Http\Services\Admin\Setting\EducationTypeService;
+use App\Services\Admin\Setting\EducationTypeService;
 use Illuminate\Http\Request;
 
 class EducationTypeController extends Controller

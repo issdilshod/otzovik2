@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Services\Admin\Account;
+namespace App\Services\Admin\Account;
 
-use App\Http\Services\Service;
+use App\Services\Service;
 use App\Models\Admin\Account\User;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Hash;

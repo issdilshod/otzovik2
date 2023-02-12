@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Services\Admin\Setting;
+namespace App\Services\Admin\Setting;
 
-use App\Http\Services\Admin\Misc\StringService;
-use App\Http\Services\Service;
+use App\Services\Admin\Misc\StringService;
+use App\Services\Service;
 use App\Models\Admin\Setting\EducationLevel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Services\Admin\Misc;
+namespace App\Services\Admin\Misc;
 
-use App\Http\Services\Service;
+use App\Services\Service;
 
 class ImageService extends Service{
 

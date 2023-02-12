@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Services\Admin\Review;
+namespace App\Services\Admin\Review;
 
-use App\Http\Services\Service;
+use App\Services\Service;
 use App\Models\Admin\Review\Review;
 use App\Models\Admin\University\University;
 use Illuminate\Http\Request;

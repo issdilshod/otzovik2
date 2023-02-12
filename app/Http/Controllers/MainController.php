@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Services\Admin\Review\ReviewService;
-use App\Http\Services\Admin\Setting\DirectionService;
-use App\Http\Services\Admin\Setting\EducationLevelService;
-use App\Http\Services\Admin\Setting\EducationTypeService;
-use App\Http\Services\Admin\University\UniversityService;
+use App\Services\Admin\Review\ReviewService;
+use App\Services\Admin\Setting\DirectionService;
+use App\Services\Admin\Setting\EducationLevelService;
+use App\Services\Admin\Setting\EducationTypeService;
+use App\Services\Admin\University\UniversityService;
 use Illuminate\Http\Request;
 
 class MainController extends Controller

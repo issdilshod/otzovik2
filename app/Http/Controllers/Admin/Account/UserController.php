@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin\Account;
 
 use App\Http\Controllers\Controller;
-use App\Http\Services\Admin\Account\UserService;
-use App\Http\Services\Admin\Misc\FileService;
+use App\Services\Admin\Account\UserService;
+use App\Services\Admin\Misc\FileService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 

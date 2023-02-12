@@ -18,7 +18,7 @@
             <div class="swiper-slide">
                 <div class="review-card">
                 <div class="review-user-name">{{$review->user_first_name}} {{$review->user_last_name}}</div>
-                <div class="date">{{\App\Http\Services\Admin\Misc\SystemService::get_dateTime_human($review->updated_at)}}</div>
+                <div class="date">{{\App\Services\Admin\Misc\SystemService::get_dateTime_human($review->updated_at)}}</div>
                 <div class="rating">
                     @for ($i = 0; $i < 5; $i++)
                         @if (($i+.5)==$review->star)

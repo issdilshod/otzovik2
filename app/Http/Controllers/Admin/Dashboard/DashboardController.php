@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Http\Services\Admin\Account\UserService;
-use App\Http\Services\Admin\Review\ReviewService;
-use App\Http\Services\Admin\University\UniversityService;
+use App\Services\Admin\Account\UserService;
+use App\Services\Admin\Review\ReviewService;
+use App\Services\Admin\University\UniversityService;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller

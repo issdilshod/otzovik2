@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin\University;
 
 use App\Http\Controllers\Controller;
-use App\Http\Services\Admin\Misc\FileService;
-use App\Http\Services\Admin\Setting\CityService;
-use App\Http\Services\Admin\Setting\DirectionService;
-use App\Http\Services\Admin\Setting\EducationLevelService;
-use App\Http\Services\Admin\Setting\EducationTypeService;
-use App\Http\Services\Admin\University\UniversityService;
+use App\Services\Admin\Misc\FileService;
+use App\Services\Admin\Setting\CityService;
+use App\Services\Admin\Setting\DirectionService;
+use App\Services\Admin\Setting\EducationLevelService;
+use App\Services\Admin\Setting\EducationTypeService;
+use App\Services\Admin\University\UniversityService;
 use Illuminate\Http\Request;
 
 class UniversityController extends Controller

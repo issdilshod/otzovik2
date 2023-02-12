@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Subscribe;
 
 use App\Http\Controllers\Controller;
-use App\Http\Services\Admin\Subscribe\SubscribeService;
+use App\Services\Admin\Subscribe\SubscribeService;
 use Illuminate\Http\Request;
 
 class SubscribeController extends Controller

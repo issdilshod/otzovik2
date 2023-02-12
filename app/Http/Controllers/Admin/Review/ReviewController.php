@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin\Review;
 
 use App\Http\Controllers\Controller;
-use App\Http\Services\Admin\Account\UserService;
-use App\Http\Services\Admin\Misc\FileService;
-use App\Http\Services\Admin\Review\ReviewService;
-use App\Http\Services\Admin\University\UniversityService;
+use App\Services\Admin\Account\UserService;
+use App\Services\Admin\Misc\FileService;
+use App\Services\Admin\Review\ReviewService;
+use App\Services\Admin\University\UniversityService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 

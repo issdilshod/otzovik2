@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Services\Admin\University;
+namespace App\Services\Admin\University;
 
-use App\Http\Services\Service;
+use App\Services\Service;
 use App\Models\Admin\University\UniversityDirection;
 use Illuminate\Support\Facades\Config;
 

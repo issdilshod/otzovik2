@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Services\Admin\Subscribe;
+namespace App\Services\Admin\Subscribe;
 
-use App\Http\Services\Admin\Misc\SystemService;
-use App\Http\Services\Service;
+use App\Services\Admin\Misc\SystemService;
+use App\Services\Service;
 use App\Models\Admin\Subscribe\Subscribe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Services\Admin\Account;
+namespace App\Services\Admin\Account;
 
-use App\Http\Services\Service;
+use App\Services\Service;
 use App\Models\Admin\Account\AccessToken;
 use App\Models\Admin\Account\User;
 use Carbon\Carbon;
