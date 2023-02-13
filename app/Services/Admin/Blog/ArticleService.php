@@ -52,6 +52,16 @@ class ArticleService extends Service{
         return $article;
     }
 
+    public function popular($count = 3)
+    {
+        $articles = Article::withCount('views')
+                        ->orderBy('views_count', 'desc')
+                        ->where('status', Config::get('status.active'))
+                        ->limit($count)
+                        ->get();
+        return $articles;
+    }
+
     public function save($article, $id = '')
     {
         // slug

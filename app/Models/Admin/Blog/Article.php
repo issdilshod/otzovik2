@@ -21,4 +21,9 @@ class Article extends Model
 
     protected $attributes = ['status' => 1]; // 1 is active
 
+    public function views()
+    {
+        return $this->hasMany(ArticleView::class, 'article_id', 'id');
+    }
+
 }

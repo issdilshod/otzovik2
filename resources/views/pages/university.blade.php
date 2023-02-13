@@ -336,7 +336,7 @@
                         <div class="user-photo"><img src="{{url('storage/'.$item->user_avatar)}}" alt=""></div>
                         <div class="review-user-name">{{$item->user_first_name}} {{$item->user_last_name}}</div>
                     </div>
-                    <div class="date">{{\App\Http\Services\Admin\Misc\SystemService::get_dateTime_human($item->updated_at)}}</div>
+                    <div class="date">{{\App\Services\Admin\Misc\SystemService::get_dateTime_human($item->updated_at)}}</div>
                     <div class="rating">
                         @for ($i = 0; $i < 5; $i++)
                             @if (($i+.5)==$item->star)
