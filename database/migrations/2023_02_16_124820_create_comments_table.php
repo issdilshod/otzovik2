@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('number')->nullable();
             $table->text('text')->nullable();
             $table->string('star')->nullable();
-            $table->string('reply_id')->nullable();
+            $table->string('replay_id')->nullable();
 
             $table->string('status')->nullable();
 

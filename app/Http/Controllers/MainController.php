@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\Admin\Blog\ArticleService;
 use App\Services\Admin\Blog\ArticleViewService;
+use App\Services\Admin\Blog\CommentService;
 use App\Services\Admin\Review\ReviewService;
 use App\Services\Admin\Setting\DirectionService;
 use App\Services\Admin\Setting\EducationLevelService;
@@ -21,6 +22,7 @@ class MainController extends Controller
     private $educationLevelService;
     private $articleService;
     private $articleViewService;
+    private $commentService;
 
     public function __construct()
     {
@@ -31,6 +33,7 @@ class MainController extends Controller
         $this->educationLevelService = new EducationLevelService();
         $this->articleService = new ArticleService();
         $this->articleViewService = new ArticleViewService();
+        $this->commentService = new CommentService();
     }
     
     // page main
@@ -165,6 +168,8 @@ class MainController extends Controller
         if (!$data['current_article']){
             abort(404);
         }
+
+        $data['current_article']['comments'] = $this->commentService->findByArticle($data['current_article']->id);
 
         // view article
         $this->articleViewService->store($data['current_article']->id);

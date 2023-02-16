@@ -16,7 +16,7 @@ class Comment extends Model
         'number',
         'text',
         'star',
-        'reply_id',
+        'replay_id',
         'status'
     ];
 
