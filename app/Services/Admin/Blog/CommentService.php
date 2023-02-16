@@ -6,12 +6,15 @@ use App\Models\Admin\Blog\Comment;
 use App\Services\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
 
 class CommentService extends Service{
 
     public function findByArticle($articleId) 
     {
-        $comments = Comment::from('comments as c')
+        $comments = Comment::
+                    //withCount(['likes', 'dislikes'])
+                    from('comments as c')
                     ->select([
                         'c.*',
                         'u.first_name as user_first_name', 'u.last_name as user_last_name', 'u.avatar as user_avatar',
@@ -25,7 +28,7 @@ class CommentService extends Service{
                     ->where('c.status', Config::get('status.active'))
                     ->orderBy('c.updated_at', 'desc')
                     ->limit(Config::get('pagination.per_page'))
-                    ->get();  
+                    ->get(); 
         return $comments;
     }
 

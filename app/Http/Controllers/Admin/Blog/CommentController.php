@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Blog;
 
 use App\Http\Controllers\Controller;
 use App\Services\Admin\Account\UserService;
+use App\Services\Admin\Blog\CommentLikeService;
 use App\Services\Admin\Blog\CommentService;
 use App\Services\Admin\Misc\FileService;
 use Illuminate\Http\Request;
@@ -15,12 +16,14 @@ class CommentController extends Controller
     private $commentService;
     private $fileService;
     private $userService;
+    private $commentLikeService;
 
     public function __construct()
     {
         $this->commentService = new CommentService();
         $this->fileService = new FileService();
         $this->userService = new UserService();
+        $this->commentLikeService = new CommentLikeService();
     }
     
     public function api_store(Request $request)
@@ -50,6 +53,15 @@ class CommentController extends Controller
         $comment['status'] = Config::get('status.wait');
 
         $this->commentService->save($comment);
+
+        return response()->json(['msg' => 'success'], 200);
+    }
+
+    public function api_like(Request $request)
+    {
+        $commentLike = $this->commentLikeService->validate($request);
+
+        $commentLike = $this->commentLikeService->save($commentLike);
 
         return response()->json(['msg' => 'success'], 200);
     }

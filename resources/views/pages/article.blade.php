@@ -118,14 +118,14 @@
                 </div>
                 <p>{{$comment->text}}</p>
                 <div class="review-bottm-nav">
-                <a href="#" class="like">
+                <a class="like" data-id="{{$comment->id}}" data-type="{{\Illuminate\Support\Facades\Config::get('like.like')}}">
                     <span class="ico">
-                    <svg class="icon">
-                        <use xlink:href="#like-ico"></use>
-                    </svg>
+                        <svg class="icon">
+                            <use xlink:href="#like-ico"></use>
+                        </svg>
                     </span>
                 </a>
-                <a href="#" class="dislike">
+                <a class="like" data-id="{{$comment->id}}" data-type="{{\Illuminate\Support\Facades\Config::get('like.dislike')}}">
                     <span class="ico">
                     <svg class="icon">
                         <use xlink:href="#dislike-ico"></use>
@@ -255,6 +255,20 @@
             // native JS
             let form = document.getElementById('comment-add-form');
             form.scrollIntoView({behavior: "smooth", block: "center"});
+        })
+
+        // like & dislike
+        $(document).on('click', '.like', function (e){
+            e.preventDefault();
+
+            $.ajax({
+                type: 'post',
+                url: '<?=url('api/like')?>',
+                data: {comment_id: $(this).data('id'), type: $(this).data('type')},
+                success: function(res){
+                    // TODO: increment - decrement counter
+                }
+            });
         })
     </script>
 

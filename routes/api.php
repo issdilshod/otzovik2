@@ -10,3 +10,5 @@ Route::post('subscribe', [SubscribeController::class, 'api_store']);
 Route::post('review', [ReviewController::class, 'api_store']);
 
 Route::post('comment', [CommentController::class, 'api_store']);
+
+Route::post('like', [CommentController::class, 'api_like']);
