@@ -25,7 +25,7 @@ class ArticleController extends Controller{
         
         $data['list'] = $this->articleService->findAll();
 
-        return view('admin.pages.article.articles', $data);
+        return view('admin.pages.blog.article.articles', $data);
     }
 
     public function store(Request $request)
@@ -40,10 +40,10 @@ class ArticleController extends Controller{
         $validated['cover'] = $this->fileService->upload($request, $validated['title'], 'cover');
 
         if ($this->articleService->save($validated)){
-            return redirect('admin/articles')->with('status', '201');
+            return redirect('admin/blog/articles')->with('status', '201');
         }
 
-        return redirect('admin/articles')->with('status', '500'); 
+        return redirect('admin/blog/articles')->with('status', '500'); 
     }
 
     public function show(Request $request, $id = '')
@@ -56,7 +56,7 @@ class ArticleController extends Controller{
             $data['title'] = __('article_edit_title') . ' ' . $data['article']->title;
         }
 
-        return view('admin.pages.article.article', $data);
+        return view('admin.pages.blog.article.article', $data);
     }
 
     public function update(Request $request, $id)
@@ -70,10 +70,10 @@ class ArticleController extends Controller{
         $validated['cover'] = $this->fileService->upload($request, $validated['title'], 'cover');
 
         if ($this->articleService->save($validated, $id)){
-            return redirect('admin/articles')->with('status', '200');
+            return redirect('admin/blog/articles')->with('status', '200');
         }
 
-        return redirect('admin/articles')->with('status', '500'); 
+        return redirect('admin/blog/articles')->with('status', '500'); 
     }
 
     public function destroy(Request $request, $id)
@@ -81,7 +81,7 @@ class ArticleController extends Controller{
         // permission
         $this->articleService->delete($id);
 
-        return redirect('admin/articles')->with('status', 'ok');
+        return redirect('admin/blog/articles')->with('status', 'ok');
     }
 
 }

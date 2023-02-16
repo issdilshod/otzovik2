@@ -21,7 +21,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="{{ url('/admin/dashboard') }}"><?=__('menu_dashboard_title')?></a></li>
-                <li class="breadcrumb-item"><a href="{{ url('/admin/articles') }}"><?=__('menu_articles_title')?></a></li>
+                <li class="breadcrumb-item"><a href="{{ url('/admin/blog/articles') }}"><?=__('menu_articles_title')?></a></li>
                 <li class="breadcrumb-item active">
                     @if(isset($article))
                         <?=__('article_edit_title')?>
@@ -48,7 +48,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{url('admin/article')}}@isset($article->id){{ '/'.$article->id }}@endisset" method="post" enctype="multipart/form-data">
+                        <form action="{{url('admin/blog/article')}}@isset($article->id){{ '/'.$article->id }}@endisset" method="post" enctype="multipart/form-data">
                             @csrf
                             @isset($article->id)
                             <input type="hidden" name="id" value="{{$article->id}}" />

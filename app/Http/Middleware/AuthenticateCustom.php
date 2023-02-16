@@ -37,8 +37,8 @@ class AuthenticateCustom
                 if ($userId==null){
                     return redirect('admin/')->with('msg', 'not authenticated')->withCookie(Cookie::forget('token'));
                 }
-                $request->merge(['current_user_id' => $userId]);
-                $request->session()->put('user_id', $userId);
+                $request->merge(['current_user_id' => $userId->id]);
+                $request->session()->put('user_id', $userId->id);
             }else{
                 return redirect('admin/')->with('msg', 'not authenticated');
             }

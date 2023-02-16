@@ -10,6 +10,13 @@ use Illuminate\Support\Facades\Config;
 
 class ArticleService extends Service{
 
+    public function findCount()
+    {
+        $count = Article::where('status', '!=', Config::get('status.delete'))
+                    ->count();
+        return $count;
+    }
+
     public function findAll($name = '')
     {
         $articles = Article::where('status', '!=', Config::get('status.delete'))

@@ -43,28 +43,42 @@
 
             <li class="nav-item">
                 <a href="{{ url('/admin/reviews') }}" class="nav-link {{ (request()->is('admin/review*')) ? 'active' : '' }}">
-                <i class="nav-icon fas fa-star"></i>
-                <p>
-                    {{__('menu_reviews_title')}}
-                </p>
+                    <i class="nav-icon fas fa-star"></i>
+                    <p>
+                        {{__('menu_reviews_title')}}
+                    </p>
                 </a>
             </li>
 
-            <li class="nav-item">
-                <a href="{{ url('/admin/articles') }}" class="nav-link {{ (request()->is('admin/article*')) ? 'active' : '' }}">
-                <i class="nav-icon fas fa-book"></i>
-                <p>
-                    {{__('menu_articles_title')}}
-                </p>
+            <li class="nav-item {{ (request()->is('admin/blog*')) ? 'menu-open' : '' }}">
+                <a href="{{ url('/admin/blog') }}" class="nav-link {{ (request()->is('admin/blog*')) ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-book"></i>
+                    <p>
+                        {{__('menu_blog_title')}}
+                    </p>
                 </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ url('/admin/blog/articles') }}" class="nav-link {{ (request()->is('admin/blog/article*')) ? 'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>{{__('menu_articles_title')}}</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/admin/blog/comments') }}" class="nav-link {{ (request()->is('admin/blog/comment*')) ? 'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>{{__('menu_comments_title')}}</p>
+                        </a>
+                    </li>
+                </ul>
             </li>
 
             <li class="nav-item">
                 <a href="{{ url('/admin/users') }}" class="nav-link {{ (request()->is('admin/user*')) ? 'active' : '' }}">
-                <i class="nav-icon fas fa-users"></i>
-                <p>
-                    {{__('menu_staff_title')}}
-                </p>
+                    <i class="nav-icon fas fa-users"></i>
+                    <p>
+                        {{__('menu_staff_title')}}
+                    </p>
                 </a>
             </li>
 

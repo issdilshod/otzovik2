@@ -58,11 +58,11 @@ Route::middleware(['auth.custom'])->group(function (){
     Route::delete('admin/review/{id}', [ReviewController::class, 'destroy']);
 
     // articles
-    Route::get('admin/articles', [ArticleController::class, 'index']);
-    Route::post('admin/article', [ArticleController::class, 'store']);
-    Route::get('admin/article/{id?}', [ArticleController::class, 'show']);
-    Route::put('admin/article/{id}', [ArticleController::class, 'update']);
-    Route::delete('admin/article/{id}', [ArticleController::class, 'destroy']);
+    Route::get('admin/blog/articles', [ArticleController::class, 'index']);
+    Route::post('admin/blog/article', [ArticleController::class, 'store']);
+    Route::get('admin/blog/article/{id?}', [ArticleController::class, 'show']);
+    Route::put('admin/blog/article/{id}', [ArticleController::class, 'update']);
+    Route::delete('admin/blog/article/{id}', [ArticleController::class, 'destroy']);
 
     // users
     Route::get('admin/users', [UserController::class, 'index']);
