@@ -100,6 +100,8 @@ class MainController extends Controller
             return abort(404);
         }
 
+        $data['university']->statistic = $this->reviewService->staticticByUniversity($data['university']->id);
+
         $data['title'] .= ' ' . $data['university']->name;
         $data['cities'] = $this->cityService->findAll();
 

@@ -216,4 +216,43 @@ class ReviewService extends Service{
         return $validated;
     }
 
+    public function staticticByUniversity($universityId)
+    {
+        $all = Review::where('status', Config::get('status.active'))
+                    ->where('university_id', $universityId)
+                    ->count();
+                
+        $one = Review::where('status', Config::get('status.active'))
+                    ->where('university_id', $universityId)
+                    ->whereBetween('star', [0, 1.5])
+                    ->count();
+
+        $two = Review::where('status', Config::get('status.active'))
+                    ->where('university_id', $universityId)
+                    ->whereBetween('star', [1.6, 2.5])
+                    ->count();
+
+        $three = Review::where('status', Config::get('status.active'))
+                    ->where('university_id', $universityId)
+                    ->whereBetween('star', [2.6, 3.5])
+                    ->count();
+
+        $four = Review::where('status', Config::get('status.active'))
+                    ->where('university_id', $universityId)
+                    ->whereBetween('star', [3.7, 4.5])
+                    ->count();
+
+        $five = Review::where('status', Config::get('status.active'))
+                    ->where('university_id', $universityId)
+                    ->whereBetween('star', [4.6, 5])
+                    ->count();
+        return [
+            'one' => ($one==0?0:($one*100)/$all),
+            'two' => ($two==0?0:($two*100)/$all),
+            'three' => ($three==0?0:($three*100)/$all),
+            'four' => ($four==0?0:($four*100)/$all),
+            'five' => ($five==0?0:($five*100)/$all),
+        ];
+    }
+
 }

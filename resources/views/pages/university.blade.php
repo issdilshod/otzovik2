@@ -17,7 +17,7 @@
           </a>
         </li>
         <li><a href="{{url('/universitety')}}">Университеты</a></li>
-        <li class="active">Карточка Университета</li>
+        <li class="active">{{$university->name}}</li>
       </ol>
     </nav>
 
@@ -132,49 +132,59 @@
               <div class="descript-card-item">
                 <div class="title">Статиситка отзывов</div>
                 <div class="statistic-row">                  
-                  <span>5</span>
-                  <span><span class="shild full"></span></span>
-                  <span><span class="shild full"></span></span>
-                  <span><span class="shild full"></span></span>
-                  <span><span class="shild full"></span></span>
-                  <span><span class="shild full"></span></span>
-                  <span>95%</span>
+                    <span>5</span>
+                    @for ($i = 0; $i <= 100; $i+=20)
+                        @if ($university->statistic['five']>$i)
+                            <span><span class="shild full"></span></span>
+                        @else
+                            <span><span class="shild"></span></span>
+                        @endif  
+                    @endfor
+                    <span>{{$university->statistic['five']}}%</span>
                 </div>
                 <div class="statistic-row">                  
-                  <span>4</span>
-                  <span><span class="shild full"></span></span>
-                  <span><span class="shild full"></span></span>
-                  <span><span class="shild full"></span></span>
-                  <span><span class="shild full"></span></span>
-                  <span><span class="shild"></span></span>
-                  <span>15%</span>
+                    <span>4</span>
+                    @for ($i = 0; $i <= 100; $i+=20)
+                        @if ($university->statistic['four']>$i)
+                            <span><span class="shild full"></span></span>
+                        @else
+                            <span><span class="shild"></span></span>
+                        @endif  
+                    @endfor
+                    <span>{{$university->statistic['four']}}%</span>
                 </div>
                 <div class="statistic-row">                  
-                  <span>3</span>
-                  <span><span class="shild full"></span></span>
-                  <span><span class="shild full"></span></span>
-                  <span><span class="shild full"></span></span>
-                  <span><span class="shild"></span></span>
-                  <span><span class="shild"></span></span>
-                  <span>8%</span>
+                    <span>3</span>
+                    @for ($i = 0; $i <= 100; $i+=20)
+                        @if ($university->statistic['three']>$i)
+                            <span><span class="shild full"></span></span>
+                        @else
+                            <span><span class="shild"></span></span>
+                        @endif  
+                    @endfor
+                    <span>{{$university->statistic['three']}}%</span>
                 </div>
                 <div class="statistic-row">                  
-                  <span>2</span>
-                  <span><span class="shild full"></span></span>
-                  <span><span class="shild full"></span></span>
-                  <span><span class="shild"></span></span>
-                  <span><span class="shild"></span></span>
-                  <span><span class="shild"></span></span>
-                  <span>2%</span>
+                    <span>2</span>
+                    @for ($i = 0; $i <= 100; $i+=20)
+                        @if ($university->statistic['two']>$i)
+                            <span><span class="shild full"></span></span>
+                        @else
+                            <span><span class="shild"></span></span>
+                        @endif  
+                    @endfor
+                    <span>{{$university->statistic['two']}}%</span>
                 </div>
                 <div class="statistic-row">                  
-                  <span>1</span>
-                  <span><span class="shild full"></span></span>
-                  <span><span class="shild"></span></span>
-                  <span><span class="shild"></span></span>
-                  <span><span class="shild"></span></span>
-                  <span><span class="shild"></span></span>
-                  <span>0%</span>
+                    <span>1</span>
+                    @for ($i = 0; $i <= 100; $i+=20)
+                        @if ($university->statistic['one']>$i)
+                            <span><span class="shild full"></span></span>
+                        @else
+                            <span><span class="shild"></span></span>
+                        @endif  
+                    @endfor
+                    <span>{{$university->statistic['one']}}%</span>
                 </div>
               </div>
             </div>
@@ -240,8 +250,9 @@
                 <div>
                   <div class="title">Соц-сети</div>
                   <ul class="content-socially">
+                    @if ($university->facebook_link)
                     <li>
-                      <a href="{{$university->facebook}}" target="_blank">
+                      <a href="{{$university->facebook_link}}" target="_blank">
                         <span class="ico fb">
                           <svg class="icon">
                             <use xlink:href="#fb-ico"></use>
@@ -249,8 +260,10 @@
                         </span>
                       </a>
                     </li>
+                    @endif
+                    @if ($university->twitter_link) 
                     <li>
-                      <a href="{{$university->twitter}}" target="_blank">
+                      <a href="{{$university->twitter_link}}" target="_blank">
                         <span class="ico twitter">
                           <svg class="icon">
                             <use xlink:href="#twitter-ico"></use>
@@ -258,17 +271,21 @@
                         </span>
                       </a>
                     </li>
+                    @endif
+                    @if ($university->telegram_link)  
                     <li>
-                      <a href="{{$university->telegram}}" target="_blank">
+                      <a href="{{$university->telegram_link}}" target="_blank">
                         <span class="ico telegram">
                           <svg class="icon">
                             <use xlink:href="#telegram-ico"></use>
                           </svg>
                         </span>
                       </a>
-                    </li>                    
+                    </li> 
+                    @endif
+                    @if ($university->viber_link)                   
                     <li>
-                      <a href="{{$university->viber}}" target="_blank">
+                      <a href="{{$university->viber_link}}" target="_blank">
                         <span class="ico viber">
                           <svg class="icon">
                             <use xlink:href="#viber-ico"></use>
@@ -276,15 +293,19 @@
                         </span>
                       </a>
                     </li>
+                    @endif
+                    @if ($university->vk_link)
                     <li>
-                      <a href="{{$university->facebook}}" target="_blank">
+                      <a href="{{$university->vk_link}}" target="_blank">
                         <span class="ico vk">
                           <svg class="icon">
                             <use xlink:href="#vk-ico"></use>
                           </svg>
                         </span>
                       </a>
-                    </li>
+                    </li> 
+                    @endif
+                    
                   </ul>
                 </div>
               </div>
