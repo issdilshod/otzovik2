@@ -7,11 +7,11 @@
 
         <a href="#" data-toggle="modal" data-target="#modal01" class="location">
             <span class="ico">
-            <svg class="icon">
-                <use xlink:href="#location-ico"></use>
-            </svg>
+                <svg class="icon">
+                    <use xlink:href="#location-ico"></use>
+                </svg>
             </span>
-            Москва
+            <span class="name"></span>
         </a>
 
         <ul class="socially">

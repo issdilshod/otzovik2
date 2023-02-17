@@ -26,24 +26,26 @@ class AuthenticateCustom
             if ($request->hasCookie('token')){
                 // detect user
                 $tmpToken = $request->cookie('token');
-                $userId = DB::table('access_tokens as uat')
+                $user = DB::table('access_tokens as uat')
                             ->join('users as u', 'u.id', '=', 'uat.user_id')
-                            ->select(['u.id'])
+                            ->select([
+                                'u.*'
+                            ])
                             ->where('uat.token', $tmpToken)
                             ->where('uat.expire_at', '>', Carbon::now())
                             ->where('uat.status', '!=', Config::get('status.delete'))
                             ->orderBy('uat.updated_at', 'DESC')
                             ->first();
-                if ($userId==null){
+                if ($user==null){
                     return redirect('admin/')->with('msg', 'not authenticated')->withCookie(Cookie::forget('token'));
                 }
-                $request->merge(['current_user_id' => $userId->id]);
-                $request->session()->put('user_id', $userId->id);
+                $request->merge(['current_user_id' => $user->id]);
+                $request->session()->put('user_id', $user->id);
             }else{
                 return redirect('admin/')->with('msg', 'not authenticated');
             }
         }
-
+        
         $request->merge(['current_user_id' => $request->session()->get('user_id')[0]]);
 
         return $next($request);

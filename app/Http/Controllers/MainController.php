@@ -6,6 +6,7 @@ use App\Services\Admin\Blog\ArticleService;
 use App\Services\Admin\Blog\ArticleViewService;
 use App\Services\Admin\Blog\CommentService;
 use App\Services\Admin\Review\ReviewService;
+use App\Services\Admin\Setting\CityService;
 use App\Services\Admin\Setting\DirectionService;
 use App\Services\Admin\Setting\EducationLevelService;
 use App\Services\Admin\Setting\EducationTypeService;
@@ -23,6 +24,7 @@ class MainController extends Controller
     private $articleService;
     private $articleViewService;
     private $commentService;
+    private $cityService;
 
     public function __construct()
     {
@@ -34,6 +36,7 @@ class MainController extends Controller
         $this->articleService = new ArticleService();
         $this->articleViewService = new ArticleViewService();
         $this->commentService = new CommentService();
+        $this->cityService = new CityService();
     }
     
     // page main
@@ -41,10 +44,12 @@ class MainController extends Controller
     {
         $data['title'] = __('main_page_title');
 
+        $data['cities'] = $this->cityService->findAll(); 
+
         $data['top_universities'] = $this->universityService->top();
         $data['popular_reviews'] = $this->reviewService->popular();
         $data['last_reviews'] = $this->reviewService->last();
-        $data['popular_articles'] = $this->articleService->popular();        
+        $data['popular_articles'] = $this->articleService->popular();  
 
         return view('pages.welcome', $data);
     }
@@ -57,6 +62,7 @@ class MainController extends Controller
         $data['directions'] = $this->directionService->getAll();
         $data['education_types'] = $this->educationTypeService->getAll();
         $data['education_levels'] = $this->educationLevelService->getAll();
+        $data['cities'] = $this->cityService->findAll(); 
 
         // search result universities
         $data['list'] = $this->universityService->findAllFront();
@@ -73,19 +79,12 @@ class MainController extends Controller
     {
         $data['title'] = __('universities_page_title');
 
-        // directions
         $data['directions'] = $this->directionService->getAll();
+        $data['cities'] = $this->cityService->findAll(); 
 
-        // popular universities
         $data['popular_universities'] = $this->universityService->popular();
-
-        // popular reviews
         $data['popular_reviews'] = $this->reviewService->popular();
-
-        // last reviews
         $data['last_reviews'] = $this->reviewService->last();
-
-        // search result universities
         $data['list'] = $this->universityService->findAllFront();
 
         return view('pages.universities', $data);
@@ -102,7 +101,7 @@ class MainController extends Controller
         }
 
         $data['title'] .= ' ' . $data['university']->name;
-
+        $data['cities'] = $this->cityService->findAll();
 
         $data['list'] = $this->reviewService->findByUniversity($data['university']->id);
         $data['popular_reviews'] = $this->reviewService->popular();
@@ -118,6 +117,8 @@ class MainController extends Controller
         $data['title'] = __('reviews_page_title');
 
         $data['directions'] = $this->directionService->getAll();
+        $data['cities'] = $this->cityService->findAll(); 
+
         $data['popular_universities'] = $this->universityService->popular();
         $data['list'] = $this->reviewService->findAllFront();
 
@@ -136,6 +137,7 @@ class MainController extends Controller
         }
 
         $data['title'] .= ' ' . $data['current_review']->university_name . ' № ' . $data['current_review']->number;
+        $data['cities'] = $this->cityService->findAll();
 
         $data['popular_universities'] = $this->universityService->popular();
         $data['popular_reviews'] = $this->reviewService->popular();
@@ -149,6 +151,8 @@ class MainController extends Controller
     public function articles(Request $request)
     {
         $data['title'] = __('articles_page_title');
+
+        $data['cities'] = $this->cityService->findAll(); 
 
         $data['list'] = $this->articleService->findAllFront();
         $data['popular_reviews'] = $this->reviewService->popular();
@@ -174,6 +178,8 @@ class MainController extends Controller
         // view article
         $this->articleViewService->store($data['current_article']->id);
 
+        $data['cities'] = $this->cityService->findAll();
+
         $data['popular_universities'] = $this->universityService->popular();
         $data['popular_reviews'] = $this->reviewService->popular();
         $data['last_reviews'] = $this->reviewService->last();
@@ -186,6 +192,8 @@ class MainController extends Controller
     public function about(Request $request)
     {
         $data['title'] = __('about_page_title');
+
+        $data['cities'] = $this->cityService->findAll(); 
 
         $data['popular_universities'] = $this->universityService->popular();
         $data['popular_reviews'] = $this->reviewService->popular();
@@ -200,6 +208,8 @@ class MainController extends Controller
     {
         $data['title'] = __('educational_page_title');
 
+        $data['cities'] = $this->cityService->findAll(); 
+
         $data['popular_universities'] = $this->universityService->popular();
         $data['popular_reviews'] = $this->reviewService->popular();
         $data['last_reviews'] = $this->reviewService->last();
@@ -213,7 +223,8 @@ class MainController extends Controller
     {
         $data['title'] = __('faq_page_title');
 
-        // last reviews
+        $data['cities'] = $this->cityService->findAll(); 
+
         $data['last_reviews'] = $this->reviewService->last();
 
         return view('pages.faq', $data);
@@ -230,8 +241,8 @@ class MainController extends Controller
         }
 
         $data['title'] .= ' - ' . $data['university']->name;
+        $data['cities'] = $this->cityService->findAll(); 
 
-        // last reviews
         $data['last_reviews'] = $this->reviewService->last();
 
         return view('pages.review_add', $data);
@@ -242,13 +253,10 @@ class MainController extends Controller
     {
         $data['title'] = __('top_universities_page_title');
 
-        // top universities
+        $data['cities'] = $this->cityService->findAll();
+
         $data['top_universities'] = $this->universityService->top();
-
-        // popular reviews
         $data['popular_reviews'] = $this->reviewService->popular();
-
-        // last reviews
         $data['last_reviews'] = $this->reviewService->last();
 
         return view('pages.top', $data);
