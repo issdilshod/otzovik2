@@ -164,9 +164,6 @@ class ReviewService extends Service{
 
     public function update($review, $id)
     {
-        // status publish
-        $review['status'] = Config::get('status.active');
-
         // user id
         //$review['user_id'] = $review['current_user_id']; 
         unset($review['current_user_id']);
@@ -191,7 +188,9 @@ class ReviewService extends Service{
             'university_id' => 'required',
             'text' => '',
             'star' => '',
-            'current_user_id' => ''
+            'current_user_id' => '',
+            
+            'status' => '',
         ]);
 
         // get&set number or index of university

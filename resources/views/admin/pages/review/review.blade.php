@@ -82,6 +82,17 @@
                                     <textarea name="text" class="form-control" id="text1" style="height: 200px">@isset($review->text){{ $review->text }}@endisset</textarea>
                                 </div>
 
+                                <div lass="form-group">
+                                    <label>{{__('global_status')}}</label>
+                                    <select class="form-control" name="status">
+                                        <?php $value = \Illuminate\Support\Facades\Config::get('status.active'); ?>
+                                        <option value="{{$value}}" <?php if ($review->status==$value){ echo 'selected'; } ?>>{{\App\Services\Admin\Misc\SystemService::get_status_name_by_id($value)}}</option>
+
+                                        <?php $value = \Illuminate\Support\Facades\Config::get('status.wait'); ?>
+                                        <option value="{{$value}}" <?php if ($review->status==$value){ echo 'selected'; } ?>>{{\App\Services\Admin\Misc\SystemService::get_status_name_by_id($value)}}</option>
+                                    </select>
+                                </div>
+
                             </div>
                             <!-- /.card-body -->
 

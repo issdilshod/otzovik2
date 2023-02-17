@@ -87,7 +87,7 @@
                                     <textarea name="text" class="form-control" id="text1" style="height: 200px">@isset($comment->text){{ $comment->text }}@endisset</textarea>
                                 </div>
 
-                                <div>
+                                <div lass="form-group">
                                     <label>{{__('global_status')}}</label>
                                     <select class="form-control" name="status">
                                         <?php $value = \Illuminate\Support\Facades\Config::get('status.active'); ?>
