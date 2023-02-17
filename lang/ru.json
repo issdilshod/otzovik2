@@ -110,6 +110,16 @@
     "article_text": "Описание",
     "article_slug": "Ссылка",
 
+    "comments_title": "Коментарии",
+    "comments_list_title": "Список коментариев",
+    "comment_edit_title": "Редактировать",
+    "comment_card_title": "Карточка коментария",
+    "comment_star": "Рейтинг",
+    "comment_text": "Текст",
+    "comment_user": "Пользователь",
+    "comment_article": "Пост",
+    "comment_answer": "Ответ на",
+
     "staff_title": "Пользователи",
     "staff_list_title": "Список пользователей",
     "staff_name": "ФИО",

@@ -111,6 +111,16 @@ class SystemService extends Service{
         return $data->day . '.' . $data->month . '.' . $data->year;
     }
 
+    static function get_status_name_by_id($id = '')
+    {
+        if ($id==Config::get('status.active')){
+            return __('global_active');
+        }else if ($id==Config::get('status.wait')){
+            return __('global_waiting');
+        }
+        return '';
+    }
+
     public static function get_os()
     {
         $user_agent = self::user_agent();

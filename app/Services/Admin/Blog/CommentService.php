@@ -6,9 +6,48 @@ use App\Models\Admin\Blog\Comment;
 use App\Services\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\DB;
 
 class CommentService extends Service{
+
+    public function findAll()
+    {
+        $comments = Comment::
+                        from('comments as c')
+                        ->select([
+                            'c.*',
+                            'u.first_name as user_first_name', 'u.last_name as user_last_name', 'u.avatar as user_avatar',
+                            'a.title as article_title', 'a.slug as article_slug'
+                        ])
+                        ->join('articles as a', 'a.id', '=', 'c.article_id')
+                        ->join('users as u', 'u.id', '=', 'c.user_id')
+                        ->where('c.status', '!=', Config::get('status.delete'))
+                        ->orderBy('c.updated_at', 'desc')
+                        ->paginate(Config::get('pagination.per_page'));
+        return $comments;
+    }
+
+    public function findById($id)
+    {
+        $comment = Comment::
+                    from('comments as c')
+                    ->select([
+                        'c.*', 
+                        'u.first_name as user_first_name', 'u.last_name as user_last_name', 'u.avatar as user_avatar',
+                        'u2.first_name as replay_user_first_name', 'u2.last_name as replay_user_last_name',
+                        'a.title as article_title', 'a.slug as article_slug'
+                    ])
+                    ->join('articles as a', 'a.id', '=', 'c.article_id')
+                    ->join('users as u', 'u.id', '=', 'c.user_id')
+                    ->leftJoin('comments as c2', 'c2.id', '=', 'c.replay_id')
+                    ->leftJoin('users as u2', 'u2.id', '=', 'c2.user_id')
+                    ->where('c.status', '!=', Config::get('status.delete'))
+                    ->where('c.id', $id)
+                    ->first();
+        if ($comment!=null){
+            return $comment;
+        }
+        return false;
+    }
 
     public function findByArticle($articleId) 
     {
@@ -44,6 +83,13 @@ class CommentService extends Service{
         }
 
         return $comment;
+    }
+
+    public function delete($id)
+    {
+        Comment::where('id', $id)
+            ->update(['status' => Config::get('status.delete')]);
+        return true;
     }
 
     public function validate(Request $request)

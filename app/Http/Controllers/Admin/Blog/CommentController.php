@@ -25,6 +25,69 @@ class CommentController extends Controller
         $this->userService = new UserService();
         $this->commentLikeService = new CommentLikeService();
     }
+
+    public function index(Request $request)
+    {
+        $data['title'] = __('comments_title');
+
+        $data['list'] = $this->commentService->findAll();
+
+        $data['status'] = Config::get('status');
+
+        return view('admin.pages.blog.comment.comments', $data);
+    }
+
+    /**
+     * Not active
+     * 
+     */
+    public function store(Request $request)
+    {
+        // permission
+        //$validated = $this->commentService->validate($request);
+
+        //$validated['user_id'] = $validated['current_user_id'];
+        //unset($validated['current_user_id']);
+
+        //if ($this->commentService->create($validated)){
+        //    return redirect('admin/blog/comments')->with('status', '201');
+        //}
+
+        //return redirect('admin/blog/comments')->with('status', '500'); 
+    }
+
+    public function show(Request $request, $id = '')
+    {
+        // permission
+        $data['title'] = __('comment_add_title');
+
+        if ($id!=''){
+            $data['comment'] = $this->commentService->findById($id);
+            $data['title'] = __('comment_edit_title') . ' ';
+        }
+
+        return view('admin.pages.blog.comment.comment', $data);
+    }
+
+    public function update(Request $request, $id)
+    {
+        // permission
+        $validated = $this->commentService->validate($request);
+
+        if ($this->commentService->save($validated, $id)){
+            return redirect('admin/blog/comments')->with('status', '200');
+        }
+
+        return redirect('admin/blog/comments')->with('status', '500'); 
+    }
+
+    public function destroy(Request $request, $id)
+    {
+        // permission
+        $this->commentService->delete($id);
+
+        return redirect('admin/blog/comments')->with('status', 'ok');
+    }
     
     public function api_store(Request $request)
     {

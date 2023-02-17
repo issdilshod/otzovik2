@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\Account\AuthController;
 use App\Http\Controllers\Admin\Account\UserController;
 use App\Http\Controllers\Admin\Blog\ArticleController;
+use App\Http\Controllers\Admin\Blog\CommentController;
 use App\Http\Controllers\Admin\Dashboard\DashboardController;
 use App\Http\Controllers\Admin\Review\ReviewController;
 use App\Http\Controllers\Admin\Setting\CityController;
@@ -63,6 +64,13 @@ Route::middleware(['auth.custom'])->group(function (){
     Route::get('admin/blog/article/{id?}', [ArticleController::class, 'show']);
     Route::put('admin/blog/article/{id}', [ArticleController::class, 'update']);
     Route::delete('admin/blog/article/{id}', [ArticleController::class, 'destroy']);
+
+    // comments
+    Route::get('admin/blog/comments', [CommentController::class, 'index']);
+    //Route::post('admin/blog/comment', [CommentController::class, 'store']);
+    Route::get('admin/blog/comment/{id?}', [CommentController::class, 'show']);
+    Route::put('admin/blog/comment/{id}', [CommentController::class, 'update']);
+    Route::delete('admin/blog/comment/{id}', [CommentController::class, 'destroy']);
 
     // users
     Route::get('admin/users', [UserController::class, 'index']);
