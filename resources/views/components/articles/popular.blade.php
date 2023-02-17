@@ -25,7 +25,7 @@
                         <use xlink:href="#calendar-ico"></use>
                         </svg>
                     </div>
-                    {{\App\Services\Admin\Misc\SystemService::get_date_for_blog($article->udpated_at)}}
+                    {{\App\Services\Admin\Misc\SystemService::get_date_for_blog($article->updated_at)}}
                     </div>
                 </div>
                 <div class="news-card-title">{{$article->title}}</div>

@@ -5,6 +5,7 @@ namespace App\Services\Admin\Misc;
 use App\Services\Service;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Str;
 
 class SystemService extends Service{
 
@@ -108,7 +109,7 @@ class SystemService extends Service{
     static function get_date_for_blog($date)
     {
         $data = Carbon::parse($date);
-        return $data->day . '.' . $data->month . '.' . $data->year;
+        return Str::padLeft($data->day, 2, '0') . '.' . Str::padLeft($data->month, 2, '0') . '.' . $data->year;
     }
 
     static function get_status_name_by_id($id = '')

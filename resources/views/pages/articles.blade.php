@@ -59,7 +59,7 @@
                     <use xlink:href="#files-colorful"></use>
                 </svg>
                 </span>
-                132 статьи
+                {{$today['articles_count']}} статьи
             </span>
             <span class="articles-info-item">
                 <span class="ico">
@@ -67,7 +67,7 @@
                     <use xlink:href="#calendar-full"></use>
                 </svg>
                 </span>
-                20.01.2023
+                {{$today['date']}}
             </span>
             </div>
         </div>
@@ -85,7 +85,7 @@
                                 <use xlink:href="#calendar-ico"></use>
                                 </svg>
                             </div>
-                            {{\App\Services\Admin\Misc\SystemService::get_date_for_blog($item->udpated_at)}}
+                            {{\App\Services\Admin\Misc\SystemService::get_date_for_blog($item->updated_at)}}
                             </div>
                         </div>
                         <div class="news-card-title">{{$item->title}}</div>

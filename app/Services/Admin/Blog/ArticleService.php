@@ -4,7 +4,9 @@ namespace App\Services\Admin\Blog;
 
 use App\Models\Admin\Blog\Article;
 use App\Services\Admin\Misc\StringService;
+use App\Services\Admin\Misc\SystemService;
 use App\Services\Service;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
@@ -110,6 +112,15 @@ class ArticleService extends Service{
         ]);
 
         return $validated;
+    }
+
+    public function today()
+    {
+        $today['date'] = SystemService::get_date_for_blog(Carbon::now());
+        $today['articles_count'] = Article::where('status', Config::get('status.active'))
+                                        ->whereDate('updated_at', Carbon::today())
+                                        ->count();
+        return $today;
     }
     
 }

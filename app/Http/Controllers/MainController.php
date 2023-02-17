@@ -161,6 +161,8 @@ class MainController extends Controller
         $data['last_reviews'] = $this->reviewService->last();
         $data['popular_articles'] = $this->articleService->popular(); 
 
+        $data['today'] = $this->articleService->today(); // today date & count of articles for today
+
         return view('pages.articles', $data);
     }
 
