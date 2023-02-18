@@ -110,12 +110,12 @@ Route::middleware(['auth.custom'])->group(function (){
 
     // setting
     Route::get('/admin/settings/templates/index', [SettingController::class, 'index']);
-    Route::get('/admin/settings/templates/search', [MainController::class, 'search']);
-    Route::get('/admin/settings/templates/universities', [MainController::class, 'universities']);
-    Route::get('/admin/settings/templates/reviews', [MainController::class, 'reviews']);
-    Route::get('/admin/settings/templates/articles', [MainController::class, 'articles']);
-    Route::get('/admin/settings/templates/about', [MainController::class, 'about']);
-    Route::get('/admin/settings/templates/faq', [MainController::class, 'faq']);
-    Route::get('/admin/settings/templates/educationl', [MainController::class, 'educational']);
+    Route::get('/admin/settings/templates/search', [SettingController::class, 'search']);
+    Route::get('/admin/settings/templates/universities', [SettingController::class, 'universities']);
+    Route::get('/admin/settings/templates/reviews', [SettingController::class, 'reviews']);
+    Route::get('/admin/settings/templates/articles', [SettingController::class, 'articles']);
+    Route::get('/admin/settings/templates/about', [SettingController::class, 'about']);
+    Route::get('/admin/settings/templates/faq', [SettingController::class, 'faq']);
+    Route::get('/admin/settings/templates/educationl', [SettingController::class, 'educational']);
 
 });

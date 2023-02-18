@@ -21,7 +21,7 @@
         <!-- form -->
         <div class="form">
         <form>
-            <h3>Где получить образование</h3>
+            <h3 class="_change_able" data-key="search_form_h3" data-value="{{$template['search_form_h3']}}">{{$template['search_form_h3']}}</h3>
             <div class="form-row">
             <div class="form-group size01">
                 <label for="place">Регион</label>

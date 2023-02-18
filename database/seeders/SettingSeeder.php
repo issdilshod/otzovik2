@@ -84,6 +84,11 @@ class SettingSeeder extends Seeder
                 'key' => Config::get('pages.index').'_info_students_button',
                 'value' => 'Оставить отзыв'
             ],
+            [
+                'page' => Config::get('pages.search'),
+                'key' => Config::get('pages.search').'_form_h3',
+                'value' => 'Где получить образование'
+            ],
 
         ];
 

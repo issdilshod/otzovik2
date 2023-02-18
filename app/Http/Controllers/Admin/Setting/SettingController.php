@@ -39,4 +39,13 @@ class SettingController extends Controller
         ]);
     }
 
+    public function search(Request $request)
+    {
+        // permission
+
+        return view('admin.pages.setting.setting.settings', [
+            'src' => url('/poisk').'?_mode='.Config::get('app._mode.edit').'&_token='.Session::get('token')[0]
+        ]);
+    }
+
 }

@@ -84,8 +84,9 @@ class MainController extends Controller
         $data['last_reviews'] = $this->reviewService->last();
 
         // settings
+        $data['template'] = $this->settingService->findByPage(Config::get('pages.search'));
         $data['settings']['current_page'] = Config::get('pages.search');
-        $data['settings'] = $this->settingService->findByPage(Config::get('pages.search'));
+        $data['settings']['mode'] = $this->mainService->_mode($request);
 
         return view('pages.serach', $data);
     }
