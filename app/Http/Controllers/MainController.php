@@ -10,8 +10,10 @@ use App\Services\Admin\Setting\CityService;
 use App\Services\Admin\Setting\DirectionService;
 use App\Services\Admin\Setting\EducationLevelService;
 use App\Services\Admin\Setting\EducationTypeService;
+use App\Services\Admin\Setting\SettingService;
 use App\Services\Admin\University\UniversityService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 
 class MainController extends Controller
 {
@@ -25,6 +27,7 @@ class MainController extends Controller
     private $articleViewService;
     private $commentService;
     private $cityService;
+    private $settingService;
 
     public function __construct()
     {
@@ -37,6 +40,7 @@ class MainController extends Controller
         $this->articleViewService = new ArticleViewService();
         $this->commentService = new CommentService();
         $this->cityService = new CityService();
+        $this->settingService = new SettingService();
     }
     
     // page main
@@ -50,6 +54,10 @@ class MainController extends Controller
         $data['popular_reviews'] = $this->reviewService->popular();
         $data['last_reviews'] = $this->reviewService->last();
         $data['popular_articles'] = $this->articleService->popular();  
+
+        // settings
+        $data['settings']['current_page'] = Config::get('pages.index');
+        $data['settings'] = $this->settingService->findByPage(Config::get('pages.index'));
 
         return view('pages.welcome', $data);
     }
@@ -71,6 +79,10 @@ class MainController extends Controller
         $data['popular_reviews'] = $this->reviewService->popular();
         $data['last_reviews'] = $this->reviewService->last();
 
+        // settings
+        $data['settings']['current_page'] = Config::get('pages.search');
+        $data['settings'] = $this->settingService->findByPage(Config::get('pages.search'));
+
         return view('pages.serach', $data);
     }
 
@@ -86,6 +98,10 @@ class MainController extends Controller
         $data['popular_reviews'] = $this->reviewService->popular();
         $data['last_reviews'] = $this->reviewService->last();
         $data['list'] = $this->universityService->findAllFront();
+
+        // settings
+        $data['settings']['current_page'] = Config::get('pages.universities');
+        $data['settings'] = $this->settingService->findByPage(Config::get('pages.universities'));
 
         return view('pages.universities', $data);
     }
@@ -110,6 +126,10 @@ class MainController extends Controller
         $data['last_reviews'] = $this->reviewService->last();
         $data['popular_articles'] = $this->articleService->popular(); 
 
+        // settings
+        $data['settings']['current_page'] = Config::get('pages.university');
+        $data['settings'] = $this->settingService->findByPage(Config::get('pages.university'));
+
         return view('pages.university', $data);
     }
 
@@ -124,6 +144,10 @@ class MainController extends Controller
         $data['popular_universities'] = $this->universityService->popular();
         $data['last_articles'] = $this->articleService->last();
         $data['list'] = $this->reviewService->findAllFront();
+
+        // settings
+        $data['settings']['current_page'] = Config::get('pages.reviews');
+        $data['settings'] = $this->settingService->findByPage(Config::get('pages.reviews'));
 
         return view('pages.reviews', $data);
     }
@@ -147,6 +171,10 @@ class MainController extends Controller
         $data['university_reviews'] = $this->reviewService->other_university($data['current_review']->university_id);
         $data['popular_articles'] = $this->articleService->popular(); 
 
+        // settings
+        $data['settings']['current_page'] = Config::get('pages.review');
+        $data['settings'] = $this->settingService->findByPage(Config::get('pages.review'));
+
         return view('pages.review', $data);
     }
 
@@ -163,6 +191,10 @@ class MainController extends Controller
         $data['popular_articles'] = $this->articleService->popular(); 
 
         $data['today'] = $this->articleService->today(); // today date & count of articles for today
+
+        // settings
+        $data['settings']['current_page'] = Config::get('pages.articles');
+        $data['settings'] = $this->settingService->findByPage(Config::get('pages.articles'));
 
         return view('pages.articles', $data);
     }
@@ -190,6 +222,10 @@ class MainController extends Controller
         $data['last_reviews'] = $this->reviewService->last();
         $data['popular_articles'] = $this->articleService->popular(); 
 
+        // settings
+        $data['settings']['current_page'] = Config::get('pages.article');
+        $data['settings'] = $this->settingService->findByPage(Config::get('pages.article'));
+
         return view('pages.article', $data);
     }
 
@@ -204,6 +240,10 @@ class MainController extends Controller
         $data['popular_reviews'] = $this->reviewService->popular();
         $data['last_reviews'] = $this->reviewService->last();
         $data['popular_articles'] = $this->articleService->popular(); 
+
+        // settings
+        $data['settings']['current_page'] = Config::get('pages.settings');
+        $data['settings'] = $this->settingService->findByPage(Config::get('pages.settings'));
 
         return view('pages.about', $data);
     }
@@ -220,6 +260,10 @@ class MainController extends Controller
         $data['last_reviews'] = $this->reviewService->last();
         $data['popular_articles'] = $this->articleService->popular(); 
 
+        // settings
+        $data['settings']['current_page'] = Config::get('pages.educational');
+        $data['settings'] = $this->settingService->findByPage(Config::get('pages.educational'));
+
         return view('pages.educational', $data);
     }
 
@@ -231,6 +275,10 @@ class MainController extends Controller
         $data['cities'] = $this->cityService->findAll(); 
 
         $data['last_reviews'] = $this->reviewService->last();
+
+        // settings
+        $data['settings']['current_page'] = Config::get('pages.faq');
+        $data['settings'] = $this->settingService->findByPage(Config::get('pages.faq'));
 
         return view('pages.faq', $data);
     }
@@ -250,6 +298,10 @@ class MainController extends Controller
 
         $data['last_reviews'] = $this->reviewService->last();
 
+        // settings
+        $data['settings']['current_page'] = Config::get('pages.review_add');
+        $data['settings'] = $this->settingService->findByPage(Config::get('pages.review_add'));
+
         return view('pages.review_add', $data);
     }
 
@@ -263,6 +315,10 @@ class MainController extends Controller
         $data['top_universities'] = $this->universityService->top();
         $data['popular_reviews'] = $this->reviewService->popular();
         $data['last_reviews'] = $this->reviewService->last();
+
+        // settings
+        $data['settings']['current_page'] = Config::get('pages.top');
+        $data['settings'] = $this->settingService->findByPage(Config::get('pages.top'));
 
         return view('pages.top', $data);
     }
