@@ -294,6 +294,7 @@ class UniversityService extends Service{
             'directions' => 'array',
             'education_types' => 'array',
             'education_levels' => 'array',
+            'extra' => '',
             'current_user_id' => ''
         ]);
 

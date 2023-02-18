@@ -379,7 +379,7 @@
             @include('components.pagination.pagination')
 
         </div>
-        <div class="tab-pane fade" id="descript04" role="tabpanel" aria-labelledby="descript-descript04">4</div>
+        <div class="tab-pane fade" id="descript04" role="tabpanel" aria-labelledby="descript-descript04">{{$university->extra}}</div>
       </div>
     </div>
     <!-- / descript-card -->

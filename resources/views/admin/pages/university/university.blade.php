@@ -250,6 +250,12 @@
                                                 </div>
                                             </div>
                                             
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="extra1">{{__('university_extra')}}</label>
+                                                    <textarea class="form-control" id="extra1" name="extra" style="height:200px">@isset($university->extra){{ $university->extra }}@endisset</textarea>
+                                                </div>
+                                            </div>
 
                                         </div>
                                     </div>
