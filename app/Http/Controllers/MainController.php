@@ -253,8 +253,9 @@ class MainController extends Controller
         $data['popular_articles'] = $this->articleService->popular(); 
 
         // settings
-        $data['settings']['current_page'] = Config::get('pages.settings');
-        $data['settings'] = $this->settingService->findByPage(Config::get('pages.settings'));
+        $data['template'] = $this->settingService->findByPage(Config::get('pages.about'));
+        $data['settings']['current_page'] = Config::get('pages.about');
+        $data['settings']['mode'] = $this->mainService->_mode($request);
 
         return view('pages.about', $data);
     }
@@ -272,8 +273,9 @@ class MainController extends Controller
         $data['popular_articles'] = $this->articleService->popular(); 
 
         // settings
+        $data['template'] = $this->settingService->findByPage(Config::get('pages.educational'));
         $data['settings']['current_page'] = Config::get('pages.educational');
-        $data['settings'] = $this->settingService->findByPage(Config::get('pages.educational'));
+        $data['settings']['mode'] = $this->mainService->_mode($request);
 
         return view('pages.educational', $data);
     }
@@ -288,8 +290,9 @@ class MainController extends Controller
         $data['last_reviews'] = $this->reviewService->last();
 
         // settings
+        $data['template'] = $this->settingService->findByPage(Config::get('pages.faq'));
         $data['settings']['current_page'] = Config::get('pages.faq');
-        $data['settings'] = $this->settingService->findByPage(Config::get('pages.faq'));
+        $data['settings']['mode'] = $this->mainService->_mode($request);
 
         return view('pages.faq', $data);
     }
@@ -310,8 +313,9 @@ class MainController extends Controller
         $data['last_reviews'] = $this->reviewService->last();
 
         // settings
+        $data['template'] = $this->settingService->findByPage(Config::get('pages.review_add'));
         $data['settings']['current_page'] = Config::get('pages.review_add');
-        $data['settings'] = $this->settingService->findByPage(Config::get('pages.review_add'));
+        $data['settings']['mode'] = $this->mainService->_mode($request);
 
         return view('pages.review_add', $data);
     }
@@ -329,8 +333,9 @@ class MainController extends Controller
         $data['popular_articles'] = $this->articleService->popular(); 
 
         // settings
+        $data['template'] = $this->settingService->findByPage(Config::get('pages.top'));
         $data['settings']['current_page'] = Config::get('pages.top');
-        $data['settings'] = $this->settingService->findByPage(Config::get('pages.top'));
+        $data['settings']['mode'] = $this->mainService->_mode($request);
 
         return view('pages.top', $data);
     }

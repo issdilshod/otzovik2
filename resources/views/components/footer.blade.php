@@ -173,8 +173,7 @@
 
 </script>
 
-@if (isset($settings['mode']))
-@if ($settings['mode']['mode']==\Illuminate\Support\Facades\Config::get('app._mode.edit'))
+@if (isset($settings['mode']['mode']) && $settings['mode']['mode']==\Illuminate\Support\Facades\Config::get('app._mode.edit'))
 <!-- modes -->
 <input type="hidden" id="_user_id" value="{{$settings['mode']['user_id']}}" />
 <script>
@@ -259,5 +258,4 @@
 </div>
 <!-- /.modal -->
 <!-- /.modes -->
-@endif
 @endif
