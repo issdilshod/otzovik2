@@ -122,6 +122,7 @@ class MainController extends Controller
         $data['cities'] = $this->cityService->findAll(); 
 
         $data['popular_universities'] = $this->universityService->popular();
+        $data['last_articles'] = $this->articleService->last();
         $data['list'] = $this->reviewService->findAllFront();
 
         return view('pages.reviews', $data);

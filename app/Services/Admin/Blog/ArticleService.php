@@ -71,6 +71,15 @@ class ArticleService extends Service{
         return $articles;
     }
 
+    public function last($count = 3)
+    {
+        $articles = Article::orderBy('updated_at', 'desc')
+                        ->where('status', Config::get('status.active'))
+                        ->limit($count)
+                        ->get();
+        return $articles;
+    }
+
     public function save($article, $id = '')
     {
         // slug
