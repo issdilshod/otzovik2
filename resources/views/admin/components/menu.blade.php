@@ -108,6 +108,62 @@
                             <p>{{__('menu_directions_title')}}</p>
                         </a>
                     </li>
+                    <li class="nav-item {{ (request()->is('admin/settings/templates*')) ? 'menu-open' : '' }}">
+                        <a href="#" class="nav-link {{ (request()->is('admin/settings/templates*')) ? 'active' : '' }}">
+                            <i class="far fa-file nav-icon"></i>
+                            <p>{{__('menu_templates_title')}}</p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ url('/admin/settings/templates/index') }}" class="nav-link {{ (request()->is('admin/settings/templates/index')) ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>{{__('menu_templates_index_title')}}</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ url('/admin/settings/templates/search') }}" class="nav-link {{ (request()->is('admin/settings/templates/search')) ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>{{__('menu_templates_search_title')}}</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ url('/admin/settings/templates/universities') }}" class="nav-link {{ (request()->is('admin/settings/templates/universities')) ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>{{__('menu_templates_universities_title')}}</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ url('/admin/settings/templates/reviews') }}" class="nav-link {{ (request()->is('admin/settings/templates/reviews')) ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>{{__('menu_templates_reviews_title')}}</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ url('/admin/settings/templates/articles') }}" class="nav-link {{ (request()->is('admin/settings/templates/articles')) ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>{{__('menu_templates_articles_title')}}</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ url('/admin/settings/templates/about') }}" class="nav-link {{ (request()->is('admin/settings/templates/about')) ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>{{__('menu_templates_about_title')}}</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ url('/admin/settings/templates/faq') }}" class="nav-link {{ (request()->is('admin/settings/templates/faq')) ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>{{__('menu_templates_faq_title')}}</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ url('/admin/settings/templates/educational') }}" class="nav-link {{ (request()->is('admin/settings/templates/educational')) ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>{{__('menu_templates_educational_title')}}</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <!--li class="nav-item">
                         <a href="{{ url('/admin/setting/education-types') }}" class="nav-link {{ (request()->is('admin/setting/education-type*')) ? 'active' : '' }}">
                             <i class="far fa-circle nav-icon"></i>

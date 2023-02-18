@@ -4,12 +4,15 @@
     "global_created_at": "Дата добавление",
     "global_actions": "Действии",
     "global_save_button": "Сохранить",
+    "global_close_button": "Закрыть",
     "global_basic": "Основное",
     "global_settings": "Настройки",
     "global_contacts": "Контакты",
     "global_status": "Статус",
     "global_active": "Активный",
     "global_waiting": "Ожидание",
+    "global_edit": "Редактировать",
+    "global_value": "Значение",
 
     "login_title": "Вход",
     "login_welcome_title": "Войдите чтобы начать работу",
@@ -36,6 +39,16 @@
     "menu_settings_title": "Настройки",
     "menu_cities_title": "Города",
     "menu_education_level_title": "Уроверь обазования",
+
+    "menu_templates_title": "Шаблоны",
+    "menu_templates_index_title": "Главная страница",
+    "menu_templates_search_title": "Поиск",
+    "menu_templates_universities_title": "Университеты",
+    "menu_templates_reviews_title": "Отзывы",
+    "menu_templates_articles_title": "Блог",
+    "menu_templates_about_title": "О Сервисе",
+    "menu_templates_faq_title": "FAQ",
+    "menu_templates_educational_title": "Учебным заведениям",
 
     "dashboard_title": "Панель управление",
     "dashboard_universities": "ВУЗ-ы",
@@ -184,4 +197,5 @@
     "roles_user": "Пользователь",
 
     "top_universities_page_title": "Топ университеты"
+
 }

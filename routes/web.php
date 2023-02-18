@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\Setting\CityController;
 use App\Http\Controllers\Admin\Setting\EducationLevelController;
 use App\Http\Controllers\Admin\Setting\DirectionController;
 use App\Http\Controllers\Admin\Setting\EducationTypeController;
+use App\Http\Controllers\Admin\Setting\SettingController;
 use App\Http\Controllers\Admin\University\UniversityController;
 use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
@@ -106,5 +107,15 @@ Route::middleware(['auth.custom'])->group(function (){
     Route::get('admin/settings/education-type/{id?}', [EducationTypeController::class, 'get']);
     Route::put('admin/settings/education-type/{id}', [EducationTypeController::class, 'update']);
     Route::delete('admin/settings/education-type/{id}', [EducationTypeController::class, 'destroy']);
+
+    // setting
+    Route::get('/admin/settings/templates/index', [SettingController::class, 'index']);
+    Route::get('/admin/settings/templates/search', [MainController::class, 'search']);
+    Route::get('/admin/settings/templates/universities', [MainController::class, 'universities']);
+    Route::get('/admin/settings/templates/reviews', [MainController::class, 'reviews']);
+    Route::get('/admin/settings/templates/articles', [MainController::class, 'articles']);
+    Route::get('/admin/settings/templates/about', [MainController::class, 'about']);
+    Route::get('/admin/settings/templates/faq', [MainController::class, 'faq']);
+    Route::get('/admin/settings/templates/educationl', [MainController::class, 'educational']);
 
 });

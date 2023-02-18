@@ -28,16 +28,18 @@ class AuthService extends Service{
                 Session::push('user_id', $user->id);
 
                 // remeber
+                $tmpToken = Str::random(Config::get('session.token_length'));
+                $expireAt = Carbon::now()->addDays(Config::get('session.token_life'));
+
+                AccessToken::create([
+                    'user_id' => $user->id,
+                    'token' => $tmpToken,
+                    'expire_at' => $expireAt
+                ]);
+
+                Session::push('token', $tmpToken);
+
                 if (isset($entity['remember'])){
-                    $tmpToken = Str::random(Config::get('session.token_length'));
-                    $expireAt = Carbon::now()->addDays(Config::get('session.token_life'));
-
-                    AccessToken::create([
-                        'user_id' => $user->id,
-                        'token' => $tmpToken,
-                        'expire_at' => $expireAt
-                    ]);
-
                     // set cookie
                     Cookie::queue('token', $tmpToken, $expireAt->diffInMinutes(Carbon::now()));
                 }
@@ -76,6 +78,18 @@ class AuthService extends Service{
             return true;
         }
         return false;
+    }
+
+    public function is_real_token($token)
+    {
+        $accessToken = AccessToken::where('token', $token)
+                            ->where('status', Config::get('status.active'))
+                            ->where('expire_at', '>', Carbon::now())
+                            ->first();
+        if ($accessToken==null){
+            return false;
+        }
+        return $accessToken;
     }
 
 }

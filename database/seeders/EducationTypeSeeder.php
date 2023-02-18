@@ -14,19 +14,19 @@ class EducationTypeSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Admin\University\EducationType::create([
+        \App\Models\Admin\Setting\EducationType::create([
             'name' => 'Очная',
-            'slug' => \App\Http\Services\Admin\Misc\StringService::slug('Очная')
+            'slug' => \App\Services\Admin\Misc\StringService::slug('Очная')
         ]);
 
-        \App\Models\Admin\University\EducationType::create([
+        \App\Models\Admin\Setting\EducationType::create([
             'name' => 'Заочная',
-            'slug' => \App\Http\Services\Admin\Misc\StringService::slug('Заочная')
+            'slug' => \App\Services\Admin\Misc\StringService::slug('Заочная')
         ]);
 
-        \App\Models\Admin\University\EducationType::create([
+        \App\Models\Admin\Setting\EducationType::create([
             'name' => 'Очно-заочная',
-            'slug' => \App\Http\Services\Admin\Misc\StringService::slug('Очно-заочная')
+            'slug' => \App\Services\Admin\Misc\StringService::slug('Очно-заочная')
         ]);
     }
 }

@@ -172,3 +172,92 @@
     })
 
 </script>
+
+@if (isset($settings['mode']))
+@if ($settings['mode']['mode']==\Illuminate\Support\Facades\Config::get('app._mode.edit'))
+<!-- modes -->
+<input type="hidden" id="_user_id" value="{{$settings['mode']['user_id']}}" />
+<script>
+    // disable a links for edit mode
+    $(document).on('click', 'a', function(e){
+        e.preventDefault();
+    })
+
+    // disable forms for edit mode
+    $(document).on('submit', 'form', function(e){
+        e.preventDefault();
+    })
+
+    // submit setting form(template)
+    $(document).on('submit', '._setting_form', function (e){
+        var user_id = $('#_user_id').val();
+        var key = $('#_key').val();
+        var value = $('#_value').val();
+
+        $.ajax({
+            type: 'put',
+            url: '<?=url('api/setting')?>/'+key,
+            data: {
+                user_id: user_id,
+                value: value
+            },
+            success: function(res){
+                $('#_modal1').modal('hide');
+
+                // TODO: update template & modal
+                $('#_key').val('');
+                $('#_value').val('');
+
+            }
+        });
+
+    });
+
+    // click elements to update
+    $(document).on('click', '._change_able', function(e){
+        var key = $(this).data('key');
+        var value = $(this).data('value');
+
+        $('#_key').val(key);
+        $('#_value').html(value);
+
+        $('#_modal1').modal('show');
+    })
+
+    // click ui submit
+    function submit(){
+        $('#_submit').click();
+    }
+</script>
+
+<div class="modal fade" id="_modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">{{__('global_edit')}}</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            </button>
+        </div>
+        <div class="modal-body">
+            <form class="_setting_form">
+                <input type="hidden" id="_key" />
+                <div class="form-group">
+                    <label for="_value">{{__('global_value')}}</label>
+                    <textarea id="_value" class="form-control" style="height: 200px"></textarea> 
+                </div>
+                <input type="submit" id="_submit" class="d-none" />
+            </form>
+        </div>
+        <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">{{__('global_close_button')}}</button>
+            <button type="button" class="btn btn-primary" onclick="submit()">{{__('global_save_button')}}</button>
+        </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<!-- /.modes -->
+@endif
+@endif

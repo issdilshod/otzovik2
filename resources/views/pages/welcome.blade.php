@@ -6,8 +6,8 @@
     <!-- hero -->
     <div class="hero">
       <div class="hero-text">
-        <h1>Независимый сервис по оценке ВУЗов</h1>
-        <p>Узнай что реально пишут о учебных заведениях которые вы рассматриваете для поступления!</p>
+        <h1 class="_change_able" data-key="index_banner_h1" data-value="{{$template['index_banner_h1']}}">{{$template['index_banner_h1']}}</h1>
+        <p class="_change_able" data-key="index_banner_p" data-value="{{$template['index_banner_p']}}">{{$template['index_banner_p']}}</p>
         <a href="{{url('/poisk')}}" class="btn has-ico">
           <span class="ico">
             <svg class="icon">
@@ -55,7 +55,7 @@
                     <use xlink:href="#more-ico"></use>
                   </svg>
                 </span>
-                <strong>452 851</strong>
+                <strong class="_change_able" data-key="index_counter_reviews" data-value="{{$template['index_counter_reviews']}}">{{$template['index_counter_reviews']}}</strong>
               </span>
               Отзывов в вашем городе
             </li>
@@ -66,7 +66,7 @@
                     <use xlink:href="#files-ico"></use>
                   </svg>
                 </span>
-                <strong>22 851</strong>
+                <strong class="_change_able" data-key="index_counter_answers" data-value="{{$template['index_counter_answers']}}">{{$template['index_counter_answers']}}</strong>
               </span>
               Ответов от компаний
             </li>
@@ -77,7 +77,7 @@
                     <use xlink:href="#users-ico"></use>
                   </svg>
                 </span>
-                <strong>8 512</strong>
+                <strong class="_change_able" data-key="index_counter_companies" data-value="{{$template['index_counter_companies']}}">{{$template['index_counter_companies']}}</strong>
               </span>
               Компаний на портале
             </li>
@@ -120,29 +120,33 @@
     </ul>
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="tab01" role="tabpanel" aria-labelledby="info-tab01">
-        <h3>Оценивайте и находите компании!</h3>
-        <p>Наш сервис помогает сформировать наилучшие отношения между клиентом и компанией! Если вы клиент вы можете оставить свой честный отзыв и получить ответ от официального представительства.Текст генерируется абзацами случайным образом от двух до десяти предложений в абзаце, что позволяет сделать текст более привлекательным и живым для визуально-слухового восприятия.</p>
-        <p>По своей сути рыбатекст является альтернативой традицинному.</p>
-        <div class="btns">
-            <a href="{{url('/poisk')}}" class="btn has-ico">
-            <span class="ico">
-                <svg class="icon">
-                <use xlink:href="#files-ico"></use>
-                </svg>
-            </span>
-            Оставить отзыв
-            </a>
-            <a href="#" class="btn has-ico bordered-btn">
-            <span class="ico">
-                <svg class="icon">
-                <use xlink:href="#building-ico"></use>
-                </svg>
-            </span>
-            Добавить вуз
-            </a>
+            <h3 class="_change_able" data-key="index_info_universities_h3" data-value="{{$template['index_info_universities_h3']}}">{{$template['index_info_universities_h3']}}</h3>
+            <p class="_change_able" data-key="index_info_universities_p" data-value="{{$template['index_info_universities_p']}}">{{$template['index_info_universities_p']}}</p>
+            <div class="btns">
+                <a href="#" class="btn has-ico bordered-btn">
+                    <span class="ico">
+                        <svg class="icon">
+                        <use xlink:href="#building-ico"></use>
+                        </svg>
+                    </span>
+                    <span class="_change_able" data-key="index_info_universities_button" data-value="{{$template['index_info_universities_button']}}">{{$template['index_info_universities_button']}}</span>
+                </a>
+            </div>
         </div>
+        <div class="tab-pane fade" id="tab02" role="tabpanel" aria-labelledby="info-tab02">
+            <h3 class="_change_able" data-key="index_students_h3" data-value="{{$template['index_info_students_h3']}}">{{$template['index_info_students_h3']}}</h3>
+            <p class="_change_able" data-key="index_students_p" data-value="{{$template['index_info_students_p']}}">{{$template['index_info_students_p']}}</p>
+            <div class="btns">
+                <a href="{{url('/poisk')}}" class="btn has-ico">
+                    <span class="ico">
+                        <svg class="icon">
+                        <use xlink:href="#files-ico"></use>
+                        </svg>
+                    </span>
+                    <span class="_change_able" data-key="index_info_students_button" data-value="{{$template['index_info_students_button']}}">{{$template['index_info_students_button']}}</span>
+                </a>
+            </div>
         </div>
-        <div class="tab-pane fade" id="tab02" role="tabpanel" aria-labelledby="info-tab02">...</div>
     </div>
     </div>
     <!-- / information -->

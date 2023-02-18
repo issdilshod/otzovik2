@@ -4,6 +4,15 @@ use Illuminate\Support\Facades\Facade;
 
 return [
 
+    '_mode' => [
+        'edit' => 'edit',
+        'read' => 'read'
+    ],
+
+    '_error' => [
+        '401' => 'Invalid Token'
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Application Name

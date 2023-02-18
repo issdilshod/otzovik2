@@ -16,31 +16,31 @@
 
         <ul class="socially">
             <li>
-            <a href="#">
-                <span class="ico vk">
-                <svg class="icon">
-                    <use xlink:href="#vk-ico"></use>
-                </svg>
-                </span>
-            </a>
+                <a href="{{$template['header_vk']}}" target="_blank" class="_change_able" data-key="header_vk" data-value="{{$template['header_vk']}}">
+                    <span class="ico vk">
+                    <svg class="icon">
+                        <use xlink:href="#vk-ico"></use>
+                    </svg>
+                    </span>
+                </a>
             </li>
             <li>
-            <a href="#">
-                <span class="ico telegram">
-                <svg class="icon">
-                    <use xlink:href="#telegram-ico"></use>
-                </svg>
-                </span>
-            </a>
+                <a href="{{$template['header_telegram']}}" target="_blank" class="_change_able" data-key="header_telegram" data-value="{{$template['header_telegram']}}">
+                    <span class="ico telegram">
+                    <svg class="icon">
+                        <use xlink:href="#telegram-ico"></use>
+                    </svg>
+                    </span>
+                </a>
             </li>
             <li>
-            <a href="#">
-                <span class="ico viber">
-                <svg class="icon">
-                    <use xlink:href="#viber-ico"></use>
-                </svg>
-                </span>
-            </a>
+                <a href="{{$template['header_viber']}}" target="_blank" class="_change_able" data-key="header_viber" data-value="{{$template['header_viber']}}">
+                    <span class="ico viber">
+                    <svg class="icon">
+                        <use xlink:href="#viber-ico"></use>
+                    </svg>
+                    </span>
+                </a>
             </li>
         </ul>
 

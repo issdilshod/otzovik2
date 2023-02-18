@@ -12,12 +12,14 @@ use App\Services\Admin\Setting\EducationLevelService;
 use App\Services\Admin\Setting\EducationTypeService;
 use App\Services\Admin\Setting\SettingService;
 use App\Services\Admin\University\UniversityService;
+use App\Services\MainService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
 class MainController extends Controller
 {
 
+    private $mainService;
     private $universityService;
     private $directionService;
     private $educationTypeService;
@@ -31,6 +33,7 @@ class MainController extends Controller
 
     public function __construct()
     {
+        $this->mainService = new MainService();
         $this->universityService = new UniversityService();
         $this->directionService = new DirectionService();
         $this->educationTypeService = new EducationTypeService();
@@ -56,8 +59,9 @@ class MainController extends Controller
         $data['popular_articles'] = $this->articleService->popular();  
 
         // settings
+        $data['template'] = $this->settingService->findByPage(Config::get('pages.index'));
         $data['settings']['current_page'] = Config::get('pages.index');
-        $data['settings'] = $this->settingService->findByPage(Config::get('pages.index'));
+        $data['settings']['mode'] = $this->mainService->_mode($request);
 
         return view('pages.welcome', $data);
     }
@@ -315,6 +319,7 @@ class MainController extends Controller
         $data['top_universities'] = $this->universityService->top();
         $data['popular_reviews'] = $this->reviewService->popular();
         $data['last_reviews'] = $this->reviewService->last();
+        $data['popular_articles'] = $this->articleService->popular(); 
 
         // settings
         $data['settings']['current_page'] = Config::get('pages.top');
