@@ -138,7 +138,7 @@
                                     <p>{{__('menu_templates_reviews_title')}}</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <!--li class="nav-item">
                                 <a href="{{ url('/admin/settings/templates/articles') }}" class="nav-link {{ (request()->is('admin/settings/templates/articles')) ? 'active' : '' }}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>{{__('menu_templates_articles_title')}}</p>
@@ -161,7 +161,7 @@
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>{{__('menu_templates_educational_title')}}</p>
                                 </a>
-                            </li>
+                            </li-->
                         </ul>
                     </li>
                     <!--li class="nav-item">

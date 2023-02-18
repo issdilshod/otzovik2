@@ -57,4 +57,13 @@ class SettingController extends Controller
         ]);
     }
 
+    public function reviews(Request $request)
+    {
+        // permission
+
+        return view('admin.pages.setting.setting.settings', [
+            'src' => url('/otzyvy').'?_mode='.Config::get('app._mode.edit').'&_token='.Session::get('token')[0]
+        ]);
+    }
+
 }

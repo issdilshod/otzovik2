@@ -24,8 +24,8 @@
     <!-- hero -->
     <div class="hero">
       <div class="hero-text">
-        <h1>Оценивайте и находите компании!</h1> 
-        <p>Наш сервис помогает сформировать наилучшие отношения между клиентом и компанией!</p>       
+        <h1 class="_change_able" data-key="reviews_info_h1" data-value="{{$template['reviews_info_h1']}}">{{$template['reviews_info_h1']}}</h1> 
+        <p class="_change_able" data-key="reviews_info_p" data-value="{{$template['reviews_info_p']}}">{{$template['reviews_info_p']}}</p>       
         <div class="btns">
           <a href="{{url('poisk')}}" class="btn has-ico">
             <span class="ico">
