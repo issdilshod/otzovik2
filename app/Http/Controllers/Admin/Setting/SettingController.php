@@ -48,4 +48,13 @@ class SettingController extends Controller
         ]);
     }
 
+    public function universities(Request $request)
+    {
+        // permission
+
+        return view('admin.pages.setting.setting.settings', [
+            'src' => url('/universitety').'?_mode='.Config::get('app._mode.edit').'&_token='.Session::get('token')[0]
+        ]);
+    }
+
 }

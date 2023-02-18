@@ -105,8 +105,9 @@ class MainController extends Controller
         $data['list'] = $this->universityService->findAllFront();
 
         // settings
+        $data['template'] = $this->settingService->findByPage(Config::get('pages.universities'));
         $data['settings']['current_page'] = Config::get('pages.universities');
-        $data['settings'] = $this->settingService->findByPage(Config::get('pages.universities'));
+        $data['settings']['mode'] = $this->mainService->_mode($request);
 
         return view('pages.universities', $data);
     }

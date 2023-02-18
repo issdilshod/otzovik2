@@ -17,6 +17,7 @@ class SettingSeeder extends Seeder
     public function run()
     {
         $settings = [
+            // global
             [
                 'key' => 'header_vk',
                 'value' => ''
@@ -29,6 +30,7 @@ class SettingSeeder extends Seeder
                 'key' => 'header_viber',
                 'value' => ''
             ],
+            // index
             [
                 'page' => Config::get('pages.index'),
                 'key' => Config::get('pages.index').'_banner_h1',
@@ -84,10 +86,22 @@ class SettingSeeder extends Seeder
                 'key' => Config::get('pages.index').'_info_students_button',
                 'value' => 'Оставить отзыв'
             ],
+            // search
             [
                 'page' => Config::get('pages.search'),
                 'key' => Config::get('pages.search').'_form_h3',
                 'value' => 'Где получить образование'
+            ],
+            // universities
+            [
+                'page' => Config::get('pages.universities'),
+                'key' => Config::get('pages.universities').'_info_h1',
+                'value' => 'Текстовый блок'
+            ],
+            [
+                'page' => Config::get('pages.universities'),
+                'key' => Config::get('pages.universities').'_info_p',
+                'value' => 'Отзыв.ru – интернет-портал для старшеклассников, абитуриентов, студентов. Наша работа – это забота о том, чтобы поиск информации о вузе или колледже, будущей профессии и специальности стал для вас максимально удобным и простым. Поэтому каждый день мы совершенствуем наш сайт и наполняем его новыми интересными материалами, чтобы вы могли найти гораздо больше, чем просто ответы на вопросы.'
             ],
 
         ];

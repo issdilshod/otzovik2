@@ -23,8 +23,8 @@
     <!-- hero -->
     <div class="hero">
       <div class="hero-text has-size">
-        <h1>Текстовый блок</h1>
-        <p>Отзыв.ru – интернет-портал для старшеклассников, абитуриентов, студентов. Наша работа – это забота о том, чтобы поиск информации о вузе или колледже, будущей профессии и специальности стал для вас максимально удобным и простым. Поэтому каждый день мы совершенствуем наш сайт и наполняем его новыми интересными материалами, чтобы вы могли найти гораздо больше, чем просто ответы на вопросы.</p>        
+        <h1 class="_change_able" data-key="universities_info_h1" data-value="{{$template['universities_info_h1']}}">{{$template['universities_info_h1']}}</h1>
+        <p class="_change_able" data-key="universities_info_p" data-value="{{$template['universities_info_p']}}">{{$template['universities_info_p']}}</p>        
       </div>
       <div class="hero-img"><img src="{{ asset('assets/images/hero02.svg') }}" alt=""></div>
     </div>
