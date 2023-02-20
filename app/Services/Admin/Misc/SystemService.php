@@ -118,6 +118,8 @@ class SystemService extends Service{
             return __('global_active');
         }else if ($id==Config::get('status.wait')){
             return __('global_waiting');
+        }else if ($id==Config::get('status.block')){
+            return __('global_block');
         }
         return '';
     }

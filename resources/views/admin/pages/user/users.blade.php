@@ -69,11 +69,7 @@
                                 <tr>
                                     <td>{{$key+1}}</td>
                                     <td>
-                                        @if(isset($value->avatar))
-                                        <img src="{{ asset('storage/'.$value->avatar) }}" width="50px" />
-                                        @else
-                                        <img src="{{ asset('assets/images/'.\App\Services\Admin\Misc\SystemService::get_sex_by_id($value->sex) . '.jpg') }}" width="50px" />
-                                        @endif
+                                        <img src="@if ($value->avatar){{ asset('storage/'.$value->avatar) }}@else{{'https://cdn-icons-png.flaticon.com/512/847/847969.png'}}@endif" width="40px" />
                                         {{$value->first_name . ' ' . $value->last_name}}</td>
                                     <td>{{$value->email}}</td>
                                     <td>{{$value->phone}}</td>

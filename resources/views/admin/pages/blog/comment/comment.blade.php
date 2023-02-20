@@ -57,7 +57,7 @@
 
                                 @isset($comment->id)
                                 <div class="form-group">
-                                    <img src="{{ asset('storage/'.$comment->user_avatar) }}" width="40px" /> {{$comment->user_first_name}} {{$comment->user_last_name}}
+                                    <img src="@if ($comment->user_avatar){{ asset('storage/'.$comment->user_avatar) }}@else{{'https://cdn-icons-png.flaticon.com/512/847/847969.png'}}@endif" width="40px" /> {{$comment->user_first_name}} {{$comment->user_last_name}}
                                 </div>
                                 @endisset
 

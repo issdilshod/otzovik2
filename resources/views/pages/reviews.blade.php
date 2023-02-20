@@ -79,7 +79,9 @@
             <div class="review-card">
                 <div class="review-card-top">
                 <div class="user">
-                    <div class="user-photo"><img src="{{ asset('storage/'.$item->user_avatar) }}" alt=""></div>
+                    <div class="user-photo">
+                        <img src="@if ($item->user_avatar){{ asset('storage/'.$item->user_avatar) }}@else{{'https://cdn-icons-png.flaticon.com/512/847/847969.png'}}@endif" alt="">
+                    </div>
                     <div class="review-user-name">{{$item->user_first_name}} {{$item->user_last_name}}</div>
                 </div>
                 <div class="date">{{\App\Services\Admin\Misc\SystemService::get_dateTime_human($item->updated_at)}}</div>

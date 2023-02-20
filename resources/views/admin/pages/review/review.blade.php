@@ -59,7 +59,7 @@
 
                                 @isset($review->id)
                                 <div class="form-group">
-                                    <img src="{{ asset('storage/'.$review->user_avatar) }}" width="40px" /> {{$review->user_first_name}} {{$review->user_last_name}}
+                                    <img src="@if ($review->user_avatar){{ asset('storage/'.$review->user_avatar) }}@else{{'https://cdn-icons-png.flaticon.com/512/847/847969.png'}}@endif" width="40px" /> {{$review->user_first_name}} {{$review->user_last_name}}
                                 </div>
                                 @endisset
 
@@ -89,6 +89,9 @@
                                         <option value="{{$value}}" <?php if ($review->status==$value){ echo 'selected'; } ?>>{{\App\Services\Admin\Misc\SystemService::get_status_name_by_id($value)}}</option>
 
                                         <?php $value = \Illuminate\Support\Facades\Config::get('status.wait'); ?>
+                                        <option value="{{$value}}" <?php if ($review->status==$value){ echo 'selected'; } ?>>{{\App\Services\Admin\Misc\SystemService::get_status_name_by_id($value)}}</option>
+
+                                        <?php $value = \Illuminate\Support\Facades\Config::get('status.block'); ?>
                                         <option value="{{$value}}" <?php if ($review->status==$value){ echo 'selected'; } ?>>{{\App\Services\Admin\Misc\SystemService::get_status_name_by_id($value)}}</option>
                                     </select>
                                 </div>

@@ -51,7 +51,9 @@
       <div class="review-card">
         <div class="review-card-top">
           <div class="user">
-            <div class="user-photo"><img src="{{ asset('storage/'.$current_review->user_avatar) }}" alt=""></div>
+            <div class="user-photo">
+                <img src="@if ($current_review->user_avatar){{ asset('storage/'.$current_review->user_avatar) }}@else{{'https://cdn-icons-png.flaticon.com/512/847/847969.png'}}@endif" alt="">
+            </div>
             <div class="review-user-name">{{$current_review->user_first_name}} {{$current_review->user_last_name}}</div>
           </div>
           <div class="rating">

@@ -94,7 +94,9 @@
             <div class="review-card">
                 <div class="review-card-top">
                 <div class="user">
-                    <div class="user-photo"><img src="{{ asset('storage/'.$comment->user_avatar) }}" alt=""></div>
+                    <div class="user-photo">
+                        <img src="@if ($comment->user_avatar){{ asset('storage/'.$comment->user_avatar) }}@else{{'https://cdn-icons-png.flaticon.com/512/847/847969.png'}}@endif" alt="">
+                    </div>
                     <div class="review-user-name">{{$comment->user_first_name}} {{$comment->user_last_name}}</div>
                 </div>
                 @if ($comment->replay_id)

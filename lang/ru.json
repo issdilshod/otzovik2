@@ -11,6 +11,7 @@
     "global_status": "Статус",
     "global_active": "Активный",
     "global_waiting": "Ожидание",
+    "global_block": "Отклонен",
     "global_edit": "Редактировать",
     "global_value": "Значение",
 

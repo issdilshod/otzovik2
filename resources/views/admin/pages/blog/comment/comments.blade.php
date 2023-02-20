@@ -67,7 +67,7 @@
                             @foreach ($list as $key => $value)
                                 <tr>
                                     <td>{{$key+1}}</td>
-                                    <td><img src="{{ asset('storage/'.$value->user_avatar) }}" width="40px" /> {{$value->user_first_name}} {{$value->user_last_name}}</td>
+                                    <td><img src="@if ($value->user_avatar){{ asset('storage/'.$value->user_avatar) }}@else{{'https://cdn-icons-png.flaticon.com/512/847/847969.png'}}@endif" width="40px" /> {{$value->user_first_name}} {{$value->user_last_name}}</td>
                                     <td>{{$value->article_title}}</td>
                                     <td>{{$value->created_at}}</td>
                                     <td>
