@@ -98,7 +98,7 @@
 <script>
 $(function () {
     // Summernote
-    //$('#text1').summernote();
+    $('#text1').summernote();
 })
 </script>
 @stop
