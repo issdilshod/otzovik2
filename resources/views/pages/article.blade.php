@@ -145,7 +145,7 @@
         <form id="comment-add-form">
             @csrf
             <input name="article_id" type="hidden" value="{{$current_article->id}}" />
-            <h2>Оставить комментарию</h2>
+            <h2>Оставить комментарий</h2>
             <div class="row">
             <div class="col-lg-4">
                 <div class="form-group">
@@ -164,7 +164,7 @@
             </div>
             <div class="col-lg-12">
                 <div class="form-group">
-                    <textarea name="text" placeholder="Отзыв*" cols="30" rows="10" class="form-control"></textarea>
+                    <textarea name="text" placeholder="Комментарий*" cols="30" rows="10" class="form-control"></textarea>
                 </div>
             </div>
             </div>
@@ -175,7 +175,7 @@
                     <use xlink:href="#letter-ico"></use>
                 </svg>
                 </span>
-                Оставить комментарию
+                Оставить комментарий
             </button>
             <div class="rateit-wrapper">
                 <div id="rateit" class="rateit"></div>
