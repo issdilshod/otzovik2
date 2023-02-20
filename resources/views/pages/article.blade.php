@@ -222,7 +222,7 @@
             formData.append('text', $('textarea[name="text"]').val());
             formData.append('article_id', $('input[name="article_id"]').val());
 
-            if ($('input[name="replay_id"]')!=undefined){
+            if (typeof $('input[name="replay_id"]').val()!='undefined'){
                 formData.append('replay_id', $('input[name="replay_id"]').val());
             }
 
@@ -270,6 +270,11 @@
                 }
             });
         })
+
+        // on modal hide
+        $(document).on('hide.bs.modal', "#modal04", function(){
+            window.location.reload();
+        });
     </script>
 
     @include('components.articles.popular')
