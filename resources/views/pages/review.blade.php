@@ -26,7 +26,7 @@
     <div class="hero university-full">
       <div class="hero-text">
         <div class="date">{{$current_review->updated_at}}</div>
-        <h1 class="mb-1">Отзыв {{$current_review->university_name}} № {{$current_review->number}}</h1>
+        <h1 class="mb-1">Отзыв на {{$current_review->university_name}} № {{$current_review->number}}</h1>
         <p>{{$current_review->university_name}}</p>
         <div class="btns">
           <a href="{{url('otzyvy')}}" class="btn">Читать все отзывы</a>

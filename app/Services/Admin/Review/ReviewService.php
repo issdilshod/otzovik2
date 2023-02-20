@@ -247,11 +247,11 @@ class ReviewService extends Service{
                     ->whereBetween('star', [4.6, 5])
                     ->count();
         return [
-            'one' => ($one==0?0:($one*100)/$all),
-            'two' => ($two==0?0:($two*100)/$all),
-            'three' => ($three==0?0:($three*100)/$all),
-            'four' => ($four==0?0:($four*100)/$all),
-            'five' => ($five==0?0:($five*100)/$all),
+            'one' => round(($one==0?0:($one*100)/$all)),
+            'two' => round(($two==0?0:($two*100)/$all)),
+            'three' => round(($three==0?0:($three*100)/$all)),
+            'four' => round(($four==0?0:($four*100)/$all)),
+            'five' => round(($five==0?0:($five*100)/$all)),
         ];
     }
 
