@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\Admin\Blog\ArticleService;
 use App\Services\Admin\Blog\ArticleViewService;
 use App\Services\Admin\Blog\CommentService;
+use App\Services\Admin\Misc\SlugService;
 use App\Services\Admin\Review\ReviewService;
 use App\Services\Admin\Setting\CityService;
 use App\Services\Admin\Setting\DirectionService;
@@ -92,8 +93,32 @@ class MainController extends Controller
     }
 
     // page universities
-    public function universities(Request $request)
+    public function universities(Request $request, $slug1 = '', $slug2 = '', $slug3 = '', $slug4 = '')
     {
+        // detect slugs
+        $city = ''; $direction = ''; $page = ''; $filter = '';
+        $data['current_direction'] = '';
+        // slug1
+        if (SlugService::isCity($slug1)){ $city = SlugService::isCity($slug1); }
+        if (SlugService::isDirection($slug1)){ $data['current_direction'] = $slug1; $direction = SlugService::isDirection($slug1); }
+        if (SlugService::isPage($slug1)){ $page = SlugService::isPage($slug1); }
+        if (SlugService::isUniversityFilter($slug1)){ $filter = $slug1; }
+        // slug2
+        if (SlugService::isCity($slug2)){ $city = SlugService::isCity($slug2); }
+        if (SlugService::isDirection($slug2)){ $data['current_direction'] = $slug2; $direction = SlugService::isDirection($slug2); }
+        if (SlugService::isPage($slug2)){ $page = SlugService::isPage($slug2); }
+        if (SlugService::isUniversityFilter($slug2)){ $filter = $slug2; }
+        // slug3
+        if (SlugService::isCity($slug3)){ $city = SlugService::isCity($slug3); }
+        if (SlugService::isDirection($slug3)){ $data['current_direction'] = $slug3; $direction = SlugService::isDirection($slug3); }
+        if (SlugService::isPage($slug3)){ $page = SlugService::isPage($slug3); }
+        if (SlugService::isUniversityFilter($slug3)){ $filter = $slug3; }
+        // slug4
+        if (SlugService::isCity($slug4)){ $city = SlugService::isCity($slug4); }
+        if (SlugService::isDirection($slug4)){  $data['current_direction'] = $slug4; $direction = SlugService::isDirection($slug4); }
+        if (SlugService::isPage($slug4)){ $page = SlugService::isPage($slug4); }
+        if (SlugService::isUniversityFilter($slug4)){ $filter = $slug4; }
+
         $data['title'] = __('universities_page_title');
 
         $data['directions'] = $this->directionService->getAll();
@@ -102,7 +127,7 @@ class MainController extends Controller
         $data['popular_universities'] = $this->universityService->popular();
         $data['popular_reviews'] = $this->reviewService->popular();
         $data['last_reviews'] = $this->reviewService->last();
-        $data['list'] = $this->universityService->findAllFront();
+        $data['list'] = $this->universityService->findAllFront($city, $direction, $page, $filter);
 
         // settings
         $data['template'] = $this->settingService->findByPage(Config::get('pages.universities'));

@@ -38,7 +38,7 @@ class PaginatorService extends Service{
         }
 
         // calculate the end number
-        self::$endNumber = self::$startNumber + self::$rangePagination;
+        self::$endNumber = self::$startNumber + self::$rangePagination - 1;
 
         if (self::$endNumber>self::$lastPage){ // fix the end
             self::$endNumber = self::$lastPage;
@@ -55,15 +55,27 @@ class PaginatorService extends Service{
 
     public static function getUrl($i = 1)
     {
-        if ($i==1){
-            return url()->full();
+        $fullUrl = url()->full();
+
+        $fullUrl = preg_replace('/page\d+/', '', $fullUrl);
+
+        // remove last slash
+        if (substr($fullUrl, strlen($fullUrl)-1, 1) == '/'){
+            $fullUrl = substr($fullUrl, 0, strlen($fullUrl)-1);
         }
-        return url()->full().'/page'.$i;
+
+        // find get params
+        $tmpLink = explode('?', $fullUrl);
+
+        if ($i==1){
+            return $fullUrl;
+        }
+        return $tmpLink[0].'/page'.$i.(isset($tmpLink[1])?'?'.$tmpLink[1]:'');
     }
 
     public static function hasStartNumber()
     {
-        if (self::$startNumber>=self::$rangePagination){
+        if (self::$startNumber>floor(self::$rangePagination/2)){
             return self::$firstPage;
         }
         return false;
@@ -71,7 +83,7 @@ class PaginatorService extends Service{
 
     public static function hasEndNumber()
     {
-        if (self::$currentPage+round(self::$currentPage/self::$rangePagination)<self::$lastPage){
+        if (self::$currentPage+floor(self::$rangePagination/2)<self::$lastPage){
             return self::$lastPage;
         }
         return false;

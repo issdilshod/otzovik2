@@ -42,22 +42,19 @@
         Учебные заведения
       </div>
       <div class="sort">
-        <a href="#" class="sort-item location">
+        <a href="#" class="sort-item location" data-toggle="modal" data-target="#modal01">
           <span class="ico">
             <svg class="icon">
               <use xlink:href="#location-empty"></use>
             </svg>
           </span>
-          Москва
+          <span class="name"></span>
         </a>
-        <a href="#" class="sort-item location">
-          <span class="ico">
-            <svg class="icon">
-              <use xlink:href="#filter-ico"></use>
-            </svg>
-          </span>
-          По количеству отзывов
-        </a>
+        <select class="qty-sort" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}'>
+            <option value="review">По количеству отзывов</option>
+            <option value="rate">По рейтингу</option>
+            <option value="new">По новинкам</option>
+        </select>
       </div>
     </div>
 
@@ -147,5 +144,65 @@
 @include('components.modals.success-subscribe')
 
 @include('components.svgs.welcome')
+
+<script>
+    var currentUrl = '{{url()->full()}}';
+    var globUrl = '{{url("/universitety")}}';
+
+    // on ready document
+    $(document).ready(function(){
+        // if new open then remove filters
+        if (currentUrl==globUrl){
+            localStorage.removeItem('_qty_sort');
+            localStorage.removeItem('_tags_li_a');
+        }
+    })
+
+    // on change filter
+    $(document).on('change', '.qty-sort', function(e) {
+        window.location.href = currentUrl + '/' + $(this).val();
+
+        localStorage.setItem('_qty_sort', $(this).val());
+
+        generate();
+    });
+
+    // on location change
+    $(document).on('click', '.choose-location', function(e) {
+        generate();
+    });
+
+    // on directions change
+    $(document).on('click', '.tags>li>a', function (e){
+
+        e.preventDefault();
+
+        var slug = $(this).data('slug');
+
+        localStorage.setItem('_tags_li_a', slug);
+
+        generate();
+    });
+
+    // function to generate url
+    function generate(){
+        var sort = localStorage.getItem('_qty_sort');
+        var location = JSON.parse(localStorage.getItem('_location'));
+        var tags = localStorage.getItem('_tags_li_a');
+
+        var link = globUrl;
+        if (location){
+            link += '/' + location.slug;
+        }
+        if (tags){
+            link += '/' + tags;
+        }
+        if (sort){
+            link += '/' + sort;
+        }
+
+        window.location.href = link;
+    }
+</script>
 
 @stop

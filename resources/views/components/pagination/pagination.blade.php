@@ -18,12 +18,12 @@ $paginatorService = new PaginatorService($list->currentPage(), $list->lastPage()
         <!-- first page -->
         @if ($paginatorService::hasStartNumber())
             <li class="page-item">
-                <a class="page-link" href="$paginatorService::getUrl($paginatorService::hasStartNumber())">{{$paginatorService::hasStartNumber()}}</a>
+                <a class="page-link" href="{{$paginatorService::getUrl($paginatorService::hasStartNumber())}}">{{$paginatorService::hasStartNumber()}}</a>
             </li> 
         @endif
 
         <!-- main pages -->
-        @for ($i = $paginatorService::$startNumber; $i<$paginatorService::$endNumber; $i++)
+        @for ($i = $paginatorService::$startNumber; $i<=$paginatorService::$endNumber; $i++)
             <li class="page-item">
                 <a class="page-link @if ($i==$paginatorService::$currentPage){{'active'}}@endif" href="{{$paginatorService::getUrl($i)}}">{{$i}}</a>
             </li>

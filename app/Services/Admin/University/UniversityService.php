@@ -70,12 +70,32 @@ class UniversityService extends Service{
         return $university;
     }
 
-    public function findAllFront()
+    public function findAllFront($city = '', $direction = '', $page = '', $filter = '')
     {
-        $universities = University::withCount('reviews')
-                            ->orderBy('name')
-                            ->where('status', Config::get('status.active'))
-                            ->paginate(Config::get('pagination.per_page'));
+        $universities = University::from('universities')
+                            ->withCount('reviews')
+                            ->where('universities.status', Config::get('status.active'))
+                            ->when($city!='', function($q) use($city){ // city filter
+                                $q->where('universities.city_id', $city);
+                            })
+                            ->when($direction!='', function($q) use($direction){ // direction filter
+                                $q->join('university_directions as ud', 'ud.university_id', '=', 'universities.id')
+                                    ->where('ud.direction_id', $direction);
+                            })
+                            ->when($filter=='', function($q){ // standard order by name
+                                $q->orderBy('universities.name');
+                            })
+                            ->when($filter!='', function($q) use($filter){ // specific filter 
+                                if ($filter=='review'){ // filter by review
+                                    $q->orderBy('reviews_count', 'desc');
+                                }else if ($filter=='rate'){ // filter by rate
+                                    $q->orderBy('universities.worlds_rate')
+                                        ->orderBy('universities.russian_rate');
+                                }else if ($filter=='new'){ // filter by new
+                                    $q->orderBy('universities.updated_at');
+                                }
+                            })
+                            ->paginate(Config::get('pagination.per_page'), ['universities.*'], '', $page);
         return $universities;
     }
 
