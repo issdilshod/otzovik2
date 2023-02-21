@@ -4,6 +4,8 @@ namespace App\Services\Admin\Misc;
 
 use App\Models\Admin\Setting\City;
 use App\Models\Admin\Setting\Direction;
+use App\Models\Admin\Setting\EducationLevel;
+use App\Models\Admin\Setting\EducationType;
 use App\Services\Service;
 use Illuminate\Support\Facades\Config;
 
@@ -51,6 +53,28 @@ class SlugService extends Service{
     {
         if ($slug=='review' || $slug=='rate' || $slug=='new'){
             return true;
+        }
+        return false;
+    }
+
+    public static function isLevel($slug)
+    {
+        $educationLevel = EducationLevel::where('status', Config::get('status.active'))
+                                ->where('slug', $slug)
+                                ->first();
+        if ($educationLevel!=null){
+            return $educationLevel->id;
+        }
+        return false;
+    }
+
+    public static function isType($slug)
+    {
+        $educationType = EducationType::where('status', Config::get('status.active'))
+                                ->where('slug', $slug)
+                                ->first();
+        if ($educationType!=null){
+            return $educationType->id;
         }
         return false;
     }

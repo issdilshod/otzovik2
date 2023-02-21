@@ -26,37 +26,37 @@
             <div class="form-group size01">
                 <label for="place">Регион</label>
                 <div class="input-wrapper">
-                <input type="text" placeholder="Кра|" id="place">
-                <div class="input-hint" style="display: none;">
+                <input type="text" placeholder="" id="place" data-slug="">
+                <div class="input-hint" style="display:none">
                     <ul>
-                    <li><a href="#"><span>Кра</span>снодар</a></li>
-                    <li><a href="#"><span>Кра</span>сногорск</a></li>
-                    <li><a href="#"><span>Кра</span>сносельск</a></li>
+                        <li>
+                            <a href="#"><span>Кра</span>снодар</a>
+                        </li>
                     </ul>
                 </div>
                 </div>
             </div>
             <div class="form-group size02">
                 <label>Направление</label>
-                <select data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}'>
+                <select id="jcf-direction" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}'>
                     @foreach ($directions as $direction)
-                        <option value="{{$direction->id}}">{{$direction->name}}</option>
+                        <option value="{{$direction->slug}}">{{$direction->name}}</option>
                     @endforeach
                 </select>
             </div>
             <div class="form-group size03">
                 <label>Уровень образования</label>
-                <select data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}'>
+                <select id="jcf-level" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}'>
                     @foreach ($education_levels as $education_level)
-                        <option value="{{$education_level->id}}">{{$education_level->name}}</option>
+                        <option value="{{$education_level->slug}}">{{$education_level->name}}</option>
                     @endforeach                
                 </select>
             </div>
             <div class="form-group size04">
                 <label>Форма обучения</label>
-                <select data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}'>
+                <select id="jcf-type" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}'>
                     @foreach ($education_types as $education_type)
-                        <option value="{{$education_type->id}}">{{$education_type->name}}</option>
+                        <option value="{{$education_type->slug}}">{{$education_type->name}}</option>
                     @endforeach
                 </select>
             </div>
@@ -165,5 +165,57 @@
 @include('components.modals.success-subscribe')
 
 @include('components.svgs.welcome')
+
+<script>
+    var globUrl = "{{url('/poisk')}}";
+
+    // on location input change
+    $(document).on('keyup', '#place', function(e){
+        var searchValue = $(this).val();
+
+        var urlValue = '';
+        if (searchValue.length>0){
+            urlValue = '/'+searchValue;
+        }
+
+        $('.input-hint').show();
+
+        $.ajax({
+            type: 'get',
+            url: '<?=url('api/cities')?>'+urlValue,
+            success: function(res){
+                $('.input-hint>ul').html('');
+                if (res.data.length>0){
+                    for (let key in res.data){
+                        $('.input-hint>ul').append('<li><a href="#" data-slug="'+res.data[key]['slug']+'" data-name="'+res.data[key]['name']+'">'+res.data[key]['name'].toLowerCase().replace(searchValue.toLowerCase(), '<span>'+searchValue+'</span>')+'</a></li>');
+                    }
+                }else{
+                    // TODO: Not found
+                }
+            }
+        });
+    });
+
+    // location autocomplete click
+    $(document).on('click', '.input-hint>ul>li>a', function(e){
+        e.preventDefault();
+
+        $('#place').attr('data-slug', $(this).data('slug'));
+        $('#place').val($(this).data('name'));
+        $('.input-hint').hide();
+    });
+
+    // on search form submit
+    $(document).on('submit', '.form>form', function(e){
+        e.preventDefault();
+
+        var city = $('#place').data('slug');
+        var direction = $('#jcf-direction').val();
+        var level = $('#jcf-level').val();
+        var type = $('#jcf-type').val();
+
+        window.location.href = globUrl + '/' + city + '/' + direction + '/' + level + '/' + type;
+    })
+</script>
 
 @stop

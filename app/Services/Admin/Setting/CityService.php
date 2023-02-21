@@ -43,6 +43,20 @@ class CityService extends Service{
         return $cities;
     }
 
+    public function findAllFront($name = '')
+    {
+        $cities = City::where('status', Config::get('status.active'))
+                        ->orderByRaw('ISNULL(sort), sort ASC')
+                        ->orderBy('name')
+                        ->when($name!='', function ($q) use($name){
+                            return $q->where('name', 'like', $name . '%');
+                        })
+                        ->select(['id', 'name', 'slug'])
+                        ->limit(Config::get('pagination.per_page'))
+                        ->get();
+        return $cities;
+    }
+
     /**
      * Add & Update
      * 

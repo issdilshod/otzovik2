@@ -70,9 +70,11 @@ class CityController extends Controller
         return redirect('admin/settings/cities')->with('status', '200');
     }
 
-    public function api_index(Request $request)
+    public function api_index(Request $request, $name = '')
     {
-        //
+        $cities = $this->cityService->findAllFront($name);
+
+        return response()->json(['data' => $cities, 'msg' => 'success'], 200);
     }
 
 }

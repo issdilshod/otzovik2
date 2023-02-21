@@ -70,7 +70,7 @@ class UniversityService extends Service{
         return $university;
     }
 
-    public function findAllFront($city = '', $direction = '', $page = '', $filter = '')
+    public function findAllFront($city = '', $direction = '', $page = '', $filter = '', $level = '', $type = '')
     {
         $universities = University::from('universities')
                             ->withCount('reviews')
@@ -81,6 +81,14 @@ class UniversityService extends Service{
                             ->when($direction!='', function($q) use($direction){ // direction filter
                                 $q->join('university_directions as ud', 'ud.university_id', '=', 'universities.id')
                                     ->where('ud.direction_id', $direction);
+                            })
+                            ->when($level!='', function($q) use($level){ // filter by level
+                                $q->join('university_education_levels as uel', 'uel.university_id', '=', 'universities.id')
+                                    ->where('uel.education_level_id', $level);
+                            })
+                            ->when($type!='', function($q) use($type){ // filter by type
+                                $q->join('university_education_types as uet', 'uet.university_id', '=', 'universities.id')
+                                    ->where('uet.education_type_id', $type);
                             })
                             ->when($filter=='', function($q){ // standard order by name
                                 $q->orderBy('universities.name');
