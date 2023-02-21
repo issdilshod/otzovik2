@@ -25,7 +25,7 @@
     <div class="article">
       <h1>{{$current_article->title}}</h1>
       <figure><img src="{{ asset('storage/'.$current_article->cover) }}" alt=""></figure>
-      <p>{{$current_article->text}}</p>
+      <p><?=$current_article->text?></p>
       <hr>  
       <div class="article-bottom">
         <div class="socially-wrap">

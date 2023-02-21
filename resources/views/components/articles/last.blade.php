@@ -29,7 +29,7 @@
                         </div>
                     </div>
                     <div class="news-card-title">{{$article->title}}</div>
-                    <p>{{\Illuminate\Support\Str::limit($article->text, 86, '...')}}</p>
+                    <p><?=\Illuminate\Support\Str::limit($article->text, 86, '...')?></p>
                     </a>
                 </div>
             </div>
@@ -37,4 +37,3 @@
 
     </div>
 </div>
-<!-- / popular -->

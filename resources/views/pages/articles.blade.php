@@ -89,7 +89,7 @@
                             </div>
                         </div>
                         <div class="news-card-title">{{$item->title}}</div>
-                        <p>{{\Illuminate\Support\Str::limit($item->text, 86, '...')}}</p>
+                        <p><?=\Illuminate\Support\Str::limit($item->text, 86, '...')?></p>
                         </a>
                     </div>
                 </div>
