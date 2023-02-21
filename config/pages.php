@@ -14,5 +14,7 @@ return [
     'faq' => 'faq',
     'review_add' => 'review_add',
     'top' => 'top',
-    'review_add' => 'review_add'
+    'review_add' => 'review_add',
+    'policy' => 'policy',
+    'legal' => 'legal'
 ];

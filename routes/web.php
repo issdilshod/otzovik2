@@ -37,6 +37,9 @@ Route::get('/faq', [MainController::class, 'faq']);
 Route::get('/uchebnim-zavedeniyam', [MainController::class, 'educational']);
 Route::get('/top-universitety', [MainController::class, 'top']);
 
+Route::get('/legal', [MainController::class, 'legal']);
+Route::get('/policy', [MainController::class, 'policy']);
+
 /**
  * ADMIN ROUTES
  */

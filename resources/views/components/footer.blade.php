@@ -23,7 +23,7 @@
                   </svg>
                 </button>
               </div>
-              <div class="agree">Нажимая на “Отправить” я соглашаюсь на <a href="#">обработку персональных данных</a> и <a href="#">политикой конфиденциальности</a> сайта</div>
+              <div class="agree">Нажимая на “Отправить” я соглашаюсь на <a href="{{url('legal')}}">обработку персональных данных</a> и <a href="{{url('policy')}}">политикой конфиденциальности</a> сайта</div>
             </div>
           </div>
         </div>
@@ -92,11 +92,11 @@
       <div class="f-col">
         <div class="f-title">Об сервисе</div>
         <div class="f-list">
-          <li><a href="#">Об отзовике</a></li>
-          <li><a href="#">Блог</a></li>
+          <li><a href="{{url('o-service')}}">Об отзовике</a></li>
+          <li><a href="{{url('posti')}}">Блог</a></li>
           <li><a href="#">Статьи</a></li>
           <li><a href="#">Авторы</a></li>
-          <li><a href="#">FAQ</a></li>
+          <li><a href="{{url('faq')}}">FAQ</a></li>
           <li><a href="#">Карта сайта</a></li>
         </div>
       </div>
@@ -111,7 +111,7 @@
       <div class="f-col">
         <div class="f-title">Для абитуриентов</div>
         <div class="f-list">
-          <li><a href="#">Университеты</a></li>
+          <li><a href="{{url('universitety')}}">Университеты</a></li>
           <li><a href="#">Рейтинг специальностей</a></li>
           <li><a href="#">Рейтинг ВУЗов</a></li>
           <li><a href="#">Карта учебных заведений</a></li>

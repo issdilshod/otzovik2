@@ -399,4 +399,34 @@ class MainController extends Controller
         return view('pages.top', $data);
     }
 
+    // privacy policy
+    public function policy(Request $request)
+    {
+        //
+        $data['title'] = '';
+
+        $data['cities'] = $this->cityService->findAll(); 
+
+        $data['template'] = $this->settingService->findByPage(Config::get('pages.policy'));
+        $data['settings']['current_page'] = Config::get('pages.policy');
+        $data['settings']['mode'] = $this->mainService->_mode($request);
+
+        return view('pages.policy', $data);
+    }
+
+    // aggrement
+    public function legal(Request $request)
+    {
+        //
+        $data['title'] = '';
+
+        $data['cities'] = $this->cityService->findAll(); 
+
+        $data['template'] = $this->settingService->findByPage(Config::get('pages.legal'));
+        $data['settings']['current_page'] = Config::get('pages.legal');
+        $data['settings']['mode'] = $this->mainService->_mode($request);
+
+        return view('pages.legal', $data);
+    }
+
 }
