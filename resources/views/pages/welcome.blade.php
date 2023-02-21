@@ -27,8 +27,8 @@
     <div class="attrackt">
       <div class="row align-items-end">
         <div class="col-lg-9">
-          <h2>Оценивайте и находите ВУЗы России!</h2>
-          <p>Мы взяли за основу “сливы” о вузах, которые пользователи нашего сайта присылают нам. Слив – это развернутый отзыв о вузе, который проходит несколько этапов проверки. Слив имеет заданную характеристику. Он может быть положительным, отрицательным или нейтральным. Мы просим студентов, преподавателей, сотрудников вуза, просто людей, которые знают о вузе изнутри.</p>
+          <h2 class="_change_able" data-key="index_counter_h2" data-value="{{$template['index_counter_h2']}}">{{$template['index_counter_h2']}}</h2>
+          <p class="_change_able" data-key="index_counter_p" data-value="{{$template['index_counter_p']}}">{{$template['index_counter_p']}}</p>
           <div class="btns">
             <a href="{{url('/poisk')}}" class="btn has-ico">
               <span class="ico">

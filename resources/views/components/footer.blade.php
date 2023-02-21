@@ -189,6 +189,7 @@
 
     // submit setting form(template)
     $(document).on('submit', '._setting_form', function (e){
+
         var user_id = $('#_user_id').val();
         var key = $('#_key').val();
         var value = $('#_value').val();
@@ -203,7 +204,9 @@
             success: function(res){
                 $('#_modal1').modal('hide');
 
-                // TODO: update template & modal
+                $('._change_able[data-key='+key+']').attr('data-value', value);
+                $('._change_able[data-key='+key+']').html(value);
+
                 $('#_key').val('');
                 $('#_value').val('');
 
@@ -214,11 +217,11 @@
 
     // click elements to update
     $(document).on('click', '._change_able', function(e){
-        var key = $(this).data('key');
-        var value = $(this).data('value');
+        var key = $(this).attr('data-key');
+        var value = $(this).attr('data-value');
 
         $('#_key').val(key);
-        $('#_value').html(value);
+        $('#_value').val(value);
 
         $('#_modal1').modal('show');
     })

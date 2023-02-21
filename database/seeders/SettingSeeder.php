@@ -43,6 +43,16 @@ class SettingSeeder extends Seeder
             ],
             [
                 'page' => Config::get('pages.index'),
+                'key' => Config::get('pages.index').'_counter_h2',
+                'value' => 'Оценивайте и находите ВУЗы России!'
+            ],
+            [
+                'page' => Config::get('pages.index'),
+                'key' => Config::get('pages.index').'_counter_p',
+                'value' => 'Мы взяли за основу “сливы” о вузах, которые пользователи нашего сайта присылают нам. Слив – это развернутый отзыв о вузе, который проходит несколько этапов проверки. Слив имеет заданную характеристику. Он может быть положительным, отрицательным или нейтральным. Мы просим студентов, преподавателей, сотрудников вуза, просто людей, которые знают о вузе изнутри.'
+            ],
+            [
+                'page' => Config::get('pages.index'),
                 'key' => Config::get('pages.index').'_counter_reviews',
                 'value' => '452 851'
             ],
