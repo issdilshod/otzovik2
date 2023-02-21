@@ -124,9 +124,9 @@ class CommentController extends Controller
     {
         $commentLike = $this->commentLikeService->validate($request);
 
-        $commentLike = $this->commentLikeService->save($commentLike);
+        $commentLikeCount = $this->commentLikeService->save($commentLike);
 
-        return response()->json(['msg' => 'success'], 200);
+        return response()->json(['msg' => 'success', 'comment_like' => $commentLikeCount], 200);
     }
 
 }

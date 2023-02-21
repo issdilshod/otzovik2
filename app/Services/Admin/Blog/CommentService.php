@@ -51,21 +51,20 @@ class CommentService extends Service{
 
     public function findByArticle($articleId) 
     {
-        $comments = Comment::
-                    //withCount(['likes', 'dislikes'])
-                    from('comments as c')
+        $comments = Comment::from('comments')
                     ->select([
-                        'c.*',
+                        'comments.*', 
                         'u.first_name as user_first_name', 'u.last_name as user_last_name', 'u.avatar as user_avatar',
                         'u2.first_name as replay_user_first_name', 'u2.last_name as replay_user_last_name'
                     ])
-                    ->join('articles as a', 'a.id', '=', 'c.article_id')
-                    ->join('users as u', 'u.id', '=', 'c.user_id')
-                    ->leftJoin('comments as c2', 'c2.id', '=', 'c.replay_id')
+                    ->withCount(['likes', 'dislikes'])
+                    ->join('articles as a', 'a.id', '=', 'comments.article_id')
+                    ->join('users as u', 'u.id', '=', 'comments.user_id')
+                    ->leftJoin('comments as c2', 'c2.id', '=', 'comments.replay_id')
                     ->leftJoin('users as u2', 'u2.id', '=', 'c2.user_id')
-                    ->where('c.article_id', $articleId)
-                    ->where('c.status', Config::get('status.active'))
-                    ->orderBy('c.updated_at', 'desc')
+                    ->where('comments.article_id', $articleId)
+                    ->where('comments.status', Config::get('status.active'))
+                    ->orderBy('comments.updated_at', 'desc')
                     ->limit(Config::get('pagination.per_page'))
                     ->get(); 
         return $comments;

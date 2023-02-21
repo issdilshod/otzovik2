@@ -2,6 +2,7 @@
 
 namespace App\Services\Admin\Blog;
 
+use App\Models\Admin\Blog\Comment;
 use App\Models\Admin\Blog\CommentLike;
 use App\Services\Admin\Misc\SystemService;
 use App\Services\Service;
@@ -35,7 +36,11 @@ class CommentLikeService extends Service{
             $commentLike = $commentLikeOrg;
         }
 
-        return $commentLike;
+        $commentLikeCount = Comment::withCount(['likes', 'dislikes'])
+                                    ->where('id', $commentLike['comment_id'])
+                                    ->first(['likes_count', 'dislikes_count']);
+
+        return $commentLikeCount;
     }
 
     public function validate(Request $request)

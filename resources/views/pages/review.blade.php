@@ -25,7 +25,7 @@
     <!-- hero -->
     <div class="hero university-full">
       <div class="hero-text">
-        <div class="date">{{$current_review->updated_at}}</div>
+        <div class="date">{{App\Services\Admin\Misc\SystemService::get_dateTime_human($current_review->updated_at, true)}}</div>
         <h1 class="mb-1">Отзыв на {{$current_review->university_name}} № {{$current_review->number}}</h1>
         <p>{{$current_review->university_name}}</p>
         <div class="btns">

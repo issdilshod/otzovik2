@@ -126,13 +126,15 @@
                             <use xlink:href="#like-ico"></use>
                         </svg>
                     </span>
+                    <span class="count">{{$comment->likes_count}}</span>
                 </a>
-                <a class="like" data-id="{{$comment->id}}" data-type="{{\Illuminate\Support\Facades\Config::get('like.dislike')}}">
+                <a class="like dislike" data-id="{{$comment->id}}" data-type="{{\Illuminate\Support\Facades\Config::get('like.dislike')}}">
                     <span class="ico">
-                    <svg class="icon">
-                        <use xlink:href="#dislike-ico"></use>
-                    </svg>
+                        <svg class="icon">
+                            <use xlink:href="#dislike-ico"></use>
+                        </svg>
                     </span>
+                    <span class="count">{{$comment->dislikes_count}}</span>
                 </a>
                 <a class="replay-to" data-id="{{$comment->id}}">Ответить</a>
                 </div>
@@ -268,7 +270,8 @@
                 url: '<?=url('api/like')?>',
                 data: {comment_id: $(this).data('id'), type: $(this).data('type')},
                 success: function(res){
-                    // TODO: increment - decrement counter
+                    $('.like .count').html(res.comment_like.likes_count);
+                    $('.dislike .count').html(res.comment_like.dislikes_count);
                 }
             });
         })

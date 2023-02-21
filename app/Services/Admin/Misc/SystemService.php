@@ -66,7 +66,7 @@ class SystemService extends Service{
         ];
 
         $date = Carbon::parse($date);
-        return $date->day . ' ' . $months[$date->month-1] . ' ' . $date->year . (($timeShow)?' ' . $date->hour . ':' . $date->minute:'');
+        return $date->day . ' ' . $months[$date->month-1] . ' ' . $date->year . (($timeShow)?' - ' . Str::padLeft($date->hour, 2, '0') . ':' . Str::padLeft($date->minute, 2, '0'):'');
     }
 
     static function get_role_name_by_alias($roleAlias)
