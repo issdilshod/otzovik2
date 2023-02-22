@@ -122,7 +122,7 @@
     <div class="honest">
         <h2 class="_change_able" data-key="universities_honest_h2" data-value="{{$template['universities_honest_h2']}}">{{$template['universities_honest_h2']}}</h2>
         <p class="_change_able" data-key="universities_honest_p" data-value="{{$template['universities_honest_p']}}">{{$template['universities_honest_p']}}</p>
-        <a href="{{url('/poisk')}}" class="btn has-ico">
+        <a href="{{url('/dobavit-otzyv')}}" class="btn has-ico">
             <span class="ico">
             <svg class="icon">
                 <use xlink:href="#files-ico"></use>

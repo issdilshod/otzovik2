@@ -44,7 +44,7 @@
             </li>
         </ul>
 
-        <a href="{{url('/poisk')}}" class="btn has-ico">
+        <a href="{{url('/dobavit-otzyv')}}" class="btn has-ico">
             <span class="ico">
             <svg class="icon">
                 <use xlink:href="#files-ico"></use>

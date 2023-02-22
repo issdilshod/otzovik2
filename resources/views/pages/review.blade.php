@@ -86,7 +86,7 @@
     <div class="honest">
         <h2 class="_change_able" data-key="review_honest_h2" data-value="{{$template['review_honest_h2']}}">{{$template['review_honest_h2']}}</h2>
         <p class="_change_able" data-key="review_honest_p" data-value="{{$template['review_honest_p']}}">{{$template['review_honest_p']}}</p>
-        <a href="{{url('/poisk')}}" class="btn has-ico">
+        <a href="{{url('/dobavit-otzyv')}}" class="btn has-ico">
             <span class="ico">
             <svg class="icon">
                 <use xlink:href="#files-ico"></use>

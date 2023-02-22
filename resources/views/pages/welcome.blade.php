@@ -30,7 +30,7 @@
           <h2 class="_change_able" data-key="index_counter_h2" data-value="{{$template['index_counter_h2']}}">{{$template['index_counter_h2']}}</h2>
           <p class="_change_able" data-key="index_counter_p" data-value="{{$template['index_counter_p']}}">{{$template['index_counter_p']}}</p>
           <div class="btns">
-            <a href="{{url('/poisk')}}" class="btn has-ico">
+            <a href="{{url('/dobavit-otzyv')}}" class="btn has-ico">
               <span class="ico">
                 <svg class="icon">
                   <use xlink:href="#files-ico"></use>
@@ -137,7 +137,7 @@
             <h3 class="_change_able" data-key="index_students_h3" data-value="{{$template['index_info_students_h3']}}">{{$template['index_info_students_h3']}}</h3>
             <p class="_change_able" data-key="index_students_p" data-value="{{$template['index_info_students_p']}}">{{$template['index_info_students_p']}}</p>
             <div class="btns">
-                <a href="{{url('/poisk')}}" class="btn has-ico">
+                <a href="{{url('/dobavit-otzyv')}}" class="btn has-ico">
                     <span class="ico">
                         <svg class="icon">
                         <use xlink:href="#files-ico"></use>
@@ -157,7 +157,7 @@
     <div class="honest">
         <h2 class="_change_able" data-key="index_honest_h2" data-value="{{$template['index_honest_h2']}}">{{$template['index_honest_h2']}}</h2>
         <p class="_change_able" data-key="index_honest_p" data-value="{{$template['index_honest_p']}}">{{$template['index_honest_p']}}</p>
-        <a href="{{url('/poisk')}}" class="btn has-ico">
+        <a href="{{url('/dobavit-otzyv')}}" class="btn has-ico">
             <span class="ico">
             <svg class="icon">
                 <use xlink:href="#files-ico"></use>

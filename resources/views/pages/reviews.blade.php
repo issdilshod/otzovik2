@@ -27,7 +27,7 @@
         <h1 class="_change_able" data-key="reviews_info_h1" data-value="{{$template['reviews_info_h1']}}">{{$template['reviews_info_h1']}}</h1> 
         <p class="_change_able" data-key="reviews_info_p" data-value="{{$template['reviews_info_p']}}">{{$template['reviews_info_p']}}</p>       
         <div class="btns">
-          <a href="{{url('poisk')}}" class="btn has-ico">
+          <a href="{{url('dobavit-otzyv')}}" class="btn has-ico">
             <span class="ico">
               <svg class="icon">
                 <use xlink:href="#files-ico"></use>
