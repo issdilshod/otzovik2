@@ -139,7 +139,20 @@
         </div>
         <!--  /institutions -->
 
-        @include('components.reviews.honest')
+        <!-- honest -->
+        <div class="honest">
+            <h2 class="_change_able" data-key="search_honest_h2" data-value="{{$template['search_honest_h2']}}">{{$template['search_honest_h2']}}</h2>
+            <p class="_change_able" data-key="search_honest_p" data-value="{{$template['search_honest_p']}}">{{$template['search_honest_p']}}</p>
+            <a href="{{url('/poisk')}}" class="btn has-ico">
+                <span class="ico">
+                <svg class="icon">
+                    <use xlink:href="#files-ico"></use>
+                </svg>
+                </span>
+                Оставить отзыв
+            </a>
+        </div>
+        <!-- / honest -->  
 
     </div>
 
@@ -155,7 +168,20 @@
 
         @include('components.reviews.popular')
     
-        @include('components.reviews.info')
+        <!-- text -->
+        <div class="text">
+            <h3 class="_change_able" data-key="search_last_info_h3" data-value="{{$template['search_last_info_h3']}}">{{$template['search_last_info_h3']}}</h3>
+            <p class="_change_able" data-key="search_last_info_p" data-value="{{$template['search_last_info_p']}}">{{$template['search_last_info_p']}}</p>
+            <a href="#" class="btn has-ico bordered-btn more-btn">
+                Читать дальше
+                <span class="ico">
+                <svg class="icon">
+                    <use xlink:href="#arrow-ico"></use>
+                </svg>
+                </span>
+            </a>
+        </div>
+        <!-- / text -->
 
     </div>
 </main>

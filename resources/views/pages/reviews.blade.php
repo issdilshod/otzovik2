@@ -127,7 +127,20 @@
     
     @include('components.universities.popular')
 
-    @include('components.reviews.info')
+    <!-- text -->
+    <div class="text">
+        <h3 class="_change_able" data-key="reviews_last_info_h3" data-value="{{$template['reviews_last_info_h3']}}">{{$template['reviews_last_info_h3']}}</h3>
+        <p class="_change_able" data-key="reviews_last_info_p" data-value="{{$template['reviews_last_info_p']}}">{{$template['reviews_last_info_p']}}</p>
+        <a href="#" class="btn has-ico bordered-btn more-btn">
+            Читать дальше
+            <span class="ico">
+            <svg class="icon">
+                <use xlink:href="#arrow-ico"></use>
+            </svg>
+            </span>
+        </a>
+    </div>
+    <!-- / text --> 
 
 </div>
 </main>
