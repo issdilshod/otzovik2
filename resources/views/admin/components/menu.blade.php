@@ -133,12 +133,30 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a href="{{ url('/admin/settings/templates/university') }}" class="nav-link {{ (request()->is('admin/settings/templates/university')) ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>{{__('menu_templates_university_title')}}</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="{{ url('/admin/settings/templates/reviews') }}" class="nav-link {{ (request()->is('admin/settings/templates/reviews')) ? 'active' : '' }}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>{{__('menu_templates_reviews_title')}}</p>
                                 </a>
                             </li>
-                            <!--li class="nav-item">
+                            <li class="nav-item">
+                                <a href="{{ url('/admin/settings/templates/review') }}" class="nav-link {{ (request()->is('admin/settings/templates/review')) ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>{{__('menu_templates_review_title')}}</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ url('/admin/settings/templates/review_add') }}" class="nav-link {{ (request()->is('admin/settings/templates/review_add')) ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>{{__('menu_templates_review_add_title')}}</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="{{ url('/admin/settings/templates/articles') }}" class="nav-link {{ (request()->is('admin/settings/templates/articles')) ? 'active' : '' }}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>{{__('menu_templates_articles_title')}}</p>

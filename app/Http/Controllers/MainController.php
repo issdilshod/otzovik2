@@ -172,13 +172,22 @@ class MainController extends Controller
     }
 
     // page university
-    public function university(Request $request, $universitySlug)
+    public function university(Request $request, $universitySlug = '')
     {
+        // mode of page
+        $data['settings']['mode'] = $this->mainService->_mode($request);
+
         $data['title'] = __('university_page_title');
 
-        $data['university'] = $this->universityService->findBySlug($universitySlug);
-        if (!$data['university']){ // not found
+        if (!$data['settings']['mode'] && $universitySlug==''){
             return abort(404);
+        }else if (!$data['settings']['mode'] && $universitySlug!=''){
+            $data['university'] = $this->universityService->findBySlug($universitySlug);
+            if (!$data['university']){ // not found
+                return abort(404);
+            }
+        }else{
+            $data['university'] = $this->universityService->first();
         }
 
         $data['university']->statistic = $this->reviewService->staticticByUniversity($data['university']->id);
@@ -194,7 +203,7 @@ class MainController extends Controller
         // settings
         $data['template'] = $this->settingService->findByPage(Config::get('pages.university'));
         $data['settings']['current_page'] = Config::get('pages.university');
-        $data['settings']['mode'] = $this->mainService->_mode($request);
+        
 
         return view('pages.university', $data);
     }
@@ -220,14 +229,22 @@ class MainController extends Controller
     }
 
     // page review
-    public function review(Request $request, $reviewNumber)
+    public function review(Request $request, $reviewNumber = '')
     {
+        // mode of page
+        $data['settings']['mode'] = $this->mainService->_mode($request);
+
         $data['title'] = __('review_page_title');
 
-        $data['current_review'] = $this->reviewService->findByNumber($reviewNumber);
-
-        if (!$data['current_review']){
-            abort(404);
+        if (!$data['settings']['mode'] && $reviewNumber==''){
+            return abort(404);
+        }else if (!$data['settings']['mode'] && $reviewNumber!=''){
+            $data['current_review'] = $this->reviewService->findByNumber($reviewNumber);
+            if (!$data['current_review']){
+                return abort(404);
+            }
+        }else{
+            $data['current_review'] = $this->reviewService->first();
         }
 
         $data['title'] .= ' ' . $data['current_review']->university_name . ' № ' . $data['current_review']->number;
@@ -241,7 +258,6 @@ class MainController extends Controller
         // settings
         $data['template'] = $this->settingService->findByPage(Config::get('pages.review'));
         $data['settings']['current_page'] = Config::get('pages.review');
-        $data['settings']['mode'] = $this->mainService->_mode($request);
 
         return view('pages.review', $data);
     }
@@ -274,11 +290,10 @@ class MainController extends Controller
         $data['title'] = __('article_page_title');
 
         $data['current_article'] = $this->articleService->findBySlug($articleSlug);
-
         if (!$data['current_article']){
-            abort(404);
+            return abort(404);
         }
-
+        
         $data['current_article']['comments'] = $this->commentService->findByArticle($data['current_article']->id);
 
         // view article

@@ -67,6 +67,20 @@ class ReviewService extends Service{
         return $reviews;
     }
 
+    public function first()
+    {
+        $review = Review::from('reviews as r')
+                    ->select([
+                        'r.*',
+                        'us.first_name as user_first_name', 'us.last_name as user_last_name', 'us.avatar as user_avatar',
+                        'un.id as university_id', 'un.name as university_name', 'un.logo as university_logo', 'un.slug as university_slug'
+                    ])
+                    ->join('universities as un', 'un.id', '=', 'r.university_id')
+                    ->join('users as us', 'us.id', '=', 'r.user_id')
+                    ->first();
+        return $review;
+    }
+
     public function popular($count = 5)
     {
         $reviews = Review::from('reviews as r')
@@ -133,6 +147,9 @@ class ReviewService extends Service{
                     ->where('r.number', $reviewNumber)
                     ->where('r.status', Config::get('status.active'))
                     ->first();
+        if ($review==null){
+            return false;
+        }
         return $review;
     }
 

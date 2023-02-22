@@ -107,6 +107,30 @@ class UniversityService extends Service{
         return $universities;
     }
 
+    public function first()
+    {
+        $university = University::withCount('reviews')
+                        ->first();
+
+        // get directions
+        $university->directions = UniversityDirection::from('university_directions as ud1')
+                            ->select('d1.name')
+                            ->join('directions as d1', 'd1.id', '=', 'ud1.direction_id')
+                            ->where('ud1.status', Config::get('status.active'))
+                            ->where('ud1.university_id', $university->id)
+                            ->get();
+
+        // get educations
+        $university->education_types = UniversityEducationType::from('university_education_types as uet1')
+                                    ->select('et1.name')
+                                    ->join('education_types as et1', 'et1.id', '=', 'uet1.education_type_id')
+                                    ->where('uet1.status', Config::get('status.active'))
+                                    ->where('uet1.university_id', $university->id)
+                                    ->get();
+
+        return $university;
+    }
+
     public function getAll()
     {
         $universities = University::where('status', '!=', Config::get('status.delete'))

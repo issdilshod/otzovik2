@@ -23,8 +23,8 @@
     <!-- hero -->
     <div class="hero">
       <div class="hero-text">
-        <h1>Будьте в курсе событии</h1> 
-        <p>Наш сервис помогает сформировать наилучшие отношения между клиентом и компанией!</p>       
+        <h1 class="_change_able" data-key="articles_top_info_h2" data-value="{{$template['articles_top_info_h2']}}">{{$template['articles_top_info_h2']}}</h1> 
+        <p class="_change_able" data-key="articles_top_info_p" data-value="{{$template['articles_top_info_p']}}">{{$template['articles_top_info_p']}}</p>       
         <div class="send-inner">
           <div class="sending-group">
             <input id="articles-email" type="email" placeholder="Введите почту" class="form-control">
@@ -34,7 +34,7 @@
               </svg>
             </button>
           </div>
-          <div class="agree">Нажимая на “Отправить” я соглашаюсь на <a href="#">обработку персональных данных</a> и <a href="#">политикой конфиденциальности</a> сайта</div>
+          <div class="agree">Нажимая на “Отправить” я соглашаюсь на <a href="{{url('legal')}}">обработку персональных данных</a> и <a href="{{url('policy')}}">политикой конфиденциальности</a> сайта</div>
         </div>
       </div>
       <div class="hero-img"><img src="{{ asset('assets/images/illustration03.svg') }}" alt=""></div>
@@ -102,7 +102,20 @@
     </div>
     <!-- / popular -->
 
-    @include('components.reviews.info')
+    <!-- honest -->
+    <div class="honest">
+        <h2 class="_change_able" data-key="articles_honest_h2" data-value="{{$template['articles_honest_h2']}}">{{$template['articles_honest_h2']}}</h2>
+        <p class="_change_able" data-key="articles_honest_p" data-value="{{$template['articles_honest_p']}}">{{$template['articles_honest_p']}}</p>
+        <a href="{{url('/poisk')}}" class="btn has-ico">
+            <span class="ico">
+            <svg class="icon">
+                <use xlink:href="#files-ico"></use>
+            </svg>
+            </span>
+            Оставить отзыв
+        </a>
+    </div>
+    <!-- / honest -->  
 
 </div>
 
@@ -118,7 +131,20 @@
 
     @include('components.reviews.popular')
 
-    @include('components.reviews.info')
+    <!-- text -->
+    <div class="text">
+        <h3 class="_change_able" data-key="articles_last_info_h3" data-value="{{$template['articles_last_info_h3']}}">{{$template['articles_last_info_h3']}}</h3>
+        <p class="_change_able" data-key="articles_last_info_p" data-value="{{$template['articles_last_info_p']}}">{{$template['articles_last_info_p']}}</p>
+        <a href="#" class="btn has-ico bordered-btn more-btn">
+            Читать дальше
+            <span class="ico">
+            <svg class="icon">
+                <use xlink:href="#arrow-ico"></use>
+            </svg>
+            </span>
+        </a>
+    </div>
+    <!-- / text --> 
     
 </div>
 </main>

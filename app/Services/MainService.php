@@ -17,7 +17,7 @@ class MainService extends Service{
 
     public function _mode(Request $request)
     {
-        $response = [];
+        $response = null;
         // check token & mode edit
         if (isset($request->_token)){
             $_token = $this->authService->is_real_token($request->_token);

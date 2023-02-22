@@ -23,35 +23,35 @@
     <!-- hero -->
     <div class="hero mb-3">
       <div class="hero-text has-size">
-        <h1>О сервисе</h1>
-        <p>Отзыв.ru – интернет-портал для старшеклассников, абитуриентов, студентов. <br>Наша работа – это забота о том, чтобы поиск информации о вузе или колледже, будущей профессии и специальности стал для вас максимально удобным и простым. Поэтому каждый день мы совершенствуем наш сайт и наполняем его новыми интересными материалами, чтобы вы могли найти гораздо больше, чем просто ответы на вопросы.</p>
+        <h1 class="_change_able" data-key="about_top_info_h1" data-value="{{$template['about_top_info_h1']}}">{{$template['about_top_info_h1']}}</h1>
+        <p class="_change_able" data-key="about_top_info_p" data-value="{{$template['about_top_info_p']}}">{{$template['about_top_info_p']}}</p>
       </div>
       <div class="hero-img"><img src="{{ asset('assets/images/illustration04.svg') }}" alt=""></div>
     </div>
     <!-- / hero -->   
 
     <ul class="nums has-indent">
-      <li>
-        <span class="nums-top">          
-          <strong>452 851</strong>
-          <span>Всего отзывов</span>
-        </span>
-        Сранивайте и изучайте рецнезии и отзывы на самом крупном агрегаторе
-      </li>
-      <li>
-        <span class="nums-top">          
-          <strong>22 851</strong>
-          <span>Всего ответов</span>
-        </span>
-        Вступайте в наше комьюнити принимайте участие в жизни нашего сервиса
-      </li>
-      <li>
-        <span class="nums-top">
-          <strong>8 512</strong>
-          <span>Регистраций на портале</span>
-        </span>
-        У нас вы найдете только самые актуальные и свежие новости об университетах
-      </li>
+        <li>
+            <span class="nums-top">
+            <strong class="_change_able" data-key="about_counter_reviews" data-value="{{$template['about_counter_reviews']}}">{{$template['about_counter_reviews']}}</strong>
+            <span class="_change_able" data-key="about_counter_reviews_title" data-value="{{$template['about_counter_reviews_title']}}">{{$template['about_counter_reviews_title']}}</span>
+            </span>
+            <span class="_change_able" data-key="about_counter_reviews_desc" data-value="{{$template['about_counter_reviews_desc']}}">{{$template['about_counter_reviews_desc']}}</span>
+        </li>
+        <li>
+            <span class="nums-top">
+            <strong class="_change_able" data-key="about_counter_answers" data-value="{{$template['about_counter_answers']}}">{{$template['about_counter_answers']}}</strong>
+            <span class="_change_able" data-key="about_counter_answers_title" data-value="{{$template['about_counter_answers_title']}}">{{$template['about_counter_answers_title']}}</span>
+            </span>
+            <span class="_change_able" data-key="about_counter_answers_desc" data-value="{{$template['about_counter_answers_desc']}}">{{$template['about_counter_answers_desc']}}</span>
+        </li>
+        <li>
+            <span class="nums-top">
+            <strong class="_change_able" data-key="about_counter_companies" data-value="{{$template['about_counter_companies']}}">{{$template['about_counter_companies']}}</strong>
+            <span class="_change_able" data-key="about_counter_companies_title" data-value="{{$template['about_counter_companies_title']}}">{{$template['about_counter_companies_title']}}</span>
+            </span>
+            <span class="_change_able" data-key="about_counter_companies_desc" data-value="{{$template['about_counter_companies_desc']}}">{{$template['about_counter_companies_desc']}}</span>
+        </li>
     </ul>
 
     <!-- information -->
@@ -76,29 +76,33 @@
         </ul>
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="tab01" role="tabpanel" aria-labelledby="info-tab01">
-            <h3>Оценивайте и находите компании!</h3>
-            <p>Наш сервис помогает сформировать наилучшие отношения между клиентом и компанией! Если вы клиент вы можете оставить свой честный отзыв и получить ответ от официального представительства.Текст генерируется абзацами случайным образом от двух до десяти предложений в абзаце, что позволяет сделать текст более привлекательным и живым для визуально-слухового восприятия.</p>
-            <p>По своей сути рыбатекст является альтернативой традицинному.</p>
-            <div class="btns">
-                <a href="#" class="btn has-ico">
-                <span class="ico">
-                    <svg class="icon">
-                    <use xlink:href="#files-ico"></use>
-                    </svg>
-                </span>
-                Оставить отзыв
-                </a>
-                <a href="#" class="btn has-ico bordered-btn">
-                <span class="ico">
-                    <svg class="icon">
-                    <use xlink:href="#building-ico"></use>
-                    </svg>
-                </span>
-                Добавить вуз
-                </a>
+                <h3 class="_change_able" data-key="about_info_universities_h3" data-value="{{$template['about_info_universities_h3']}}">{{$template['about_info_universities_h3']}}</h3>
+                <p class="_change_able" data-key="about_info_universities_p" data-value="{{$template['about_info_universities_p']}}">{{$template['about_info_universities_p']}}</p>
+                <div class="btns">
+                    <a href="#" class="btn has-ico bordered-btn">
+                        <span class="ico">
+                            <svg class="icon">
+                            <use xlink:href="#building-ico"></use>
+                            </svg>
+                        </span>
+                        <span class="_change_able" data-key="about_info_universities_button" data-value="{{$template['about_info_universities_button']}}">{{$template['about_info_universities_button']}}</span>
+                    </a>
+                </div>
             </div>
+            <div class="tab-pane fade" id="tab02" role="tabpanel" aria-labelledby="info-tab02">
+                <h3 class="_change_able" data-key="about_info_students_h3" data-value="{{$template['about_info_students_h3']}}">{{$template['about_info_students_h3']}}</h3>
+                <p class="_change_able" data-key="about_info_students_p" data-value="{{$template['about_info_students_p']}}">{{$template['about_info_students_p']}}</p>
+                <div class="btns">
+                    <a href="#" class="btn has-ico">
+                        <span class="ico">
+                            <svg class="icon">
+                            <use xlink:href="#files-ico"></use>
+                            </svg>
+                        </span>
+                        <span class="_change_able" data-key="about_info_students_button" data-value="{{$template['about_info_students_button']}}">{{$template['about_info_students_button']}}</span>
+                    </a>
+                </div>
             </div>
-            <div class="tab-pane fade" id="tab02" role="tabpanel" aria-labelledby="info-tab02">...</div>
         </div>
     </div>
     <!-- / information -->  
@@ -119,7 +123,20 @@
     
     @include('components.universities.popular')
 
-    @include('components.reviews.info')
+    <!-- text -->
+    <div class="text">
+        <h3 class="_change_able" data-key="about_last_info_h3" data-value="{{$template['about_last_info_h3']}}">{{$template['about_last_info_h3']}}</h3>
+        <p class="_change_able" data-key="about_last_info_p" data-value="{{$template['about_last_info_p']}}">{{$template['about_last_info_p']}}</p>
+        <a href="#" class="btn has-ico bordered-btn more-btn">
+            Читать дальше
+            <span class="ico">
+            <svg class="icon">
+                <use xlink:href="#arrow-ico"></use>
+            </svg>
+            </span>
+        </a>
+    </div>
+    <!-- / text --> 
 
 </div>  
 </main>

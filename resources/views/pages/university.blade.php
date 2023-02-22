@@ -460,7 +460,20 @@
     </div>
     <!-- / faq -->
 
-    @include('components.reviews.info')
+    <!-- text -->
+    <div class="text">
+        <h3 class="_change_able" data-key="university_last_info_h3" data-value="{{$template['university_last_info_h3']}}">{{$template['university_last_info_h3']}}</h3>
+        <p class="_change_able" data-key="university_last_info_p" data-value="{{$template['university_last_info_p']}}">{{$template['university_last_info_p']}}</p>
+        <a href="#" class="btn has-ico bordered-btn more-btn">
+            Читать дальше
+            <span class="ico">
+            <svg class="icon">
+                <use xlink:href="#arrow-ico"></use>
+            </svg>
+            </span>
+        </a>
+    </div>
+    <!-- / text --> 
 
 </div>
 </main>

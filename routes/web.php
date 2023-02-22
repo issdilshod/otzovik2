@@ -25,11 +25,11 @@ Route::get('/poisk/{slug1?}/{slug2?}/{slug3?}/{slug4?}/{slug5?}', [MainControlle
 
 Route::get('/universitety', [MainController::class, 'universities']);
 Route::get('/universitety/{slug1?}/{slug2?}/{slug3?}/{slug4?}', [MainController::class, 'universities']);
-Route::get('/universitet/{university_slug}', [MainController::class, 'university']);
+Route::get('/universitet/{university_slug?}', [MainController::class, 'university']);
 
 Route::get('/otzyvy', [MainController::class, 'reviews']);
-Route::get('/otzyv/{review_number}', [MainController::class, 'review']);
-Route::get('/dobavit-otzyv/{university_slug}', [MainController::class, 'review_add']);
+Route::get('/otzyv/{review_number?}', [MainController::class, 'review']);
+Route::get('/dobavit-otzyv/{university_slug?}', [MainController::class, 'review_add']);
 Route::get('/posti', [MainController::class, 'articles']);
 Route::get('/post/{article_slug}', [MainController::class, 'article']);
 Route::get('/o-service', [MainController::class, 'about']);
@@ -120,6 +120,13 @@ Route::middleware(['auth.custom'])->group(function (){
     Route::get('/admin/settings/templates/index', [SettingController::class, 'index']);
     Route::get('/admin/settings/templates/search', [SettingController::class, 'search']);
     Route::get('/admin/settings/templates/universities', [SettingController::class, 'universities']);
+    Route::get('/admin/settings/templates/university', [SettingController::class, 'university']);
     Route::get('/admin/settings/templates/reviews', [SettingController::class, 'reviews']);
+    Route::get('/admin/settings/templates/review', [SettingController::class, 'review']);
+    Route::get('/admin/settings/templates/review_add', [SettingController::class, 'review_add']);
+    Route::get('/admin/settings/templates/articles', [SettingController::class, 'articles']);
+    Route::get('/admin/settings/templates/about', [SettingController::class, 'about']);
+    Route::get('/admin/settings/templates/faq', [SettingController::class, 'faq']);
+    Route::get('/admin/settings/templates/educational', [SettingController::class, 'educational']);
 
 });

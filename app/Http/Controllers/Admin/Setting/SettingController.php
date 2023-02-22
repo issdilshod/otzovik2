@@ -57,12 +57,75 @@ class SettingController extends Controller
         ]);
     }
 
+    public function university(Request $request)
+    {
+        // permission
+
+        return view('admin.pages.setting.setting.settings', [
+            'src' => url('/universitet').'?_mode='.Config::get('app._mode.edit').'&_token='.Session::get('token')[0]
+        ]);
+    }
+
     public function reviews(Request $request)
     {
         // permission
 
         return view('admin.pages.setting.setting.settings', [
             'src' => url('/otzyvy').'?_mode='.Config::get('app._mode.edit').'&_token='.Session::get('token')[0]
+        ]);
+    }
+
+    public function review(Request $request)
+    {
+        // permission
+
+        return view('admin.pages.setting.setting.settings', [
+            'src' => url('/otzyv').'?_mode='.Config::get('app._mode.edit').'&_token='.Session::get('token')[0]
+        ]);
+    }
+
+    public function review_add(Request $request)
+    {
+        // permission
+
+        return view('admin.pages.setting.setting.settings', [
+            'src' => url('/dobavit-otzyv').'?_mode='.Config::get('app._mode.edit').'&_token='.Session::get('token')[0]
+        ]);
+    }
+
+    public function articles(Request $request)
+    {
+        // permission
+
+        return view('admin.pages.setting.setting.settings', [
+            'src' => url('/posti').'?_mode='.Config::get('app._mode.edit').'&_token='.Session::get('token')[0]
+        ]);
+    }
+
+    public function about(Request $request)
+    {
+        // permission
+
+        return view('admin.pages.setting.setting.settings', [
+            'src' => url('/o-service').'?_mode='.Config::get('app._mode.edit').'&_token='.Session::get('token')[0]
+        ]);
+    }
+
+    public function faq(Request $request)
+    {
+        // permission
+
+        return view('admin.pages.setting.setting.settings', [
+            'src' => url('/faq').'?_mode='.Config::get('app._mode.edit').'&_token='.Session::get('token')[0]
+        ]);
+    }
+
+    public function educational(Request $request)
+    {
+        // permission
+
+        return view('admin.pages.setting.setting.settings', [
+            'src' => url('/uchebnim-zavedeniyam').'?_mode='.Config::get('app._mode.edit').'&_token='.Session::get('token')[0]
         ]);
     }
 

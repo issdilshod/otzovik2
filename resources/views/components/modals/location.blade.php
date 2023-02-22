@@ -21,7 +21,7 @@
                     <?php $value = ['name' => $city->name, 'slug' => $city->slug, 'id' => $city->id ]; ?>
                     <a class="choose-location" data-data="{{json_encode($value)}}">{{$city->name}}</a>
                 </li> 
-            @endforeach
+            @endforeach  
         </ul>
       </form>
     </div>  
