@@ -1,3 +1,16 @@
+<?php
+use App\Http\Controllers\MainController;
+use Illuminate\Http\Request;
+
+$mainController = new MainController();
+
+$data = $mainController->e404(new Request());
+
+$cities = $data['cities'];
+$template = $data['template'];
+$settings = $data['settings'];
+?>
+
 @extends('layouts.default')
 
 @section('content')

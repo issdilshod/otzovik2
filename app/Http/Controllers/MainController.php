@@ -46,6 +46,18 @@ class MainController extends Controller
         $this->cityService = new CityService();
         $this->settingService = new SettingService();
     }
+
+    // e 404
+    public function e404(Request $request)
+    {
+        $data['cities'] = $this->cityService->findAll(); 
+        // settings
+        $data['template'] = $this->settingService->findByPage(Config::get('pages.index'));
+        $data['settings']['current_page'] = Config::get('pages.index');
+        $data['settings']['mode'] = $this->mainService->_mode($request);
+
+        return $data;
+    }
     
     // page main
     public function index(Request $request)
