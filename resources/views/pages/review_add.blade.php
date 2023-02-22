@@ -16,66 +16,90 @@
             Главная
           </a>
         </li>         
-        <li class="active">Оставить комментарий</li>
+        <li class="active">Оставить отзыв</li>
       </ol>
     </nav>
 
-    <!-- hero -->
-    <div class="hero university-full">
-        <div class="hero-text">
-            <h1>{{$university->name}}</h1>
-            <div class="university-full-row">
-            <div class="acc-item">
-                <label>Мировой рейтинг:</label>
-                <div class="rate-info">
-                <span class="ico">
-                    <svg class="icon">
-                    <use xlink:href="#medal-ico"></use>
-                    </svg>
-                </span>
-                {{$university->worlds_rate}}
+    @if($university)
+        <!-- hero -->
+        <div class="hero university-full">
+            <div class="hero-text">
+                <h1>{{$university->name}}</h1>
+                <div class="university-full-row">
+                <div class="acc-item">
+                    <label>Мировой рейтинг:</label>
+                    <div class="rate-info">
+                    <span class="ico">
+                        <svg class="icon">
+                        <use xlink:href="#medal-ico"></use>
+                        </svg>
+                    </span>
+                    {{$university->worlds_rate}}
+                    </div>
+                </div>
+                <div class="acc-item">
+                    <label>Российский рейтинг:</label>
+                    <div class="rate-info">
+                    <span class="ico">
+                        <svg class="icon">
+                        <use xlink:href="#medal01-ico"></use>
+                        </svg>
+                    </span>
+                    {{$university->russian_rate}}
+                    </div>
+                </div>
+                <div class="acc-item">
+                    <label>Отзывы компании:</label>
+                    <div class="rate-info">
+                    <span class="ico">
+                        <svg class="icon">
+                        <use xlink:href="#files-colorful"></use>
+                        </svg>
+                    </span>
+                    {{$university->reviews_count}}
+                    </div>
+                </div>          
                 </div>
             </div>
-            <div class="acc-item">
-                <label>Российский рейтинг:</label>
-                <div class="rate-info">
-                <span class="ico">
-                    <svg class="icon">
-                    <use xlink:href="#medal01-ico"></use>
-                    </svg>
-                </span>
-                {{$university->russian_rate}}
-                </div>
-            </div>
-            <div class="acc-item">
-                <label>Отзывы компании:</label>
-                <div class="rate-info">
-                <span class="ico">
-                    <svg class="icon">
-                    <use xlink:href="#files-colorful"></use>
-                    </svg>
-                </span>
-                {{$university->reviews_count}}
-                </div>
-            </div>          
+            <div class="hero-img">
+                    <div class="university-full-logo"><img src="{{ asset('storage/'.$university->logo) }}" alt=""></div>
+                    @if ($university->accreditation)
+                    <div class="accreditation"><div class="inner">Гос Аккредитация: Есть</div></div>  
+                    @endif
             </div>
         </div>
-        <div class="hero-img">
-                <div class="university-full-logo"><img src="{{ asset('storage/'.$university->logo) }}" alt=""></div>
-                @if ($university->accreditation)
-                <div class="accreditation"><div class="inner">Гос Аккредитация: Есть</div></div>  
-                @endif
-        </div>
-    </div>
-    <!-- / hero -->   
+        <!-- / hero -->   
+    @endif
 
     <!-- form-block -->
     <div class="form-block white-form">
       <form id="review-add-form">
         @csrf
-        <input name="university_id" type="hidden" value="{{$university->id}}" />
+        @if($university)
+        <input id="university_id" name="university_id" type="hidden" value="{{$university->id}}" />
+        @endif
         <h2>Оставить отзыв</h2>
         <div class="row">
+            @if (!$university)
+                <div class="col-lg-4">
+                    <div class="form-group">
+                    <select name="city_id" class="form-control" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}'>
+                        @foreach ($cities as $city)
+                            <option value="{{$city->id}}">{{$city->name}}</option>
+                        @endforeach
+                    </select>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="form-group">
+                    <select id="university_id" name="university_id" class="form-control" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}'>
+                        @foreach ($universities as $university)
+                            <option value="{{$university->id}}">{{$university->name}}</option>
+                        @endforeach
+                    </select>
+                    </div>
+                </div>
+            @endif
           <div class="col-lg-4">
             <div class="form-group"><input name="first_name" type="text" placeholder="Имя*" class="form-control"></div>
           </div>
@@ -154,7 +178,7 @@
             formData.append('last_name', $('input[name="last_name"]').val());
             formData.append('email', $('input[name="email"]').val());
             formData.append('text', $('textarea[name="text"]').val());
-            formData.append('university_id', $('input[name="university_id"]').val());
+            formData.append('university_id', $('#university_id').val());
             formData.append('_token', $('input[name="_token"]').val());
             formData.append('star', $('#value').html());
 
@@ -175,7 +199,14 @@
 
         // on modal hide
         $(document).on('hide.bs.modal', "#modal03", function(){
-            window.location.href = '<?=url('universitet/'.$university->slug)?>';
+            var unSlug = '{{$university->slug}}';
+            var link = '';
+            if (unSlug!=''){
+                link = '<?=url('universitet/'.$university->slug)?>';
+            }else{
+                link = '<?=url('universitety')?>';
+            }
+            window.location.href = link;
         });
     </script>
 </div>

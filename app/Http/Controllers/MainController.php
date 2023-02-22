@@ -391,18 +391,18 @@ class MainController extends Controller
 
         $data['title'] = __('review_add_page');
 
-        if (!$data['settings']['mode'] && $universitySlug==''){
-            return abort(404);
-        }else if (!$data['settings']['mode'] && $universitySlug!=''){
+        if (!$data['settings']['mode']){
             $data['university'] = $this->universityService->findBySlug($universitySlug);
-            if (!$data['university']){ // not found
-                return abort(404);
+            if ($data['university']){
+                $data['title'] .= ' - ' . $data['university']->name;
             }
+            //if (!$data['university']){ // not found
+            //    return abort(404);
+            //}
         }else{
             $data['university'] = $this->universityService->first();
         }
 
-        $data['title'] .= ' - ' . $data['university']->name;
         $data['cities'] = $this->cityService->findAll(); 
 
         $data['last_reviews'] = $this->reviewService->last();
@@ -410,6 +410,8 @@ class MainController extends Controller
         // settings
         $data['template'] = $this->settingService->findByPage(Config::get('pages.review_add'));
         $data['settings']['current_page'] = Config::get('pages.review_add');
+
+        $data['universities'] = $this->universityService->getAll();
 
         return view('pages.review_add', $data);
     }
