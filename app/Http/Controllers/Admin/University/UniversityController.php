@@ -99,4 +99,17 @@ class UniversityController extends Controller
         return redirect('admin/universities')->with('status', 'ok');
     }
 
+    public function api_store(Request $request)
+    {
+        $validated = $this->universityService->validate($request);
+
+        // TODO: Create user
+
+        // TODO: Get university logo
+
+        // TODO: Create university
+
+        return response()->json(['msg' => 'success'], 200);
+    }
+
 }

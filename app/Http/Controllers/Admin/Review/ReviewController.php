@@ -93,7 +93,6 @@ class ReviewController extends Controller
         $review = $this->reviewService->validate($request);
 
         // create user
-
         $user = [
             'first_name' => $request->has('first_name')?$request->input('first_name'):'',
             'last_name' => $request->has('last_name')?$request->input('last_name'):'',

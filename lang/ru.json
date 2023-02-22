@@ -166,13 +166,13 @@
     "city_card_title": "Карточка города",
 
     "education_levels_title": "Уровень образовании",
-    "education_levels_list_title": "Список уровней образований",
+    "education_levels_list_title": "Список уровней образования",
     "education_level_name": "Название",
     "education_level_sort": "Сортировка",
     "education_level_slug": "Ссылка",
     "education_level_add_title": "Добавить уровень образования",
     "education_level_edit_title": "Редактировать",
-    "education_level_card_title": "Карточка уровень образования",
+    "education_level_card_title": "Карточка уровня образования",
 
     "pagination_prev": "Предыдущий",
     "pagination_next": "Далее",
@@ -180,7 +180,6 @@
     "pagination_from": "из",
 
     "footer_right_reserved": "Все права защищены",
-
 
     "main_page_title": "Главная страница",
     "search_page_title": "Подобрать ВУЗ",
