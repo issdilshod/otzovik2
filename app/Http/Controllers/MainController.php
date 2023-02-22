@@ -372,13 +372,22 @@ class MainController extends Controller
     }
 
     // page add review
-    public function review_add(Request $request, $universitySlug)
+    public function review_add(Request $request, $universitySlug = '')
     {
+        // mode of page
+        $data['settings']['mode'] = $this->mainService->_mode($request);
+
         $data['title'] = __('review_add_page');
 
-        $data['university'] = $this->universityService->findBySlug($universitySlug);
-        if (!$data['university']){ // not found
+        if (!$data['settings']['mode'] && $universitySlug==''){
             return abort(404);
+        }else if (!$data['settings']['mode'] && $universitySlug!=''){
+            $data['university'] = $this->universityService->findBySlug($universitySlug);
+            if (!$data['university']){ // not found
+                return abort(404);
+            }
+        }else{
+            $data['university'] = $this->universityService->first();
         }
 
         $data['title'] .= ' - ' . $data['university']->name;
@@ -389,7 +398,6 @@ class MainController extends Controller
         // settings
         $data['template'] = $this->settingService->findByPage(Config::get('pages.review_add'));
         $data['settings']['current_page'] = Config::get('pages.review_add');
-        $data['settings']['mode'] = $this->mainService->_mode($request);
 
         return view('pages.review_add', $data);
     }

@@ -108,7 +108,7 @@
         </div>
         <div class="ch-item">
           <input type="checkbox" name="f-agr" id="f-agr">
-          <label for="f-agr">Я ознакомился с <a href="#">политикой конфиденциальности</a> и даю согласование на <a href="#">обработку персональных данных</a></label>
+          <label for="f-agr">Я ознакомился с <a href="{{url('legal')}}">политикой конфиденциальности</a> и даю согласование на <a href="{{url('policy')}}">обработку персональных данных</a></label>
         </div>
       </form>
     </div>
@@ -187,7 +187,20 @@
 </div>
   
 <div class="container">         
-    @include('components.reviews.info')
+    <!-- text -->
+    <div class="text">
+        <h3 class="_change_able" data-key="review_add_last_info_h3" data-value="{{$template['review_add_last_info_h3']}}">{{$template['review_add_last_info_h3']}}</h3>
+        <p class="_change_able" data-key="review_add_last_info_p" data-value="{{$template['review_add_last_info_p']}}">{{$template['review_add_last_info_p']}}</p>
+        <a href="#" class="btn has-ico bordered-btn more-btn">
+            Читать дальше
+            <span class="ico">
+            <svg class="icon">
+                <use xlink:href="#arrow-ico"></use>
+            </svg>
+            </span>
+        </a>
+    </div>
+    <!-- / text --> 
 </div>
 </main>
 

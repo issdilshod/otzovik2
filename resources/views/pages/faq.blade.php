@@ -23,8 +23,8 @@
     <!-- hero -->
     <div class="hero">
       <div class="hero-text has-size">
-        <h1>Часто задаваемые вопросы</h1>
-        <p>Мы собрали для Вас основные вопросы которые часто зажаются нам. Найдите ответы на все интересующие вопросы</p>
+        <h1 class="_change_able" data-key="faq_top_info_h1" data-value="{{$template['faq_top_info_h1']}}">{{$template['faq_top_info_h1']}}</h1>
+        <p class="_change_able" data-key="faq_top_info_p" data-value="{{$template['faq_top_info_p']}}">{{$template['faq_top_info_p']}}</p>
       </div>
       <div class="hero-img hero-faq-img"><img src="{{ asset('assets/images/illustration06.svg') }}" alt=""></div>
     </div>
@@ -89,7 +89,20 @@
 </div>
 
 <div class="container">         
-    @include('components.reviews.info')
+    <!-- text -->
+    <div class="text">
+        <h3 class="_change_able" data-key="faq_last_info_h3" data-value="{{$template['faq_last_info_h3']}}">{{$template['faq_last_info_h3']}}</h3>
+        <p class="_change_able" data-key="faq_last_info_p" data-value="{{$template['faq_last_info_p']}}">{{$template['faq_last_info_p']}}</p>
+        <a href="#" class="btn has-ico bordered-btn more-btn">
+            Читать дальше
+            <span class="ico">
+            <svg class="icon">
+                <use xlink:href="#arrow-ico"></use>
+            </svg>
+            </span>
+        </a>
+    </div>
+    <!-- / text --> 
 </div>
   
 </main>

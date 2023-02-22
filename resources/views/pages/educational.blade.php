@@ -23,8 +23,8 @@
     <!-- hero -->
     <div class="hero mb-3">
       <div class="hero-text has-size">
-        <h1>Учебным заведениям</h1>
-        <p>Отзыв.ru – интернет-портал для старшеклассников, абитуриентов, студентов. <br>Наша работа – это забота о том, чтобы поиск информации о вузе или колледже, будущей профессии и специальности стал для вас максимально удобным и простым. Поэтому каждый день мы совершенствуем наш сайт и наполняем его новыми интересными материалами, чтобы вы могли найти гораздо больше, чем просто ответы на вопросы.</p>
+        <h1 class="_change_able" data-key="educational_top_info_h1" data-value="{{$template['educational_top_info_h1']}}">{{$template['educational_top_info_h1']}}</h1>
+        <p class="_change_able" data-key="educational_top_info_p" data-value="{{$template['educational_top_info_p']}}">{{$template['educational_top_info_p']}}</p>
       </div>
       <div class="hero-img"><img src="{{ asset('assets/images/illustration05.svg') }}" alt=""></div>
     </div>
@@ -39,7 +39,7 @@
             </svg>
           </span>
         </span>
-        Сранивайте и изучайте рецнезии и отзывы на самом крупном агрегаторе
+        <span class="_change_able" data-key="educational_top_info_p1" data-value="{{$template['educational_top_info_p1']}}">{{$template['educational_top_info_p1']}}</span>
       </li>
       <li>
         <span class="nums-top">          
@@ -49,7 +49,7 @@
             </svg>
           </span>
         </span>
-        Вступайте в наше комьюнити принимайте участие в жизни нашего сервиса
+        <span class="_change_able" data-key="educational_top_info_p2" data-value="{{$template['educational_top_info_p2']}}">{{$template['educational_top_info_p2']}}</span>
       </li>
       <li>
         <span class="nums-top">
@@ -59,7 +59,7 @@
             </svg>
           </span>
         </span>
-        У нас вы найдете только самые актуальные и свежие новости об университетах
+        <span class="_change_able" data-key="educational_top_info_p3" data-value="{{$template['educational_top_info_p3']}}">{{$template['educational_top_info_p3']}}</span>
       </li>
     </ul>
 
@@ -85,29 +85,33 @@
         </ul>
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="tab01" role="tabpanel" aria-labelledby="info-tab01">
-                <h3>Оценивайте и находите компании!</h3>
-                <p>Наш сервис помогает сформировать наилучшие отношения между клиентом и компанией! Если вы клиент вы можете оставить свой честный отзыв и получить ответ от официального представительства.Текст генерируется абзацами случайным образом от двух до десяти предложений в абзаце, что позволяет сделать текст более привлекательным и живым для визуально-слухового восприятия.</p>
-                <p>По своей сути рыбатекст является альтернативой традицинному.</p>
+                <h3 class="_change_able" data-key="educational_info_universities_h3" data-value="{{$template['educational_info_universities_h3']}}">{{$template['educational_info_universities_h3']}}</h3>
+                <p class="_change_able" data-key="educational_info_universities_p" data-value="{{$template['educational_info_universities_p']}}">{{$template['educational_info_universities_p']}}</p>
                 <div class="btns">
-                    <a href="#" class="btn has-ico">
-                    <span class="ico">
-                        <svg class="icon">
-                        <use xlink:href="#files-ico"></use>
-                        </svg>
-                    </span>
-                    Оставить отзыв
-                    </a>
                     <a href="#" class="btn has-ico bordered-btn">
-                    <span class="ico">
-                        <svg class="icon">
-                        <use xlink:href="#building-ico"></use>
-                        </svg>
-                    </span>
-                    Добавить вуз
+                        <span class="ico">
+                            <svg class="icon">
+                            <use xlink:href="#building-ico"></use>
+                            </svg>
+                        </span>
+                        <span class="_change_able" data-key="educational_info_universities_button" data-value="{{$template['educational_info_universities_button']}}">{{$template['educational_info_universities_button']}}</span>
                     </a>
                 </div>
             </div>
-            <div class="tab-pane fade" id="tab02" role="tabpanel" aria-labelledby="info-tab02">...</div>
+            <div class="tab-pane fade" id="tab02" role="tabpanel" aria-labelledby="info-tab02">
+                <h3 class="_change_able" data-key="educational_info_universities_h3" data-value="{{$template['educational_info_universities_h3']}}">{{$template['educational_info_universities_h3']}}</h3>
+                <p class="_change_able" data-key="educational_info_universities_p" data-value="{{$template['educational_info_universities_p']}}">{{$template['educational_info_universities_p']}}</p>
+                <div class="btns">
+                    <a href="#" class="btn has-ico">
+                        <span class="ico">
+                            <svg class="icon">
+                            <use xlink:href="#files-ico"></use>
+                            </svg>
+                        </span>
+                        <span class="_change_able" data-key="educational_info_students_button" data-value="{{$template['educational_info_students_button']}}">{{$template['educational_info_students_button']}}</span>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
     <!-- / information -->  
@@ -127,7 +131,20 @@
    
     @include('components.universities.popular')
 
-    @include('components.reviews.info')
+    <!-- text -->
+    <div class="text">
+        <h3 class="_change_able" data-key="educational_last_info_h3" data-value="{{$template['educational_last_info_h3']}}">{{$template['educational_last_info_h3']}}</h3>
+        <p class="_change_able" data-key="educational_last_info_p" data-value="{{$template['educational_last_info_p']}}">{{$template['educational_last_info_p']}}</p>
+        <a href="#" class="btn has-ico bordered-btn more-btn">
+            Читать дальше
+            <span class="ico">
+            <svg class="icon">
+                <use xlink:href="#arrow-ico"></use>
+            </svg>
+            </span>
+        </a>
+    </div>
+    <!-- / text --> 
 
 </div>
   
