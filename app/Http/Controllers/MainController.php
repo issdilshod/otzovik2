@@ -221,8 +221,11 @@ class MainController extends Controller
     }
 
     // page reviews
-    public function reviews(Request $request)
+    public function reviews(Request $request, $slug1 = '')
     {
+        $page = '';
+        if (SlugService::isPage($slug1)){ $page = SlugService::isPage($slug1); }
+
         $data['title'] = __('reviews_page_title');
 
         $data['directions'] = $this->directionService->getAll();
@@ -230,7 +233,7 @@ class MainController extends Controller
 
         $data['popular_universities'] = $this->universityService->popular();
         $data['last_articles'] = $this->articleService->last();
-        $data['list'] = $this->reviewService->findAllFront();
+        $data['list'] = $this->reviewService->findAllFront($page);
 
         // settings
         $data['template'] = $this->settingService->findByPage(Config::get('pages.reviews'));
@@ -275,13 +278,16 @@ class MainController extends Controller
     }
 
     // page articates
-    public function articles(Request $request)
+    public function articles(Request $request, $slug1 = '')
     {
+        $page = '';
+        if (SlugService::isPage($slug1)){ $page = SlugService::isPage($slug1); }
+
         $data['title'] = __('articles_page_title');
 
         $data['cities'] = $this->cityService->findAll(); 
 
-        $data['list'] = $this->articleService->findAllFront();
+        $data['list'] = $this->articleService->findAllFront($page);
         $data['popular_reviews'] = $this->reviewService->popular();
         $data['last_reviews'] = $this->reviewService->last();
         $data['popular_articles'] = $this->articleService->popular(); 

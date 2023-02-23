@@ -51,7 +51,7 @@ class ReviewService extends Service{
         return false;
     }
 
-    public function findAllFront()
+    public function findAllFront($page = '')
     {
         $reviews = Review::from('reviews as r')
                         ->select([
@@ -63,7 +63,7 @@ class ReviewService extends Service{
                         ->join('universities as un', 'un.id', '=', 'r.university_id')
                         ->orderBy('r.created_at', 'desc')
                         ->where('r.status', Config::get('status.active'))
-                        ->paginate(Config::get('pagination.per_page'));
+                        ->paginate(1, [], '', $page); //Config::get('pagination.per_page')
         return $reviews;
     }
 

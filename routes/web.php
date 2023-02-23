@@ -28,10 +28,14 @@ Route::get('/universitety/{slug1?}/{slug2?}/{slug3?}/{slug4?}', [MainController:
 Route::get('/universitet/{university_slug?}', [MainController::class, 'university']);
 
 Route::get('/otzyvy', [MainController::class, 'reviews']);
+Route::get('/otzyvy/{slug1?}', [MainController::class, 'reviews']);
 Route::get('/otzyv/{review_number?}', [MainController::class, 'review']);
 Route::get('/dobavit-otzyv/{university_slug?}', [MainController::class, 'review_add']);
+
 Route::get('/posti', [MainController::class, 'articles']);
+Route::get('/posti/{slug1?}', [MainController::class, 'articles']);
 Route::get('/post/{article_slug}', [MainController::class, 'article']);
+
 Route::get('/o-service', [MainController::class, 'about']);
 Route::get('/faq', [MainController::class, 'faq']);
 Route::get('/uchebnim-zavedeniyam', [MainController::class, 'educational']);

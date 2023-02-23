@@ -89,9 +89,19 @@ class PaginatorService extends Service{
         return false;
     }
 
-    public static function hasDots()
+    public static function hasDots($before = false)
     {
-        //
+        if (!$before){
+            if (self::$endNumber+1<self::$lastPage){
+                return self::$endNumber+1;
+            }
+            return false;
+        }else{
+            if (self::$startNumber-1>self::$firstPage){
+                return self::$startNumber-1;
+            }
+            return false;
+        }
     }
 
     public static function nextPage()

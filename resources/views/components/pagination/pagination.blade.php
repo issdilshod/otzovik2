@@ -22,6 +22,12 @@ $paginatorService = new PaginatorService($list->currentPage(), $list->lastPage()
             </li> 
         @endif
 
+        @if ($paginatorService::hasDots(true))
+            <li class="page-item">
+                <a class="page-link" href="{{$paginatorService::getUrl($paginatorService::hasDots(true))}}">...</a>
+            </li>
+        @endif
+
         <!-- main pages -->
         @for ($i = $paginatorService::$startNumber; $i<=$paginatorService::$endNumber; $i++)
             <li class="page-item">
@@ -29,10 +35,11 @@ $paginatorService = new PaginatorService($list->currentPage(), $list->lastPage()
             </li>
         @endfor
 
-        <!-- divider -->
-        <!--li class="page-item">
-            <a class="page-link" href="#">...</a>
-        </li-->
+        @if ($paginatorService::hasDots())
+            <li class="page-item">
+                <a class="page-link" href="{{$paginatorService::getUrl($paginatorService::hasDots())}}">...</a>
+            </li>
+        @endif
 
         <!-- last page -->
         @if ($paginatorService::hasEndNumber())

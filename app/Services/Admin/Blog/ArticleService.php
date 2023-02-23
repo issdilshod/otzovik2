@@ -35,11 +35,11 @@ class ArticleService extends Service{
         return $article;
     }
 
-    public function findAllFront()
+    public function findAllFront($page = '')
     {
         $articles = Article::orderBy('updated_at', 'desc')
                             ->where('status', Config::get('status.active'))
-                            ->paginate(Config::get('pagination.per_page'));
+                            ->paginate(Config::get('pagination.per_page'), ['*'], '', $page);
         return $articles;
     }
 
