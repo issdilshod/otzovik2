@@ -113,20 +113,20 @@
     <div class="descript-card">
       <ul class="nav descript-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="descript-tab01" data-toggle="tab" data-target="#descript01" type="button" role="tab" aria-controls="descript01" aria-selected="true">Для учебных заведении</button>
+          <button class="nav-link @if(!$review_active){{'active'}}@endif" id="descript-tab01" data-toggle="tab" data-target="#descript01" type="button" role="tab" aria-controls="descript01" aria-selected="true">Для учебных заведении</button>
         </li>
         <li class="nav-item" role="presentation">
           <button class="nav-link" id="descript-descript02" data-toggle="tab" data-target="#descript02" type="button" role="tab" aria-controls="descript02" aria-selected="false">Для абитуриентов</button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" id="descript-descript03" data-toggle="tab" data-target="#descript03" type="button" role="tab" aria-controls="descript03" aria-selected="false">Отзывы</button>
+          <button class="nav-link @if($review_active){{'active'}}@endif" id="descript-descript03" data-toggle="tab" data-target="#descript03" type="button" role="tab" aria-controls="descript03" aria-selected="false">Отзывы</button>
         </li>
         <li class="nav-item" role="presentation">
           <button class="nav-link" id="descript-descript04" data-toggle="tab" data-target="#descript04" type="button" role="tab" aria-controls="descript04" aria-selected="false">Дополнительно</button>
         </li>
       </ul>
       <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="descript01" role="tabpanel" aria-labelledby="descript-descript01">
+        <div class="tab-pane fade @if(!$review_active){{'show active'}}@endif" id="descript01" role="tabpanel" aria-labelledby="descript-descript01">
           <div class="row">
             <div class="col-lg-4">
               <div class="descript-card-item">
@@ -348,7 +348,7 @@
             </div>
           </div>
         </div>
-        <div class="tab-pane fade" id="descript03" role="tabpanel" aria-labelledby="descript-descript03">
+        <div class="tab-pane fade @if($review_active){{'active show'}}@endif" id="descript03" role="tabpanel" aria-labelledby="descript-descript03">
           
             @foreach ($list as $item)
                 <div class="review-card">

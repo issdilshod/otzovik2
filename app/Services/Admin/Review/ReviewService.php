@@ -153,7 +153,7 @@ class ReviewService extends Service{
         return $review;
     }
 
-    public function findByUniversity($universityId)
+    public function findByUniversity($universityId, $page = '')
     {
         $reviews = Review::from('reviews as r')
                     ->select([
@@ -166,7 +166,7 @@ class ReviewService extends Service{
                     ->where('r.university_id', $universityId)
                     ->where('r.status', Config::get('status.active'))
                     ->orderBy('r.updated_at', 'desc')
-                    ->paginate(Config::get('pagination.per_page'));
+                    ->paginate(Config::get('pagination.per_page'), [], '', $page);
         return $reviews;
     }
 

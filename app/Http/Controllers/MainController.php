@@ -184,8 +184,11 @@ class MainController extends Controller
     }
 
     // page university
-    public function university(Request $request, $universitySlug = '')
+    public function university(Request $request, $universitySlug = '', $slug1 = '')
     {
+        $page = ''; $data['review_active'] = false;
+        if (SlugService::isPage($slug1)){ $page = SlugService::isPage($slug1); $data['review_active'] = true; }
+
         // mode of page
         $data['settings']['mode'] = $this->mainService->_mode($request);
 
@@ -207,7 +210,7 @@ class MainController extends Controller
         $data['title'] .= ' ' . $data['university']->name;
         $data['cities'] = $this->cityService->findAll();
 
-        $data['list'] = $this->reviewService->findByUniversity($data['university']->id);
+        $data['list'] = $this->reviewService->findByUniversity($data['university']->id, $page);
         $data['popular_reviews'] = $this->reviewService->popular();
         $data['last_reviews'] = $this->reviewService->last();
         $data['popular_articles'] = $this->articleService->popular(); 
