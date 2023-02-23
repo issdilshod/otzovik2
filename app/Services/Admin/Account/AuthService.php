@@ -5,6 +5,7 @@ namespace App\Services\Admin\Account;
 use App\Services\Service;
 use App\Models\Admin\Account\AccessToken;
 use App\Models\Admin\Account\User;
+use App\Services\Admin\Misc\SystemService;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Cookie;
@@ -34,7 +35,9 @@ class AuthService extends Service{
                 AccessToken::create([
                     'user_id' => $user->id,
                     'token' => $tmpToken,
-                    'expire_at' => $expireAt
+                    'expire_at' => $expireAt,
+                    'ip' => SystemService::get_ip(),
+                    'device' => SystemService::get_fulldevice()
                 ]);
 
                 Session::push('token', $tmpToken);
