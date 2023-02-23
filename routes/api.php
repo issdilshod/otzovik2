@@ -17,7 +17,6 @@ Route::post('like', [CommentController::class, 'api_like']);
 
 Route::get('cities/{name?}', [CityController::class, 'api_index']);
 
-//TODO: Do protect route by token
-//Route::middleware(['auth.custom'])->group(function (){
+Route::middleware(['auth.bearer'])->group(function (){
     Route::put('setting/{key}', [SettingController::class, 'api_update']);
-//});
+});

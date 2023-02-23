@@ -175,8 +175,20 @@
 
 @if (isset($settings['mode']['mode']) && $settings['mode']['mode']==\Illuminate\Support\Facades\Config::get('app._mode.edit'))
 <!-- modes -->
+<!-- SweetAlert2 -->
+<link rel="stylesheet" href="{{ asset('assets/admin/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
+<!-- SweetAlert2 -->
+<script src="{{ asset('assets/admin/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
 <input type="hidden" id="_user_id" value="{{$settings['mode']['user_id']}}" />
+<input type="hidden" id="_token" value="{{$_GET['_token']}}" />
 <script>
+    var Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000
+    });
+
     // disable a links for edit mode
     $(document).on('click', 'a', function(e){
         e.preventDefault();
@@ -193,10 +205,14 @@
         var user_id = $('#_user_id').val();
         var key = $('#_key').val();
         var value = $('#_value').val();
+        var token = $('#_token').val();
 
         $.ajax({
             type: 'put',
             url: '<?=url('api/setting')?>/'+key,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Bearer '+ token);
+            },
             data: {
                 user_id: user_id,
                 value: value
@@ -210,6 +226,21 @@
                 $('#_key').val('');
                 $('#_value').val('');
 
+                Toast.fire({
+                    icon: 'success',
+                    title: "{{__('global_success')}}"
+                })
+
+            },
+            error: function(httpObj, textStatus) {       
+                if(httpObj.status==200){
+                    // Success
+                }else if (httpObj.status==401){
+                    Toast.fire({
+                        icon: 'error',
+                        title: "{{__('global_error')}}"
+                    })
+                }
             }
         });
 
@@ -260,5 +291,7 @@
     <!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
+
+
 <!-- /.modes -->
 @endif

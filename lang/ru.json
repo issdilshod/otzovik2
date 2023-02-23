@@ -14,6 +14,8 @@
     "global_block": "Отклонен",
     "global_edit": "Редактировать",
     "global_value": "Значение",
+    "global_success": "Успешно",
+    "global_error": "Ошибка",
 
     "login_title": "Вход",
     "login_welcome_title": "Войдите чтобы начать работу",
