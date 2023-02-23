@@ -63,7 +63,7 @@ class ReviewService extends Service{
                         ->join('universities as un', 'un.id', '=', 'r.university_id')
                         ->orderBy('r.created_at', 'desc')
                         ->where('r.status', Config::get('status.active'))
-                        ->paginate(1, [], '', $page); //Config::get('pagination.per_page')
+                        ->paginate(Config::get('pagination.per_page'), [], '', $page);
         return $reviews;
     }
 
