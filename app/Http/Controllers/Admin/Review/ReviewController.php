@@ -46,7 +46,7 @@ class ReviewController extends Controller
         unset($validated['current_user_id']);
 
         if ($this->reviewService->create($validated)){
-            return redirect('admin/reviews')->with('status', '201');
+            return redirect('admin/reviews')->with('status', '200');
         }
 
         return redirect('admin/reviews')->with('status', '500'); 
@@ -85,7 +85,7 @@ class ReviewController extends Controller
         // permission
         $this->reviewService->delete($id);
 
-        return redirect('admin/reviews')->with('status', 'ok');
+        return redirect('admin/reviews')->with('status', '200');
     }
 
     public function api_store(Request $request)

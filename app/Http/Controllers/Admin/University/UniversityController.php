@@ -96,7 +96,7 @@ class UniversityController extends Controller
         // permission
         $this->universityService->delete($id);
 
-        return redirect('admin/universities')->with('status', 'ok');
+        return redirect('admin/universities')->with('status', '200');
     }
 
     public function api_store(Request $request)

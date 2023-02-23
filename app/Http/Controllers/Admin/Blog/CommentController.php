@@ -86,7 +86,7 @@ class CommentController extends Controller
         // permission
         $this->commentService->delete($id);
 
-        return redirect('admin/blog/comments')->with('status', 'ok');
+        return redirect('admin/blog/comments')->with('status', '200');
     }
     
     public function api_store(Request $request)

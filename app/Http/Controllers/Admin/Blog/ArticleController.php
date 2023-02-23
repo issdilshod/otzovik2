@@ -40,7 +40,7 @@ class ArticleController extends Controller{
         $validated['cover'] = $this->fileService->upload($request, $validated['title'], 'cover');
 
         if ($this->articleService->save($validated)){
-            return redirect('admin/blog/articles')->with('status', '201');
+            return redirect('admin/blog/articles')->with('status', '200');
         }
 
         return redirect('admin/blog/articles')->with('status', '500'); 
@@ -81,7 +81,7 @@ class ArticleController extends Controller{
         // permission
         $this->articleService->delete($id);
 
-        return redirect('admin/blog/articles')->with('status', 'ok');
+        return redirect('admin/blog/articles')->with('status', '200');
     }
 
 }

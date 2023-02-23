@@ -54,12 +54,12 @@ class UserController extends Controller
         if ($this->userService->exist($validated)){
             $data['roles'] = Config::get('roles');
             $data['user'] = (object)$validated;
-            return view('admin.pages.user.user', $data)->with('code', '409');
+            return view('admin.pages.user.user', $data)->with('status', '409');
         }
 
         $this->userService->create($validated);
 
-        return redirect('admin/users')->with('msg', 'success');
+        return redirect('admin/users')->with('status', '200');
     }
 
     public function get(Request $request, $id = '')
@@ -95,12 +95,12 @@ class UserController extends Controller
 
         // check
         if ($this->userService->exist($validated, $id)){
-            return redirect('admin/user/'.$id)->with('code', '409');
+            return redirect('admin/user/'.$id)->with('status', '409');
         }
 
         $this->userService->update($validated, $id);
 
-        return redirect('admin/users')->with('msg', 'success');
+        return redirect('admin/users')->with('status', '200');
     }
 
     public function destroy(Request $request, $id)
@@ -108,7 +108,7 @@ class UserController extends Controller
         // permission
         $this->userService->delete($id);
 
-        return redirect('admin/users')->with('msg', 'success');
+        return redirect('admin/users')->with('status', '200');
     }
 
 }

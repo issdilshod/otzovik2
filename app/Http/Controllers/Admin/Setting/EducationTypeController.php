@@ -67,7 +67,7 @@ class EducationTypeController extends Controller
         //permission
         $this->educationTypeService->delete($id);
 
-        return redirect('admin/settings/education_types')->with('status', 'ok');
+        return redirect('admin/settings/education_types')->with('status', '200');
     }
 
 }

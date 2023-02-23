@@ -21,7 +21,7 @@ class AuthController extends Controller
         $data = [];
 
         if ($this->authService->auth()){
-            return redirect('/admin/dashboard')->with('status', 'error');
+            return redirect('/admin/dashboard')->with('status', '404');
         }
 
         return view('admin.pages.login', $data);
@@ -43,7 +43,7 @@ class AuthController extends Controller
 
         // log in
         if ($response){
-            return redirect('admin/dashboard')->with('msg', 'success');
+            return redirect('admin/dashboard')->with('status', '200');
         }
 
         $data = $validated;
@@ -57,7 +57,7 @@ class AuthController extends Controller
     {
         $cookie = $this->authService->logout();
 
-        return redirect('admin/')->with('msg', 'success')->withCookie($cookie);
+        return redirect('admin/')->with('status', '200')->withCookie($cookie);
     }
 
 }

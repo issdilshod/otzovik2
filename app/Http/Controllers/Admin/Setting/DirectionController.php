@@ -68,7 +68,7 @@ class DirectionController extends Controller
         // permission
         $this->directionService->delete($id);
 
-        return redirect('admin/settings/directions')->with('status', 'ok');
+        return redirect('admin/settings/directions')->with('status', '200');
     }
 
 }
