@@ -120,7 +120,7 @@
                 </div>
                 <p>{{$comment->text}}</p>
                 <div class="review-bottm-nav">
-                <a class="like" data-id="{{$comment->id}}" data-type="{{\Illuminate\Support\Facades\Config::get('like.like')}}">
+                <a class="like" id="like{{$comment->id}}" data-id="{{$comment->id}}" data-type="{{\Illuminate\Support\Facades\Config::get('like.like')}}">
                     <span class="ico">
                         <svg class="icon">
                             <use xlink:href="#like-ico"></use>
@@ -128,7 +128,7 @@
                     </span>
                     <span class="count">{{$comment->likes_count}}</span>
                 </a>
-                <a class="like dislike" data-id="{{$comment->id}}" data-type="{{\Illuminate\Support\Facades\Config::get('like.dislike')}}">
+                <a class="like" id="dislike{{$comment->id}}" data-id="{{$comment->id}}" data-type="{{\Illuminate\Support\Facades\Config::get('like.dislike')}}">
                     <span class="ico">
                         <svg class="icon">
                             <use xlink:href="#dislike-ico"></use>
@@ -265,13 +265,16 @@
         $(document).on('click', '.like', function (e){
             e.preventDefault();
 
+            var commentId = $(this).data('id');
+
             $.ajax({
                 type: 'post',
                 url: '<?=url('api/like')?>',
-                data: {comment_id: $(this).data('id'), type: $(this).data('type')},
+                data: {comment_id: commentId, type: $(this).data('type')},
                 success: function(res){
-                    $('.like .count').html(res.comment_like.likes_count);
-                    $('.dislike .count').html(res.comment_like.dislikes_count);
+
+                    $('#like'+commentId+' .count').html(res.comment_like.likes_count);
+                    $('#dislike'+commentId+' .count').html(res.comment_like.dislikes_count);
                 }
             });
         })
