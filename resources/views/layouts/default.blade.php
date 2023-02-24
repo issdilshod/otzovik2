@@ -1,19 +1,20 @@
 <!doctype html>
 <html lang="ru">
 <head>
-   @include('components.head')
+   @include('includes.head')
+   
 </head>
 <body>
     <header class="header">
-        @include('components.header')
+        @include('includes.header')
     </header>
     <main>
         @yield('content')
     </main>
     <footer class="footer">
-        @include('components.footer')
+        @include('includes.footer')
     </footer>
 
-    @include('components.foot')
+    @include('includes.foot')
 </body>
 </html>

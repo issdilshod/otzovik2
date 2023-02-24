@@ -1,196 +1,990 @@
 @extends('layouts.default')
 
 @section('content')
-<div class="container">
 
-    <!-- hero -->
-    <div class="hero">
-      <div class="hero-text">
-        <h1 class="_change_able" data-key="index_banner_h1" data-value="{{$template['index_banner_h1']}}">{{$template['index_banner_h1']}}</h1>
-        <p class="_change_able" data-key="index_banner_p" data-value="{{$template['index_banner_p']}}">{{$template['index_banner_p']}}</p>
-        <a href="{{url('/poisk')}}" class="btn has-ico">
-          <span class="ico">
-            <svg class="icon">
-              <use xlink:href="#teacher-ico"></use>
-            </svg>
-          </span>
-          Подобрать ВУЗ
-        </a>
-      </div>
-      <div class="hero-img"><img src="assets/images/hero01.svg" alt=""></div>
-    </div>
-    <!-- / hero -->
-    
-    @include('components.reviews.popular')
-
-    <!-- attrackt -->
-    <div class="attrackt">
-      <div class="row align-items-end">
-        <div class="col-lg-9">
-          <h2 class="_change_able" data-key="index_counter_h2" data-value="{{$template['index_counter_h2']}}">{{$template['index_counter_h2']}}</h2>
-          <p class="_change_able" data-key="index_counter_p" data-value="{{$template['index_counter_p']}}">{{$template['index_counter_p']}}</p>
-          <div class="btns">
-            <a href="{{url('/dobavit-otzyv')}}" class="btn has-ico">
-              <span class="ico">
-                <svg class="icon">
-                  <use xlink:href="#files-ico"></use>
-                </svg>
-              </span>
-              Оставить отзыв
-            </a>
-            <a href="{{url('/dobavit-vuz')}}" class="btn has-ico bordered-btn">
-              <span class="ico">
-                <svg class="icon">
-                  <use xlink:href="#building-ico"></use>
-                </svg>
-              </span>
-              Добавить вуз
-            </a>
-          </div>
-          <ul class="nums">
-            <li>
-              <span class="nums-top">
-                <span class="ico">
-                  <svg class="icon">
-                    <use xlink:href="#more-ico"></use>
-                  </svg>
-                </span>
-                <strong class="_change_able" data-key="index_counter_reviews" data-value="{{$template['index_counter_reviews']}}">{{$template['index_counter_reviews']}}</strong>
-              </span>
-              Отзывов в вашем городе
-            </li>
-            <li>
-              <span class="nums-top">
-                <span class="ico">
-                  <svg class="icon">
-                    <use xlink:href="#files-ico"></use>
-                  </svg>
-                </span>
-                <strong class="_change_able" data-key="index_counter_answers" data-value="{{$template['index_counter_answers']}}">{{$template['index_counter_answers']}}</strong>
-              </span>
-              Ответов от компаний
-            </li>
-            <li>
-              <span class="nums-top">
-                <span class="ico">
-                  <svg class="icon">
-                    <use xlink:href="#users-ico"></use>
-                  </svg>
-                </span>
-                <strong class="_change_able" data-key="index_counter_companies" data-value="{{$template['index_counter_companies']}}">{{$template['index_counter_companies']}}</strong>
-              </span>
-              Компаний на портале
-            </li>
-          </ul>
-        </div>
-        <div class="col-lg-3">
-          <div class="attrackt-img"><img src="assets/images/attrackt-img.svg" alt=""></div>
-        </div>
-      </div>
-    </div>
-    <!-- / attrackt -->  
-
-</div>
-
-<div class="bg-box">
-    @include('components.universities.top')
-</div>
-
-<div class="container">
-
-    <!-- information -->
-    <div class="information">
-    <div class="information-title">
-        <div class="headline">
-        <div class="ico">
-            <svg class="icon">
-            <use xlink:href="#clipboard-ico"></use>
-            </svg>
-        </div>
-        Информация для учебных заведении
-        </div>
-    </div>
-    <ul class="nav info-tabs" id="myTab" role="tablist">
-        <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="info-tab01" data-toggle="tab" data-target="#tab01" type="button" role="tab" aria-controls="tab01" aria-selected="true">Для учебных заведении</button>
-        </li>
-        <li class="nav-item" role="presentation">
-        <button class="nav-link" id="info-tab02" data-toggle="tab" data-target="#tab02" type="button" role="tab" aria-controls="tab02" aria-selected="false">Для абитуриентов</button>
-        </li>
-    </ul>
-    <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="tab01" role="tabpanel" aria-labelledby="info-tab01">
-            <h3 class="_change_able" data-key="index_info_universities_h3" data-value="{{$template['index_info_universities_h3']}}">{{$template['index_info_universities_h3']}}</h3>
-            <p class="_change_able" data-key="index_info_universities_p" data-value="{{$template['index_info_universities_p']}}">{{$template['index_info_universities_p']}}</p>
-            <div class="btns">
-                <a href="#" class="btn has-ico bordered-btn">
-                    <span class="ico">
-                        <svg class="icon">
-                        <use xlink:href="#building-ico"></use>
-                        </svg>
-                    </span>
-                    <span class="_change_able" data-key="index_info_universities_button" data-value="{{$template['index_info_universities_button']}}">{{$template['index_info_universities_button']}}</span>
-                </a>
+<!-- hero -->
+<div class="hero">
+    <div class="home-slider swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="hero-img"><img src="{{ asset('assets/img/hero.jpg') }}" alt=""></div>
+                <div class="container">
+                    <div class="hero-text">
+                        <h1>Независимый сервис по оценке платформ для онлайн обучения</h1>
+                        <p class="large">Узнай что реально пишут о всех извесных платформах для онлайн обучения, которые вы рассматриваете для поступления!</p>
+                        <a href="#" class="btn">Подобрать платформу</a>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="hero-img"><img src="{{ asset('assets/img/hero.jpg') }}" alt=""></div>
+                <div class="container">
+                    <div class="hero-text">
+                        <h1>Независимый сервис по оценке платформ для онлайн обучения</h1>
+                        <p class="large">Узнай что реально пишут о всех извесных платформах для онлайн обучения, которые вы рассматриваете для поступления!</p>
+                        <a href="#" class="btn">Подобрать платформу</a>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="hero-img"><img src="{{ asset('assets/img/hero.jpg') }}" alt=""></div>
+                <div class="container">
+                    <div class="hero-text">
+                        <h1>Независимый сервис по оценке платформ для онлайн обучения</h1>
+                        <p class="large">Узнай что реально пишут о всех извесных платформах для онлайн обучения, которые вы рассматриваете для поступления!</p>
+                        <a href="#" class="btn">Подобрать платформу</a>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="tab-pane fade" id="tab02" role="tabpanel" aria-labelledby="info-tab02">
-            <h3 class="_change_able" data-key="index_students_h3" data-value="{{$template['index_info_students_h3']}}">{{$template['index_info_students_h3']}}</h3>
-            <p class="_change_able" data-key="index_students_p" data-value="{{$template['index_info_students_p']}}">{{$template['index_info_students_p']}}</p>
-            <div class="btns">
-                <a href="{{url('/dobavit-otzyv')}}" class="btn has-ico">
-                    <span class="ico">
-                        <svg class="icon">
+        <div class="home-slider-pagination"></div>
+    </div>
+    <div class="container">
+        <ul class="benefits">
+            <li>
+                <span class="ico">
+                    <svg class="icon">
+                        <use xlink:href="#monitor-ico"></use>
+                    </svg>
+                </span>
+                <strong>452 851</strong>
+                посещаемость
+            </li>
+            <li>
+                <span class="ico">
+                    <svg class="icon">
                         <use xlink:href="#files-ico"></use>
-                        </svg>
-                    </span>
-                    <span class="_change_able" data-key="index_info_students_button" data-value="{{$template['index_info_students_button']}}">{{$template['index_info_students_button']}}</span>
-                </a>
+                    </svg>
+                </span>
+                <strong>45 285</strong>
+                отзывов
+            </li>
+            <li>
+                <span class="ico">
+                    <svg class="icon">
+                        <use xlink:href="#users-ico"></use>
+                    </svg>
+                </span>
+                <strong>4 528</strong>
+                пользователей
+            </li>
+            <li>
+                <span class="ico">
+                    <svg class="icon">
+                        <use xlink:href="#teacher-ico"></use>
+                    </svg>
+                </span>
+                <strong>452</strong>
+                платформ
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- / hero -->
+
+<!-- platforms -->
+<div class="platforms">
+    <div class="container">
+        <div class="title-wrap">
+            <h2>Популярные образовательные платформы</h2>
+            <p class="large">С другой стороны консультация с широким активом требуют определения и уточнения модели развития. Задача организации, в особенности же сложившаяся структура организации играет важную роль в формировании существенных финансовых и административных условий.</p>
+        </div>								
+    </div>
+    <div class="paltforms-slider swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="platform-card">
+                    <div class="platform-card-head">
+                        <div class="platform-card-logo"><img src="{{ asset('assets/img/p-logo01.svg') }}" alt=""></div>
+                        <ul class="awards">
+                            <li>
+                                <span class="ico">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                4.7
+                            </li>
+                            <li>
+                                <span class="ico">
+                                    <svg class="icon">
+                                        <use xlink:href="#cup-ico"></use>
+                                    </svg>
+                                </span>
+                                № 4
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="platform-card-body">
+                        <p>Онлайн-школа, которая с 2016 года запускает одни из лучших курсов в digital</p>
+                        <div class="platform-descript">
+                            <li><span>Направлений:</span> Более 28</li>
+                            <li><span>Стоимость:</span> от 1 699 руб.</li>
+                            <li><span>Рассрочка:</span> Есть</li>
+                            <li><span>Срок обучения:</span> от 3 месяцев</li>
+                        </div>
+                        <a href="#" class="btn bordered-btn">Оставить отзыв</a>
+                    </div>							
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="platform-card">
+                    <div class="platform-card-head">
+                        <div class="platform-card-logo"><img src="{{ asset('assets/img/p-logo02.svg') }}" alt=""></div>
+                        <ul class="awards">
+                            <li>
+                                <span class="ico">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                4.7
+                            </li>
+                            <li>
+                                <span class="ico">
+                                    <svg class="icon">
+                                        <use xlink:href="#cup-ico"></use>
+                                    </svg>
+                                </span>
+                                № 1
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="platform-card-body">
+                        <p>Образовательная платформа «Нетология» мы учим профессиям и навыкам будущего</p>
+                        <div class="platform-descript">
+                            <li><span>Направлений:</span> Более 60</li>
+                            <li><span>Стоимость:</span> от 2 400 руб.</li>
+                            <li><span>Рассрочка:</span> Есть</li>
+                            <li><span>Срок обучения:</span> от 3 месяцев</li>
+                        </div>
+                        <a href="#" class="btn bordered-btn">Оставить отзыв</a>
+                    </div>							
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="platform-card">
+                    <div class="platform-card-head">
+                        <div class="platform-card-logo"><img src="{{ asset('assets/img/p-logo03.svg') }}" alt=""></div>
+                        <ul class="awards">
+                            <li>
+                                <span class="ico">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                4.7
+                            </li>
+                            <li>
+                                <span class="ico">
+                                    <svg class="icon">
+                                        <use xlink:href="#cup-ico"></use>
+                                    </svg>
+                                </span>
+                                № 6
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="platform-card-body">
+                        <p>Онлайн-школа, которая с 2018 года запускает одни из лучших курсов в digital индустрии</p>
+                        <div class="platform-descript">
+                            <li><span>Направлений:</span> Более 24</li>
+                            <li><span>Стоимость:</span> от 1 500 руб.</li>
+                            <li><span>Рассрочка:</span> Есть</li>
+                            <li><span>Срок обучения:</span> от 3 месяцев</li>
+                        </div>
+                        <a href="#" class="btn bordered-btn">Оставить отзыв</a>
+                    </div>							
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="platform-card">
+                    <div class="platform-card-head">
+                        <div class="platform-card-logo"><img src="{{ asset('assets/img/p-logo04.svg') }}" alt=""></div>
+                        <ul class="awards">
+                            <li>
+                                <span class="ico">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                4.7
+                            </li>
+                            <li>
+                                <span class="ico">
+                                    <svg class="icon">
+                                        <use xlink:href="#cup-ico"></use>
+                                    </svg>
+                                </span>
+                                № 4
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="platform-card-body">
+                        <p>Онлайн-школа, которая с 2016 года запускает одни из лучших курсов в digital</p>
+                        <div class="platform-descript">
+                            <li><span>Направлений:</span> Более 20</li>
+                            <li><span>Стоимость:</span> от 1 699 руб.</li>
+                            <li><span>Рассрочка:</span> Есть</li>
+                            <li><span>Срок обучения:</span> от 3 месяцев</li>
+                        </div>
+                        <a href="#" class="btn bordered-btn">Оставить отзыв</a>
+                    </div>							
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="platform-card">
+                    <div class="platform-card-head">
+                        <div class="platform-card-logo"><img src="{{ asset('assets/img/p-logo01.svg') }}" alt=""></div>
+                        <ul class="awards">
+                            <li>
+                                <span class="ico">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                4.7
+                            </li>
+                            <li>
+                                <span class="ico">
+                                    <svg class="icon">
+                                        <use xlink:href="#cup-ico"></use>
+                                    </svg>
+                                </span>
+                                № 4
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="platform-card-body">
+                        <p>Онлайн-школа, которая с 2016 года запускает одни из лучших курсов в digital</p>
+                        <div class="platform-descript">
+                            <li><span>Направлений:</span> Более 28</li>
+                            <li><span>Стоимость:</span> от 1 699 руб.</li>
+                            <li><span>Рассрочка:</span> Есть</li>
+                            <li><span>Срок обучения:</span> от 3 месяцев</li>
+                        </div>
+                        <a href="#" class="btn bordered-btn">Оставить отзыв</a>
+                    </div>							
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="platform-card">
+                    <div class="platform-card-head">
+                        <div class="platform-card-logo"><img src="{{ asset('assets/img/p-logo02.svg') }}" alt=""></div>
+                        <ul class="awards">
+                            <li>
+                                <span class="ico">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                4.7
+                            </li>
+                            <li>
+                                <span class="ico">
+                                    <svg class="icon">
+                                        <use xlink:href="#cup-ico"></use>
+                                    </svg>
+                                </span>
+                                № 1
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="platform-card-body">
+                        <p>Образовательная платформа «Нетология» мы учим профессиям и навыкам будущего</p>
+                        <div class="platform-descript">
+                            <li><span>Направлений:</span> Более 60</li>
+                            <li><span>Стоимость:</span> от 2 400 руб.</li>
+                            <li><span>Рассрочка:</span> Есть</li>
+                            <li><span>Срок обучения:</span> от 3 месяцев</li>
+                        </div>
+                        <a href="#" class="btn bordered-btn">Оставить отзыв</a>
+                    </div>							
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="platform-card">
+                    <div class="platform-card-head">
+                        <div class="platform-card-logo"><img src="{{ asset('assets/img/p-logo03.svg') }}" alt=""></div>
+                        <ul class="awards">
+                            <li>
+                                <span class="ico">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                4.7
+                            </li>
+                            <li>
+                                <span class="ico">
+                                    <svg class="icon">
+                                        <use xlink:href="#cup-ico"></use>
+                                    </svg>
+                                </span>
+                                № 6
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="platform-card-body">
+                        <p>Онлайн-школа, которая с 2018 года запускает одни из лучших курсов в digital индустрии</p>
+                        <div class="platform-descript">
+                            <li><span>Направлений:</span> Более 24</li>
+                            <li><span>Стоимость:</span> от 1 500 руб.</li>
+                            <li><span>Рассрочка:</span> Есть</li>
+                            <li><span>Срок обучения:</span> от 3 месяцев</li>
+                        </div>
+                        <a href="#" class="btn bordered-btn">Оставить отзыв</a>
+                    </div>							
+                </div>
             </div>
         </div>
     </div>
+    <div class="container">
+        <div class="slider-nav">
+            <a href="#" class="btn">Посмотреть все</a>
+            <div class="slider-btns">					
+                <div class="platforms-prev swiper-button-prev"></div>
+                <div class="platforms-next swiper-button-next"></div>
+            </div>
+        </div>
     </div>
-    <!-- / information -->
-
-    @include('components.articles.popular')
-
-    <!-- honest -->
-    <div class="honest">
-        <h2 class="_change_able" data-key="index_honest_h2" data-value="{{$template['index_honest_h2']}}">{{$template['index_honest_h2']}}</h2>
-        <p class="_change_able" data-key="index_honest_p" data-value="{{$template['index_honest_p']}}">{{$template['index_honest_p']}}</p>
-        <a href="{{url('/dobavit-otzyv')}}" class="btn has-ico">
-            <span class="ico">
-            <svg class="icon">
-                <use xlink:href="#files-ico"></use>
-            </svg>
-            </span>
-            Оставить отзыв
-        </a>
+</div>
+<!-- / platforms -->		
+        
+<!-- top-block -->
+<div class="top-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h2><span class="violet">ТОП 6</span> онлайн платформ по мнению редакции</h2>
+                <p class="large">С другой стороны консультация с широким активом требуют определения и уточнения модели развития. Задача организации, в особенности же сложившаяся структура организации играет важную роль в формировании существенных финансовых и административных условий.</p>
+            </div>
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="top-card">
+                        <a href="#">
+                            <img src="{{ asset('assets/img/p-logo02.svg') }}" alt="">
+                            <div class="num">
+                                <svg class="icon">
+                                    <use xlink:href="#cup-color"></use>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="top-card">
+                        <a href="#">
+                            <img src="{{ asset('assets/img/p-logo01.svg') }}" alt="">
+                            <div class="num">2</div>
+                        </a>
+                    </div>
+                    <div class="top-card">
+                        <a href="#">
+                            <img src="{{ asset('assets/img/p-logo03.svg') }}" alt="">
+                            <div class="num">3</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="top-card">
+                        <a href="#">
+                            <img src="{{ asset('assets/img/p-logo04.svg') }}" alt="">
+                            <div class="num">4</div>
+                        </a>
+                    </div>
+                    <div class="top-card">
+                        <a href="#">
+                            <img src="{{ asset('assets/img/p-logo05.svg') }}" alt="">
+                            <div class="num">5</div>
+                        </a>
+                    </div>
+                    <div class="top-card">
+                        <a href="#">
+                            <img src="{{ asset('assets/img/p-logo02.svg') }}" alt="">
+                            <div class="num">6</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- / honest -->   
-
-    @include('components.reviews.last')
-
-    <!-- text -->
-    <div class="text">
-        <h3 class="_change_able" data-key="index_last_info_h3" data-value="{{$template['index_last_info_h3']}}">{{$template['index_last_info_h3']}}</h3>
-        <p class="_change_able" data-key="index_last_info_p" data-value="{{$template['index_last_info_p']}}">{{$template['index_last_info_p']}}</p>
-        <a href="#" class="btn has-ico bordered-btn more-btn">
-            Читать дальше
-            <span class="ico">
-            <svg class="icon">
-                <use xlink:href="#arrow-ico"></use>
-            </svg>
-            </span>
-        </a>
-    </div>
-    <!-- / text --> 
-
 </div>
 
-@include('components.modals.location')
+<!-- / top-block -->
+<div class="container">
+    <div class="teaser">
+        <h2>Не можете решить где обучаться?</h2>
+        <p class="large">Мы поможем Вам подобрать платфому для онлайн обучения, где Вас смогут научить всему что пожелаете.</p>
+        <a href="#" class="btn bordered-btn white-btn">Подобрать платформу</a>
+    </div>		
+    <div class="title-wrap text-left">
+        <h2>Последние опубликованные отзывы</h2>
+        <p>С другой стороны консультация с широким активом требуют определения и уточнения модели развития. Задача организации, в особенности же сложившаяся структура организации играет важную роль в формировании существенных финансовых и административных условий.</p>
+    </div>
+    <div class="row">
+        <div class="col-lg-8">
+            <!-- comments -->
+            <div class="comments">
+                <div class="comment-card">
+                    <div class="comment-card-top">
+                        <div class="comment-card-text">
+                            <div class="comment-name">
+                                Андрей Жураков, г. Москва
+                                <span class="check">
+                                    <svg class="icon">
+                                        <use xlink:href="#check-ico"></use>
+                                    </svg>
+                                </span>
+                            </div>
+                            <div class="platform-link">Платформа: <a href="#">Нетология</a></div>
+                            <div class="rating">
+                                <span class="star">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                <span class="star">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                <span class="star">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                <span class="star">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                <span class="star">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                <span class="rate-num">5.0</span>
+                            </div>
+                        </div>
+                        <div class="comment-card-photo"><img src="{{ asset('assets/img/photo01.jpg') }}" alt=""></div>
+                    </div>
+                    <p>Курс на 100% соответствует своему названию! Я быстро освоил программу, которая раньше своим внешним видом вызывала лишь ужас и полное непонимание.</p>
+                    <p>Считаю, что мне очень повезло с куратором. Он очень развёрнуто отвечал на все мои вопросы, подробно рассказывал, что я сделал не совсем правильно — даже прикладывал видео, на которых показывал, как сделать лучше!</p>
+                    <a href="#" class="more">Прочитать полностью</a>
+                </div>
+                <div class="comment-card">
+                    <div class="comment-card-top">
+                        <div class="comment-card-text">
+                            <div class="comment-name">
+                                Людмила Юрченко, г. Москва
+                                <span class="check">
+                                    <svg class="icon">
+                                        <use xlink:href="#check-ico"></use>
+                                    </svg>
+                                </span>
+                            </div>
+                            <div class="platform-link">Платформа: <a href="#">Skysmart</a></div>
+                            <div class="rating">
+                                <span class="star">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                <span class="star">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                <span class="star">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                <span class="star">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                <span class="star">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                <span class="rate-num">5.0</span>
+                            </div>
+                        </div>
+                        <div class="comment-card-photo"><img src="{{ asset('assets/img/photo02.jpg') }}" alt=""></div>
+                    </div>
+                    <p>Я новичок в профессии, и мне важно было, чтобы курс сочетал в себе теорию и практику. Свои ощущения я назову более чем положительными, потому что курс мне понравился. Я очень много получила полезной информации, которой буду пользоваться. Сейчас я в процессе поиска работы, и карьерные консультанты Skillbox мне в этом очень помогают.</p>
+                    <a href="#" class="more">Прочитать полностью</a>
+                </div>
+                <div class="comment-card">
+                    <div class="comment-card-top">
+                        <div class="comment-card-text">
+                            <div class="comment-name">
+                                Ирина Афанасьева, г. Череповец
+                                <span class="check">
+                                    <svg class="icon">
+                                        <use xlink:href="#check-ico"></use>
+                                    </svg>
+                                </span>
+                            </div>
+                            <div class="platform-link">Платформа: <a href="#">Skillbox</a></div>
+                            <div class="rating">
+                                <span class="star">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                <span class="star">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                <span class="star">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                <span class="star">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                <span class="star">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                <span class="rate-num">5.0</span>
+                            </div>
+                        </div>
+                        <div class="comment-card-photo"><img src="{{ asset('assets/img/photo03.jpg') }}" alt=""></div>
+                    </div>
+                    <p>Я программист. Долгое время занималась разработкой и внедрением систем, а затем руководила IT-подразделениями крупных энергетических компаний. Сейчас для меня настало время перемен, и я подумала, что нужно обновить знания. Тем более что теоретических основ по управлению проектами у меня не было.</p>
+                    <a href="#" class="more">Прочитать полностью</a>
+                </div>
+                <div class="comment-card">
+                    <div class="comment-card-top">
+                        <div class="comment-card-text">
+                            <div class="comment-name">
+                                Андрей Жураков, г. Москва
+                                <span class="check uncheck">
+                                    <svg class="icon">
+                                        <use xlink:href="#check-ico"></use>
+                                    </svg>
+                                </span>
+                            </div>
+                            <div class="platform-link">Платформа: <a href="#">Нетология</a></div>
+                            <div class="rating">
+                                <span class="star">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                <span class="star">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                <span class="star">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                <span class="star">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                <span class="star">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                <span class="rate-num">5.0</span>
+                            </div>
+                        </div>
+                        <div class="comment-card-photo"><img src="{{ asset('assets/img/photo01.jpg') }}" alt=""></div>
+                    </div>
+                    <p>Курс на 100% соответствует своему названию! Я быстро освоил программу, которая раньше своим внешним видом вызывала лишь ужас и полное непонимание.</p>
+                    <p>Считаю, что мне очень повезло с куратором. Он очень развёрнуто отвечал на все мои вопросы, подробно рассказывал, что я сделал не совсем правильно — даже прикладывал видео, на которых показывал, как сделать лучше!</p>
+                    <a href="#" class="more">Прочитать полностью</a>
+                </div>
+                <div class="comment-card">
+                    <div class="comment-card-top">
+                        <div class="comment-card-text">
+                            <div class="comment-name">
+                                Людмила Юрченко, г. Москва
+                                <span class="check">
+                                    <svg class="icon">
+                                        <use xlink:href="#check-ico"></use>
+                                    </svg>
+                                </span>
+                            </div>
+                            <div class="platform-link">Платформа: <a href="#">Skysmart</a></div>
+                            <div class="rating">
+                                <span class="star">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                <span class="star">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                <span class="star">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                <span class="star">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                <span class="star">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                <span class="rate-num">5.0</span>
+                            </div>
+                        </div>
+                        <div class="comment-card-photo"><img src="{{ asset('assets/img/photo02.jpg') }}" alt=""></div>
+                    </div>
+                    <p>Я новичок в профессии, и мне важно было, чтобы курс сочетал в себе теорию и практику. Свои ощущения я назову более чем положительными, потому что курс мне понравился. Я очень много получила полезной информации, которой буду пользоваться. Сейчас я в процессе поиска работы, и карьерные консультанты Skillbox мне в этом очень помогают.</p>
+                    <a href="#" class="more">Прочитать полностью</a>
+                </div>
+                <div class="text-center">
+                    <a href="#" class="btn">Перейти ко всем отзывам</a>
+                </div>
+            </div>
+            <!-- / comments -->
+        </div>
+        <div class="col-lg-4">
+            <aside>
+                <div class="proposal-teaser">
+                    <div class="proposal-teaser-logo"><a href="#"><img src="{{ asset('assets/img/gb-logo.svg') }}" alt=""></a></div>
+                    <p><strong>Мы обучаем с нуля профессиям и предоставляем знания</strong> по востребованным специальностям и направлениям в сфере ИТ.</p>
+                    <ul>
+                        <li>Аналитика</li>
+                        <li>Тестирование</li>
+                        <li>Продуктовое управление в ИТ</li>
+                        <li>Проектное управление в ИТ</li>
+                        <li>Программирование</li>
+                        <li>Архитектура</li>
+                    </ul>
+                </div>
+                <div class="add-comment">
+                    <div class="title">Оставьте отзыв</div>
+                    <p>Расскажите о своем опыте использования образовательных платформ</p>
+                    <a href="#" class="btn blue-btn">Оставить отзыв</a>
+                    <div class="subtitle">Как мы работаем с отзывами</div>
+                    <ul>
+                        <li>Отзыв проходит модерацию</li>
+                        <li>Представитель онлайн-школы отвечает на отзыв</li>
+                        <li>Решение проблемы на сайте</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+</div>
 
-@include('components.modals.success-subscribe')
+<!-- sending subscribe -->
+<div class="sending">
+    <div class="container">
+        <div class="sending-body">
+            <form>
+                <div class="sending-title">Подпишитесь на нашу рассылку</div>
+                <p class="large">Получайте рассылку с набором полезных статей по 2 раза в неделю и будь в курсе всех событий</p>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group"><input type="text" placeholder="Ваше Имя" class="form-control"></div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group"><input type="email" placeholder="E-mail" class="form-control"></div>
+                    </div>
+                </div>
+                <div class="sending-bottom">
+                    <button class="btn" data-toggle="modal" data-target="#modal02">Подписаться</button>
+                    <div class="agree">Отправляя данную форму, вы соглашаетесь с <a href="#">политикой конфиденциальности</a> и <a href="#">обработку персональных данных</a></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- / sending subscribe -->
+        
+<!-- popular-articles -->
+<div class="popular-articles">
+    <div class="container">
+        <div class="title-wrap text-left">
+            <h2>Популярные статьи</h2>
+            <p>С другой стороны консультация с широким активом требуют определения и уточнения модели развития. Задача организации, в особенности же сложившаяся структура организации играет важную роль в формировании существенных финансовых и административных условий.</p>
+        </div>
+        <div class="articles-slider swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="article-card">
+                        <a href="#">
+                        <img src="{{ asset('assets/img/pic01.jpg') }}" alt="">
+                        <div class="article-card-text">
+                            <div class="date">16.01.2023</div>
+                            <div class="article-card-title">Вот вам яркий пример современных тенденций — понимание сути</div>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="article-card">
+                        <a href="#">
+                        <img src="{{ asset('assets/img/pic02.jpg') }}" alt="">
+                        <div class="article-card-text">
+                            <div class="date">16.01.2023</div>
+                            <div class="article-card-title">Вот вам яркий пример современных тенденций — понимание сути</div>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="article-card">
+                        <a href="#">
+                        <img src="{{ asset('assets/img/pic03.jpg') }}" alt="">
+                        <div class="article-card-text">
+                            <div class="date">16.01.2023</div>
+                            <div class="article-card-title">Вот вам яркий пример современных тенденций — понимание сути</div>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="article-card">
+                        <a href="#">
+                        <img src="{{ asset('assets/img/pic01.jpg') }}" alt="">
+                        <div class="article-card-text">
+                            <div class="date">16.01.2023</div>
+                            <div class="article-card-title">Вот вам яркий пример современных тенденций — понимание сути</div>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="article-card">
+                        <a href="#">
+                        <img src="{{ asset('assets/img/pic02.jpg') }}" alt="">
+                        <div class="article-card-text">
+                            <div class="date">16.01.2023</div>
+                            <div class="article-card-title">Вот вам яркий пример современных тенденций — понимание сути</div>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="article-card">
+                        <a href="#">
+                        <img src="{{ asset('assets/img/pic03.jpg') }}" alt="">
+                        <div class="article-card-text">
+                            <div class="date">16.01.2023</div>
+                            <div class="article-card-title">Вот вам яркий пример современных тенденций — понимание сути</div>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slider-nav">
+            <a href="#" class="btn">Читать все статьи</a>
+            <div class="slider-btns">        
+                <div class="articles-prev swiper-button-prev"></div>
+                <div class="articles-next swiper-button-next"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- / popular-articles -->
 
-@include('components.svgs.welcome')
+<!-- viewed reviews -->
+<div class="viewed">
+    <div class="container">
+        <div class="title-wrap">
+            <h2>Самые просматриваемые отзывы</h2>
+            <p>С другой стороны консультация с широким активом требуют определения и уточнения модели развития.</p>
+        </div>
+    </div>
+    <div class="viewed-slider swiper">
+        <div class="swiper-wrapper">      
+            <div class="swiper-slide">
+                <div class="comment-card">
+                    <div class="comment-card-top">
+                        <div class="comment-card-text">
+                            <div class="comment-name">
+                                Андрей Жураков, г. Москва
+                                <span class="check">
+                                    <svg class="icon">
+                                        <use xlink:href="#check-ico"></use>
+                                    </svg>
+                                </span>
+                            </div>
+                            <div class="platform-link">Платформа: <a href="#">Нетология</a></div>
+                            <div class="rating">
+                                <span class="star">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                <span class="star">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                <span class="star">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                <span class="star">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                <span class="star">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                <span class="rate-num">5.0</span>
+                            </div>
+                        </div>
+                        <div class="comment-card-photo"><img src="{{ asset('assets/img/photo01.jpg') }}" alt=""></div>
+                    </div>
+                    <p>Курс на 100% соответствует своему названию! Я быстро освоил программу, которая раньше своим внешним видом вызывала лишь ужас и полное непонимание.</p>
+                    <p>Считаю, что мне очень повезло с куратором. Он очень развёрнуто отвечал на все мои вопросы, подробно рассказывал, что я сделал не совсем правильно — даже прикладывал видео, на которых показывал, как сделать лучше!</p>
+                    <a href="#" class="more">Прочитать полностью</a>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="comment-card">
+                    <div class="comment-card-top">
+                        <div class="comment-card-text">
+                            <div class="comment-name">
+                                Людмила Юрченко, г. Москва
+                                <span class="check">
+                                    <svg class="icon">
+                                        <use xlink:href="#check-ico"></use>
+                                    </svg>
+                                </span>
+                            </div>
+                            <div class="platform-link">Платформа: <a href="#">Skysmart</a></div>
+                            <div class="rating">
+                                <span class="star">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                <span class="star">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                <span class="star">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                <span class="star">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                <span class="star">
+                                    <svg class="icon">
+                                        <use xlink:href="#star-ico"></use>
+                                    </svg>
+                                </span>
+                                <span class="rate-num">5.0</span>
+                            </div>
+                        </div>
+                        <div class="comment-card-photo"><img src="{{ asset('assets/img/photo02.jpg') }}" alt=""></div>
+                    </div>
+                    <p>Я новичок в профессии, и мне важно было, чтобы курс сочетал в себе теорию и практику. Свои ощущения я назову более чем положительными, потому что курс мне понравился. Я очень много получила полезной информации, которой буду пользоваться. Сейчас я в процессе поиска работы, и карьерные консультанты Skillbox мне в этом очень помогают.</p>
+                    <a href="#" class="more">Прочитать полностью</a>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="comment-card">
+                    <div class="comment-card-top">
+                        <div class="comment-card-text">
+                            <div class="comment-name">
+                                Ирина Афанасьева, г. Череповец
+                                <span class="check">
+                                    <svg class="icon">
+                                        <use xlink:href="#check-ico"></use>
+                                    </svg>
+                                </span>
+                            </div>
+                            <div class="platform-link">Платформа: <a href="#">Skillbox</a></div>
+                            <div class="rating">
+                                <span class="star">
+                                <svg class="icon">
+                                    <use xlink:href="#star-ico"></use>
+                                </svg>
+                                </span>
+                                <span class="star">
+                                <svg class="icon">
+                                    <use xlink:href="#star-ico"></use>
+                                </svg>
+                                </span>
+                                <span class="star">
+                                <svg class="icon">
+                                    <use xlink:href="#star-ico"></use>
+                                </svg>
+                                </span>
+                                <span class="star">
+                                <svg class="icon">
+                                    <use xlink:href="#star-ico"></use>
+                                </svg>
+                                </span>
+                                <span class="star">
+                                <svg class="icon">
+                                    <use xlink:href="#star-ico"></use>
+                                </svg>
+                                </span>
+                                <span class="rate-num">5.0</span>
+                            </div>
+                        </div>
+                        <div class="comment-card-photo"><img src="{{ asset('assets/img/photo03.jpg') }}" alt=""></div>
+                    </div>
+                    <p>Я программист. Долгое время занималась разработкой и внедрением систем, а затем руководила IT-подразделениями крупных энергетических компаний. Сейчас для меня настало время перемен, и я подумала, что нужно обновить знания. Тем более что теоретических основ по управлению проектами у меня не было.</p>
+                    <a href="#" class="more">Прочитать полностью</a>
+                </div>
+            </div>
+        </div>
+    </div>  
+    <div class="slider-nav">
+        <a href="#" class="btn bordered-btn white-btn">Читать все отзывы</a>
+        <div class="slider-btns">					
+            <div class="viewed-prev swiper-button-prev"></div>
+            <div class="viewed-pagination swiper-pagination"></div>
+            <div class="viewed-next swiper-button-next"></div>
+        </div>
+    </div>  
+</div>
+<!-- / viewed reviews -->
+
+<!-- text -->
+<div class="text">
+    <div class="container">
+        <h2>Оценивайте и находите компании!</h2>
+        <p>Наш сервис помогает сформировать наилучшие отношения между клиентом и компанией! Если вы клиент вы можете оставить свой честный отзыв и получить ответ от официального представительства.Текст генерируется абзацами случайным образом от двух до десяти предложений в абзаце, что позволяет сделать текст более привлекательным и живым для визуально-слухового восприятия. По своей сути рыбатекст является альтернативой традиционному lorem ipsum, который вызывает у некторых людей недоумение при попытках прочитать рыбу текст.</p>
+        <a href="#" class="btn bordered-btn">Читать дальше</a>
+    </div>
+</div>
+<!-- / text -->
+
+@include('includes.modals.subscribe', ["msg" => 'success'])
 
 @stop
