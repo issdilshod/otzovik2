@@ -985,6 +985,8 @@
 </div>
 <!-- / text -->
 
-@include('includes.modals.subscribe', ["msg" => 'success'])
+@include('includes.modals.subscribe')
+
+@include('includes.modals.location', ["cities" => $cities]);
 
 @stop

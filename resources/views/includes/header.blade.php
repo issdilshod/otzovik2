@@ -26,7 +26,7 @@
 </div>
 <div class="header-inner">
     <div class="container">
-        <a href="#" class="logo"><img src="assets/img/logo.svg" alt=""></a>
+        <a href="{{url('/')}}" class="logo"><img src="{{ asset('assets/img/logo.svg') }}" alt=""></a>
         <ul class="main-nav">
             <li><a href="#">Школы</a></li>
             <li><a href="#">Отзывы</a></li>

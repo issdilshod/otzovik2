@@ -6,6 +6,7 @@ $mainController = new MainController();
 
 $data = $mainController->e404(new Request());
 
+$title = '';
 $cities = $data['cities'];
 $template = $data['template'];
 $settings = $data['settings'];
@@ -14,36 +15,20 @@ $settings = $data['settings'];
 @extends('layouts.default')
 
 @section('content')
-<main>
-  <div class="container">
-    <nav class="breadcrumb-wrapper">
-      <ol class="breadcrumb">
-        <li>
-          <a href="#" class="home">
-            <span class="ico">
-              <svg class="icon">
-                <use xlink:href="#home-ico"></use>
-              </svg>
-            </span>
-            Главная
-          </a>
-        </li>
-        <li class="active">Страница не найдена</li>
-      </ol>
-    </nav>
-    <div class="error-message">
-      <div class="error-message-img"><img src="{{ asset('assets/images/error-img.svg')}}" alt=""></div>
-      <div class="headline">Упс, страница не найдена!</div>
-      <p>Проверьте ещё раз адрес страницы и введите его снова или перейдите на главную страницу и найти там ссылки на нужные данные.</p>
-      <a href="{{url('/')}}" class="btn">На главную страницу</a>
+<div class="breadcrumbs-wrapper">
+    <div class="container">
+        <ul class="breadcrumbs">
+            <li><a href="{{url('/')}}">Главная</a></li>
+            <li class="active">Страница не найдена</li>
+        </ul>
     </div>
-  </div>  
-</main>
-
-@include('components.modals.location')
-
-@include('components.modals.success-subscribe')
-
-@include('components.svgs.welcome')
-
+</div>
+<div class="container">	      
+    <div class="error-page">
+        <div class="error-page-img"><img src="{{ asset('assets/img/err.svg') }}" alt=""></div>
+        <h2>Упс, страница не найдена!</h2>
+        <p>Проверьте ещё раз адрес страницы и введите его снова или перейдите на главную страницу и найти там ссылки на нужные данные.</p>
+        <a href="{{url('/')}}" class="btn blue-btn">На главную страницу</a>
+    </div>
+</div>
 @stop

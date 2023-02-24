@@ -2,12 +2,12 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4">
-                <a href="#" class="logo"><img src="assets/img/logo-white.svg" alt=""></a>
+                <a href="#" class="logo"><img src="{{ asset('assets/img/logo-white.svg') }}" alt=""></a>
                 <ul class="socially">
-                    <li><a href="#"><img src="assets/img/instagram.svg" alt=""></a></li>
-                    <li><a href="#"><img src="assets/img/vk.svg" alt=""></a></li>
-                    <li><a href="#"><img src="assets/img/telegram.svg" alt=""></a></li>
-                    <li><a href="#"><img src="assets/img/whatsapp.svg" alt=""></a></li>
+                    <li><a href="#"><img src="{{ asset('assets/img/instagram.svg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ asset('assets/img/vk.svg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ asset('assets/img/telegram.svg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ asset('assets/img/whatsapp.svg') }}" alt=""></a></li>
                 </ul>
                 <a href="tel:+ 7(999)9999999" class="phone">
                     <span class="ico">

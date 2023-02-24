@@ -3,7 +3,7 @@
   <div class="modal-dialog">
     <div class="modal-content thank-modal">      
       <form>
-        <div class="modal-title">Спасибо за подписку на новостную рассылку {{$msg}}</div>
+        <div class="modal-title">Спасибо за подписку на новостную рассылку</div>
         <p class="large">Вы будете получать только интересные новости без спама и рекламы. Надеемся, что вам понравится!</p>
         <a href="#" data-dismiss="modal" aria-label="Close" class="btn">Закрыть</a>
       </form>
