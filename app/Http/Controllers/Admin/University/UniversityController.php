@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Admin\University;
 
 use App\Http\Controllers\Controller;
+use App\Services\Admin\Account\UserService;
 use App\Services\Admin\Misc\FileService;
+use App\Services\Admin\Misc\StringService;
 use App\Services\Admin\Setting\CityService;
 use App\Services\Admin\Setting\DirectionService;
 use App\Services\Admin\Setting\EducationLevelService;
 use App\Services\Admin\Setting\EducationTypeService;
 use App\Services\Admin\University\UniversityService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 
 class UniversityController extends Controller
 {
@@ -20,6 +23,7 @@ class UniversityController extends Controller
     private $educationTypeService;
     private $educationLevelService;
     private $citySevice;
+    private $userService;
 
     public function __construct()
     {
@@ -29,6 +33,7 @@ class UniversityController extends Controller
         $this->educationTypeService = new EducationTypeService();
         $this->educationLevelService = new EducationLevelService();
         $this->citySevice = new CityService();
+        $this->userService = new UserService();
     }
     
     public function index(Request $request)
@@ -37,6 +42,8 @@ class UniversityController extends Controller
         $data['title'] = __('universities_title');
 
         $data['list'] = $this->universityService->findAll();
+
+        $data['status'] = Config::get('status');
 
         return view('admin.pages.university.universities', $data);
     }
@@ -101,13 +108,64 @@ class UniversityController extends Controller
 
     public function api_store(Request $request)
     {
-        $validated = $this->universityService->validate($request);
+        // main validation
+        $validated = $request->validate([
+            'user' => 'array',
+            'university' => 'array'
+        ]);
 
-        // TODO: Create user
+        // user validation
+        if (!isset($validated['user']['first_name']) || 
+            !isset($validated['user']['email']) || 
+            !isset($validated['user']['phone']))
+        {
+            return response()->json(['msg' => 'wrong content'], 422);
+        }
 
-        // TODO: Get university logo
+        // university validation
+        if (!isset($validated['university']['name']) || 
+            !isset($validated['university']['city_id']) || 
+            !isset($validated['university']['address']) ||
+            !isset($validated['university']['website']) ||
+            !isset($validated['university']['phones']) ||
+            !isset($validated['university']['email']) ||
+            !isset($validated['university']['description']))
+        {
+            return response()->json(['msg' => 'wrong content'], 422);
+        }
 
-        // TODO: Create university
+        // user create
+        $user = [
+            'first_name' => $validated['user']['first_name'],
+            'middle_name' => isset($validated['user']['middle_name'])?$validated['user']['middle_name']:'',
+            'last_name' => isset($validated['user']['last_name'])?$validated['user']['last_name']:'',
+            'email' => $validated['user']['email'],
+            'phone' => $validated['user']['phone'].isset($validated['user']['extra_phone'])?', '.$validated['user']['extra_phone']:'',
+            'role' => Config::get('roles.user'),
+            'status' => Config::get('status.wait')
+        ];
+
+        // avatar
+        if ($request->hasFile('avatar')){
+            $user['avatar'] = $this->fileService->upload($request, $user['first_name'] . ' ' . $user['last_name'], 'avatar');
+        }
+
+        $user = $this->userService->store($user);
+
+        // university create
+        $university = [
+            'current_user_id' => $user->id,
+            'name' => $validated['university']['name'],
+            'city_id' => $validated['university']['city_id'],
+            'address' => $validated['university']['address'],
+            'website' => $validated['university']['website'],
+            'phones' => $validated['university']['phones'].isset($validated['university']['extra_phones'])?', '.$validated['university']['extra_phones']:'',
+            'email' => $validated['university']['email'],
+            'description' => $validated['university']['description'],
+            'status' => Config::get('status.wait')
+        ];
+
+        $this->universityService->create($university);
 
         return response()->json(['msg' => 'success'], 200);
     }

@@ -79,7 +79,7 @@
                 <h3 class="_change_able" data-key="about_info_universities_h3" data-value="{{$template['about_info_universities_h3']}}">{{$template['about_info_universities_h3']}}</h3>
                 <p class="_change_able" data-key="about_info_universities_p" data-value="{{$template['about_info_universities_p']}}">{{$template['about_info_universities_p']}}</p>
                 <div class="btns">
-                    <a href="#" class="btn has-ico bordered-btn">
+                    <a href="{{url('/dobavit-vuz')}}" class="btn has-ico bordered-btn">
                         <span class="ico">
                             <svg class="icon">
                             <use xlink:href="#building-ico"></use>

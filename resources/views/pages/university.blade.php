@@ -82,11 +82,15 @@
     </div>  
     @if (strlen($university->description)>500) 
     <script>
-        var description = '<?=$university->description?>';
+        function b64_to_utf8(str) {
+            return decodeURIComponent(escape(window.atob(str)));
+        }
+
+        var description = '<?=base64_encode($university->description)?>';
         var isMore = false;
 
         $(document).ready(function(){
-            $('#university-description').html(description.substring(0, 500) + '...');
+            $('#university-description').html(b64_to_utf8(description).substring(0, 500) + '...');
         });
 
         $(document).on('click', '#show-more-toggle', function (e){
@@ -96,11 +100,11 @@
             var less = 'Меньще';
 
             if (isMore){
-                $('#university-description').html(description.substring(0, 500) + '...');
+                $('#university-description').html(b64_to_utf8(description).substring(0, 500) + '...');
                 isMore = false;
                 $(this).html(more);
             }else{
-                $('#university-description').html(description);
+                $('#university-description').html(b64_to_utf8(description));
                 isMore = true;
                 $(this).html(less);
             }

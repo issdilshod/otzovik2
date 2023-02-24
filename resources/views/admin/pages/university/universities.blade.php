@@ -59,6 +59,7 @@
                                 <th>{{__('university_logo')}}</th>
                                 <th>{{__('university_name')}}</th>
                                 <th>{{__('global_created_at')}}</th>
+                                <th>{{__('global_status')}}</th>
                                 <th>{{__('global_actions')}}</th>
                             </tr>
                         </thead>
@@ -69,6 +70,15 @@
                                     <td><img src="{{ asset('storage/'.$value->logo) }}" width="40px" /></td>
                                     <td>{{$value->name}}</td>
                                     <td>{{$value->created_at}}</td>
+                                    <td>
+                                        @if ($value->status==$status['wait'])
+                                            <span class="badge badge-warning">{{__('global_waiting')}}</span>
+                                        @elseif ($value->status==$status['active'])
+                                            <span class="badge badge-success">{{__('global_active')}}</span>
+                                        @elseif ($value->status==$status['block'])
+                                            <span class="badge badge-danger">{{__('global_block')}}</span>
+                                        @endif
+                                    </td>
                                     <td class="text-right">
                                         <div class="d-flex">
                                             <div class="ml-auto">

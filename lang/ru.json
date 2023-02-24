@@ -202,6 +202,8 @@
     "roles_content_manager": "Контент менеджер",
     "roles_user": "Пользователь",
 
-    "top_universities_page_title": "Топ университеты"
+    "top_universities_page_title": "Топ университеты",
+
+    "university_add_page_title": "Добавить ВУЗ"
 
 }

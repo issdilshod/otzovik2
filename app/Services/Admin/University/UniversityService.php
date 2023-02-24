@@ -193,7 +193,7 @@ class UniversityService extends Service{
         $university['user_id'] = $university['current_user_id'];
 
         // slug
-        if ($university['slug']==''){
+        if (!isset($university['slug']) || $university['slug']==''){
             $university['slug'] = StringService::slug($university['name']);
         }
 
@@ -347,6 +347,7 @@ class UniversityService extends Service{
             'education_types' => 'array',
             'education_levels' => 'array',
             'extra' => '',
+            'status' => '',
             'current_user_id' => ''
         ]);
 

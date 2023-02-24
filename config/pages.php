@@ -6,6 +6,7 @@ return [
     
     'universities' => 'universities',
     'university' => 'university',
+    'university_add' => 'university_add',
 
     'reviews' => 'reviews',
     'review' => 'review',

@@ -223,6 +223,24 @@ class MainController extends Controller
         return view('pages.university', $data);
     }
 
+    // page add university
+    public function university_add(Request $request)
+    {
+        // mode of page
+        $data['settings']['mode'] = $this->mainService->_mode($request);
+
+        $data['title'] = __('university_add_page_title');
+
+        $data['cities'] = $this->cityService->findAll();
+        $data['last_reviews'] = $this->reviewService->last();
+
+        // settings
+        $data['template'] = $this->settingService->findByPage(Config::get('pages.university_add'));
+        $data['settings']['current_page'] = Config::get('pages.university_add');
+
+        return view('pages.university_add', $data);
+    }
+
     // page reviews
     public function reviews(Request $request, $slug1 = '')
     {
@@ -278,6 +296,39 @@ class MainController extends Controller
         $data['settings']['current_page'] = Config::get('pages.review');
 
         return view('pages.review', $data);
+    }
+
+    // page add review
+    public function review_add(Request $request, $universitySlug = '')
+    {
+        // mode of page
+        $data['settings']['mode'] = $this->mainService->_mode($request);
+
+        $data['title'] = __('review_add_page');
+
+        if (!$data['settings']['mode']){
+            $data['university'] = $this->universityService->findBySlug($universitySlug);
+            if ($data['university']){
+                $data['title'] .= ' - ' . $data['university']->name;
+            }
+            //if (!$data['university']){ // not found
+            //    return abort(404);
+            //}
+        }else{
+            $data['university'] = $this->universityService->first();
+        }
+
+        $data['cities'] = $this->cityService->findAll(); 
+
+        $data['last_reviews'] = $this->reviewService->last();
+
+        // settings
+        $data['template'] = $this->settingService->findByPage(Config::get('pages.review_add'));
+        $data['settings']['current_page'] = Config::get('pages.review_add');
+
+        $data['universities'] = $this->universityService->getAll();
+
+        return view('pages.review_add', $data);
     }
 
     // page articates
@@ -390,39 +441,6 @@ class MainController extends Controller
         $data['settings']['mode'] = $this->mainService->_mode($request);
 
         return view('pages.faq', $data);
-    }
-
-    // page add review
-    public function review_add(Request $request, $universitySlug = '')
-    {
-        // mode of page
-        $data['settings']['mode'] = $this->mainService->_mode($request);
-
-        $data['title'] = __('review_add_page');
-
-        if (!$data['settings']['mode']){
-            $data['university'] = $this->universityService->findBySlug($universitySlug);
-            if ($data['university']){
-                $data['title'] .= ' - ' . $data['university']->name;
-            }
-            //if (!$data['university']){ // not found
-            //    return abort(404);
-            //}
-        }else{
-            $data['university'] = $this->universityService->first();
-        }
-
-        $data['cities'] = $this->cityService->findAll(); 
-
-        $data['last_reviews'] = $this->reviewService->last();
-
-        // settings
-        $data['template'] = $this->settingService->findByPage(Config::get('pages.review_add'));
-        $data['settings']['current_page'] = Config::get('pages.review_add');
-
-        $data['universities'] = $this->universityService->getAll();
-
-        return view('pages.review_add', $data);
     }
 
     // page top

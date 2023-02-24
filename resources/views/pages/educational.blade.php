@@ -88,7 +88,7 @@
                 <h3 class="_change_able" data-key="educational_info_universities_h3" data-value="{{$template['educational_info_universities_h3']}}">{{$template['educational_info_universities_h3']}}</h3>
                 <p class="_change_able" data-key="educational_info_universities_p" data-value="{{$template['educational_info_universities_p']}}">{{$template['educational_info_universities_p']}}</p>
                 <div class="btns">
-                    <a href="#" class="btn has-ico bordered-btn">
+                    <a href="{{url('/dobavit-vuz')}}" class="btn has-ico bordered-btn">
                         <span class="ico">
                             <svg class="icon">
                             <use xlink:href="#building-ico"></use>
@@ -102,7 +102,7 @@
                 <h3 class="_change_able" data-key="educational_info_universities_h3" data-value="{{$template['educational_info_universities_h3']}}">{{$template['educational_info_universities_h3']}}</h3>
                 <p class="_change_able" data-key="educational_info_universities_p" data-value="{{$template['educational_info_universities_p']}}">{{$template['educational_info_universities_p']}}</p>
                 <div class="btns">
-                    <a href="#" class="btn has-ico">
+                    <a href="{{url('/dobavit-otzyv')}}" class="btn has-ico">
                         <span class="ico">
                             <svg class="icon">
                             <use xlink:href="#files-ico"></use>

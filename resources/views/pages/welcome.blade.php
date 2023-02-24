@@ -38,7 +38,7 @@
               </span>
               Оставить отзыв
             </a>
-            <a href="#" class="btn has-ico bordered-btn">
+            <a href="{{url('/dobavit-vuz')}}" class="btn has-ico bordered-btn">
               <span class="ico">
                 <svg class="icon">
                   <use xlink:href="#building-ico"></use>
