@@ -64,8 +64,8 @@
                                 @endisset
 
                                 <div class="form-group">
-                                    <label>{{__('review_university')}}</label>
-                                    <select class="form-control select2 universities-select" name="university_id"></select>
+                                    <label>{{__('review_platform')}}</label>
+                                    <select class="form-control select2 platforms-select" name="platform_id"></select>
                                 </div>
                                     
                                 <div class="form-group">
@@ -86,13 +86,13 @@
                                     <label>{{__('global_status')}}</label>
                                     <select class="form-control" name="status">
                                         <?php $value = \Illuminate\Support\Facades\Config::get('status.active'); ?>
-                                        <option value="{{$value}}" <?php if ($review->status==$value){ echo 'selected'; } ?>>{{\App\Services\Admin\Misc\SystemService::get_status_name_by_id($value)}}</option>
+                                        <option value="{{$value}}" <?php if (isset($review) && $review->status==$value){ echo 'selected'; } ?>>{{\App\Services\Admin\Misc\SystemService::get_status_name_by_id($value)}}</option>
 
                                         <?php $value = \Illuminate\Support\Facades\Config::get('status.wait'); ?>
-                                        <option value="{{$value}}" <?php if ($review->status==$value){ echo 'selected'; } ?>>{{\App\Services\Admin\Misc\SystemService::get_status_name_by_id($value)}}</option>
+                                        <option value="{{$value}}" <?php if (isset($review) && $review->status==$value){ echo 'selected'; } ?>>{{\App\Services\Admin\Misc\SystemService::get_status_name_by_id($value)}}</option>
 
                                         <?php $value = \Illuminate\Support\Facades\Config::get('status.block'); ?>
-                                        <option value="{{$value}}" <?php if ($review->status==$value){ echo 'selected'; } ?>>{{\App\Services\Admin\Misc\SystemService::get_status_name_by_id($value)}}</option>
+                                        <option value="{{$value}}" <?php if (isset($review) && $review->status==$value){ echo 'selected'; } ?>>{{\App\Services\Admin\Misc\SystemService::get_status_name_by_id($value)}}</option>
                                     </select>
                                 </div>
 
@@ -114,21 +114,21 @@
 <script src="{{ asset('assets/admin/plugins/select2/js/select2.full.min.js') }}"></script>
 <script>
 $(function () {
-    // Universities
-    var universities = JSON.parse('<?=json_encode($universities)?>');
+    // Platforms
+    var platforms = JSON.parse('<?=json_encode($platforms)?>');
 
-    var universityId = '<?=isset($review->university_id)?$review->university_id:''?>';
+    var platformId = '<?=isset($review->platform_id)?$review->platform_id:''?>';
 
     var tmpData = [];
-    for (let key in universities){
+    for (let key in platforms){
         tmpData.push({
-            id: universities[key]['id'],
-            text: universities[key]['name'],
-            selected: (universities[key]['id']==universityId)?true:false
+            id: platforms[key]['id'],
+            text: platforms[key]['name'],
+            selected: (platforms[key]['id']==platformId)?true:false
         });
     }
 
-    $('.universities-select').select2({data: tmpData});
+    $('.platforms-select').select2({data: tmpData});
 });
 </script>
 <!-- ./Select2 -->

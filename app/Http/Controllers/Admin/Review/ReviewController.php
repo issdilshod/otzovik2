@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin\Review;
 use App\Http\Controllers\Controller;
 use App\Services\Admin\Account\UserService;
 use App\Services\Admin\Misc\FileService;
+use App\Services\Admin\Platform\PlatformService;
 use App\Services\Admin\Review\ReviewService;
-use App\Services\Admin\University\UniversityService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
@@ -16,14 +16,14 @@ class ReviewController extends Controller
     private $reviewService;
     private $userService;
     private $fileService;
-    private $universityService;
+    private $platformService;
 
     public function __construct()
     {
         $this->reviewService = new ReviewService();
         $this->userService = new UserService();
         $this->fileService = new FileService();
-        $this->universityService = new UniversityService();
+        $this->platformService = new PlatformService();
     }
     
     public function index(Request $request)
@@ -57,8 +57,8 @@ class ReviewController extends Controller
         // permission
         $data['title'] = __('review_add_title');
 
-        // universities
-        $data['universities'] = $this->universityService->getAll();
+        // platforms
+        $data['platforms'] = $this->platformService->getAll();
 
         if ($id!=''){
             $data['review'] = $this->reviewService->findById($id);

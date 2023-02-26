@@ -5,13 +5,10 @@ use App\Http\Controllers\Admin\Account\UserController;
 use App\Http\Controllers\Admin\Blog\ArticleController;
 use App\Http\Controllers\Admin\Blog\CommentController;
 use App\Http\Controllers\Admin\Dashboard\DashboardController;
+use App\Http\Controllers\Admin\Platform\PlatformController;
 use App\Http\Controllers\Admin\Review\ReviewController;
 use App\Http\Controllers\Admin\Setting\CityController;
-use App\Http\Controllers\Admin\Setting\EducationLevelController;
-use App\Http\Controllers\Admin\Setting\DirectionController;
-use App\Http\Controllers\Admin\Setting\EducationTypeController;
 use App\Http\Controllers\Admin\Setting\SettingController;
-use App\Http\Controllers\Admin\University\UniversityController;
 use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
@@ -59,12 +56,12 @@ Route::middleware(['auth.custom'])->group(function (){
     // dashboard
     Route::get('admin/dashboard', [DashboardController::class, 'index']);
 
-    // universities
-    Route::get('admin/universities', [UniversityController::class, 'index']);
-    Route::post('admin/university', [UniversityController::class, 'store']);
-    Route::get('admin/university/{id?}', [UniversityController::class, 'get']);
-    Route::put('admin/university/{id}', [UniversityController::class, 'update']);
-    Route::delete('admin/university/{id}', [UniversityController::class, 'destroy']);
+    // platforms
+    Route::get('admin/platforms', [PlatformController::class, 'index']);
+    Route::post('admin/platform', [PlatformController::class, 'store']);
+    Route::get('admin/platform/{id?}', [PlatformController::class, 'get']);
+    Route::put('admin/platform/{id}', [PlatformController::class, 'update']);
+    Route::delete('admin/platform/{id}', [PlatformController::class, 'destroy']);
 
     // reviews
     Route::get('admin/reviews', [ReviewController::class, 'index']);
@@ -101,32 +98,11 @@ Route::middleware(['auth.custom'])->group(function (){
     Route::put('admin/settings/city/{id}', [CityController::class, 'update']);
     Route::delete('admin/settings/city/{id}', [CityController::class, 'destroy']);
 
-    // education level
-    Route::get('admin/settings/education_levels', [EducationLevelController::class, 'index']);
-    Route::post('admin/settings/education_level', [EducationLevelController::class, 'store']);
-    Route::get('admin/settings/education_level/{id?}', [EducationLevelController::class, 'show']);
-    Route::put('admin/settings/education_level/{id}', [EducationLevelController::class, 'update']);
-    Route::delete('admin/settings/education_level/{id}', [EducationLevelController::class, 'destroy']);
-
-    // directions
-    Route::get('admin/settings/directions', [DirectionController::class, 'index']);
-    Route::post('admin/settings/direction', [DirectionController::class, 'store']);
-    Route::get('admin/settings/direction/{id?}', [DirectionController::class, 'get']);
-    Route::put('admin/settings/direction/{id}', [DirectionController::class, 'update']);
-    Route::delete('admin/settings/direction/{id}', [DirectionController::class, 'destroy']);
-
-    // education type
-    Route::get('admin/settings/education-types', [EducationTypeController::class, 'index']);
-    Route::post('admin/settings/education-type', [EducationTypeController::class, 'store']);
-    Route::get('admin/settings/education-type/{id?}', [EducationTypeController::class, 'get']);
-    Route::put('admin/settings/education-type/{id}', [EducationTypeController::class, 'update']);
-    Route::delete('admin/settings/education-type/{id}', [EducationTypeController::class, 'destroy']);
-
     // setting
     Route::get('/admin/settings/templates/index', [SettingController::class, 'index']);
     Route::get('/admin/settings/templates/search', [SettingController::class, 'search']);
-    Route::get('/admin/settings/templates/universities', [SettingController::class, 'universities']);
-    Route::get('/admin/settings/templates/university', [SettingController::class, 'university']);
+    Route::get('/admin/settings/templates/platforms', [SettingController::class, 'platforms']);
+    Route::get('/admin/settings/templates/platform', [SettingController::class, 'platform']);
     Route::get('/admin/settings/templates/reviews', [SettingController::class, 'reviews']);
     Route::get('/admin/settings/templates/review', [SettingController::class, 'review']);
     Route::get('/admin/settings/templates/review_add', [SettingController::class, 'review_add']);

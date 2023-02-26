@@ -4,9 +4,9 @@ return [
     'index' => 'index',
     'search' => 'search',
     
-    'universities' => 'universities',
-    'university' => 'university',
-    'university_add' => 'university_add',
+    'platforms' => 'platforms',
+    'platform' => 'platform',
+    'platform_add' => 'platform_add',
 
     'reviews' => 'reviews',
     'review' => 'review',

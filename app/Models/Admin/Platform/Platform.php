@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Admin\University;
+namespace App\Models\Admin\Platform;
 
 use App\Models\Admin\Review\Review;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
@@ -8,31 +8,23 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Config;
 
-class University extends Model
+class Platform extends Model
 {
     use HasFactory, HasUuids;
 
     protected $fillable = [
         'user_id',
         'name',
-        'index',
-        'worlds_rate',
-        'russian_rate',
-        'accreditation',
-        'address',
-        'phones',
-        'email',
-        'website',
-        'facebook_link',
-        'twitter_link',
-        'telegram_link',
-        'viber_link',
-        'vk_link',
         'description',
         'logo',
+        'org',
+        'license',
+        'website',
+        'foundation',
+        'address',
+        'phone',
+        'email',
         'slug',
-        'traning_period',
-        'extra',
         'status'
     ];
 
@@ -40,8 +32,7 @@ class University extends Model
 
     public function reviews()
     {
-        return $this->hasMany(Review::class, 'university_id', 'id')
+        return $this->hasMany(Review::class, 'platform_id', 'id')
                     ->where('status', Config::get('status.active'));
     }
-
 }

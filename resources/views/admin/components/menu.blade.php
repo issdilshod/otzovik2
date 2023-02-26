@@ -32,11 +32,11 @@
                 </a>
             </li>
 
-            <li class="nav-item {{ (request()->is('admin/universit*')) ? 'menu-open' : '' }}">
-                <a href="{{ url('/admin/universities') }}" class="nav-link {{ (request()->is('admin/universit*')) ? 'active' : '' }}">
+            <li class="nav-item {{ (request()->is('admin/platform*')) ? 'menu-open' : '' }}">
+                <a href="{{ url('/admin/platforms') }}" class="nav-link {{ (request()->is('admin/platform*')) ? 'active' : '' }}">
                     <i class="nav-icon fas fa-building"></i>
                     <p>
-                        {{__('menu_universities_title')}}
+                        {{__('menu_platforms_title')}}
                     </p>
                 </a>
             </li>
@@ -94,18 +94,6 @@
                         <a href="{{ url('/admin/settings/cities') }}" class="nav-link {{ (request()->is('admin/settings/cit*')) ? 'active' : '' }}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>{{__('menu_cities_title')}}</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ url('/admin/settings/education_levels') }}" class="nav-link {{ (request()->is('admin/settings/education_level*')) ? 'active' : '' }}">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>{{__('menu_education_level_title')}}</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ url('/admin/settings/directions') }}" class="nav-link {{ (request()->is('admin/settings/direction*')) ? 'active' : '' }}">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>{{__('menu_directions_title')}}</p>
                         </a>
                     </li>
                     <li class="nav-item {{ (request()->is('admin/settings/templates*')) ? 'menu-open' : '' }}">

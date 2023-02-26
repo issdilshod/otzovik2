@@ -29,14 +29,14 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>{{$university_count}}</h3>
+                <h3>{{$platform_count}}</h3>
 
-                <p>{{__('dashboard_universities')}}</p>
+                <p>{{__('dashboard_platforms')}}</p>
               </div>
               <div class="icon">
                 <i class="fa fa-building"></i>
               </div>
-              <a href="{{ url('/admin/universities') }}" class="small-box-footer">{{__('dashboard_go')}} <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ url('/admin/platforms') }}" class="small-box-footer">{{__('dashboard_go')}} <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

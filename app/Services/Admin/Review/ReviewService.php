@@ -4,7 +4,6 @@ namespace App\Services\Admin\Review;
 
 use App\Services\Service;
 use App\Models\Admin\Review\Review;
-use App\Models\Admin\University\University;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
@@ -22,10 +21,10 @@ class ReviewService extends Service{
         $reviews = Review::from('reviews as r')
                         ->select([
                             'r.*', 
-                            'us.avatar as user_avatar', 'us.first_name as user_first_name', 'us.last_name as user_last_name', 
-                            'un.name as university_name', 'un.logo as university_logo', 'un.slug as university_slug'])
-                        ->join('users as us', 'us.id', '=', 'r.user_id')
-                        ->join('universities as un', 'un.id', '=', 'r.university_id')
+                            'u.avatar as user_avatar', 'u.first_name as user_first_name', 'u.last_name as user_last_name', 
+                            'p.name as platform_name', 'p.logo as platform_logo', 'p.slug as platform_slug'])
+                        ->join('users as u', 'u.id', '=', 'r.user_id')
+                        ->join('platforms as p', 'p.id', '=', 'r.platform_id')
                         ->orderBy('r.created_at', 'desc')
                         ->where('r.status', '!=', Config::get('status.delete'))
                         ->paginate(Config::get('pagination.per_page'));
@@ -37,11 +36,11 @@ class ReviewService extends Service{
         $review = Review::from('reviews as r')
                     ->select([
                         'r.*', 
-                        'us.first_name as user_first_name', 'us.last_name as user_last_name', 'us.avatar as user_avatar',
-                        'un.id as university_id', 'un.name as university_name', 'un.logo as university_logo', 'un.slug as university_slug'
+                        'u.first_name as user_first_name', 'u.last_name as user_last_name', 'u.avatar as user_avatar',
+                        'p.id as platform_id', 'p.name as platform_name', 'p.logo as platform_logo', 'p.slug as platform_slug'
                     ])
-                    ->join('users as us', 'us.id', '=', 'r.user_id')
-                    ->join('universities as un', 'un.id', '=', 'r.university_id')
+                    ->join('users as u', 'u.id', '=', 'r.user_id')
+                    ->join('platforms as p', 'p.id', '=', 'r.platform_id')
                     ->where('r.status', '!=', Config::get('status.delete'))
                     ->where('r.id', $id)
                     ->first();
@@ -56,11 +55,11 @@ class ReviewService extends Service{
         $reviews = Review::from('reviews as r')
                         ->select([
                             'r.*', 
-                            'us.avatar as user_avatar', 'us.first_name as user_first_name', 'us.last_name as user_last_name', 
-                            'un.name as university_name', 'un.logo as university_logo', 'un.slug as university_slug'
+                            'u.avatar as user_avatar', 'u.first_name as user_first_name', 'u.last_name as user_last_name', 
+                            'p.name as platform_name', 'p.logo as platform_logo', 'p.slug as platform_slug'
                         ])
-                        ->join('users as us', 'us.id', '=', 'r.user_id')
-                        ->join('universities as un', 'un.id', '=', 'r.university_id')
+                        ->join('users as u', 'u.id', '=', 'r.user_id')
+                        ->join('platforms as p', 'p.id', '=', 'r.platform_id')
                         ->orderBy('r.created_at', 'desc')
                         ->where('r.status', Config::get('status.active'))
                         ->paginate(Config::get('pagination.per_page'), [], '', $page);
@@ -72,11 +71,11 @@ class ReviewService extends Service{
         $review = Review::from('reviews as r')
                     ->select([
                         'r.*',
-                        'us.first_name as user_first_name', 'us.last_name as user_last_name', 'us.avatar as user_avatar',
-                        'un.id as university_id', 'un.name as university_name', 'un.logo as university_logo', 'un.slug as university_slug'
+                        'u.first_name as user_first_name', 'u.last_name as user_last_name', 'u.avatar as user_avatar',
+                        'p.id as platform_id', 'p.name as platform_name', 'p.logo as platform_logo', 'p.slug as platform_slug'
                     ])
-                    ->join('universities as un', 'un.id', '=', 'r.university_id')
-                    ->join('users as us', 'us.id', '=', 'r.user_id')
+                    ->join('platforms as p', 'p.id', '=', 'r.platform_id')
+                    ->join('users as u', 'u.id', '=', 'r.user_id')
                     ->first();
         return $review;
     }
@@ -86,11 +85,11 @@ class ReviewService extends Service{
         $reviews = Review::from('reviews as r')
                         ->select([
                             'r.*',
-                            'us.first_name as user_first_name', 'us.last_name as user_last_name',
-                            'un.name as university_name', 'un.slug as university_slug'
+                            'u.first_name as user_first_name', 'u.last_name as user_last_name',
+                            'p.name as platform_name', 'p.slug as platform_slug'
                         ])
-                        ->join('users as us', 'us.id', '=', 'r.user_id')
-                        ->join('universities as un', 'un.id', '=', 'r.university_id')
+                        ->join('users as u', 'u.id', '=', 'r.user_id')
+                        ->join('platforms as p', 'p.id', '=', 'r.platform_id')
                         ->where('r.status', Config::get('status.active'))
                         ->whereBetween('r.star', [3, 5]) // 3.0 - 5.0
                         ->inRandomOrder() // random order
@@ -104,11 +103,11 @@ class ReviewService extends Service{
         $reviews = Review::from('reviews as r')
                         ->select([
                             'r.*',
-                            'us.first_name as user_first_name', 'us.last_name as user_last_name',
-                            'un.name as university_name', 'un.slug as university_slug'
+                            'u.first_name as user_first_name', 'u.last_name as user_last_name',
+                            'p.name as platform_name', 'p.slug as platform_slug'
                         ])
-                        ->join('users as us', 'us.id', '=', 'r.user_id')
-                        ->join('universities as un', 'un.id', '=', 'r.university_id')
+                        ->join('users as u', 'u.id', '=', 'r.user_id')
+                        ->join('platforms as p', 'p.id', '=', 'r.platform_id')
                         ->where('r.status', Config::get('status.active'))
                         ->orderBy('r.updated_at', 'desc')
                         ->limit($count)
@@ -116,17 +115,17 @@ class ReviewService extends Service{
         return $reviews;
     }
 
-    public function other_university($universityId, $count = 5)
+    public function other_platform($platformId, $count = 5)
     {
         $reviews = Review::from('reviews as r')
                         ->select([
                             'r.*',
-                            'us.first_name as user_first_name', 'us.last_name as user_last_name',
-                            'un.name as university_name', 'un.slug as university_slug'
+                            'u.first_name as user_first_name', 'u.last_name as user_last_name',
+                            'p.name as platform_name', 'p.slug as platform_slug'
                         ])
-                        ->join('users as us', 'us.id', '=', 'r.user_id')
-                        ->join('universities as un', 'un.id', '=', 'r.university_id')
-                        ->where('r.university_id', $universityId)
+                        ->join('users as u', 'u.id', '=', 'r.user_id')
+                        ->join('platforms as p', 'p.id', '=', 'r.platform_id')
+                        ->where('r.platform_id', $platformId)
                         ->where('r.status', Config::get('status.active'))
                         ->orderBy('r.updated_at', 'desc')
                         ->limit($count)
@@ -139,11 +138,11 @@ class ReviewService extends Service{
         $review = Review::from('reviews as r')
                     ->select([
                         'r.*',
-                        'us.first_name as user_first_name', 'us.last_name as user_last_name', 'us.avatar as user_avatar',
-                        'un.id as university_id', 'un.name as university_name', 'un.logo as university_logo', 'un.slug as university_slug'
+                        'u.first_name as user_first_name', 'u.last_name as user_last_name', 'u.avatar as user_avatar',
+                        'p.id as platform_id', 'p.name as platform_name', 'p.logo as platform_logo', 'p.slug as platform_slug'
                     ])
-                    ->join('universities as un', 'un.id', '=', 'r.university_id')
-                    ->join('users as us', 'us.id', '=', 'r.user_id')
+                    ->join('platforms as p', 'p.id', '=', 'r.platform_id')
+                    ->join('users as u', 'u.id', '=', 'r.user_id')
                     ->where('r.number', $reviewNumber)
                     ->where('r.status', Config::get('status.active'))
                     ->first();
@@ -153,17 +152,17 @@ class ReviewService extends Service{
         return $review;
     }
 
-    public function findByUniversity($universityId, $page = '')
+    public function findByPlatform($platformId, $page = '')
     {
         $reviews = Review::from('reviews as r')
                     ->select([
                         'r.*',
-                        'us.first_name as user_first_name', 'us.last_name as user_last_name', 'us.avatar as user_avatar',
-                        'un.name as university_name', 'un.logo as university_logo', 'un.slug as university_slug'
+                        'u.first_name as user_first_name', 'u.last_name as user_last_name', 'u.avatar as user_avatar',
+                        'p.name as platform_name', 'p.logo as platform_logo', 'p.slug as platform_slug'
                     ])
-                    ->join('universities as un', 'un.id', '=', 'r.university_id')
-                    ->join('users as us', 'us.id', '=', 'r.user_id')
-                    ->where('r.university_id', $universityId)
+                    ->join('platforms as p', 'p.id', '=', 'r.platform_id')
+                    ->join('users as u', 'u.id', '=', 'r.user_id')
+                    ->where('r.platform_id', $platformId)
                     ->where('r.status', Config::get('status.active'))
                     ->orderBy('r.updated_at', 'desc')
                     ->paginate(Config::get('pagination.per_page'), [], '', $page);
@@ -202,7 +201,7 @@ class ReviewService extends Service{
     public function validate(Request $request)
     {
         $validated = $request->validate([
-            'university_id' => 'required',
+            'platform_id' => 'required',
             'text' => '',
             'star' => '',
             'current_user_id' => '',
@@ -210,15 +209,10 @@ class ReviewService extends Service{
             'status' => '',
         ]);
 
-        // get&set number or index of university
-        $university = University::where('id', $validated['university_id'])
-                        ->first();
+        $reviewCount = Review::get()
+                            ->count();
 
-        $reviewCount = Review::where('university_id', $validated['university_id'])
-                        ->get()
-                        ->count();
-
-        $validated['number'] = $university->index . ((int)$reviewCount + 1);
+        $validated['number'] = ((int)$reviewCount + 1);
 
         // star validation
         if (isset($validated['star'])){
@@ -233,43 +227,13 @@ class ReviewService extends Service{
         return $validated;
     }
 
-    public function staticticByUniversity($universityId)
+    public function staticticByPlatform($platformId)
     {
         $all = Review::where('status', Config::get('status.active'))
-                    ->where('university_id', $universityId)
+                    ->where('platform_id', $platformId)
                     ->count();
                 
-        $one = Review::where('status', Config::get('status.active'))
-                    ->where('university_id', $universityId)
-                    ->whereBetween('star', [0, 1.5])
-                    ->count();
-
-        $two = Review::where('status', Config::get('status.active'))
-                    ->where('university_id', $universityId)
-                    ->whereBetween('star', [1.6, 2.5])
-                    ->count();
-
-        $three = Review::where('status', Config::get('status.active'))
-                    ->where('university_id', $universityId)
-                    ->whereBetween('star', [2.6, 3.5])
-                    ->count();
-
-        $four = Review::where('status', Config::get('status.active'))
-                    ->where('university_id', $universityId)
-                    ->whereBetween('star', [3.7, 4.5])
-                    ->count();
-
-        $five = Review::where('status', Config::get('status.active'))
-                    ->where('university_id', $universityId)
-                    ->whereBetween('star', [4.6, 5])
-                    ->count();
-        return [
-            'one' => round(($one==0?0:($one*100)/$all)),
-            'two' => round(($two==0?0:($two*100)/$all)),
-            'three' => round(($three==0?0:($three*100)/$all)),
-            'four' => round(($four==0?0:($four*100)/$all)),
-            'five' => round(($five==0?0:($five*100)/$all)),
-        ];
+        return [];
     }
 
 }

@@ -6,13 +6,10 @@ use App\Services\Admin\Blog\ArticleService;
 use App\Services\Admin\Blog\ArticleViewService;
 use App\Services\Admin\Blog\CommentService;
 use App\Services\Admin\Misc\SlugService;
+use App\Services\Admin\Platform\PlatformService;
 use App\Services\Admin\Review\ReviewService;
 use App\Services\Admin\Setting\CityService;
-use App\Services\Admin\Setting\DirectionService;
-use App\Services\Admin\Setting\EducationLevelService;
-use App\Services\Admin\Setting\EducationTypeService;
 use App\Services\Admin\Setting\SettingService;
-use App\Services\Admin\University\UniversityService;
 use App\Services\MainService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
@@ -21,11 +18,8 @@ class MainController extends Controller
 {
 
     private $mainService;
-    private $universityService;
-    private $directionService;
-    private $educationTypeService;
+    private $platformService;
     private $reviewService;
-    private $educationLevelService;
     private $articleService;
     private $articleViewService;
     private $commentService;
@@ -35,11 +29,8 @@ class MainController extends Controller
     public function __construct()
     {
         $this->mainService = new MainService();
-        $this->universityService = new UniversityService();
-        $this->directionService = new DirectionService();
-        $this->educationTypeService = new EducationTypeService();
+        $this->platformService = new PlatformService();
         $this->reviewService = new ReviewService();
-        $this->educationLevelService = new EducationLevelService();
         $this->articleService = new ArticleService();
         $this->articleViewService = new ArticleViewService();
         $this->commentService = new CommentService();
@@ -66,7 +57,7 @@ class MainController extends Controller
 
         $data['cities'] = $this->cityService->findAll(); 
 
-        $data['top_universities'] = $this->universityService->top();
+        $data['top_platforms'] = $this->platformService->top();
         $data['popular_reviews'] = $this->reviewService->popular();
         $data['last_reviews'] = $this->reviewService->last();
         $data['popular_articles'] = $this->articleService->popular();  
@@ -80,53 +71,25 @@ class MainController extends Controller
     }
 
     // page search
-    public function search(Request $request, $slug1 = '', $slug2 = '', $slug3 = '', $slug4 = '', $slug5 = '')
+    public function search(Request $request, $slug1 = '', $slug2 = '')
     {
         // detect slugs
-        $city = ''; $direction = ''; $level = ''; $type = ''; $page = '';
-        $data['current_direction'] = '';
+        $city = ''; $page = '';
         // slug1
         if (SlugService::isCity($slug1)){ $city = SlugService::isCity($slug1); }
-        if (SlugService::isDirection($slug1)){ $data['current_direction'] = $slug1; $direction = SlugService::isDirection($slug1); }
-        if (SlugService::isLevel($slug1)){ $level = SlugService::isLevel($slug1); }
-        if (SlugService::isType($slug1)){ $type = SlugService::isType($slug1); }
         if (SlugService::isPage($slug1)){ $page = SlugService::isPage($slug1); }
         // slug2
         if (SlugService::isCity($slug2)){ $city = SlugService::isCity($slug2); }
-        if (SlugService::isDirection($slug2)){ $data['current_direction'] = $slug2; $direction = SlugService::isDirection($slug2); }
-        if (SlugService::isLevel($slug2)){ $level = SlugService::isLevel($slug2); }
-        if (SlugService::isType($slug2)){ $type = SlugService::isType($slug2); }
         if (SlugService::isPage($slug2)){ $page = SlugService::isPage($slug2); }
-        // slug3
-        if (SlugService::isCity($slug3)){ $city = SlugService::isCity($slug3); }
-        if (SlugService::isDirection($slug3)){ $data['current_direction'] = $slug3; $direction = SlugService::isDirection($slug3); }
-        if (SlugService::isLevel($slug3)){ $level = SlugService::isLevel($slug3); }
-        if (SlugService::isType($slug3)){ $type = SlugService::isType($slug3); }
-        if (SlugService::isPage($slug3)){ $page = SlugService::isPage($slug3); }
-        // slug4
-        if (SlugService::isCity($slug4)){ $city = SlugService::isCity($slug4); }
-        if (SlugService::isDirection($slug4)){ $data['current_direction'] = $slug4; $direction = SlugService::isDirection($slug4); }
-        if (SlugService::isLevel($slug4)){ $level = SlugService::isLevel($slug4); }
-        if (SlugService::isType($slug4)){ $type = SlugService::isType($slug4); }
-        if (SlugService::isPage($slug4)){ $page = SlugService::isPage($slug4); }
-        // slug5
-        if (SlugService::isCity($slug5)){ $city = SlugService::isCity($slug5); }
-        if (SlugService::isDirection($slug5)){ $data['current_direction'] = $slug5; $direction = SlugService::isDirection($slug5); }
-        if (SlugService::isLevel($slug5)){ $level = SlugService::isLevel($slug5); }
-        if (SlugService::isType($slug5)){ $type = SlugService::isType($slug5); }
-        if (SlugService::isPage($slug5)){ $page = SlugService::isPage($slug5); }
 
         $data['title'] = __('search_page_title');
 
-        $data['directions'] = $this->directionService->getAll();
-        $data['education_types'] = $this->educationTypeService->getAll();
-        $data['education_levels'] = $this->educationLevelService->getAll();
         $data['cities'] = $this->cityService->findAll(); 
 
-        // search result universities
-        $data['list'] = $this->universityService->findAllFront($city, $direction, $page, '', $level, $type);
+        // search result platforms
+        $data['list'] = $this->platformService->findAllFront($page);
 
-        $data['popular_universities'] = $this->universityService->popular();
+        $data['popular_platforms'] = $this->platformService->popular();
         $data['popular_reviews'] = $this->reviewService->popular();
         $data['last_reviews'] = $this->reviewService->last();
 
@@ -138,53 +101,43 @@ class MainController extends Controller
         return view('pages.serach', $data);
     }
 
-    // page universities
-    public function universities(Request $request, $slug1 = '', $slug2 = '', $slug3 = '', $slug4 = '')
+    // page platforms
+    public function platforms(Request $request, $slug1 = '', $slug2 = '', $slug3 = '')
     {
         // detect slugs
-        $city = ''; $direction = ''; $page = ''; $filter = '';
-        $data['current_direction'] = '';
+        $city = ''; $page = ''; $filter = '';
         // slug1
         if (SlugService::isCity($slug1)){ $city = SlugService::isCity($slug1); }
-        if (SlugService::isDirection($slug1)){ $data['current_direction'] = $slug1; $direction = SlugService::isDirection($slug1); }
         if (SlugService::isPage($slug1)){ $page = SlugService::isPage($slug1); }
         if (SlugService::isUniversityFilter($slug1)){ $filter = $slug1; }
         // slug2
         if (SlugService::isCity($slug2)){ $city = SlugService::isCity($slug2); }
-        if (SlugService::isDirection($slug2)){ $data['current_direction'] = $slug2; $direction = SlugService::isDirection($slug2); }
         if (SlugService::isPage($slug2)){ $page = SlugService::isPage($slug2); }
         if (SlugService::isUniversityFilter($slug2)){ $filter = $slug2; }
         // slug3
         if (SlugService::isCity($slug3)){ $city = SlugService::isCity($slug3); }
-        if (SlugService::isDirection($slug3)){ $data['current_direction'] = $slug3; $direction = SlugService::isDirection($slug3); }
         if (SlugService::isPage($slug3)){ $page = SlugService::isPage($slug3); }
         if (SlugService::isUniversityFilter($slug3)){ $filter = $slug3; }
-        // slug4
-        if (SlugService::isCity($slug4)){ $city = SlugService::isCity($slug4); }
-        if (SlugService::isDirection($slug4)){  $data['current_direction'] = $slug4; $direction = SlugService::isDirection($slug4); }
-        if (SlugService::isPage($slug4)){ $page = SlugService::isPage($slug4); }
-        if (SlugService::isUniversityFilter($slug4)){ $filter = $slug4; }
 
-        $data['title'] = __('universities_page_title');
+        $data['title'] = __('platforms_page_title');
 
-        $data['directions'] = $this->directionService->getAll();
         $data['cities'] = $this->cityService->findAll(); 
 
-        $data['popular_universities'] = $this->universityService->popular();
+        $data['popular_platforms'] = $this->platformService->popular();
         $data['popular_reviews'] = $this->reviewService->popular();
         $data['last_reviews'] = $this->reviewService->last();
-        $data['list'] = $this->universityService->findAllFront($city, $direction, $page, $filter);
+        $data['list'] = $this->platformService->findAllFront($page, $filter);
 
         // settings
-        $data['template'] = $this->settingService->findByPage(Config::get('pages.universities'));
-        $data['settings']['current_page'] = Config::get('pages.universities');
+        $data['template'] = $this->settingService->findByPage(Config::get('pages.platforms'));
+        $data['settings']['current_page'] = Config::get('pages.platforms');
         $data['settings']['mode'] = $this->mainService->_mode($request);
 
-        return view('pages.universities', $data);
+        return view('pages.platforms', $data);
     }
 
-    // page university
-    public function university(Request $request, $universitySlug = '', $slug1 = '')
+    // page platform
+    public function platform(Request $request, $platformSlug = '', $slug1 = '')
     {
         $page = ''; $data['review_active'] = false;
         if (SlugService::isPage($slug1)){ $page = SlugService::isPage($slug1); $data['review_active'] = true; }
@@ -192,53 +145,53 @@ class MainController extends Controller
         // mode of page
         $data['settings']['mode'] = $this->mainService->_mode($request);
 
-        $data['title'] = __('university_page_title');
+        $data['title'] = __('platform_page_title');
 
-        if (!$data['settings']['mode'] && $universitySlug==''){
+        if (!$data['settings']['mode'] && $platformSlug==''){
             return abort(404);
-        }else if (!$data['settings']['mode'] && $universitySlug!=''){
-            $data['university'] = $this->universityService->findBySlug($universitySlug);
-            if (!$data['university']){ // not found
+        }else if (!$data['settings']['mode'] && $platformSlug!=''){
+            $data['platform'] = $this->platformService->findBySlug($platformSlug);
+            if (!$data['platform']){ // not found
                 return abort(404);
             }
         }else{
-            $data['university'] = $this->universityService->first();
+            $data['platform'] = $this->platformService->first();
         }
 
-        $data['university']->statistic = $this->reviewService->staticticByUniversity($data['university']->id);
+        $data['platform']->statistic = $this->reviewService->staticticByPlatform($data['platform']->id);
 
-        $data['title'] .= ' ' . $data['university']->name;
+        $data['title'] .= ' ' . $data['platform']->name;
         $data['cities'] = $this->cityService->findAll();
 
-        $data['list'] = $this->reviewService->findByUniversity($data['university']->id, $page);
+        $data['list'] = $this->reviewService->findByPlatform($data['platform']->id, $page);
         $data['popular_reviews'] = $this->reviewService->popular();
         $data['last_reviews'] = $this->reviewService->last();
         $data['popular_articles'] = $this->articleService->popular(); 
 
         // settings
-        $data['template'] = $this->settingService->findByPage(Config::get('pages.university'));
-        $data['settings']['current_page'] = Config::get('pages.university');
+        $data['template'] = $this->settingService->findByPage(Config::get('pages.platform'));
+        $data['settings']['current_page'] = Config::get('pages.platform');
         
 
-        return view('pages.university', $data);
+        return view('pages.platform', $data);
     }
 
-    // page add university
-    public function university_add(Request $request)
+    // page add platform
+    public function platform_add(Request $request)
     {
         // mode of page
         $data['settings']['mode'] = $this->mainService->_mode($request);
 
-        $data['title'] = __('university_add_page_title');
+        $data['title'] = __('platform_add_page_title');
 
         $data['cities'] = $this->cityService->findAll();
         $data['last_reviews'] = $this->reviewService->last();
 
         // settings
-        $data['template'] = $this->settingService->findByPage(Config::get('pages.university_add'));
-        $data['settings']['current_page'] = Config::get('pages.university_add');
+        $data['template'] = $this->settingService->findByPage(Config::get('pages.platform_add'));
+        $data['settings']['current_page'] = Config::get('pages.platform_add');
 
-        return view('pages.university_add', $data);
+        return view('pages.platform_add', $data);
     }
 
     // page reviews
@@ -249,10 +202,9 @@ class MainController extends Controller
 
         $data['title'] = __('reviews_page_title');
 
-        $data['directions'] = $this->directionService->getAll();
         $data['cities'] = $this->cityService->findAll(); 
 
-        $data['popular_universities'] = $this->universityService->popular();
+        $data['popular_universities'] = $this->platformService->popular();
         $data['last_articles'] = $this->articleService->last();
         $data['list'] = $this->reviewService->findAllFront($page);
 
@@ -283,12 +235,12 @@ class MainController extends Controller
             $data['current_review'] = $this->reviewService->first();
         }
 
-        $data['title'] .= ' ' . $data['current_review']->university_name . ' № ' . $data['current_review']->number;
+        $data['title'] .= ' ' . $data['current_review']->platform_name . ' № ' . $data['current_review']->number;
         $data['cities'] = $this->cityService->findAll();
 
-        $data['popular_universities'] = $this->universityService->popular();
+        $data['popular_platforms'] = $this->platformService->popular();
         $data['popular_reviews'] = $this->reviewService->popular();
-        $data['university_reviews'] = $this->reviewService->other_university($data['current_review']->university_id);
+        $data['platform_reviews'] = $this->reviewService->other_platform($data['current_review']->platform_id);
         $data['popular_articles'] = $this->articleService->popular(); 
 
         // settings
@@ -299,7 +251,7 @@ class MainController extends Controller
     }
 
     // page add review
-    public function review_add(Request $request, $universitySlug = '')
+    public function review_add(Request $request, $platformSlug = '')
     {
         // mode of page
         $data['settings']['mode'] = $this->mainService->_mode($request);
@@ -307,15 +259,15 @@ class MainController extends Controller
         $data['title'] = __('review_add_page');
 
         if (!$data['settings']['mode']){
-            $data['university'] = $this->universityService->findBySlug($universitySlug);
-            if ($data['university']){
-                $data['title'] .= ' - ' . $data['university']->name;
+            $data['platform'] = $this->platformService->findBySlug($platformSlug);
+            if ($data['platform']){
+                $data['title'] .= ' - ' . $data['platform']->name;
             }
-            //if (!$data['university']){ // not found
+            //if (!$data['platform']){ // not found
             //    return abort(404);
             //}
         }else{
-            $data['university'] = $this->universityService->first();
+            $data['platform'] = $this->platformService->first();
         }
 
         $data['cities'] = $this->cityService->findAll(); 
@@ -326,7 +278,7 @@ class MainController extends Controller
         $data['template'] = $this->settingService->findByPage(Config::get('pages.review_add'));
         $data['settings']['current_page'] = Config::get('pages.review_add');
 
-        $data['universities'] = $this->universityService->getAll();
+        $data['platforms'] = $this->platformService->getAll();
 
         return view('pages.review_add', $data);
     }
@@ -373,7 +325,7 @@ class MainController extends Controller
 
         $data['cities'] = $this->cityService->findAll();
 
-        $data['popular_universities'] = $this->universityService->popular();
+        $data['popular_platforms'] = $this->platformService->popular();
         $data['popular_reviews'] = $this->reviewService->popular();
         $data['last_reviews'] = $this->reviewService->last();
         $data['popular_articles'] = $this->articleService->popular(); 
@@ -393,7 +345,7 @@ class MainController extends Controller
 
         $data['cities'] = $this->cityService->findAll(); 
 
-        $data['popular_universities'] = $this->universityService->popular();
+        $data['popular_platforms'] = $this->platformService->popular();
         $data['popular_reviews'] = $this->reviewService->popular();
         $data['last_reviews'] = $this->reviewService->last();
         $data['popular_articles'] = $this->articleService->popular(); 
@@ -413,7 +365,7 @@ class MainController extends Controller
 
         $data['cities'] = $this->cityService->findAll(); 
 
-        $data['popular_universities'] = $this->universityService->popular();
+        $data['popular_platforms'] = $this->platformService->popular();
         $data['popular_reviews'] = $this->reviewService->popular();
         $data['last_reviews'] = $this->reviewService->last();
         $data['popular_articles'] = $this->articleService->popular(); 
@@ -446,11 +398,11 @@ class MainController extends Controller
     // page top
     public function top(Request $request)
     {
-        $data['title'] = __('top_universities_page_title');
+        $data['title'] = __('top_platforms_page_title');
 
         $data['cities'] = $this->cityService->findAll();
 
-        $data['top_universities'] = $this->universityService->top();
+        $data['top_platforms'] = $this->platformService->top();
         $data['popular_reviews'] = $this->reviewService->popular();
         $data['last_reviews'] = $this->reviewService->last();
         $data['popular_articles'] = $this->articleService->popular(); 

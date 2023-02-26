@@ -1,117 +1,98 @@
 <?php
 
-namespace App\Http\Controllers\Admin\University;
+namespace App\Http\Controllers\Admin\Platform;
 
 use App\Http\Controllers\Controller;
 use App\Services\Admin\Account\UserService;
 use App\Services\Admin\Misc\FileService;
-use App\Services\Admin\Misc\StringService;
-use App\Services\Admin\Setting\CityService;
-use App\Services\Admin\Setting\DirectionService;
-use App\Services\Admin\Setting\EducationLevelService;
-use App\Services\Admin\Setting\EducationTypeService;
-use App\Services\Admin\University\UniversityService;
+use App\Services\Admin\Platform\PlatformService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
-class UniversityController extends Controller
-{
+class PlatformController extends Controller{
 
-    private $universityService;
+    private $platformService;
     private $fileService;
-    private $directionsService;
-    private $educationTypeService;
-    private $educationLevelService;
-    private $citySevice;
     private $userService;
 
     public function __construct()
     {
-        $this->universityService = new UniversityService();
+        $this->platformService = new PlatformService();
         $this->fileService = new FileService();
-        $this->directionsService = new DirectionService();
-        $this->educationTypeService = new EducationTypeService();
-        $this->educationLevelService = new EducationLevelService();
-        $this->citySevice = new CityService();
         $this->userService = new UserService();
     }
-    
+
     public function index(Request $request)
     {
         // permission
-        $data['title'] = __('universities_title');
+        $data['title'] = __('platforms_title');
 
-        $data['list'] = $this->universityService->findAll();
+        $data['list'] = $this->platformService->findAll();
 
         $data['status'] = Config::get('status');
 
-        return view('admin.pages.university.universities', $data);
+        return view('admin.pages.platform.platforms', $data);
     }
 
     public function store(Request $request)
     {
         // permission
-        $validated = $this->universityService->validate($request);
+        $validated = $this->platformService->validate($request);
 
         // logo upload
         $validated['logo'] = $this->fileService->upload($request, $validated['name']);
 
-        if ($this->universityService->create($validated)){
-            return redirect('admin/universities')->with('status', '200');
+        if ($this->platformService->create($validated)){
+            return redirect('admin/platforms')->with('status', '200');
         }
 
-        return redirect('admin/universities')->with('status', '500');
+        return redirect('admin/platforms')->with('status', '500');
     }
 
     public function get(Request $request, $id = '')
     {
         // permission
-        $data['title'] = __('university_add_title');
-
-        $data['directions'] = $this->directionsService->getAll();
-        $data['education_types'] = $this->educationTypeService->getAll();
-        $data['education_levels'] = $this->educationLevelService->getAll();
+        $data['title'] = __('platform_add_title');
 
         if ($id!=''){
-            $data['university'] = $this->universityService->find($id);
-            $data['title'] = __('university_edit_title') . ' ' . $data['university']->name;
+            $data['platform'] = $this->platformService->find($id);
+            $data['title'] = __('platform_edit_title') . ' ' . $data['platform']->name;
         }
 
-        $data['cities'] = $this->citySevice->getAll();
-
-        return view('admin.pages.university.university', $data);
+        return view('admin.pages.platform.platform', $data);
     }
 
     public function update(Request $request, $id)
     {
         // permission
-        $validated = $this->universityService->validate($request);
+        $validated = $this->platformService->validate($request);
 
         // logo upload
         $validated['logo'] = $this->fileService->upload($request, $validated['name']);
 
-        if ($this->universityService->update($validated, $id))
+        if ($this->platformService->update($validated, $id))
         {
-            return redirect('admin/universities')->with('status', '200'); 
+            return redirect('admin/platforms')->with('status', '200'); 
         }
 
-        return redirect('admin/universities')->with('status', '500');
+        return redirect('admin/platforms')->with('status', '500');
     }
 
     public function destroy(Request $request, $id)
     {
         // permission
-        $this->universityService->delete($id);
+        $this->platformService->delete($id);
 
-        return redirect('admin/universities')->with('status', '200');
+        return redirect('admin/platforms')->with('status', '200');
     }
 
     public function api_store(Request $request)
     {
+        //TODO: First I need Template
         // main validation
-        $validated = $request->validate([
+        /*$validated = $request->validate([
             'user' => 'array',
-            'university' => 'array'
+            'platform' => 'array'
         ]);
 
         // user validation
@@ -167,7 +148,7 @@ class UniversityController extends Controller
 
         $this->universityService->create($university);
 
-        return response()->json(['msg' => 'success'], 200);
+        return response()->json(['msg' => 'success'], 200);*/
     }
 
 }

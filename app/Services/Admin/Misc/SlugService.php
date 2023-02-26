@@ -3,9 +3,6 @@
 namespace App\Services\Admin\Misc;
 
 use App\Models\Admin\Setting\City;
-use App\Models\Admin\Setting\Direction;
-use App\Models\Admin\Setting\EducationLevel;
-use App\Models\Admin\Setting\EducationType;
 use App\Services\Service;
 use Illuminate\Support\Facades\Config;
 
@@ -18,17 +15,6 @@ class SlugService extends Service{
                     ->first();
         if ($city!=null){
             return $city->id;
-        }
-        return false;
-    }
-
-    public static function isDirection($slug)
-    {
-        $direction = Direction::where('status', Config::get('status.active'))
-                    ->where('slug', $slug)
-                    ->first();
-        if ($direction!=null){
-            return $direction->id;
         }
         return false;
     }
@@ -49,7 +35,7 @@ class SlugService extends Service{
         return (int)$pageRight;
     }
 
-    public static function isUniversityFilter($slug)
+    public static function isPlatformFilter($slug)
     {
         if ($slug=='review' || $slug=='rate' || $slug=='new'){
             return true;
@@ -57,26 +43,5 @@ class SlugService extends Service{
         return false;
     }
 
-    public static function isLevel($slug)
-    {
-        $educationLevel = EducationLevel::where('status', Config::get('status.active'))
-                                ->where('slug', $slug)
-                                ->first();
-        if ($educationLevel!=null){
-            return $educationLevel->id;
-        }
-        return false;
-    }
-
-    public static function isType($slug)
-    {
-        $educationType = EducationType::where('status', Config::get('status.active'))
-                                ->where('slug', $slug)
-                                ->first();
-        if ($educationType!=null){
-            return $educationType->id;
-        }
-        return false;
-    }
 
 }
