@@ -98,7 +98,7 @@ class MainController extends Controller
         $data['settings']['current_page'] = Config::get('pages.search');
         $data['settings']['mode'] = $this->mainService->_mode($request);
 
-        return view('pages.serach', $data);
+        return view('pages.search', $data);
     }
 
     // page platforms
@@ -109,15 +109,15 @@ class MainController extends Controller
         // slug1
         if (SlugService::isCity($slug1)){ $city = SlugService::isCity($slug1); }
         if (SlugService::isPage($slug1)){ $page = SlugService::isPage($slug1); }
-        if (SlugService::isUniversityFilter($slug1)){ $filter = $slug1; }
+        if (SlugService::isPlatformFilter($slug1)){ $filter = $slug1; }
         // slug2
         if (SlugService::isCity($slug2)){ $city = SlugService::isCity($slug2); }
         if (SlugService::isPage($slug2)){ $page = SlugService::isPage($slug2); }
-        if (SlugService::isUniversityFilter($slug2)){ $filter = $slug2; }
+        if (SlugService::isPlatformFilter($slug2)){ $filter = $slug2; }
         // slug3
         if (SlugService::isCity($slug3)){ $city = SlugService::isCity($slug3); }
         if (SlugService::isPage($slug3)){ $page = SlugService::isPage($slug3); }
-        if (SlugService::isUniversityFilter($slug3)){ $filter = $slug3; }
+        if (SlugService::isPlatformFilter($slug3)){ $filter = $slug3; }
 
         $data['title'] = __('platforms_page_title');
 
@@ -356,26 +356,6 @@ class MainController extends Controller
         $data['settings']['mode'] = $this->mainService->_mode($request);
 
         return view('pages.about', $data);
-    }
-
-    // page educational
-    public function educational(Request $request)
-    {
-        $data['title'] = __('educational_page_title');
-
-        $data['cities'] = $this->cityService->findAll(); 
-
-        $data['popular_platforms'] = $this->platformService->popular();
-        $data['popular_reviews'] = $this->reviewService->popular();
-        $data['last_reviews'] = $this->reviewService->last();
-        $data['popular_articles'] = $this->articleService->popular(); 
-
-        // settings
-        $data['template'] = $this->settingService->findByPage(Config::get('pages.educational'));
-        $data['settings']['current_page'] = Config::get('pages.educational');
-        $data['settings']['mode'] = $this->mainService->_mode($request);
-
-        return view('pages.educational', $data);
     }
 
     // page faq

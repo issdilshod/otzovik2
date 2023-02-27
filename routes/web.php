@@ -20,16 +20,16 @@ Route::get('/', [MainController::class, 'index']);
 Route::get('/poisk', [MainController::class, 'search']);
 Route::get('/poisk/{slug1?}/{slug2?}/{slug3?}/{slug4?}/{slug5?}', [MainController::class, 'search']);
 
-Route::get('/universitety', [MainController::class, 'universities']);
-Route::get('/universitety/{slug1?}/{slug2?}/{slug3?}/{slug4?}', [MainController::class, 'universities']);
-Route::get('/universitet/{university_slug?}', [MainController::class, 'university']);
-Route::get('/universitet/{university_slug?}/{slug1?}', [MainController::class, 'university']);
-Route::get('/dobavit-vuz', [MainController::class, 'university_add']);
+Route::get('/shkoly', [MainController::class, 'platforms']);
+Route::get('/shkoly/{slug1?}/{slug2?}/{slug3?}/{slug4?}', [MainController::class, 'platforms']);
+Route::get('/shkoly/{platform_slug?}', [MainController::class, 'platform']);
+Route::get('/shkoly/{platform_slug?}/{slug1?}', [MainController::class, 'platform']);
+Route::get('/dobavit-shkolu', [MainController::class, 'platform_add']);
 
 Route::get('/otzyvy', [MainController::class, 'reviews']);
 Route::get('/otzyvy/{slug1?}', [MainController::class, 'reviews']);
 Route::get('/otzyv/{review_number?}', [MainController::class, 'review']);
-Route::get('/dobavit-otzyv/{university_slug?}', [MainController::class, 'review_add']);
+Route::get('/dobavit-otzyv/{platform_slug?}', [MainController::class, 'review_add']);
 
 Route::get('/posti', [MainController::class, 'articles']);
 Route::get('/posti/{slug1?}', [MainController::class, 'articles']);
@@ -37,8 +37,7 @@ Route::get('/post/{article_slug}', [MainController::class, 'article']);
 
 Route::get('/o-service', [MainController::class, 'about']);
 Route::get('/faq', [MainController::class, 'faq']);
-Route::get('/uchebnim-zavedeniyam', [MainController::class, 'educational']);
-Route::get('/top-universitety', [MainController::class, 'top']);
+Route::get('/top-shkoly', [MainController::class, 'top']);
 
 Route::get('/legal', [MainController::class, 'legal']);
 Route::get('/policy', [MainController::class, 'policy']);
