@@ -57,7 +57,7 @@ class MainController extends Controller
 
         $data['cities'] = $this->cityService->findAll(); 
 
-        $data['top_platforms'] = $this->platformService->top();
+        $data['popular_platforms'] = $this->platformService->popular();
         $data['popular_reviews'] = $this->reviewService->popular();
         $data['last_reviews'] = $this->reviewService->last();
         $data['popular_articles'] = $this->articleService->popular();  
@@ -123,10 +123,12 @@ class MainController extends Controller
 
         $data['cities'] = $this->cityService->findAll(); 
 
-        $data['popular_platforms'] = $this->platformService->popular();
+        $data['popular_minimal_platforms'] = $this->platformService->popular();
         $data['popular_reviews'] = $this->reviewService->popular();
         $data['last_reviews'] = $this->reviewService->last();
+        $data['popular_articles'] = $this->articleService->popular();  
         $data['list'] = $this->platformService->findAllFront($page, $filter);
+
 
         // settings
         $data['template'] = $this->settingService->findByPage(Config::get('pages.platforms'));
@@ -204,8 +206,10 @@ class MainController extends Controller
 
         $data['cities'] = $this->cityService->findAll(); 
 
-        $data['popular_universities'] = $this->platformService->popular();
-        $data['last_articles'] = $this->articleService->last();
+        $data['popular_minimal_platforms'] = $this->platformService->popular();
+        $data['popular_platforms'] = $this->platformService->popular();
+        $data['popular_articles'] = $this->articleService->popular();
+        $data['popular_reviews'] = $this->reviewService->popular();
         $data['list'] = $this->reviewService->findAllFront($page);
 
         // settings

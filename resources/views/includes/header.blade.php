@@ -28,9 +28,9 @@
     <div class="container">
         <a href="{{url('/')}}" class="logo"><img src="{{ asset('assets/img/logo.svg') }}" alt=""></a>
         <ul class="main-nav">
-            <li><a href="#">Школы</a></li>
-            <li><a href="#">Отзывы</a></li>
-            <li><a href="#">О портале</a></li>
+            <li><a href="{{url('/shkoly')}}">Школы</a></li>
+            <li><a href="{{url('/otzyvy')}}">Отзывы</a></li>
+            <li><a href="{{url('/o-service')}}">О портале</a></li>
             <li><a href="#">Контакты</a></li>
         </ul>
         <div class="inner-right">
@@ -52,7 +52,7 @@
                 </div>
                 </form>
             </div>
-            <a href="#" data-toggle="modal" data-target="#modal03" class="btn">Оставить отзыв</a>
+            <a href="{{url('/dobavit-otzyv')}}" class="btn">Оставить отзыв</a>
             <div class="nav-ico"></div>        
         </div>
         <div class="backdrop"></div>

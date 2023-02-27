@@ -29,11 +29,11 @@
             <div class="col-lg-4">
                 <div class="f-title">Сервис</div>
                 <ul class="f-list">
-                    <li><a href="#">О портале</a></li>
-                    <li><a href="#">Статьи</a></li>
+                    <li><a href="{{url('/o-service')}}">О портале</a></li>
+                    <li><a href="{{url('/posti')}}">Статьи</a></li>
                     <li><a href="#">Контакты</a></li>
                     <li><a href="#">Связаться с нами</a></li>
-                    <li><a href="#">Политика конфиденциальности</a></li>
+                    <li><a href="{{url('policy')}}">Политика конфиденциальности</a></li>
                 </ul>
             </div>
             <div class="col-lg-4">
@@ -50,7 +50,7 @@
 </div>
 <div class="footer-bottom">
 <div class="container">
-    <div class="copy">&copy; Отзывы 2022. Все права защищены.</div>
+    <div class="copy">&copy; Отзывы <?=date('Y')?>. Все права защищены.</div>
     <div class="create">Разработка <a href="#">W3PROMO</a></div>
 </div>
 </div>
