@@ -57,17 +57,18 @@
 
 <!-- Subscribe -->
 <script>
-    function subscribe(emailSelector)
+    function subscribe(formId)
     {
         var page = '<?=url()->current()?>';
-        var email = $(emailSelector).val();
+        var email = $(formId+" input[name=email]").val();
+        var name = $(formId+" input[name=name]").val();
 
-        if (email.length>3){
+        if (email.length>=3 && name.length>=3){
 
             var formData = new FormData();
             formData.append('page', page);
-            // TODO: Get Name
             formData.append('email', email);
+            formData.append('name', name);
 
             $.ajax({
                 type: 'post',
@@ -78,20 +79,16 @@
                 contentType: false,
                 success: function(res){
                     $('#modal02').modal('show');
-                    $(emailSelector).val('');
+                    $(formId+" input[name=name]").val('');
+                    $(formId+" input[name=email]").val('');
                 }
             });
         }
     }
 
-    $(document).on('submit', '#footer-submit', function (e){
+    $(document).on('submit', '#sending-subscribe', function (e){
         e.preventDefault();
-        subscribe('#footer-email');
-    })
-
-    $(document).on('submit', '#articles-submit', function (e){
-        e.preventDefault();
-        subscribe('#articles-email');
+        subscribe('#sending-subscribe');
     })
 </script>
 

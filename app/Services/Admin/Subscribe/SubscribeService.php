@@ -29,7 +29,8 @@ class SubscribeService extends Service{
     {
         $validated = $request->validate([
             'email' => 'required',
-            'page' => 'required'
+            'page' => 'required',
+            'name' => 'required'
         ]);
 
         return $validated;

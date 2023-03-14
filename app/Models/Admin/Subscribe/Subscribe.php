@@ -11,6 +11,7 @@ class Subscribe extends Model
 
     protected $fillable = [
         'ip',
+        'name',
         'email',
         'page',
         'status'
