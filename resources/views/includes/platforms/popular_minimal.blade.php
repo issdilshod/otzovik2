@@ -4,9 +4,11 @@
         @foreach ($popular_minimal_platforms as $platform)
             <div class="swiper-slide">
                 <div class="platform-card">
-                    <a href="#">
+                    <a href="{{url('/platforma/'.$platform->slug)}}">
                         <div class="platform-card-head">
-                            <div class="platform-card-logo"><img src="assets/img/p-logo01.svg" alt=""></div>
+                            <div class="platform-card-logo">
+                                <img src="{{asset('storage/'.$platform->logo)}}" alt="">
+                            </div>
                             <ul class="awards">
                                 <li>
                                     <span class="ico">
@@ -27,7 +29,7 @@
                             </ul>
                         </div>
                         <div class="platform-card-body">
-                            <p>Онлайн-школа, которая с 2016 года запускает одни из лучших курсов в digital</p>
+                            <p>{{$platform->name}}</p>
                         </div>							
                     </a>
                 </div>

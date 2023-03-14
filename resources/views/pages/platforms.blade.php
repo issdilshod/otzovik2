@@ -42,10 +42,15 @@
             <div class="platforms-list">
                 <div class="row">
 
+                    @foreach ($list as $key => $value)
                     <div class="col-md-6">
                         <div class="platform-card">
                         <div class="platform-card-head">
-                            <div class="platform-card-logo"><img src="assets/img/p-logo01.svg" alt=""></div>
+                            <div class="platform-card-logo">
+                                <a href="{{url('/platforma/'.$value->slug)}}">
+                                    <img src="{{asset('storage/'.$value->logo)}}" alt="">
+                                </a>
+                            </div>
                             <ul class="awards">
                             <li>
                                 <span class="ico">
@@ -66,18 +71,18 @@
                             </ul>
                         </div>
                         <div class="platform-card-body">
-                            <p>Онлайн-школа, которая с 2016 года запускает одни из лучших курсов в digital</p>
+                            <p>{{$value->name}}</p>
                             <div class="platform-descript">
                             <li><span>Направлений:</span> Более 28</li>
-                            <li><span>Стоимость:</span> от 1 699 руб.</li>
-                            <li><span>Рассрочка:</span> Есть</li>
-                            <li><span>Срок обучения:</span> от 3 месяцев</li>
+                            <li><span>Стоимость:</span> {{$value->price}}</li>
+                            <li><span>Рассрочка:</span> @if ($value->install_plan)Есть@elseНету@endif</li>
+                            <li><span>Срок обучения:</span> {{$value->traning_period}}</li>
                             </div>
-                            <a href="#" class="btn bordered-btn">Оставить отзыв</a>
+                            <a href="{{url('/dobavit-otzyv/'.$value->slug)}}" class="btn bordered-btn">Оставить отзыв</a>
                         </div>							
                         </div>
                     </div>
-
+                    @endforeach
                 
                 </div>
                 <div class="text-center">

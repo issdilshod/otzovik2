@@ -122,6 +122,13 @@
                                                 </div>
                                             </div>
 
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="price1">{{__('platform_price')}}</label>
+                                                    <input name="price" class="form-control" id="price1" value="@isset($platform->price){{ $platform->price }}@endisset">
+                                                </div>
+                                            </div>
+
                                             <div class="col-md-4">
                                                 <div lass="form-group">
                                                     <label>{{__('global_status')}}</label>
@@ -137,6 +144,23 @@
                                                     </select>
                                                 </div>
                                             </div>
+
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="traning_period1">{{__('platform_traning_period')}}</label>
+                                                    <input name="traning_period" class="form-control" id="traning_period1" value="@isset($platform->traning_period){{ $platform->traning_period }}@endisset">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" class="custom-control-input" id="install_plan1"  name="install_plan" <?php if (isset($platform->install_plan) && $platform->install_plan){ echo 'checked'; }?> >
+                                                        <label class="custom-control-label" for="install_plan1">{{__('platform_install_plan')}}</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
                                         </div>
                                     </div>
                                     <!-- /.basic -->

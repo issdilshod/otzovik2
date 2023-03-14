@@ -116,6 +116,13 @@ class PlatformService extends Service{
             $platform['slug'] = StringService::slug($platform['name']);
         }
 
+        // install plan
+        if (isset($platform['install_plan'])){
+            $platform['install_plan'] = 1;
+        }else{
+            $platform['install_plan'] = 0;
+        }
+
         // CREATE
         $platform = Platform::create($platform);
 
@@ -137,6 +144,13 @@ class PlatformService extends Service{
         // logo
         if ($platform['logo']==null){
             unset($platform['logo']);
+        }
+
+        // install plan
+        if (isset($platform['install_plan'])){
+            $platform['install_plan'] = 1;
+        }else{
+            $platform['install_plan'] = 0;
         }
 
         // UPDATE
@@ -161,6 +175,9 @@ class PlatformService extends Service{
             'city_id' => '',
             'description' => '',
             'org' => '',
+            'price' => '',
+            'traning_period' => '',
+            'install_plan' => '',
             'license' => '',
             'foundation' => '',
             // contacts
