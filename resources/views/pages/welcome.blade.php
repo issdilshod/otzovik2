@@ -128,7 +128,10 @@
             <aside>
                 <div class="proposal-teaser">
                     <div class="proposal-teaser-logo"><a href="#"><img src="{{ asset('assets/img/gb-logo.svg') }}" alt=""></a></div>
-                    <p><strong>Мы обучаем с нуля профессиям и предоставляем знания</strong> по востребованным специальностям и направлениям в сфере ИТ.</p>
+                    <p>
+                        <strong class="_change_able" data-key="index_sidebar_teaser_strong" data-page="{{$_GET['_page']??''}}">{{$template['index_sidebar_teaser_strong']??__('global_empty')}} </strong> 
+                        <span class="_change_able" data-key="index_sidebar_teaser_span" data-page="{{$_GET['_page']??''}}">{{$template['index_sidebar_teaser_span']??__('global_empty')}}</span>
+                    </p>
                     <ul>
                         <li>Аналитика</li>
                         <li>Тестирование</li>
@@ -140,7 +143,7 @@
                 </div>
                 <div class="add-comment">
                     <div class="title">Оставьте отзыв</div>
-                    <p>Расскажите о своем опыте использования образовательных платформ</p>
+                    <p class="_change_able" data-key="index_sidebar_review_p" data-page="{{$_GET['_page']??''}}">{{$template['index_sidebar_review_p']??__('global_empty')}}</p>
                     <a href="{{url('/dobavit-otzyv')}}" class="btn blue-btn">Оставить отзыв</a>
                     <div class="subtitle">Как мы работаем с отзывами</div>
                     <ul>

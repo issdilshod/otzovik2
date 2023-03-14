@@ -19,8 +19,16 @@
             </a>
         </div>
         <ul class="socially">
-            <li><a href="#"><img src="assets/img/telegram.svg" alt=""></a></li>
-            <li><a href="#"><img src="assets/img/whatsapp.svg" alt=""></a></li>
+            <li>
+                <a class="_change_able" href="https://{{$template['header_telegram_link']??''}}" data-key="header_telegram_link" data-page="">
+                    <img src="{{asset('assets/img/telegram.svg')}}" alt="">
+                </a>
+            </li>
+            <li>
+                <a class="_change_able" href="https://{{$template['header_whatsapp_link']??''}}" data-key="header_whatsapp_link" data-page="">
+                    <img src="{{asset('assets/img/whatsapp.svg')}}" alt="">
+                </a>
+            </li>
         </ul>
     </div>
 </div>

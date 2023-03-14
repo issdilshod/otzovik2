@@ -22,7 +22,7 @@ class SettingController extends Controller
     {
         $validated = $request->validate([
             'value' => 'required',
-            'page' => 'required',
+            'page' => '',
             'user_id' => '',
         ]);
 
