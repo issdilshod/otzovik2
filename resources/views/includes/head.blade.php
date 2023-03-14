@@ -1,6 +1,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{env('APP_NAME')}} | {{$title}}</title>    
+<meta name="description" content="<?php if (isset($seo)){ echo $seo['description']; } ?>"> 
+<link rel="canonical" href="{{\App\Services\Admin\Misc\UrlService::url_canonical()}}"/>
+<title><?php if (isset($seo)){ echo $seo['title']; } else if (isset($title)) { echo $title; } ?></title>
 <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/css/swiper-bundle.min.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
