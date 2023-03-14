@@ -38,7 +38,7 @@
 </div>
 <div class="container">
     <div class="slider-nav">
-        <a href="{{url('/shkoly')}}" class="btn">Посмотреть все</a>
+        <a href="{{url('/top-platformi')}}" class="btn">Посмотреть все</a>
         <div class="slider-btns">					
             <div class="platforms-01-prev swiper-button-prev"></div>
             <div class="platforms-01-next swiper-button-next"></div>

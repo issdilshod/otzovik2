@@ -26,9 +26,11 @@
 </div>
 <div class="header-inner">
     <div class="container">
-        <a href="{{url('/')}}" class="logo"><img src="{{ asset('assets/img/logo.svg') }}" alt=""></a>
+        <<?php echo (request()->is('/'))?'span':'a';?> href="{{url('/')}}" class="logo">
+            <img src="{{ asset('assets/img/logo.svg') }}" alt="">
+        </<?php echo (request()->is('/'))?'span':'a';?>>
         <ul class="main-nav">
-            <li><a href="{{url('/shkoly')}}">Школы</a></li>
+            <li><a href="{{url('/platformi')}}">Школы</a></li>
             <li><a href="{{url('/otzyvy')}}">Отзывы</a></li>
             <li><a href="{{url('/o-service')}}">О портале</a></li>
             <li><a href="#">Контакты</a></li>
@@ -52,7 +54,7 @@
                 </div>
                 </form>
             </div>
-            <a href="{{url('/dobavit-otzyv')}}" class="btn">Оставить отзыв</a>
+            <a href="{{url('/platformi')}}" class="btn">Оставить отзыв</a>
             <div class="nav-ico"></div>        
         </div>
         <div class="backdrop"></div>
