@@ -10,8 +10,8 @@
                 <div class="hero-img"><img src="{{ asset('assets/img/hero.jpg') }}" alt=""></div>
                 <div class="container">
                     <div class="hero-text">
-                        <h1>Независимый сервис по оценке платформ для онлайн обучения</h1>
-                        <p class="large">Узнай что реально пишут о всех извесных платформах для онлайн обучения, которые вы рассматриваете для поступления!</p>
+                        <h1 class="_change_able" data-key="index_banner1_h1" data-page="{{$_GET['_page']??''}}">{{$template['index_banner1_h1']??__('global_empty')}}</h1>
+                        <p class="large _change_able" data-key="index_banner1_p" data-page="{{$_GET['_page']??''}}">{{$template['index_banner1_p']??__('global_empty')}}</p>
                         <a href="{{url('/platformi')}}" class="btn">Подобрать платформу</a>
                     </div>
                 </div>
@@ -20,8 +20,8 @@
                 <div class="hero-img"><img src="{{ asset('assets/img/hero.jpg') }}" alt=""></div>
                 <div class="container">
                     <div class="hero-text">
-                        <h1>Независимый сервис по оценке платформ для онлайн обучения</h1>
-                        <p class="large">Узнай что реально пишут о всех извесных платформах для онлайн обучения, которые вы рассматриваете для поступления!</p>
+                        <h1 class="_change_able" data-key="index_banner2_h1" data-page="{{$_GET['_page']??''}}">{{$template['index_banner2_h1']??__('global_empty')}}</h1>
+                        <p class="large _change_able" data-key="index_banner2_p" data-page="{{$_GET['_page']??''}}">{{$template['index_banner2_p']??__('global_empty')}}</p>
                         <a href="{{url('/platformi')}}" class="btn">Подобрать платформу</a>
                     </div>
                 </div>
@@ -30,8 +30,8 @@
                 <div class="hero-img"><img src="{{ asset('assets/img/hero.jpg') }}" alt=""></div>
                 <div class="container">
                     <div class="hero-text">
-                        <h1>Независимый сервис по оценке платформ для онлайн обучения</h1>
-                        <p class="large">Узнай что реально пишут о всех извесных платформах для онлайн обучения, которые вы рассматриваете для поступления!</p>
+                        <h1 class="_change_able" data-key="index_banner3_h1" data-page="{{$_GET['_page']??''}}">{{$template['index_banner3_h1']??__('global_empty')}}</h1>
+                        <p class="large _change_able" data-key="index_banner3_p" data-page="{{$_GET['_page']??''}}">{{$template['index_banner3_p']??__('global_empty')}}</p>
                         <a href="{{url('/platformi')}}" class="btn">Подобрать платформу</a>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                         <use xlink:href="#monitor-ico"></use>
                     </svg>
                 </span>
-                <strong>452 851</strong>
+                <strong class="_change_able" data-key="index_counter1" data-page="{{$_GET['_page']??''}}">{{$template['index_counter1']??__('global_empty')}}</strong>
                 посещаемость
             </li>
             <li>
@@ -56,7 +56,7 @@
                         <use xlink:href="#files-ico"></use>
                     </svg>
                 </span>
-                <strong>45 285</strong>
+                <strong class="_change_able" data-key="index_counter2" data-page="{{$_GET['_page']??''}}">{{$template['index_counter2']??__('global_empty')}}</strong>
                 отзывов
             </li>
             <li>
@@ -65,7 +65,7 @@
                         <use xlink:href="#users-ico"></use>
                     </svg>
                 </span>
-                <strong>4 528</strong>
+                <strong class="_change_able" data-key="index_counter3" data-page="{{$_GET['_page']??''}}">{{$template['index_counter3']??__('global_empty')}}</strong>
                 пользователей
             </li>
             <li>
@@ -74,7 +74,7 @@
                         <use xlink:href="#teacher-ico"></use>
                     </svg>
                 </span>
-                <strong>452</strong>
+                <strong class="_change_able" data-key="index_counter4" data-page="{{$_GET['_page']??''}}">{{$template['index_counter4']??__('global_empty')}}</strong>
                 платформ
             </li>
         </ul>
@@ -100,7 +100,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <h2><span class="violet">ТОП 6</span> онлайн платформ по мнению редакции</h2>
-                <p class="large">С другой стороны консультация с широким активом требуют определения и уточнения модели развития. Задача организации, в особенности же сложившаяся структура организации играет важную роль в формировании существенных финансовых и административных условий.</p>
+                <p class="large _change_able" data-key="index_top_p" data-page="{{$_GET['_page']??''}}">{{$template['index_top_p']??__('global_empty')}}</p>
             </div>
             <div class="col-lg-6">
                 @include('includes.platforms.top6')
@@ -112,10 +112,10 @@
 <!-- / top-block -->
 <div class="container">
     <div class="teaser">
-        <h2>Не можете решить где обучаться?</h2>
-        <p class="large">Мы поможем Вам подобрать платфому для онлайн обучения, где Вас смогут научить всему что пожелаете.</p>
+        <h2 class="_change_able" data-key="index_teaser_h2" data-page="{{$_GET['_page']??''}}">{{$template['index_teaser_h2']??__('global_empty')}}</h2>
+        <p class="large _change_able" data-key="index_teaser_p" data-page="{{$_GET['_page']??''}}">{{$template['index_teaser_p']??__('global_empty')}}</p>
         <a href="{{url('/platformi')}}" class="btn bordered-btn white-btn">Подобрать платформу</a>
-    </div>		
+    </div>
     <div class="title-wrap text-left">
         <h2>Последние опубликованные отзывы</h2>
         <p>С другой стороны консультация с широким активом требуют определения и уточнения модели развития. Задача организации, в особенности же сложившаяся структура организации играет важную роль в формировании существенных финансовых и административных условий.</p>

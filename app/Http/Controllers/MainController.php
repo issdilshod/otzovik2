@@ -57,7 +57,7 @@ class MainController extends Controller
 
         $data['cities'] = $this->cityService->findAll(); 
 
-        $data['popular_platforms'] = $this->platformService->popular();
+        $data['popular_platforms'] = $this->platformService->popular(10);
         $data['popular_reviews'] = $this->reviewService->popular();
         $data['last_reviews'] = $this->reviewService->last();
         $data['popular_articles'] = $this->articleService->popular();  

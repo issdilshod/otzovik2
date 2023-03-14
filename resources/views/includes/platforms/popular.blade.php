@@ -43,7 +43,7 @@
 </div>
 <div class="container">
     <div class="slider-nav">
-        <a href="{{url('/shkoly')}}" class="btn">Посмотреть все</a>
+        <a href="{{url('/platformi')}}" class="btn">Посмотреть все</a>
         <div class="slider-btns">					
             <div class="platforms-prev swiper-button-prev"></div>
             <div class="platforms-next swiper-button-next"></div>

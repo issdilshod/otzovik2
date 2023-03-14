@@ -22,6 +22,7 @@ class SettingController extends Controller
     {
         $validated = $request->validate([
             'value' => 'required',
+            'page' => 'required',
             'user_id' => '',
         ]);
 
@@ -35,7 +36,7 @@ class SettingController extends Controller
         // permission
 
         return view('admin.pages.setting.setting.settings', [
-            'src' => url('/').'?_mode='.Config::get('app._mode.edit').'&_token='.Session::get('token')[0]
+            'src' => url('/').'?_mode='.Config::get('app._mode.edit').'&_token='.Session::get('token')[0].'&_page='.Config::get('pages.index'),
         ]);
     }
 
@@ -44,7 +45,7 @@ class SettingController extends Controller
         // permission
 
         return view('admin.pages.setting.setting.settings', [
-            'src' => url('/poisk').'?_mode='.Config::get('app._mode.edit').'&_token='.Session::get('token')[0]
+            'src' => url('/poisk').'?_mode='.Config::get('app._mode.edit').'&_token='.Session::get('token')[0].'&_page='.Config::get('pages.search')
         ]);
     }
 

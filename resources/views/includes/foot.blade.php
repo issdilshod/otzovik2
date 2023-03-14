@@ -113,8 +113,6 @@
     </symbol>      
 </svg>				
     
-<script src="{{ asset('assets/js/jquery.slim.min.js') }}"></script>
-<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('assets/js/swiper-bundle.min.js') }}"></script>
 <script src="{{ asset('assets/js/jcf.js') }}"></script>
 <script src="{{ asset('assets/js/jcf.file.js') }}"></script>

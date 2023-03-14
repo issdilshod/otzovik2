@@ -4,11 +4,11 @@
         @foreach ($popular_articles as $article)
             <div class="swiper-slide">
                 <div class="article-card">
-                    <a href="#">
-                    <img src="{{ asset('assets/img/pic01.jpg') }}" alt="">
+                    <a href="{{url('post/'.$article->slug)}}">
+                    <img src="{{asset('storage/'.$article->cover)}}" alt="">
                     <div class="article-card-text">
-                        <div class="date">16.01.2023</div>
-                        <div class="article-card-title">Вот вам яркий пример современных тенденций — понимание сути</div>
+                        <div class="date">{{App\Services\Admin\Misc\SystemService::get_date_for_blog($article->updated_at)}}</div>
+                        <div class="article-card-title">{{$article->title}}</div>
                     </div>
                     </a>
                 </div>
